@@ -1,0 +1,87 @@
+.conLogin {
+  padding: 0 160px 0 160px;
+  display: flex;
+  font-family: 'Manrope', sans-serif;
+  min-height: 500px;
+  position: relative;
+  top: 100px;
+  margin-bottom: 200px;
+  justify-content: center;
+}
+.conLogin div {
+  width: 400px;
+}
+.loginleft {
+  background-color: #e6f5f0;
+  border-radius: 39px 0 0 39px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.loginleft form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.loginleft form .username input,
+.loginleft form .password input {
+  height: 40px;
+  border: 2px solid #4dbc9b;
+  border-radius: 10px;
+  width: 70%;
+  margin-bottom: 10px;
+  padding-left: 40px;
+  outline: none;
+  background-color: #e6f5f0;
+}
+.loginleft form .username input:focus,
+.loginleft form .password input:focus {
+  background-color: #ffffff;
+}
+.username i {
+  position: absolute;
+  font-size: 20px;
+  margin: 8px 0 0 8px;
+}
+.password i {
+  position: absolute;
+  font-size: 20px;
+  margin: 8px 0 0 8px;
+}
+.loginleft form button {
+  height: 40px;
+  color: white;
+  font-weight: 800;
+  background-color: #4dbc9b;
+  border: none;
+  border-radius: 10px;
+  width: 70%;
+  margin: 20px auto auto auto;
+  cursor: pointer;
+}
+.loginleft form button:hover {
+  background-color: #157357;
+}
+.loginright {
+  background-image: url(../../img/img2.png);
+  background-color: #4dbc9b;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 0 39px 39px 0;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  color: #ffffff;
+  font-weight: bolder;
+}
+.loginright img {
+  margin: 0 35% 0 35%;
+}
+.loginright h2 {
+  font-size: 30px;
+}

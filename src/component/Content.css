@@ -1,0 +1,49 @@
+.contentContainer {
+  padding: 0 160px 0 160px;
+  display: flex;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+.contentContainer .sideRight img {
+  position: relative;
+  top: 200px;
+  left: -100px;
+  max-width: 400px;
+}
+.contentContainer .sideLeft {
+  min-width: 799px;
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
+.sideLeft h2 {
+  font-size: 58px;
+}
+.sideLeft p {
+  color: #c3bec7;
+  margin-bottom: 10px;
+}
+
+.conButton a > button {
+  width: 137px;
+  height: 52px;
+  margin: 0 25px 0 0;
+  border: 0;
+  border-radius: 10px;
+}
+.conButton :nth-child(1) > button {
+  border: 2px solid #20b486;
+  color: #20b486;
+  cursor: pointer;
+}
+.conButton :nth-child(1) > button:hover {
+  background-color: #7dbaa7;
+  color: #ffffff;
+}
+.conButton :nth-child(2) > button {
+  background-color: #20b486;
+  color: #ffff;
+  cursor: pointer;
+}
+.conButton :nth-child(2) > button:hover {
+  background-color: #5ccaa8;
+}

@@ -1,0 +1,36 @@
+.navContainer {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 160px 10px 160px;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 999;
+  margin-top: 0%;
+  margin-bottom: 100%;
+}
+.navContainer a {
+  color: #4c3555;
+}
+
+.navContainer h1 {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 24px;
+}
+.navContainer h1 > i {
+  font-size: 10px;
+  position: absolute;
+  color: aquamarine;
+}
+.navContainer ul {
+  display: flex;
+}
+.navContainer ul > li {
+  margin: 10px 59px 0 0px;
+  list-style: none;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+}
