@@ -6,12 +6,13 @@
 }
 .contentContainer .sideRight img {
   position: relative;
+  margin-bottom: 0;
+  margin-top: auto;
+  max-width: 100%;
   top: 200px;
-  left: -100px;
-  max-width: 400px;
 }
 .contentContainer .sideLeft {
-  min-width: 799px;
+  max-width: 799px;
   margin-top: 200px;
   margin-bottom: 100px;
 }
