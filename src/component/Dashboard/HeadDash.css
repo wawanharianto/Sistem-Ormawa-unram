@@ -1,0 +1,10 @@
+.HeadDash {
+  width: 100%;
+  height: 10%;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+}

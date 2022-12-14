@@ -10,7 +10,7 @@ const Navbar = () => {
       </h1>
       <ul>
         <li>
-          <a href="/">Beranda</a>
+          <a href="dashboard">Beranda</a>
         </li>
         <li>
           <a href="Pengumuman">Pengumuman</a>

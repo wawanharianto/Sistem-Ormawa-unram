@@ -1,0 +1,170 @@
+cd ### GET ALL USER
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZDBlNGU0NDMtYmM3Ny00OTE5LThhYjktYjI3OTdmZjhmMmExIiwidXNlcm5hbWUiOiJGZWJyaWFuIiwiZW1haWwiOiJicmlhbmRzbWl0aDIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2OTI1NTk3NiwiZXhwIjoxNjY5MjU2MDM2fQ.veISM4KO0OA7s6-atpYpcycLgS0BFn3qGGigN_k2TNg
+
+### GET USER LOGIN
+GET http://localhost:3000/currentusers
+
+### GET USER DARI USERNAME
+GET http://localhost:3000/users/febrian
+
+
+### UPDATE USER
+PATCH  http://localhost:3000/users/d0e4e443-bc77-4919-8ab9-b2797ff8f2a1
+Content-Type: application/json
+
+{
+  "username": "",
+  "email": "",
+  "password": "",
+  "confPassword": "",
+  "role": ""
+}
+
+### DELETE USER
+DELETE   http://localhost:3000/users/9b4cb389-4cfc-4a50-91b5-cf3c1253d90a
+
+### CREATE USER
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "username": "",
+  "email": "",
+  "password": "",
+  "confPassword": "",
+  "file": "file image",
+  "role": ""
+}
+
+### LOGIN
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "a",
+  "password": "a"
+}
+
+### LOGOUT
+DELETE http://localhost:3000/logout
+
+### GET PROPOSAL
+GET http://localhost:3000/proposal
+
+
+### GET PROPOSAL BY ID
+GET http://localhost:3000/proposal/6211c9a0-9958-4415-a1bc-dd23df733587
+
+
+### CREATE PROPOSAL
+POST http://localhost:3000/proposal/dacaa7b7-bf42-4ce0-bc03-6a0a576afe63
+Content-Type: application/json
+
+{
+  "nama_kegiatan": "festival gajah",
+    "nama_organisasi": "ormawa",
+    "jumlah_dana": "RP. 10.000.000",
+    "ketua_panitia": "budi",
+    "nomer_ketupat": "081731987321",
+    "tanggal_pelaksanaan": "2022-12-12",
+    "tempat_pelaksanaan": "lapangan",
+    "nomer_ketum": "08129349283",
+    "file": "file proposal",
+    "status": "Proposal di ajukan"
+}
+
+
+### UPDATE PROPOSAL
+PATCH http://localhost:3000/proposal/dacaa7b7-bf42-4ce0-bc03-6a0a576afe63
+Content-Type: application/json
+
+{
+  "nama_kegiatan": "festival gajah",
+    "nama_organisasi": "ormawa",
+    "jumlah_dana": "RP. 10.000.000",
+    "ketua_panitia": "budi",
+    "nomer_ketupat": "081731987321",
+    "tanggal_pelaksanaan": "2022-12-12",
+    "tempat_pelaksanaan": "lapangan",
+    "nomer_ketum": "08129349283",
+    "file": null
+}
+
+
+### UPDATE STATUS PROPOSAL
+PATCH http://localhost:3000/setstatus/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+{
+  "status": "value"
+}
+
+
+### UPDATE KET WD3
+PATCH http://localhost:3000/updateketeranganwd3/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+{
+  "keteranganwd3": "value"
+}
+
+### UPDATE REVISI PROPOSAL
+PATCH http://localhost:3000/updaterevisi/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+{
+  "file": "file revisi proposal"
+}
+
+### UPDATE KET KEUANGAN DAN DANA DI ACC
+PATCH http://localhost:3000/updatekeuangan/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+{
+  "keterangankeuangan": "value",
+  "dana_disetujui": "value"
+}
+
+### DELETE PROPOSAL
+DELETE http://localhost:3000/proposal/93240fdd-0279-42ef-b82d-c699f65ddec2
+
+### 
+DELETE http://localhost:3000/proposal/
+Content-Type: application/json
+
+{
+  "id": [3]
+}
+
+
+### UPLOAD SPJ
+PATCH http://localhost:3000/spj/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+
+{
+  "file": "file spj"
+}
+
+### UPLOAD BERKAS DUKUNG
+PATCH http://localhost:3000/spj/berkasdukung/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+
+{
+  "file": "file spj"
+}
+
+### UPLOAD LPJ
+PATCH http://localhost:3000/lpj/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+
+{
+  "file": "file spj"
+}
+
+### UPDATE KET AKADEMIK
+PATCH http://localhost:3000/lpj/akademik/7b70c6b1-8b2b-487f-af99-8c9a0a73da4c
+Content-Type: application/json
+
+{
+  "keterangan_akademik": "value"
+}
+
+### EXPORT TO EXCEL FILE
+GET http://localhost:3000/export
