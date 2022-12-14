@@ -227,13 +227,8 @@ export const deleteMultiple = async (req, res) => {
     })
     if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
-    // res.json(proposal[0].lpj);
-
 
     try {
-
-        // res.json(proposal[1].proposal);
-        // fs.unlinkSync(filepath);
 
 
         var files = proposal
@@ -255,31 +250,6 @@ export const deleteMultiple = async (req, res) => {
             }
 
         }
-
-        // files.forEach(function (filepath) {
-        //     var filepath = `./proposalData/proposal/${proposal[i].proposal}`;
-        //     fs.unlinkSync(filepath, function (err) {
-        //         i--;
-        //         if (err) {
-        //             console.log(err);
-        //             return;
-        //         } else if (i <= 0) {
-        //             return null;
-        //         }
-        //     });
-        // });
-
-        // var removeFile= function (err) {
-        //     if (err) {
-        //         console.log("unlink failed", err);
-        //     } else {
-        //         console.log("file deleted");
-        //     }
-        // }
-
-        // _.map(proposal,(files)=>{
-        //     fs.unlinkSync(`./proposalData/proposal/${files}`, removeFile);
-        // });
 
         await Proposal.destroy({
             where: {
