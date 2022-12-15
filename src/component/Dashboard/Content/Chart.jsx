@@ -5,10 +5,10 @@ ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
 function Chart() {
   const data = {
-    labels: ['Desember 11', 'Desember 12', 'Desember 13', 'Desember 14', 'Desember 15'],
+    labels: ['Ormawa 1', 'Ormawa 1', 'Ormawa 1', 'Ormawa 1', 'Ormawa 1'],
     datasets: [
       {
-        data: [8, 7, 8, 6, 8, 9],
+        data: [8, 7, 8, 6, 8, 14],
       },
     ],
   };
