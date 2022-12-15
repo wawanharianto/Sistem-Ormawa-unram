@@ -9,6 +9,7 @@ function Chart() {
     datasets: [
       {
         data: [8, 7, 8, 6, 8, 14],
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
   };

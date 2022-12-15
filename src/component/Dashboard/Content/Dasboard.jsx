@@ -37,7 +37,11 @@ function Dashboard() {
           </div>
         </div>
         <div className="Chart">
-          <Chart />
+          <h3>Kegiatan Organisasi Mahasiswa</h3>
+          <p>Grafik Kegiatan Organisasai Mahasiswa Fakultas Kedokteran Universitas Mataram</p>
+          <div className="Graphic">
+            <Chart />
+          </div>
         </div>
       </div>
     </>
