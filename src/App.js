@@ -1,4 +1,3 @@
-import './App.css';
 import Navbar from './component/Navbar';
 import Content from './component/Content';
 import Footer from './component/Footer';
@@ -7,10 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Pengumuman from './component/Pengumuman/Pengumuman';
 //Dashboard
 import HeadDash from './component/Dashboard/HeadDash';
-
-import SideDash from './component/Dashboard/SideDash';
 import Dashboard from './component/Dashboard/Content/Dasboard';
-
+import Register from './component/Register/Register';
 function App() {
   return (
     <>
@@ -26,16 +23,6 @@ function App() {
           <Route path="/" element={<Content />} />
           <Route path="/login" element={<Login />} />
           <Route path="/pengumuman" element={<Pengumuman />} />
-          <Route
-            path="/dashboard"
-            element={
-              <>
-                <HeadDash />
-                <Dashboard />
-                <SideDash />
-              </>
-            }
-          />
         </Routes>
       </Router>
       <Router>
@@ -43,6 +30,30 @@ function App() {
           <Route path="/" element={<Footer />} />
           <Route path="/pengumuman" element={<Footer />} />
           <Route path="/login" element={<Footer />} />
+        </Routes>
+      </Router>
+
+      <Router>
+        <Routes>
+          <Route
+            path="/dashboard"
+            element={
+              <>
+                <HeadDash />
+
+                <Dashboard />
+              </>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <>
+                <HeadDash />
+                <Register />
+              </>
+            }
+          />
         </Routes>
       </Router>
     </>

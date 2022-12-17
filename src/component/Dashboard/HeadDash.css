@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 999;
 }
 .burger-button {
   display: flex;
@@ -25,17 +26,19 @@
   width: 30px;
   transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
   border-radius: 2px;
+  cursor: pointer;
 
   z-index: 0;
 }
 
 #menu-toggle {
   display: none;
-  width: 20px;
-  margin-left: 100px;
   position: relative;
-
+  width: 20px;
+  height: 20px;
+  margin-top: -0.5rem;
   left: 1.5rem;
+  cursor: pointer;
 }
 
 .menu-button::before {
@@ -92,4 +95,65 @@
 /* css session checkbox */
 .on-burger {
   padding-left: 18%;
+}
+
+/* Side bar */
+.SideDash {
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 16%;
+  height: 100%;
+}
+.SideDash .c-SideDash {
+  margin-top: 30%;
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c-SideDash img {
+  background-color: #d9d9d9;
+  height: 100px;
+  width: 100px;
+  border-radius: 24px;
+  margin-bottom: 10px;
+}
+.c-SideDash p {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #6d6d6d;
+}
+.sideDash-f * {
+  color: #6d6d6d;
+}
+.sideDash-f .icon {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 4px;
+  padding: 2px 0px 2px 19px;
+  border-radius: 20px;
+}
+
+.sideDash-f .icon p {
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.sideDash-f .select-f {
+  background-color: #4dbc9b;
+}
+.sideDash-f .select-f * {
+  color: aliceblue;
 }

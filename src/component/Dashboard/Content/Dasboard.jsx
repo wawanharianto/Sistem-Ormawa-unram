@@ -43,6 +43,7 @@ function Dashboard() {
             <Chart />
           </div>
         </div>
+        <div className="KontenKosong"></div>
       </div>
     </>
   );

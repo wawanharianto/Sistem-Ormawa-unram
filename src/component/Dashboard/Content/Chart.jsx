@@ -1,22 +1,33 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js';
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 function Chart() {
   const data = {
-    labels: ['Ormawa 1', 'Ormawa 1', 'Ormawa 1', 'Ormawa 1', 'Ormawa 1'],
+    labels: ['Ormawa 1', 'Ormawa 2', 'Ormawa 3', 'Ormawa 4', 'Ormawa 5'],
     datasets: [
       {
         data: [8, 7, 8, 6, 8, 14],
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: ' rgb(10, 124, 92)',
       },
     ],
   };
-  const options = {};
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart',
+      },
+    },
+  };
   return (
     <div>
-      <Line data={data} options={options}></Line>
+      <Bar data={data} options={options}></Bar>
     </div>
   );
 }
