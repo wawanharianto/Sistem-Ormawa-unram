@@ -11,17 +11,27 @@ function Register() {
   const [role, setrole] = useState('');
   const [msg, setMsg] = useState('');
 
+  const loadImage = (e) => {
+    const image = e.target.files[0];
+    setfile(image);
+  };
+
   const Register = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("confPassword", confpass);
+    formData.append("file", file);
+    formData.append("role", role);
     try {
-      await axios.post('http://localhost:3000/users', {
-        username: username,
-        email: email,
-        password: password,
-        confPassword: confpass,
-        file: file,
-        role: role,
+      await axios.post('http://localhost:3000/users', formData, {
+        headers: {
+          "Content-type": "multipart/form-data",
+        }
       });
+      console.log("REGISTER BERHASIL");
     } catch (error) {
       if (error.response) {
         console.log(error.response.data);
@@ -42,7 +52,7 @@ function Register() {
           <input type="password" placeholder="password" value={password} onChange={(e) => setpassword(e.target.value)} />
           <label>Confirm Password</label>
           <input type="password" placeholder="password" value={confpass} onChange={(e) => setconfpass(e.target.value)} />
-          <input className="upload" type="file" name="file" value={file} onChange={(e) => setfile(e.target.value)} />
+          <input className="upload" type="file" name="file" onChange={loadImage} />
           <label>Role</label>
           <input type="text" placeholder="role" value={role} onChange={(e) => setrole(e.target.value)} />
           <button type="submit">Register</button>
