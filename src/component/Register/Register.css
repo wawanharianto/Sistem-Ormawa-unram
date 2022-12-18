@@ -60,3 +60,51 @@
   width: 200px;
   height: 200px;
 }
+.popUp {
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(83, 173, 135, 0.3);
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.popUp .conPopUp {
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #2e8369;
+}
+.conPopUp button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  font-size: 30px;
+  color: #448672;
+  border: none;
+  position: static;
+  margin-right: 0;
+  margin-left: 90%;
+  margin-top: 10px;
+}
+.conPopUp button:hover {
+  color: rgb(2, 7, 6);
+}
+.conPopUp p {
+  margin-top: 30px;
+  margin-bottom: auto;
+  text-align: center;
+  color: aliceblue;
+}
+/* click funtion */
+.popshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
