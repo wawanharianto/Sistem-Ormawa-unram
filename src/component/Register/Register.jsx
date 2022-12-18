@@ -20,15 +20,20 @@ function Register() {
 
   const Register = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('confPassword', confpass);
+    formData.append('file', file);
+    formData.append('role', role);
     try {
-      await axios.post('http://localhost:3000/users', {
-        username: username,
-        email: email,
-        password: password,
-        confPassword: confpass,
-        file: file,
-        role: role,
+      await axios.post('http://localhost:3000/users', formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
       });
+      console.log('REGISTER BERHASIL');
     } catch (error) {
       if (error.response) {
         console.log(error.response.data);
