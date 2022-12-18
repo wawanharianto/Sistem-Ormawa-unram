@@ -8,8 +8,15 @@ function Register() {
   const [password, setpassword] = useState('');
   const [confpass, setconfpass] = useState('');
   const [file, setfile] = useState('');
+  const [preview, setpreview] = useState('');
   const [role, setrole] = useState('');
   const [msg, setMsg] = useState('');
+
+  const loadimage = (e) => {
+    const image = e.target.files[0];
+    setfile(image);
+    setpreview(URL.createObjectURL(image));
+  };
 
   const Register = async (e) => {
     e.preventDefault();
@@ -32,6 +39,13 @@ function Register() {
   return (
     <>
       <div className="conRegister">
+        {preview ? (
+          <figure className="image">
+            <img src={preview} alt="preview image" />
+          </figure>
+        ) : (
+          ''
+        )}
         <form onSubmit={Register} className="form-Register" action="">
           <h2>REGISTER</h2>
           <label> Username</label>
@@ -42,7 +56,8 @@ function Register() {
           <input type="password" placeholder="password" value={password} onChange={(e) => setpassword(e.target.value)} />
           <label>Confirm Password</label>
           <input type="password" placeholder="password" value={confpass} onChange={(e) => setconfpass(e.target.value)} />
-          <input className="upload" type="file" name="file" value={file} onChange={(e) => setfile(e.target.value)} />
+          <input className="upload" type="file" name="file" value={file} onChange={loadimage} />
+
           <label>Role</label>
           <input type="text" placeholder="role" value={role} onChange={(e) => setrole(e.target.value)} />
           <button type="submit">Register</button>
