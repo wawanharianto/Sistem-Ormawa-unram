@@ -5,17 +5,6 @@ import fs from "fs";
 import { Op } from "sequelize";
 
 export const getUsers = async (req, res) => {
-  try {
-    const users = await Users.findAll({
-      attributes: ['uuid', 'username', 'email', 'role', 'profilePic']
-    });
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ msg: error.message });
-  }
-}
-
-export const getUsersbyUsername = async (req, res) => {
   const search = req.query.search || "";
   try {
     const response = await Users.findAll({

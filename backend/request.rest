@@ -1,13 +1,8 @@
-cd ### GET ALL USER
-GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZDBlNGU0NDMtYmM3Ny00OTE5LThhYjktYjI3OTdmZjhmMmExIiwidXNlcm5hbWUiOiJGZWJyaWFuIiwiZW1haWwiOiJicmlhbmRzbWl0aDIyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2OTI1NTk3NiwiZXhwIjoxNjY5MjU2MDM2fQ.veISM4KO0OA7s6-atpYpcycLgS0BFn3qGGigN_k2TNg
+### GET ALL USER ATAU SEARCH BY USERNAME
+GET http://localhost:3000/users/?search=
 
 ### GET USER LOGIN
 GET http://localhost:3000/currentusers
-
-### GET USER DARI USERNAME
-GET http://localhost:3000/users/?search=(value)
-
 
 ### UPDATE USER
 PATCH  http://localhost:3000/users/d0e4e443-bc77-4919-8ab9-b2797ff8f2a1
@@ -42,8 +37,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "a",
-  "password": "a"
+  "username": "Febrian",
+  "password": "12345"
 }
 
 ### LOGOUT
