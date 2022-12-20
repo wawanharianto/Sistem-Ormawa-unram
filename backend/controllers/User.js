@@ -2,6 +2,7 @@ import Users from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import path from "path";
 import fs from "fs";
+import { Op } from "sequelize";
 
 export const getUsers = async (req, res) => {
   try {
@@ -15,11 +16,14 @@ export const getUsers = async (req, res) => {
 }
 
 export const getUsersbyUsername = async (req, res) => {
+  const search = req.query.search || "";
   try {
-    const response = await Users.findOne({
+    const response = await Users.findAll({
       attributes: ['uuid', 'username', 'email', 'role', 'profilePic'],
       where: {
-        username: req.params.username
+        [Op.or]: [{username: {
+          [Op.like]: '%'+search+'%'
+        }}]
       }
     })
     res.status(200).json(response);

@@ -16,6 +16,7 @@ function Register() {
     const image = e.target.files[0];
     setfile(image);
   };
+  
   const handleClose = () => {
     const closepop = document.getElementsByClassName('popUp')[0];
     closepop.classList.toggle('popshow');
