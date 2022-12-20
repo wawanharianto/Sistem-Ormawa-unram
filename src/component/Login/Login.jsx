@@ -23,7 +23,7 @@ function Login() {
         },
       });
       setmsg('Login Success');
-      navigate('/dasboard');
+      navigate('/dashboard');
     } catch (error) {
       if (error.response) {
         setmsg(error.response.data.msg);
