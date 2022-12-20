@@ -6,47 +6,18 @@ import { Op } from "sequelize";
 import _ from "underscore";
 
 export const getProposal = async (req, res) => {
+    const search = req.query.search || "";
     try {
         let response;
         if (req.role === "admin" || req.role === "WD3") {
             response = await Proposal.findAll({
                 attributes: ['uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
-                include: [{
-                    model: Users,
-                    attributes: ['username', 'email']
-                }]
-            });
-        } else {
-            response = await Proposal.findAll({
-                attributes: ['uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
                 where: {
-                    userId: req.userId
-                },
-                include: [{
-                    model: Users,
-                    attributes: ['username', 'email']
-                }]
-            });
-        }
-        res.status(200).json(response);
-    } catch (error) {
-        res.status(500).json({ msg: error.message });
-    }
-}
-export const getProposalbyId = async (req, res) => {
-    try {
-        const proposal = await Proposal.findOne({
-            where: {
-                nama_kegiatan: req.params.id
-            }
-        });
-        if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
-        let response;
-        if (req.role === "admin" || req.role === "WD3") {
-            response = await Proposal.findOne({
-                attributes: ['uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
-                where: {
-                    id: proposal.id
+                    [Op.or]: [{
+                        nama_kegiatan: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }]
                 },
                 include: [{
                     model: Users,
@@ -54,10 +25,15 @@ export const getProposalbyId = async (req, res) => {
                 }]
             });
         } else {
-            response = await Proposal.findOne({
+            response = await Proposal.findAll({
                 attributes: ['uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
                 where: {
-                    [Op.and]: [{ id: proposal.id }, { userId: req.userId }]
+                    [Op.or]: [{
+                        userId: req.userId,
+                        nama_kegiatan: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }]
                 },
                 include: [{
                     model: Users,

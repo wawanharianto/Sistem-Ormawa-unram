@@ -10,9 +10,15 @@ export const getUsers = async (req, res) => {
     const response = await Users.findAll({
       attributes: ['uuid', 'username', 'email', 'role', 'profilePic'],
       where: {
-        [Op.or]: [{username: {
-          [Op.like]: '%'+search+'%'
-        }}]
+        [Op.or]: [{
+          username: {
+            [Op.like]: '%' + search + '%'
+          }
+        }, {
+          email: {
+            [Op.like]: '%' + search + '%'
+          }
+        }]
       }
     })
     res.status(200).json(response);
@@ -94,7 +100,7 @@ export const deleteUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   const user = await Users.findOne({
     where: {
-      uuid : req.params.uuid
+      uuid: req.params.uuid
     }
   });
 
