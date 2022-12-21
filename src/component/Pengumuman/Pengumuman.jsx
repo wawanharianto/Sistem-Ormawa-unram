@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import './Pengumuman.css';
 
 function Pengumuman() {
+  const [keyword, setKeyword] = useState("");
+  const [proposals, setProposals] = useState([]);
+  useEffect(() => {
+    getProposal();
+  }, [keyword]);
+
+  const getProposal = async () => {
+    const response = await axios.get(`http://localhost:3000/proposal/?search=${keyword}`);
+    setProposals(response.data.result);
+  };
+
   return (
     <>
       <article className="conPengumuman">
@@ -10,60 +22,25 @@ function Pengumuman() {
           <hr />
         </div>
         <table className="tPengumuman">
-          <tr>
-            <th>No</th>
-            <th>Organisasi Mahasiswa</th>
-            <th>Nama Kegiatan</th>
-            <th>Keterangan</th>
-          </tr>
-          <tr>
-            <td>1.</td>
-            <td>Badan Eksekutif mahasiswa</td>
-            <td>Sosialisasi Kesehatan pada masyarakat selong lombok barat</td>
-            <td>
-              <span>status</span>
-            </td>
-          </tr>
-          <tr>
-            <td>2.</td>
-            <td>Badan Eksekutif mahasiswa</td>
-            <td>Sosialisasi Kesehatan pada masyarakat selong lombok barat</td>
-            <td>
-              <span>status</span>
-            </td>
-          </tr>
-          <tr>
-            <td>3.</td>
-            <td>Badan Eksekutif mahasiswa</td>
-            <td>Sosialisasi Kesehatan pada masyarakat selong lombok barat</td>
-            <td>
-              <span>status</span>
-            </td>
-          </tr>
-          <tr>
-            <td>4.</td>
-            <td>Badan Eksekutif mahasiswa</td>
-            <td>Sosialisasi Kesehatan pada masyarakat selong lombok barat</td>
-            <td>
-              <span>status</span>
-            </td>
-          </tr>
-          <tr>
-            <td>5.</td>
-            <td>Badan Eksekutif mahasiswa</td>
-            <td>Sosialisasi Kesehatan pada masyarakat selong lombok barat</td>
-            <td>
-              <span>status</span>
-            </td>
-          </tr>
-          <tr>
-            <td>6.</td>
-            <td>Badan Eksekutif mahasiswa</td>
-            <td>Sosialisasi Kesehatan pada masyarakat selong lombok barat</td>
-            <td>
-              <span>status</span>
-            </td>
-          </tr>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Organisasi Mahasiswa</th>
+              <th>Nama Kegiatan</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+          {proposals.map((proposal)=>(
+            <tr key={proposal.id}>
+              <td>{proposal.id}</td>
+              <td>{proposal.nama_organisasi}</td>
+              <td>{proposal.nama_kegiatan}</td>
+              <td>{proposal.status}</td>
+            </tr>
+          ))}
+          </tbody>
+
         </table>
       </article>
     </>

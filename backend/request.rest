@@ -44,12 +44,8 @@ Content-Type: application/json
 ### LOGOUT
 DELETE http://localhost:3000/logout
 
-### GET PROPOSAL
-GET http://localhost:3000/proposal
-
-
-### GET PROPOSAL BY ID
-GET http://localhost:3000/proposal/6211c9a0-9958-4415-a1bc-dd23df733587
+### GET PROPOSAL DAN SEARCH BY NAMA KEGIATAN
+GET http://localhost:3000/proposal/?search=
 
 
 ### CREATE PROPOSAL

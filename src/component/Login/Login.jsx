@@ -22,6 +22,7 @@ function Login() {
         },
       });
       setmsg('Login Success');
+
       // navigate('/dashboard');
     } catch (error) {
       if (error.response) {
