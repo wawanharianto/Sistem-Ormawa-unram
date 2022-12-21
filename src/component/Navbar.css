@@ -27,10 +27,26 @@
   display: flex;
 }
 .navContainer ul > li {
-  margin: 10px 59px 0 0px;
+  margin: 10px 59px 0 0;
   list-style: none;
   cursor: pointer;
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
   font-size: 14px;
+}
+/* response tab */
+
+@media only screen and (max-width: 820px) {
+  .navContainer {
+    padding: 10px 40px 10px 40px;
+  }
+  .navContainer ul > li {
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .navContainer ul {
+    display: none;
+  }
 }

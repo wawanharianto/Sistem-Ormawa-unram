@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import './Login.css';
 import logounram from '../../img/img3.png';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
   const [msg, setmsg] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const Auth = async (e) => {
     e.preventDefault();
@@ -23,7 +22,7 @@ function Login() {
         },
       });
       setmsg('Login Success');
-      navigate('/dasboard');
+      // navigate('/dashboard');
     } catch (error) {
       if (error.response) {
         setmsg(error.response.data.msg);

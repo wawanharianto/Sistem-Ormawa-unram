@@ -3,13 +3,13 @@
   display: flex;
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
+  justify-content: center;
 }
 .contentContainer .sideRight img {
   position: relative;
   margin-bottom: 0;
   margin-top: auto;
-  max-width: 100%;
-  top: 200px;
+  margin-bottom: -3rem;
 }
 .contentContainer .sideLeft {
   max-width: 799px;
@@ -47,4 +47,26 @@
 }
 .conButton :nth-child(2) > button:hover {
   background-color: #5ccaa8;
+}
+
+/* response */
+@media only screen and (max-width: 920px) {
+  .contentContainer .sideRight img {
+    width: 50%;
+    position: absolute;
+    left: 100px;
+    z-index: -1;
+    top: auto;
+    bottom: 40vh;
+    margin-left: 30%;
+    opacity: 0.2;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .contentContainer .sideRight img {
+    display: none;
+  }
+  .contentContainer {
+    text-align: center;
+  }
 }

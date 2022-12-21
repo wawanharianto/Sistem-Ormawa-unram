@@ -9,17 +9,15 @@
   justify-content: center;
 }
 .conLogin div {
-  width: 80%;
+  width: 50%;
 }
 .loginleft {
-  background-color: #e6f5f0;
-  border-radius: 39px 0 0 39px;
-  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   text-align: center;
 }
+
 .loginleft form {
   display: flex;
   flex-direction: column;
@@ -33,7 +31,7 @@
   height: 40px;
   border: 2px solid #4dbc9b;
   border-radius: 10px;
-  width: 80%;
+  width: 100%;
   margin-bottom: 10px;
   padding-left: 40px;
   outline: none;
@@ -60,7 +58,7 @@
   background-color: #4dbc9b;
   border: none;
   border-radius: 10px;
-  width: 65%;
+  width: 50%;
   margin: 20px auto auto auto;
   cursor: pointer;
 }
@@ -85,4 +83,32 @@
 }
 .loginright h2 {
   font-size: 30px;
+}
+
+/* respose tab */
+@media only screen and (max-width: 720px) {
+  .conLogin {
+    flex-direction: column;
+    padding: 0 5rem 0 5rem;
+  }
+
+  .conLogin div {
+    width: 100%;
+  }
+  .loginleft {
+    order: 1;
+    margin-top: 20px;
+    padding: 1rem;
+  }
+  .loginright {
+    border-radius: 2rem;
+    padding: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .conLogin {
+    flex-direction: column;
+    padding: 0 1rem 0 1rem;
+  }
 }
