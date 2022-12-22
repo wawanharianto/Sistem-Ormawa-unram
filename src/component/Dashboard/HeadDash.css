@@ -53,16 +53,18 @@
 
 #menu-toggle:checked + .menu-button-container .menu-button::before {
   margin-top: 0px;
-  transform: rotate(405deg);
+  /* transform: rotate(405deg); */
+  display: none;
 }
 
 #menu-toggle:checked + .menu-button-container .menu-button {
-  background: rgba(255, 255, 255, 0);
+  background: rgb(55, 55, 55);
 }
 
 #menu-toggle:checked + .menu-button-container .menu-button::after {
   margin-top: 0px;
-  transform: rotate(-405deg);
+  /* transform: rotate(-405deg); */
+  display: none;
 }
 
 .backBeranda * {
@@ -110,6 +112,7 @@
   right: 0;
   width: 16%;
   height: 100%;
+  z-index: 1000;
 }
 .SideDash .c-SideDash {
   margin-top: 30%;
@@ -153,7 +156,29 @@
 
 .sideDash-f .select-f {
   background-color: #4dbc9b;
+  padding: 20px;
 }
 .sideDash-f .select-f * {
   color: aliceblue;
+}
+
+/* css hide sidebar to mode mobile */
+
+/* .SideDash {
+  width: 100px;
+}
+.SideDash .c-SideDash img {
+  display: none;
+}
+.SideDash p {
+  display: none;
+} */
+/* .SideDash .icon i {
+  font-size: 30px;
+} */
+.sideDash-fe {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }

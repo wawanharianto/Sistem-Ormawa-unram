@@ -1,9 +1,8 @@
 import React from 'react';
 import './HeadDash.css';
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { LogOut, reset } from '../../features/auth';
-
 
 function HeadDash() {
   const dispatch = useDispatch();
@@ -13,14 +12,46 @@ function HeadDash() {
   const logout = () => {
     dispatch(LogOut());
     dispatch(reset());
-    navigate("/");
+    navigate('/');
+  };
+
+  const handleSideBar = (e) => {
+    const isCheckedSide = document.getElementsByClassName('on-burger')[0];
+    const SideDash = document.getElementsByClassName('SideDash');
+    const cSideDash = document.getElementsByClassName('c-SideDash')[0];
+    const cImg = cSideDash.getElementsByTagName('img');
+    const cP = cSideDash.getElementsByTagName('P');
+    const cIcon = document.getElementsByClassName('icon');
+    const cSideDashf = document.getElementsByClassName('sideDash-f');
+    console.log(cSideDashf[0]);
+
+    if (e.target.checked) {
+      isCheckedSide.style.paddingLeft = '6%';
+      cImg[0].style.display = 'none';
+      for (let i = 0; i < cP.length; i++) {
+        cP[i].style.display = 'none';
+      }
+      for (let i = 0; i < cIcon.length; i++) {
+        cIcon[i].style.fontSize = '30px';
+      }
+      SideDash[0].style.width = '100px';
+      cSideDashf[0].classList.toggle('sideDash-fe');
+    } else {
+      isCheckedSide.style.paddingLeft = '16%';
+      cImg[0].style.display = 'block';
+      for (let i = 0; i < cP.length; i++) {
+        cP[i].style.display = 'flex';
+      }
+      SideDash[0].style.width = '15%';
+      cSideDashf[0].classList.toggle('sideDash-fe');
+    }
   };
 
   return (
     <>
       <div className="HeadDash on-burger">
         <div className="burger-button">
-          <input id="menu-toggle" type="checkbox" />
+          <input id="menu-toggle" type="checkbox" onChange={handleSideBar} />
           <label class="menu-button-container" for="menu-toggle">
             <div class="menu-button"></div>
           </label>
