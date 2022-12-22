@@ -6,6 +6,7 @@
   justify-content: center;
   padding: 0 160px 0 160px;
   flex-direction: column;
+  min-height: 600px;
 }
 .headPengumuman {
   width: auto;
@@ -20,7 +21,7 @@
 .tPengumuman {
   color: black;
   background-color: #ded9d9;
-  font-size: 12px;
+  font-size: 24px;
 }
 .tPengumuman tr > th {
   background-color: #20b486;
@@ -36,4 +37,24 @@
   border-radius: 4px;
   color: #20b486;
   padding: 2px;
+}
+
+/* responsive */
+@media only screen and (max-width: 1024px) {
+  .conPengumuman {
+    padding: 0 10px 0 10px;
+  }
+  .tPengumuman {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .conPengumuman {
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+  }
+  .tPengumuman tr > th {
+    font-size: 12px;
+  }
 }

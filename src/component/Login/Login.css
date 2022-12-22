@@ -7,6 +7,7 @@
   top: 100px;
   margin-bottom: 200px;
   justify-content: center;
+  min-height: 800px;
 }
 .conLogin div {
   width: 50%;

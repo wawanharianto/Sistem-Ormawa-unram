@@ -1,16 +1,10 @@
-import Navbar from './component/Navbar';
-import Content from './component/Content';
-import Footer from './component/Footer';
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
-import Pengumuman from './component/Pengumuman/Pengumuman';
-//Dashboard
-import HeadDash from './component/Dashboard/HeadDash';
-import Dashboard from './component/Dashboard/Content/Dasboard';
-import Register from './component/Register/Register';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home';
 import Announcement from './pages/Announcement';
 import LoginUser from './pages/login';
+import Dashboard_con from './pages/Users/Dashboard_con';
 
 function App() {
   return (
@@ -20,15 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pengumuman" element={<Announcement />} />
           <Route path="/login" element={<LoginUser />} />
-          <Route
-            path="/dashboard"
-            element={
-              <>
-                <HeadDash />
-                <Dashboard />
-              </>
-            }
-          />
+          <Route path="/dashboard" element={<Dashboard_con />} />
         </Routes>
       </BrowserRouter>
     </div>

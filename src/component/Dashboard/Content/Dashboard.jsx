@@ -8,18 +8,17 @@ import { currentLogin } from '../../../features/auth';
 function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state => state.auth));
+  const { isError } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    dispatch(currentLogin());
-    
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(currentLogin());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    if (isError){
-      navigate("/login")
-    }
-  }, [isError, dispatch]);
+  // useEffect(() => {
+  //   if (isError) {
+  //     navigate('/login');
+  //   }
+  // }, [isError, dispatch]);
   return (
     <>
       <div className="Dashboard">

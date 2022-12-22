@@ -34,6 +34,66 @@
   font-weight: 800;
   font-size: 14px;
 }
+
+/* burger button */
+.showoff {
+  display: none;
+}
+.burger-button {
+  display: flex;
+  position: relative;
+  z-index: 2000;
+  top: 0.8rem;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+  cursor: pointer;
+
+  z-index: 0;
+}
+
+#menu-toggle {
+  display: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-top: -0.5rem;
+  left: 1.5rem;
+  cursor: pointer;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
 /* response tab */
 
 @media only screen and (max-width: 820px) {
@@ -48,5 +108,44 @@
 @media only screen and (max-width: 420px) {
   .navContainer ul {
     display: none;
+    position: fixed;
+    top: 2rem;
+    background-color: rgba(37, 155, 166, 0.8);
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 10%;
+    padding-top: 4vh;
+  }
+  .navContainer ul > li {
+    margin-left: 2rem;
+    font-size: 24px;
+  }
+  .navContainer ul > li > a {
+    color: rgb(252, 252, 252);
+    font-weight: 100;
+    letter-spacing: 2px;
+  }
+  .navContainer ul > li > a:hover {
+    color: #1d0225;
+  }
+
+  .showoff {
+    z-index: 200;
+    position: fixed;
+    display: flex;
+    width: 200px;
+    left: auto;
+    right: -150px;
+  }
+  .navContainer {
+    padding: 10px 10px 10px 10px;
+  }
+  .navContainer .menuon {
+    display: block;
+    animation: bounceInRight;
+    animation-duration: 2s;
   }
 }
