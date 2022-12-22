@@ -3,14 +3,13 @@ import axios from 'axios';
 import './Pengumuman.css';
 
 function Pengumuman() {
-  const [keyword, setKeyword] = useState("");
   const [proposals, setProposals] = useState([]);
   useEffect(() => {
     getProposal();
-  }, [keyword]);
+  }, []);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/proposal/?search=${keyword}`);
+    const response = await axios.get(`http://localhost:3000/pengumuman`);
     setProposals(response.data.result);
   };
 

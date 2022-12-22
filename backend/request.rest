@@ -116,7 +116,7 @@ Content-Type: application/json
 ### DELETE PROPOSAL
 DELETE http://localhost:3000/proposal/93240fdd-0279-42ef-b82d-c699f65ddec2
 
-### 
+### MULTIPLE DELETE
 DELETE http://localhost:3000/proposal/
 Content-Type: application/json
 

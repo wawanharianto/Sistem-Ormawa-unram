@@ -1,7 +1,21 @@
 import React from 'react';
 import './HeadDash.css';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { LogOut, reset } from '../../features/auth';
+
 
 function HeadDash() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  const logout = () => {
+    dispatch(LogOut());
+    dispatch(reset());
+    navigate("/");
+  };
+
   return (
     <>
       <div className="HeadDash on-burger">
@@ -19,7 +33,7 @@ function HeadDash() {
           <i class="fa-solid fa-house"></i>
           <p>Beranda</p>
 
-          <a href="/">
+          <a onClick={logout}>
             <i class="fa-solid fa-right-from-bracket"></i>
           </a>
         </div>

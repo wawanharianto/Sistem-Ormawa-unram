@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Dashboard.css';
 import Chart from './Chart';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { currentLogin } from '../../../features/auth';
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError } = useSelector((state => state.auth));
+
+  useEffect(() => {
+    dispatch(currentLogin());
+    
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError){
+      navigate("/login")
+    }
+  }, [isError, dispatch]);
   return (
     <>
       <div className="Dashboard">

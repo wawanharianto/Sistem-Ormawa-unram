@@ -1,35 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { LoginUser, reset } from '../../features/auth';
 import './Login.css';
 import logounram from '../../img/img3.png';
-import axios from 'axios';
 
 function Login() {
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
-  const [msg, setmsg] = useState('');
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (user || isSuccess) {
+      navigate("/dashboard");
+    }
+    dispatch(reset());
+  }, [user, isSuccess, dispatch, navigate]);
 
   const Auth = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-
-    try {
-      await axios.post('http://localhost:3000/login', formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      });
-      setmsg('Login Success');
-
-      // navigate('/dashboard');
-    } catch (error) {
-      if (error.response) {
-        setmsg(error.response.data.msg);
-      }
-    }
+    dispatch(LoginUser({ username, password }))
   };
+
   return (
     <>
       <article className="conLogin">
@@ -38,7 +32,7 @@ function Login() {
           <span>login to Continue</span>
 
           <form onSubmit={Auth} action="">
-            <p>{msg}</p>
+            {isError && <p className='has-text-centered'>{message}</p>}
             <div className="username">
               <i class="fa-solid fa-user"></i>
               <input type="text" name="username" id="" placeholder="Username" value={username} onChange={(e) => setusername(e.target.value)} />
@@ -48,7 +42,9 @@ function Login() {
               <input type="password" name="password" id="" placeholder="Password" value={password} onChange={(e) => setpassword(e.target.value)} />
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit">
+
+              {isLoading ? "Loading..." : "Login"}</button>
           </form>
         </div>
 
