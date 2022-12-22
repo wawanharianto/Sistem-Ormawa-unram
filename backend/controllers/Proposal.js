@@ -47,6 +47,21 @@ export const getProposal = async (req, res) => {
     }
 }
 
+export const getProposalView = async (req, res) => {
+    try {
+        let response = await Proposal.findAll({
+            attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
+            include: [{
+                model: Users,
+                attributes: ['username', 'email']
+            }]
+        });
+        res.status(200).json({ result: response });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}
+
 export const createProposal = async (req, res) => {
     const { nama_kegiatan, nama_organisasi, jumlah_dana, ketua_panitia, nomer_ketupat, tanggal_pelaksanaan, tempat_pelaksanaan, nomer_ketum, status } = req.body;
 
