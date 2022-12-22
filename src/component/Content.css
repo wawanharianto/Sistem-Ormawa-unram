@@ -50,16 +50,29 @@
 }
 
 /* response */
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 1024px) {
+  .contentContainer {
+    min-height: 800px;
+  }
   .contentContainer .sideRight img {
     width: 50%;
-    position: absolute;
+    /* position: absolute; */
     left: 100px;
-    z-index: -1;
-    top: auto;
-    bottom: 40vh;
-    margin-left: 30%;
-    opacity: 0.2;
+    bottom: -10rem;
+    margin-left: -10rem;
+
+    width: 25rem;
+  }
+  .sideLeft h2 {
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .contentContainer {
+    flex-wrap: wrap-reverse;
+    gap: 20px;
+    justify-content: center;
+    padding: 0 20px 0 20px;
   }
 }
 @media only screen and (max-width: 420px) {

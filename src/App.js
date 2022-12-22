@@ -8,10 +8,16 @@ import Pengumuman from './component/Pengumuman/Pengumuman';
 import HeadDash from './component/Dashboard/HeadDash';
 import Dashboard from './component/Dashboard/Content/Dasboard';
 import Register from './component/Register/Register';
+import Home from './pages/Home';
 function App() {
   return (
     <>
       <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+      {/* <Router>
         <Routes>
           <Route path="/" element={<Navbar />} />
           <Route path="/pengumuman" element={<Navbar />} />
@@ -55,7 +61,7 @@ function App() {
             }
           />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }
