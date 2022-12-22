@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(242, 241, 241);
+  background-color: rgb(201, 31, 31);
   display: flex;
   justify-content: center;
 }
@@ -107,4 +107,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.item-set {
+  display: flex;
+}
+.item-set label {
+  width: 300px;
 }

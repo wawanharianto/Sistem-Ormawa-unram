@@ -182,3 +182,10 @@
   flex-direction: column;
   gap: 50px;
 }
+.icon {
+  cursor: pointer;
+}
+.select {
+  width: 100%;
+  background-color: #4dbc9b;
+}

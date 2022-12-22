@@ -1,14 +1,13 @@
-import React from "react";
-import LayoutHome from "./layouthome";
-import Content from "../component/Content";
-
+import React from 'react';
+import LayoutHome from './layouthome';
+import Content from '../component/Content';
 
 const Home = () => {
   return (
     <LayoutHome>
-      <Content/>
+      <Content />
     </LayoutHome>
   );
-}
+};
 
 export default Home;

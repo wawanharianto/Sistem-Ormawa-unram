@@ -1,0 +1,79 @@
+.userContainer {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 800px;
+  background-color: aliceblue;
+  position: relative;
+}
+
+.headContainer {
+  position: relative;
+
+  margin-top: 6.5rem;
+  margin-left: 11rem;
+  width: 80%;
+  left: 3srem;
+  background-color: #e6f5f0;
+  box-sizing: border-box;
+}
+.tUserContainer {
+  margin-top: 100px;
+  position: relative;
+  left: 20rem;
+  width: 80%;
+  height: 30%;
+  /* background-color: bisque; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+table {
+  border-collapse: collapse;
+  background-color: #20b486;
+  border-radius: 10px;
+  position: static;
+  left: 3rem;
+}
+.tUser,
+th,
+td {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+  /* border-color: rgb(237, 0, 0); */
+  padding: 10px 40px;
+}
+tr:nth-child(2) {
+  background-color: aquamarine;
+}
+.tUser .form-icon {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.form-icon i:nth-child(1) {
+  color: red;
+  cursor: pointer;
+}
+.form-icon i:nth-child(2) {
+  color: rgb(221, 255, 53);
+  cursor: pointer;
+}
+.btn-addUser {
+  width: 5rem;
+  height: 2rem;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  position: relative;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 45rem;
+}
+.btn-addUser:hover {
+  background-color: #20b486;
+  cursor: pointer;
+}
