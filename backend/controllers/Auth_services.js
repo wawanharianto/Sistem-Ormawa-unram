@@ -43,7 +43,7 @@ export const Login = async (req, res) => {
       //secure: true //ini di aktifkan jika nanti menggunakan https
     });
 
-    res.json({ accessToken });
+    res.json({ accessToken, username, email, role });
 
   } catch (error) {
     console.log(error);
@@ -55,7 +55,7 @@ export const getcurrentloginUser = async (req, res) => {
     return res.status(401).json({ msg: "Mohon Login ke Akun Anda!" });
   }
   const user = await Users.findOne({
-    attributes: ['id', 'uuid', 'username', 'email', 'role'],
+    attributes: ['id', 'uuid', 'username', 'email', 'role', 'akses_token'],
     where: {
       uuid: req.session.userId
     }
