@@ -26,7 +26,7 @@ function HeadDash() {
     console.log(cSideDashf[0]);
 
     if (e.target.checked) {
-      isCheckedSide.style.paddingLeft = '6%';
+      isCheckedSide.style.paddingLeft = '8%';
       cImg[0].style.display = 'none';
       for (let i = 0; i < cP.length; i++) {
         cP[i].style.display = 'none';

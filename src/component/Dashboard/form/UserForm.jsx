@@ -17,6 +17,9 @@ function UserForm() {
           <h2>Users</h2>
         </div>
         <div className="tUserContainer">
+          <button className="btn-addUser" onClick={handleAddUser}>
+            <i class="fa-solid fa-user-plus" />
+          </button>
           <table className="tUser">
             <tr>
               <th>No</th>
@@ -35,14 +38,11 @@ function UserForm() {
               <td>222</td>
               <td>Admin</td>
               <td className="form-icon">
-                // <i class="fa-solid fa-trash" />
-                // <i class="fa-solid fa-pen" />
+                <i class="fa-solid fa-trash" />
+                <i class="fa-solid fa-pen" />
               </td>
             </tr>
           </table>
-          <button className="btn-addUser" onClick={handleAddUser}>
-            <i class="fa-solid fa-user-plus" />
-          </button>
         </div>
       </div>
     </>

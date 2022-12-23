@@ -57,6 +57,7 @@ function Register() {
         <h2>Register User</h2>
         <form onSubmit={Register} className="form-Register" action="">
           <h2>REGISTER</h2>
+          <hr className="line-space" />
           <div className="item-set">
             <label> Username</label>
             <input type="text" placeholder="Username ..." value={username} onChange={(e) => setusername(e.target.value)} />
@@ -71,7 +72,7 @@ function Register() {
           </div>
           <div className="item-set">
             <label>Confirm Password</label>
-            <input type="password" placeholder="password" value={confpass} onChange={(e) => setconfpass(e.target.value)} />
+            <input type="password" placeholder="confirm password" value={confpass} onChange={(e) => setconfpass(e.target.value)} />
           </div>
           <div className="item-set">
             <label>source foto</label>
@@ -79,28 +80,16 @@ function Register() {
           </div>
           <div className="item-set">
             <label>Role</label>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <select className="role">
+              <option disabled selected hidden>
+                Role
+              </option>
+              <option value="Mahasiswa">Mahasiswa</option>
+              <option value="superUser">Super User</option>
+              <option value="WD3">Wakil Direktur 3</option>
+              <option value="adminAkademik">Admin Akademik</option>
+              <option value="adminKeuangan">Admin Keuangan</option>
+            </select>
             {/* <input type="text" placeholder="role" value={role} onChange={(e) => setrole(e.target.value)} /> */}
           </div>
           <button type="submit" onClick={handleClose}>

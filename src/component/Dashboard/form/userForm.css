@@ -5,49 +5,61 @@
   right: 0;
   height: 800px;
   background-color: aliceblue;
-  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .headContainer {
-  position: relative;
-
-  margin-top: 6.5rem;
-  margin-left: 11rem;
-  width: 80%;
-  left: 3srem;
+  height: 80px;
   background-color: #e6f5f0;
   box-sizing: border-box;
+  position: relative;
+  top: -30vh;
+}
+.headContainer h2 {
+  margin-left: 40vh;
+  margin-top: 30px;
 }
 .tUserContainer {
-  margin-top: 100px;
-  position: relative;
-  left: 20rem;
-  width: 80%;
   height: 30%;
-  /* background-color: bisque; */
+  background-color: bisque;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   box-sizing: border-box;
 }
-table {
+
+.tUser {
   border-collapse: collapse;
-  background-color: #20b486;
+  background-color: #ffffff;
   border-radius: 10px;
-  position: static;
-  left: 3rem;
+  margin-left: auto;
+  margin-right: 10%;
 }
 .tUser,
-th,
-td {
+.tUser th,
+.tUser td {
   /* border: 1px solid black; */
   border-collapse: collapse;
   /* border-color: rgb(237, 0, 0); */
   padding: 10px 40px;
 }
-tr:nth-child(2) {
-  background-color: aquamarine;
+.tUser th:nth-child(1) {
+  background-color: #20b486;
+  border-radius: 8px 0 0 0;
+}
+.tUser th:nth-child(6) {
+  background-color: #20b486;
+  border-radius: 0 8px 0 0;
+}
+.tUser th:nth-child(2),
+.tUser th:nth-child(3),
+.tUser th:nth-child(4),
+.tUser th:nth-child(5) {
+  background-color: #20b486;
 }
 .tUser .form-icon {
   font-size: 20px;
@@ -69,9 +81,9 @@ tr:nth-child(2) {
   border: none;
   margin-top: 20px;
   position: relative;
-  margin-bottom: 0;
+  margin-bottom: 2rem;
   margin-right: 0;
-  margin-left: 45rem;
+  margin-left: 150vh;
 }
 .btn-addUser:hover {
   background-color: #20b486;
