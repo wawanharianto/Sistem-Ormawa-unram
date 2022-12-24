@@ -189,3 +189,15 @@
   width: 100%;
   background-color: #4dbc9b;
 }
+
+/* @media only screen and (min-width: 820px) {
+  .SideDash .c-SideDash img {
+    display: none;
+  }
+  .SideDash p {
+    display: none;
+  }
+  .SideDash .icon i {
+    font-size: 30px;
+  }
+} */

@@ -1,0 +1,125 @@
+.Proposal_container {
+  background-color: rgb(236, 240, 240);
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  min-width: 100vh;
+  min-height: 100vh;
+}
+
+.tProposal_container {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rem;
+  margin-right: 8rem;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.hProposal {
+  background-color: rgb(117, 240, 205);
+  height: 80px;
+  margin: 10vh 0 0 0;
+}
+
+.hProposal h2 {
+  margin-top: 20px;
+  margin-left: 40vh;
+}
+.headtproposal {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Proposal_container hr {
+  border: 1px solid rgb(226, 228, 226);
+  width: 100%;
+  margin-top: 10px;
+}
+.fproposaltabel {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+}
+.fproposaltabel .search {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  padding-left: 30px;
+  background-color: rgb(218, 220, 222);
+  outline: none;
+}
+.fsearch i {
+  position: absolute;
+  margin-left: 3px;
+  margin-top: 8px;
+}
+.fbtn button {
+  border: none;
+  margin-right: 10px;
+  padding: 6px 20px;
+  border-radius: 4px;
+}
+.fbtn button {
+  cursor: pointer;
+}
+.fbtn button i {
+  margin-right: 10px;
+}
+.fbtn button:hover {
+  background-color: rgb(185, 186, 187);
+}
+
+.tabPengajuanProposal {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+.tabPengajuanProposal tr th {
+  padding: 4px;
+}
+.tabPengajuanProposal tr th {
+  background-color: #20b486;
+}
+.tabPengajuanProposal tr th:nth-child(1) {
+  background-color: #20b486;
+  border-radius: 4px 0 0 0;
+}
+.tabPengajuanProposal tr th:nth-child(8) {
+  background-color: #20b486;
+  border-radius: 0 4px 0 0;
+}
+.fstatustable button {
+  color: white;
+  padding: 4px;
+  margin: 2px;
+  border: none;
+  border-radius: 3px;
+}
+.fstatustable button:nth-child(1) {
+  background-color: #20b486;
+}
+.fstatustable button:nth-child(2) {
+  background-color: #2752c6;
+}
+.fstatustable button:nth-child(3) {
+  background-color: #cc2525;
+}
+.fstatustable button:hover {
+  background-color: rgb(188, 189, 191);
+}
+/* effect bottom line table */
+.tabPengajuanProposal tr {
+  border-bottom: 2px solid rgb(176, 173, 173);
+}
+.tabPengajuanProposal tr:nth-child(1) {
+  border: none;
+}

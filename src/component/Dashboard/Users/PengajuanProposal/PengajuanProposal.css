@@ -1,0 +1,130 @@
+.addPropalForm-container {
+  background-color: rgb(240, 237, 237);
+  width: 100%;
+  min-height: 800px;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+}
+.addPropalForm-container .hProposalForm {
+  background-color: #ccece1;
+  height: 80px;
+  margin-top: 10vh;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+  padding-left: 38vh;
+  padding-right: 10vh;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.formaddProp {
+  height: 100%;
+  margin-left: 40vh;
+  margin-top: 3rem;
+  margin-right: 3rem;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 10px;
+}
+.formaddProp .headForm {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(85, 169, 141);
+}
+.formaddProp .line {
+  margin-top: 10px;
+  border: 1px solid rgb(203, 203, 203);
+  margin-bottom: 20px;
+}
+.formaddProp .finput {
+  display: flex;
+  justify-content: left;
+}
+.addProposal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+.formaddProp .finput input {
+  margin-left: 10px;
+  margin-right: 100px;
+  width: 90vh;
+}
+
+.finput input {
+  padding: 14px 10px 14px 10px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  background-color: rgb(235, 237, 237);
+}
+.finput p {
+  color: #4dbc9b;
+  margin-top: 10px;
+  width: 200px;
+  text-align: right;
+  margin-left: 200px;
+}
+.finput button {
+  margin-left: 10px;
+  border: 2px solid #4dbc9b;
+  padding: 10px 40px;
+  border-radius: 4px;
+  display: flex;
+  font-size: 20px;
+  color: #4dbc9b;
+}
+
+.finput button i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.fbtn-form {
+  display: flex;
+  justify-content: center;
+  margin-right: 6rem;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: 100px;
+}
+.fbtn-form button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+.fbtn-form button i {
+  font-size: 20px;
+}
+
+.fbtn-form button:nth-child(1) {
+  background-color: #4dbc9b;
+}
+.fbtn-form button:nth-child(1):hover {
+  background-color: #72e5c2;
+  cursor: pointer;
+}
+.fbtn-form button:nth-child(2) {
+  background-color: #367cff;
+}
+.fbtn-form button:nth-child(2):hover {
+  background-color: #5c90f2;
+  cursor: pointer;
+}
+.fbtn-form button:nth-child(3) {
+  background-color: #f7084c;
+}
+.fbtn-form button:nth-child(3):hover {
+  background-color: #f03d70;
+  cursor: pointer;
+}

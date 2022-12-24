@@ -7,6 +7,8 @@ import LoginUser from './pages/login';
 import Dashboard_con from './pages/Users/Dashboard_con';
 import Users_con from './pages/Users/Users_con';
 import AddUsers from './pages/Users/AddUsers';
+import AddProposal from './pages/Users/AddProposal';
+import PengajuanProposal_con from './pages/Users/PengajuanProposal_con';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard_con />} />
           <Route path="/dashboard/users" element={<Users_con />} />
           <Route path="dashboard/users/add" element={<AddUsers />} />
+          <Route path="PengajuanProposal" element={<PengajuanProposal_con />} />
+          <Route path="PengajuanProposal/add" element={<AddProposal />} />
         </Routes>
       </BrowserRouter>
     </div>
