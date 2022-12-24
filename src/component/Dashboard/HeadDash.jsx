@@ -16,41 +16,43 @@ function HeadDash() {
   };
 
   const handleSideBar = (e) => {
-    const isCheckedSide = document.getElementsByClassName('on-burger')[0];
-    const SideDash = document.getElementsByClassName('SideDash');
-    const cSideDash = document.getElementsByClassName('c-SideDash')[0];
-    const cImg = cSideDash.getElementsByTagName('img');
-    const cP = cSideDash.getElementsByTagName('P');
-    const cIcon = document.getElementsByClassName('icon');
-    const cSideDashf = document.getElementsByClassName('sideDash-f');
-    console.log(cSideDashf[0]);
+    const halfhide = document.getElementsByClassName('SideDash')[0];
+    const tagP = document.getElementsByTagName('p');
+    const iconL = halfhide.getElementsByTagName('i');
+    const imgResize = halfhide.getElementsByTagName('img')[0];
+    const sideDashgap = halfhide.getElementsByClassName('sideDash-f')[0];
+    const burgerHalf = document.getElementsByClassName('on-burger')[0];
 
     if (e.target.checked) {
-      isCheckedSide.style.paddingLeft = '8%';
-      cImg[0].style.display = 'none';
-      for (let i = 0; i < cP.length; i++) {
-        cP[i].style.display = 'none';
-      }
-      for (let i = 0; i < cIcon.length; i++) {
-        cIcon[i].style.fontSize = '30px';
-      }
-      SideDash[0].style.width = '100px';
-      cSideDashf[0].classList.toggle('sideDash-fe');
+      [...tagP].forEach((data) => {
+        data.classList.add('text');
+      });
+      halfhide.classList.add('half');
+      [...iconL].forEach((data) => {
+        data.classList.add('iconL');
+      });
+      imgResize.classList.add('resize');
+      sideDashgap.classList.add('sideDash-fgap');
+      burgerHalf.classList.add('on-burgerHalf');
     } else {
-      isCheckedSide.style.paddingLeft = '16%';
-      cImg[0].style.display = 'block';
-      for (let i = 0; i < cP.length; i++) {
-        cP[i].style.display = 'flex';
-      }
-      SideDash[0].style.width = '15%';
-      cSideDashf[0].classList.toggle('sideDash-fe');
+      [...tagP].forEach((data) => {
+        data.classList.remove('text');
+      });
+      halfhide.classList.remove('half');
+      [...iconL].forEach((data) => {
+        data.classList.remove('iconL');
+      });
+      imgResize.classList.remove('resize');
+      sideDashgap.classList.remove('sideDash-fgap');
+      burgerHalf.classList.remove('on-burgerHalf');
     }
   };
 
   const clickhandle = (data) => {
     const comClick = data.target;
+    console.log(comClick);
     if (comClick) {
-      comClick.classList.toggle('select');
+      comClick.classList.toggle('select-f');
     }
   };
   return (
@@ -78,11 +80,11 @@ function HeadDash() {
       {/* side bar */}
 
       <div className="SideDash">
-        <div className="c-SideDash">
+        <div className="c-SideDash ">
           <img src="" alt="" />
           <p>Nama Ormawa</p>
-          <div className="sideDash-f" onClick={clickhandle}>
-            <div className="icon select-f">
+          <div className="sideDash-f sideDash-fgap">
+            <div className="icon select-f" onClick={clickhandle}>
               <i class="fa-solid fa-qrcode" />
               <p>Dashboard</p>
             </div>

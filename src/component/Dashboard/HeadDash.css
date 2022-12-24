@@ -14,6 +14,7 @@
 }
 .burger-button {
   display: flex;
+  /* display: none; */
 }
 
 .menu-button,
@@ -106,18 +107,16 @@
   z-index: 3;
   display: flex;
   justify-content: center;
-  top: 0;
+  top: 10vh;
   bottom: 0;
   left: 0;
   right: 0;
   width: 16%;
-  height: 100%;
+  min-height: 100vh;
   z-index: 1000;
 }
 .SideDash .c-SideDash {
-  margin-top: 30%;
-  width: 90%;
-  height: auto;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,50 +153,90 @@
   margin-top: 10px;
 }
 
-.sideDash-f .select-f {
-  background-color: #4dbc9b;
-  padding: 20px;
-}
 .sideDash-f .select-f * {
   color: aliceblue;
 }
 
-/* css hide sidebar to mode mobile */
-
-/* .SideDash {
-  width: 100px;
-}
-.SideDash .c-SideDash img {
+/* action burger sidebar >> effect */
+.SideDash .c-SideDash .text {
   display: none;
 }
-.SideDash p {
-  display: none;
-} */
-/* .SideDash .icon i {
-  font-size: 30px;
-} */
-.sideDash-fe {
-  margin-top: 6rem;
+.half {
+  width: 10vh;
+  animation: fadeInRight;
+  animation-duration: 0.5s;
+}
+.SideDash .c-SideDash .iconL {
+  font-size: 25px;
+}
+.c-SideDash .resize {
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+  margin-bottom: 40px;
+}
+.sideDash-fgap {
+  gap: 25px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
-.icon {
-  cursor: pointer;
-}
-.select {
-  width: 100%;
-  background-color: #4dbc9b;
+.on-burgerHalf {
+  padding-left: 12vh;
 }
 
-/* @media only screen and (min-width: 820px) {
-  .SideDash .c-SideDash img {
+.icon:hover {
+  cursor: pointer;
+}
+.select-f {
+  background-color: #4dbc9b;
+  padding: 5px 5px 5px 5px;
+}
+
+/* css hide sidebar to mode mobile */
+
+@media only screen and (max-width: 1024px) {
+  .c-SideDash {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .c-SideDash img {
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+  }
+  .c-SideDash p {
+    font-size: 12px;
+  }
+  .sideDash-f .icon > p {
+    font-size: 10px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .c-SideDash p {
     display: none;
   }
-  .SideDash p {
-    display: none;
-  }
-  .SideDash .icon i {
+  .c-SideDash i {
     font-size: 30px;
   }
-} */
+  .sideDash-f {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+  }
+  .c-SideDash img {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .SideDash {
+    display: none;
+  }
+  .burger-button {
+    display: flex;
+    /* display: none; */
+  }
+}
