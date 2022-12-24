@@ -85,6 +85,17 @@
   margin-right: 10px;
   font-size: 20px;
 }
+.finput .hide {
+  opacity: 0;
+}
+.finput .kosong {
+  margin-left: 10px;
+  margin-top: -4px;
+  justify-content: left;
+  display: flex;
+  color: rgb(181, 182, 183);
+  font-size: 10px;
+}
 
 .fbtn-form {
   display: flex;

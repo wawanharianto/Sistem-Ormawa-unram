@@ -20,39 +20,71 @@ function PengajuanProposal() {
               <p>Nama Kegiatan</p>
               <input type="text" placeholder="Nama Kegiatan"></input>
             </div>
-
+            <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Nama Kegiatan</p>
+            </div>
             <div className="finput">
               <p>Nama Organisasi</p>
               <input type="text" placeholder="Nama Organisasi"></input>
+            </div>
+            <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Nama Organisasi</p>
             </div>
             <div className="finput">
               <p>Jumlah Dana yang Diajukan</p>
               <input type="text" placeholder="Jumlah Dana yang Diajukan"></input>
             </div>
             <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Jumlah Dana yang Diajukan</p>
+            </div>
+            <div className="finput">
               <p>Nama Ketua Panitia</p>
               <input type="text" placeholder="Nama Ketua Panitia"></input>
+            </div>
+            <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Nama Ketua Panitia</p>
             </div>
             <div className="finput">
               <p>Nomor Hp</p>
               <input type="text" placeholder="Nomor Hp"></input>
             </div>
             <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Nomor HP</p>
+            </div>
+            <div className="finput">
               <p>Tanggal Pelaksanaan</p>
               <input type="text" placeholder="Tanggal Pelaksanaan"></input>
+            </div>
+            <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Tanggal Pelaksanaan</p>
             </div>
             <div className="finput">
               <p>Tempat Pelaksanaan</p>
               <input type="text" placeholder="Tempat Pelaksanaan"></input>
             </div>
             <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Tempat Pelaksanaan</p>
+            </div>
+            <div className="finput">
               <p>Nomor Ketua Umum</p>
               <input type="text" placeholder="Nomor Ketua Umum"></input>
+            </div>
+            <div className="finput">
+              <p className="hide">....</p>
+              <p className="kosong">Nomor Ketua Umum</p>
             </div>
             <div className="finput">
               <p>Proposal</p>
               <input type="file"></input>
             </div>
+
             <div className="finput">
               <p>Status</p>
               <button disabled>
