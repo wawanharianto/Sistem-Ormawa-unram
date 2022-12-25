@@ -183,7 +183,6 @@
 .on-burgerHalf {
   padding-left: 12vh;
 }
-
 .icon:hover {
   cursor: pointer;
 }
@@ -231,12 +230,22 @@
     margin-bottom: 30px;
   }
 }
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 460px) {
   .SideDash {
     display: none;
+  }
+  .half {
+    display: flex;
+    width: 10vh;
+    animation: fadeInLeft;
+    animation-duration: 0.5s;
+    margin-left: -1rem;
   }
   .burger-button {
     display: flex;
     /* display: none; */
+  }
+  .on-burger {
+    padding-left: 1rem;
   }
 }

@@ -50,9 +50,40 @@ function HeadDash() {
 
   const clickhandle = (data) => {
     const comClick = data.target;
-    console.log(comClick);
-    if (comClick) {
-      comClick.classList.toggle('select-f');
+    const dashboard = document.getElementById('dashboard');
+    const pengajuan = document.getElementById('pengajuan');
+    const lpj = document.getElementById('lpj');
+    const spj = document.getElementById('spj');
+    const arsip = document.getElementById('arsip');
+    const users = document.getElementById('users');
+    const reset = document.getElementsByClassName('select-f');
+    // console.log(reset);
+    [...reset].forEach((data) => {
+      data.classList.remove('select-f');
+    });
+    if (comClick.id == 'dashboard') {
+      console.log('OK');
+      dashboard.classList.add('select-f');
+    }
+    if (comClick.id == 'pengajuan') {
+      console.log('OK');
+      pengajuan.classList.add('select-f');
+    }
+    if (comClick.id == 'lpj') {
+      console.log('OK');
+      lpj.classList.add('select-f');
+    }
+    if (comClick.id == 'spj') {
+      console.log('OK');
+      spj.classList.add('select-f');
+    }
+    if (comClick.id == 'arsip') {
+      console.log('OK');
+      arsip.classList.add('select-f');
+    }
+    if (comClick.id == 'users') {
+      console.log('OK');
+      users.classList.add('select-f');
     }
   };
   return (
@@ -84,29 +115,29 @@ function HeadDash() {
           <img src="" alt="" />
           <p>Nama Ormawa</p>
           <div className="sideDash-f sideDash-fgap">
-            <div className="icon select-f" onClick={clickhandle}>
-              <i class="fa-solid fa-qrcode" />
-              <p>Dashboard</p>
+            <div id="dashboard" className="icon " onClick={clickhandle}>
+              <i id="dashboard" class="fa-solid fa-qrcode" />
+              <p id="dashboard">Dashboard</p>
             </div>
-            <div className="icon" onClick={clickhandle}>
-              <i class="fa-solid fa-file-circle-plus"></i>
-              <p>Pengajuan Proposal</p>
+            <div id="pengajuan" className="icon select-f" onClick={clickhandle}>
+              <i id="pengajuan" class="fa-solid fa-file-circle-plus"></i>
+              <p id="pengajuan">Pengajuan Proposal</p>
             </div>
-            <div className="icon" onClick={clickhandle}>
-              <i class="fa-regular fa-file-lines"></i>
-              <p>LPJ</p>
+            <div id="lpj" className="icon select-f" onClick={clickhandle}>
+              <i id="lpj" class="fa-regular fa-file-lines"></i>
+              <p id="lpj">LPJ</p>
             </div>
-            <div className="icon" onClick={clickhandle}>
-              <i class="fa-regular fa-file"></i>
-              <p>SPJ</p>
+            <div id="spj" className="icon" onClick={clickhandle}>
+              <i id="spj" class="fa-regular fa-file"></i>
+              <p id="spj">SPJ</p>
             </div>
-            <div className="icon" onClick={clickhandle}>
-              <i class="fa-solid fa-folder-tree"></i>
-              <p>Arsip</p>
+            <div id="arsip" className="icon" onClick={clickhandle}>
+              <i id="arsip" class="fa-solid fa-folder-tree"></i>
+              <p id="arsip">Arsip</p>
             </div>
-            <div className="icon" onClick={clickhandle}>
-              <i class="fa-solid fa-user"></i>
-              <p>Users</p>
+            <div id="users" className="icon" onClick={clickhandle}>
+              <i id="users" class="fa-solid fa-user"></i>
+              <p id="users">Users</p>
             </div>
           </div>
         </div>
