@@ -6,7 +6,22 @@ import { Op } from "sequelize";
 import _ from "underscore";
 
 export const getProposal = async (req, res) => {
+    const page = parseInt(req.query.page) || 0;
+    const limit = parseInt(req.query.limit) || 10;
     const search = req.query.search || "";
+    const offset = limit * page;
+    const totalRows = await Proposal.count({
+        [Op.or]: [{
+            nama_kegiatan: {
+                [Op.like]: '%' + search + '%'
+            }
+        }, {
+            nama_organisasi: {
+                [Op.like]: '%' + search + '%'
+            }
+        }]
+    });
+    const totalPage = Math.ceil(totalRows / limit);
     try {
         let response;
         if (req.role === "admin" || req.role === "WD3") {
@@ -17,20 +32,8 @@ export const getProposal = async (req, res) => {
                         nama_kegiatan: {
                             [Op.like]: '%' + search + '%'
                         }
-                    }]
-                },
-                include: [{
-                    model: Users,
-                    attributes: ['username', 'email']
-                }]
-            });
-        } else {
-            response = await Proposal.findAll({
-                attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
-                where: {
-                    [Op.or]: [{
-                        userId: req.userId,
-                        nama_kegiatan: {
+                    }, {
+                        nama_organisasi: {
                             [Op.like]: '%' + search + '%'
                         }
                     }]
@@ -38,10 +41,46 @@ export const getProposal = async (req, res) => {
                 include: [{
                     model: Users,
                     attributes: ['username', 'email']
-                }]
+                }],
+                offset: offset,
+                limit: limit,
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+        } else {
+            response = await Proposal.findAll({
+                attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
+                where: {
+                    userId: req.userId,
+                    [Op.or]: [{
+                        nama_kegiatan: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }, {
+                        nama_organisasi: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }]
+                },
+                include: [{
+                    model: Users,
+                    attributes: ['username', 'email']
+                }],
+                offset: offset,
+                limit: limit,
+                order: [
+                    ['id', 'ASC']
+                ]
             });
         }
-        res.status(200).json({ result: response });
+        res.status(200).json({
+            result: response,
+            page: page,
+            limit: limit,
+            totalRows: totalRows,
+            totalPage: totalPage,
+        });
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }

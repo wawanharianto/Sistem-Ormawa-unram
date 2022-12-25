@@ -1,7 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Proposal_con.css';
+import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 
 function Proposal_con() {
+  const [proposals, setProposals] = useState([]);
+  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [pages, setPages] = useState(0);
+  const [rows, setRows] = useState(0);
+  const [keyword, setKeyword] = useState("");
+  const [query, setQuery] = useState("");
+  const [msg, setMsg] = useState("");
+
+  useEffect(() => {
+    getProposal();
+  }, [page, keyword]);
+
+  const getProposal = async () => {
+    const response = await axios.get(
+      `http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`
+    );
+    setProposals(response.data.result);
+    setPage(response.data.page);
+    setPages(response.data.totalPage);
+    setRows(response.data.totalRows);
+  }
+
+  const deleteProposal = async (proposalId) => {
+    await axios.delete(`http://localhost:3000/proposal/${proposalId}`);
+    getProposal();
+  }
+
+  const changePage = ({ selected }) => {
+    setPage(selected);
+    if (selected === 9) {
+      setMsg(
+        "Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!"
+      );
+    } else {
+      setMsg("");
+    }
+  };
+
+  const searchData = (e) => {
+    e.preventDefault();
+    setPage(0);
+    setMsg("");
+    setKeyword(query);
+  };
+
   return (
     <>
       <div className="Proposal_container">
@@ -10,15 +58,17 @@ function Proposal_con() {
         </div>
         <div className="tProposal_container">
           <div className="headtproposal">
-            <h3>Laporan Pertanggung Jawaban</h3>
+            <h3>Form Pengajuan Proposal</h3>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
           <hr />
           <div className="fproposaltabel">
-            <div className="fsearch">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" className="search" placeholder="Search" />
-            </div>
+            <form onSubmit={searchData}>
+              <div className="fsearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
+              </div>
+            </form>
             <div className="fbtn">
               <button>
                 <i class="fa-solid fa-trash-can"></i> Delete
@@ -29,89 +79,73 @@ function Proposal_con() {
             </div>
           </div>
           <table className="tabPengajuanProposal">
-            <tr>
-              <th>No</th>
-              <th>Nama Kegiatan</th>
-              <th>Nama Organisasi</th>
-              <th>Dana Permintaan</th>
-              <th>Ketua Panitia</th>
-              <th>Kontak Kegiatan</th>
-              <th>Dana ACC</th>
-              <th>Status</th>
-            </tr>
-            <tr>
-              <td>
-                <input type="checkbox" /> 1
-              </td>
-              <td>a</td>
-              <td>a</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-              <td>s</td>
-              <td>
-                <div className="fstatustable">
-                  <button className="view">
-                    <i class="fa-regular fa-file"></i>
-                  </button>
-                  <button className="sunting">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                  </button>
-                  <button className="delete">
-                    <i class="fa-solid fa-delete-left"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="checkbox" /> 2
-              </td>
-              <td>a</td>
-              <td>a</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-              <td>s</td>
-              <td>
-                <div className="fstatustable">
-                  <button className="view">
-                    <i class="fa-regular fa-file"></i>
-                  </button>
-                  <button className="sunting">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                  </button>
-                  <button className="delete">
-                    <i class="fa-solid fa-delete-left"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="checkbox" /> 3
-              </td>
-              <td>a</td>
-              <td>a</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-              <td>s</td>
-              <td>
-                <div className="fstatustable">
-                  <button className="view">
-                    <i class="fa-regular fa-file"></i>
-                  </button>
-                  <button className="sunting">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                  </button>
-                  <button className="delete">
-                    <i class="fa-solid fa-delete-left"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Kegiatan</th>
+                <th>Nama Organisasi</th>
+                <th>Dana Permintaan</th>
+                <th>Ketua Panitia</th>
+                <th>Kontak Ketua</th>
+                <th>Dana ACC</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {proposals.map((proposal, index) => (
+                <tr key={proposal.id}>
+                  <td>
+                    <input type="checkbox" /> {index + 1}
+                  </td>
+                  <td>{proposal.nama_kegiatan}</td>
+                  <td>{proposal.nama_organisasi}</td>
+                  <td>{proposal.jumlah_dana}</td>
+                  <td>{proposal.ketua_panitia}</td>
+                  <td>{proposal.nomer_ketum}</td>
+                  <td>{proposal.dana_disetujui}</td>
+                  <td>{proposal.status}</td>
+                  <td>
+                    <div className="fstatustable">
+                      <button className="view">
+                        <i class="fa-regular fa-file"></i>
+                      </button>
+                      <button className="sunting">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </button>
+                      <button className="delete" onClick={() => deleteProposal(proposal.uuid)}>
+                        <i class="fa-solid fa-delete-left"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
+          <p>
+            Total Rows: {rows} Page: {rows ? page + 1 : 0} of {pages}
+          </p>
+          <p className="has-text-centered has-text-danger">{msg}</p>
+
+          <nav
+            className="pagination is-centered"
+            key={rows}
+            role="navigation"
+            aria-label="pagination"
+          >
+            <ReactPaginate
+              previousLabel={"< Prev"}
+              nextLabel={"Next >"}
+              pageCount={Math.min(10, pages)}
+              onPageChange={changePage}
+              containerClassName={"pagination-list"}
+              pageLinkClassName={"pagination-link"}
+              previousLinkClassName={"pagination-previous"}
+              nextLinkClassName={"pagination-next"}
+              activeLinkClassName={"pagination-link is-current"}
+              disabledLinkClassName={"pagination-link is-disabled"}
+            />
+          </nav>
         </div>
       </div>
     </>

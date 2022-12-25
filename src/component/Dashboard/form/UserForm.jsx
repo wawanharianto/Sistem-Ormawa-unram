@@ -29,6 +29,11 @@ function UserForm() {
     setRows(response.data.totalRows);
   };
 
+  const deleteUsers = async (productId) => {
+    await axios.delete(`http://localhost:3000/users/${productId}`);
+    getUsers();
+  };
+
   const changePage = ({ selected }) => {
     setPage(selected);
     if (selected === 9) {
@@ -75,16 +80,16 @@ function UserForm() {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+              {users.map((user, index) => (
                 <tr key={user.id}>
                   <td>
-                    <input type="checkbox" />{user.id}
+                    <input type="checkbox" />{index + 1}
                   </td>
                   <td>{user.username}</td>
                   <td>{user.email}</td>
                   <td>{user.role}</td>
                   <td className="form-icon">
-                    <i class="fa-solid fa-trash" />
+                    <i class="fa-solid fa-trash" onClick={() => deleteUsers(user.uuid)} />
                     <i class="fa-solid fa-pen" />
                   </td>
                 </tr>

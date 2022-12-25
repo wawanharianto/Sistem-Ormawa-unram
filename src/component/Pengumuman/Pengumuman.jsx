@@ -30,9 +30,9 @@ function Pengumuman() {
             </tr>
           </thead>
           <tbody>
-          {proposals.map((proposal)=>(
+          {proposals.map((proposal, index)=>(
             <tr key={proposal.id}>
-              <td>{proposal.id}</td>
+              <td>{index + 1}</td>
               <td>{proposal.nama_organisasi}</td>
               <td>{proposal.nama_kegiatan}</td>
               <td>{proposal.status}</td>

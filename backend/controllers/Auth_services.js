@@ -55,7 +55,7 @@ export const getcurrentloginUser = async (req, res) => {
     return res.status(401).json({ msg: "Mohon Login ke Akun Anda!" });
   }
   const user = await Users.findOne({
-    attributes: ['id', 'uuid', 'username', 'email', 'role', 'akses_token'],
+    attributes: ['id', 'uuid', 'username', 'email', 'role', 'akses_token', 'url'],
     where: {
       uuid: req.session.userId
     }
