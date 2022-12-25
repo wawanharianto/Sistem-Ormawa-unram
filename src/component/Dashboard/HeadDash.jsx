@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './HeadDash.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, reset } from '../../features/auth';
+import { LogOut, reset, currentLogin } from '../../features/auth';
 
 function HeadDash() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(currentLogin());
+  }, [dispatch]);
 
   const logout = () => {
     dispatch(LogOut());
@@ -112,8 +116,8 @@ function HeadDash() {
 
       <div className="SideDash">
         <div className="c-SideDash ">
-          <img src="" alt="" />
-          <p>Nama Ormawa</p>
+          <img src={ user.url } alt="" />
+          <p>{ user.username }</p>
           <div className="sideDash-f sideDash-fgap">
             <div id="dashboard" className="icon " onClick={clickhandle}>
               <i id="dashboard" class="fa-solid fa-qrcode" />

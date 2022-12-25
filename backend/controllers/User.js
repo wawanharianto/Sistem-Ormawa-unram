@@ -5,10 +5,27 @@ import fs from "fs";
 import { Op } from "sequelize";
 
 export const getUsers = async (req, res) => {
+  const page = parseInt(req.query.page) || 0;
+  const limit = parseInt(req.query.limit) || 10;
   const search = req.query.search || "";
+  const offset = limit * page;
+  const totalRows = await Users.count({
+    where: {
+      [Op.or]: [{
+        username: {
+          [Op.like]: '%' + search + '%'
+        }
+      }, {
+        email: {
+          [Op.like]: '%' + search + '%'
+        }
+      }]
+    }
+  });
+  const totalPage = Math.ceil(totalRows / limit);
   try {
     const response = await Users.findAll({
-      attributes: ['uuid', 'username', 'email', 'role', 'profilePic'],
+      attributes: ['id','uuid', 'username', 'email', 'role', 'profilePic'],
       where: {
         [Op.or]: [{
           username: {
@@ -19,9 +36,20 @@ export const getUsers = async (req, res) => {
             [Op.like]: '%' + search + '%'
           }
         }]
-      }
-    })
-    res.status(200).json(response);
+      },
+      offset: offset,
+      limit: limit,
+      order: [
+        ['id', 'ASC']
+      ]
+    });
+    res.status(200).json({
+      result: response,
+      page: page,
+      limit: limit,
+      totalRows: totalRows,
+      totalPage: totalPage,
+    });
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
