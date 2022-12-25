@@ -10,7 +10,7 @@ function Proposal_con() {
         </div>
         <div className="tProposal_container">
           <div className="headtproposal">
-            <h3>Laporan Pertanggu ng Jawaban</h3>
+            <h3>Laporan Pertanggung Jawaban</h3>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
           <hr />
