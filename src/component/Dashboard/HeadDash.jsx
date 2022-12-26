@@ -131,8 +131,13 @@ function HeadDash() {
 
       <div className="SideDash">
         <div className="c-SideDash ">
+<<<<<<< HEAD
           <img src="" alt="" />
           <p>Nama Ormawa</p>
+=======
+          {/* <img src={ user.url } alt="" />
+          <p>{ user.username }</p> */}
+>>>>>>> 84e2a924784f0777659015f054aa3df91a17c7a1
           <div className="sideDash-f sideDash-fgap">
             <a href="/dashboard">
               <div id="dashboard" className="icon" onClick={clickhandle}>
