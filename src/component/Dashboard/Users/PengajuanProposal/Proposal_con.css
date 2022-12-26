@@ -123,3 +123,25 @@
 .tabPengajuanProposal tr:nth-child(1) {
   border: none;
 }
+
+.tProposal_container .tfooter1 {
+  margin: 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1250px) {
+  .tProposal_container {
+    margin-left: 20%;
+    margin-right: 2rem;
+  }
+
+  .tabPengajuanProposal tr th {
+    font-size: 12px;
+    padding: 2px 0px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .hProposal {
+    margin: 27vh 0 0 0;
+  }
+}

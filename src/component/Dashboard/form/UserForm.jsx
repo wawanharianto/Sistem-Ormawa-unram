@@ -10,9 +10,9 @@ function UserForm() {
   const [limit, setLimit] = useState(10);
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const [query, setQuery] = useState("");
-  const [msg, setMsg] = useState("");
+  const [keyword, setKeyword] = useState('');
+  const [query, setQuery] = useState('');
+  const [msg, setMsg] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,9 +20,7 @@ function UserForm() {
   }, [page, keyword]);
 
   const getUsers = async () => {
-    const response = await axios.get(
-      `http://localhost:3000/users?search_query=${keyword}&page=${page}&limit=${limit}`
-    );
+    const response = await axios.get(`http://localhost:3000/users?search_query=${keyword}&page=${page}&limit=${limit}`);
     setUsers(response.data.result);
     setPage(response.data.page);
     setPages(response.data.totalPage);
@@ -37,25 +35,23 @@ function UserForm() {
   const changePage = ({ selected }) => {
     setPage(selected);
     if (selected === 9) {
-      setMsg(
-        "Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!"
-      );
+      setMsg('Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!');
     } else {
-      setMsg("");
+      setMsg('');
     }
   };
 
   const searchData = (e) => {
     e.preventDefault();
     setPage(0);
-    setMsg("");
+    setMsg('');
     setKeyword(query);
   };
 
   const handleAddUser = (data) => {
     if (data.target) {
       console.log('Ok');
-      navigate('/dashboard/users/add');
+      navigate('add');
     }
   };
 
@@ -83,7 +79,8 @@ function UserForm() {
               {users.map((user, index) => (
                 <tr key={user.id}>
                   <td>
-                    <input type="checkbox" />{index + 1}
+                    <input type="checkbox" />
+                    {index + 1}
                   </td>
                   <td>{user.username}</td>
                   <td>{user.email}</td>
@@ -96,30 +93,28 @@ function UserForm() {
               ))}
             </tbody>
           </table>
-          <p>
-            Total Rows: {rows} Page: {rows ? page + 1 : 0} of {pages}
-          </p>
-          <p className="has-text-centered has-text-danger">{msg}</p>
+          <div className="tfooter">
+            <p>Total Rows: {rows}</p>
+            <p>
+              Page: {rows ? page + 1 : 0} of {pages}
+            </p>
+            <p className="has-text-centered has-text-danger">{msg}</p>
 
-          <nav
-            className="pagination is-centered"
-            key={rows}
-            role="navigation"
-            aria-label="pagination"
-          >
-            <ReactPaginate
-              previousLabel={"< Prev"}
-              nextLabel={"Next >"}
-              pageCount={Math.min(10, pages)}
-              onPageChange={changePage}
-              containerClassName={"pagination-list"}
-              pageLinkClassName={"pagination-link"}
-              previousLinkClassName={"pagination-previous"}
-              nextLinkClassName={"pagination-next"}
-              activeLinkClassName={"pagination-link is-current"}
-              disabledLinkClassName={"pagination-link is-disabled"}
-            />
-          </nav>
+            <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
+              <ReactPaginate
+                previousLabel={'< Prev'}
+                nextLabel={'Next >'}
+                pageCount={Math.min(10, pages)}
+                onPageChange={changePage}
+                containerClassName={'pagination-list'}
+                pageLinkClassName={'pagination-link'}
+                previousLinkClassName={'pagination-previous'}
+                nextLinkClassName={'pagination-next'}
+                activeLinkClassName={'pagination-link is-current'}
+                disabledLinkClassName={'pagination-link is-disabled'}
+              />
+            </nav>
+          </div>
         </div>
       </div>
     </>

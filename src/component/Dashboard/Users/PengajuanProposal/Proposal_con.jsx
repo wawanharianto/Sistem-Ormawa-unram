@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Proposal_con.css';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router';
 
 function Proposal_con() {
   const [proposals, setProposals] = useState([]);
@@ -9,47 +10,47 @@ function Proposal_con() {
   const [limit, setLimit] = useState(10);
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const [query, setQuery] = useState("");
-  const [msg, setMsg] = useState("");
+  const [keyword, setKeyword] = useState('');
+  const [query, setQuery] = useState('');
+  const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProposal();
   }, [page, keyword]);
 
   const getProposal = async () => {
-    const response = await axios.get(
-      `http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`
-    );
+    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
     setProposals(response.data.result);
     setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
-  }
+  };
 
   const deleteProposal = async (proposalId) => {
     await axios.delete(`http://localhost:3000/proposal/${proposalId}`);
     getProposal();
-  }
+  };
 
   const changePage = ({ selected }) => {
     setPage(selected);
     if (selected === 9) {
-      setMsg(
-        "Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!"
-      );
+      setMsg('Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!');
     } else {
-      setMsg("");
+      setMsg('');
     }
   };
 
   const searchData = (e) => {
     e.preventDefault();
     setPage(0);
-    setMsg("");
+    setMsg('');
     setKeyword(query);
   };
 
+  const handleAddProposal = () => {
+    navigate('add');
+  };
   return (
     <>
       <div className="Proposal_container">
@@ -73,7 +74,7 @@ function Proposal_con() {
               <button>
                 <i class="fa-solid fa-trash-can"></i> Delete
               </button>
-              <button>
+              <button onClick={handleAddProposal}>
                 <i class="fa-solid fa-plus"></i>Tambah Proposal
               </button>
             </div>
@@ -122,30 +123,28 @@ function Proposal_con() {
               ))}
             </tbody>
           </table>
-          <p>
-            Total Rows: {rows} Page: {rows ? page + 1 : 0} of {pages}
-          </p>
-          <p className="has-text-centered has-text-danger">{msg}</p>
+          <div className="tfooter tfooter1">
+            <p>Total Rows: {rows}</p>
+            <p>
+              Page: {rows ? page + 1 : 0} of {pages}
+            </p>
+            <p className="has-text-centered has-text-danger">{msg}</p>
 
-          <nav
-            className="pagination is-centered"
-            key={rows}
-            role="navigation"
-            aria-label="pagination"
-          >
-            <ReactPaginate
-              previousLabel={"< Prev"}
-              nextLabel={"Next >"}
-              pageCount={Math.min(10, pages)}
-              onPageChange={changePage}
-              containerClassName={"pagination-list"}
-              pageLinkClassName={"pagination-link"}
-              previousLinkClassName={"pagination-previous"}
-              nextLinkClassName={"pagination-next"}
-              activeLinkClassName={"pagination-link is-current"}
-              disabledLinkClassName={"pagination-link is-disabled"}
-            />
-          </nav>
+            <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
+              <ReactPaginate
+                previousLabel={'< Prev'}
+                nextLabel={'Next >'}
+                pageCount={Math.min(10, pages)}
+                onPageChange={changePage}
+                containerClassName={'pagination-list'}
+                pageLinkClassName={'pagination-link'}
+                previousLinkClassName={'pagination-previous'}
+                nextLinkClassName={'pagination-next'}
+                activeLinkClassName={'pagination-link is-current'}
+                disabledLinkClassName={'pagination-link is-disabled'}
+              />
+            </nav>
+          </div>
         </div>
       </div>
     </>

@@ -31,6 +31,7 @@ function Register() {
     formData.append('confPassword', confpass);
     formData.append('file', file);
     formData.append('role', role);
+    console.log(role);
 
     try {
       await axios.post('http://localhost:3000/users', formData, {
@@ -80,11 +81,15 @@ function Register() {
           </div>
           <div className="item-set">
             <label>Role</label>
-            <select className="role">
-              <option disabled selected hidden>
-                Role
-              </option>
-              <option value="Mahasiswa">Mahasiswa</option>
+            <select
+              className="role"
+              value={role}
+              onChange={(e) => {
+                setrole(e.target.value);
+              }}
+            >
+              <option>-- select --</option>
+              <option value="mahasiswa">Mahasiswa</option>
               <option value="superUser">Super User</option>
               <option value="WD3">Wakil Direktur 3</option>
               <option value="adminAkademik">Admin Akademik</option>

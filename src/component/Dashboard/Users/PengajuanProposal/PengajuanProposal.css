@@ -139,3 +139,65 @@
   background-color: #f03d70;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 1224px) {
+  .formaddProp {
+    margin-left: 20vh;
+
+    margin-right: 3rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .formaddProp .finput input {
+    margin-left: 10px;
+    margin-right: 20px;
+    width: 90vh;
+  }
+  .finput p {
+    color: #4dbc9b;
+    margin-top: 10px;
+    width: 200px;
+    text-align: left;
+    margin-left: 20px;
+  }
+  .formaddProp {
+    margin-left: 11vh;
+
+    margin-right: 1vh;
+  }
+  .hProposalForm h2 {
+    margin-left: -24vh;
+    font-size: 14px;
+  }
+  .hProposalForm p {
+    font-size: 10px;
+  }
+}
+@media only screen and (max-width: 535px) {
+  .formaddProp {
+    margin-left: 1vh;
+
+    margin-right: 1vh;
+  }
+  .hProposalForm h2 {
+    margin-left: -34vh;
+    font-size: 14px;
+    width: 100px;
+  }
+  .hProposalForm p {
+    display: none;
+  }
+  .addPropalForm-container .hProposalForm {
+    background-color: #ccece1;
+    height: 80px;
+    margin-top: 10vh;
+    width: 100%;
+    margin-left: 0vh;
+    margin-right: 0;
+    display: flex;
+    padding-left: 0vh;
+    padding-right: 10vh;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+}

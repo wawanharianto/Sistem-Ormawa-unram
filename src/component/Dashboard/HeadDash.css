@@ -188,7 +188,7 @@
 }
 .select-f {
   background-color: #4dbc9b;
-  padding: 5px 5px 5px 5px;
+  border-radius: 1rem;
 }
 
 /* css hide sidebar to mode mobile */

@@ -1,46 +1,47 @@
 .userContainer {
+  background-color: #f9f9f9;
+  position: relative;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
   min-height: 200vh;
-  background-color: rgb(233, 233, 239);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 0 0 0;
 }
 
 .headContainer {
-  margin: 0 0 0 0;
-  height: 80px;
-  width: 100%;
-  background-color: #e6f5f0;
-  display: flex;
+  height: 10vh;
+  background-color: rgb(213, 231, 228);
   margin-top: 10vh;
-  justify-content: left;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-left: -50%;
 }
 .headContainer h2 {
-  margin-left: 40vh;
-  margin-top: 30px;
+  margin-top: 3vh;
 }
 .tUserContainer {
-  margin: 30px 0 0 0;
-  left: 0;
-  right: 0;
-  background-color: bisque;
-  width: 100%;
-  min-height: fit-content;
+  /* background-color: antiquewhite; */
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-left: 30vh;
+  margin-top: 30px;
+  padding-left: 30%;
+  padding-right: 20vh;
 }
 
+.userContainer button {
+  width: 4rem;
+  margin-right: 0;
+  margin-left: auto;
+  margin-bottom: 1rem;
+}
 .tUser {
   border-collapse: collapse;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-left: 50vh;
-  margin-right: auto;
 }
-
 .tUser th,
 .tUser td {
   /* border: 1px solid black; */
@@ -52,7 +53,7 @@
   background-color: #20b486;
   border-radius: 8px 0 0 0;
 }
-.tUser th:nth-child(6) {
+.tUser th:nth-child(5) {
   background-color: #20b486;
   border-radius: 0 8px 0 0;
 }
@@ -62,6 +63,20 @@
 .tUser th:nth-child(5) {
   background-color: #20b486;
 }
+.tfooter {
+  background-color: #ffffff;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: right;
+  padding-right: 3rem;
+}
+
+.tfooter p {
+  font-weight: 500;
+  font-size: 16px;
+}
+
 .tUser .form-icon {
   font-size: 20px;
   display: flex;
@@ -80,30 +95,30 @@
   height: 2rem;
   border-radius: 8px;
   border: none;
-  margin-top: 20px;
-  position: relative;
+
   margin-bottom: 2rem;
   margin-right: 0;
-  margin-left: 150vh;
 }
 .btn-addUser:hover {
   background-color: #20b486;
   cursor: pointer;
 }
 
-/* responsib */
 @media only screen and (max-width: 1200px) {
-  .tUser {
-    margin-left: 10vh;
-  }
-}
-@media only screen and (max-width: 1500px) {
-  .tUser {
-    margin-left: 30vh;
+  .tUser th,
+  .tUser td {
+    padding: 1rem 1rem;
   }
 }
 @media only screen and (max-width: 920px) {
-  .tUser {
-    margin-left: 10vh;
+  .tUserContainer {
+    padding-left: 20%;
+    padding-right: 2vh;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .tUserContainer {
+    padding-left: 2vh;
+    padding-right: 2vh;
   }
 }
