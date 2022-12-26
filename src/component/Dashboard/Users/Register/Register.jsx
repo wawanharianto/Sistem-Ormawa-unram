@@ -42,7 +42,7 @@ function Register() {
       console.log(msg);
       if (msg == 'success') {
         console.log('OK');
-        this.props.navigation.navigate('Dashboard');
+        this.props.navigation.navigate('/dashboard');
       }
     } catch (error) {
       if (error.response) {
@@ -86,7 +86,7 @@ function Register() {
               </option>
               <option value="Mahasiswa">Mahasiswa</option>
               <option value="superUser">Super User</option>
-              <option value="WD3">Wakil Direktur 3</option>
+              <option value="WD3">Wakil Dekan 3</option>
               <option value="adminAkademik">Admin Akademik</option>
               <option value="adminKeuangan">Admin Keuangan</option>
             </select>
