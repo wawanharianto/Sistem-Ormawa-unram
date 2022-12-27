@@ -24,7 +24,7 @@
 
 .formaddProp {
   height: 100%;
-  margin-left: 40vh;
+  margin-left: 44vh;
   margin-top: 3rem;
   margin-right: 3rem;
   background-color: rgb(255, 255, 255);
@@ -142,7 +142,7 @@
 
 @media only screen and (max-width: 1224px) {
   .formaddProp {
-    margin-left: 20vh;
+    margin-left: 30vh;
 
     margin-right: 3rem;
   }
@@ -161,7 +161,7 @@
     margin-left: 20px;
   }
   .formaddProp {
-    margin-left: 11vh;
+    margin-left: 25vh;
 
     margin-right: 1vh;
   }
@@ -175,7 +175,7 @@
 }
 @media only screen and (max-width: 535px) {
   .formaddProp {
-    margin-left: 1vh;
+    margin-left: 15vh;
 
     margin-right: 1vh;
   }
@@ -199,5 +199,12 @@
     padding-right: 10vh;
     justify-content: space-between;
     padding-top: 30px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .formaddProp {
+    margin-left: 1vh;
+
+    margin-right: 1vh;
   }
 }

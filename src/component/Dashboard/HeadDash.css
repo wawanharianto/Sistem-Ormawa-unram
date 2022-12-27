@@ -189,6 +189,7 @@
 .select-f {
   background-color: #4dbc9b;
   border-radius: 1rem;
+  padding: 0 0.5rem 0 0;
 }
 
 /* css hide sidebar to mode mobile */
@@ -239,7 +240,7 @@
     width: 10vh;
     animation: fadeInLeft;
     animation-duration: 0.5s;
-    margin-left: -1rem;
+    /* margin-left: -1rem; */
   }
   .burger-button {
     display: flex;

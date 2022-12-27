@@ -10,6 +10,7 @@ import AddUsers from './pages/Users/AddUsers';
 import AddProposal from './pages/Users/AddProposal';
 import PengajuanProposal_con from './pages/Users/PengajuanProposal_con';
 import Register from './component/Dashboard/Users/Register/Register';
+import ApproveProposal from './pages/Users/ApproveProposal';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="pengajuan-proposal" element={<PengajuanProposal_con />} />
           <Route path="pengajuan-proposal/add" element={<AddProposal />} />
           <Route path="register" element={<Register />} />
+          <Route path="approve-proposal" element={<ApproveProposal />} />
         </Routes>
       </BrowserRouter>
     </div>

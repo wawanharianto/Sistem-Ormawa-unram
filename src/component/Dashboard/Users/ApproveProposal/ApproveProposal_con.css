@@ -1,0 +1,33 @@
+.finput .load-file {
+  display: flex;
+  margin-left: 0;
+  margin-right: auto;
+}
+.finput .load-file p {
+  text-align: left;
+  margin-left: 1vh;
+}
+
+.finput .load-file button {
+  padding: 0.5rem;
+  background-color: #4dbc9b;
+  border: none;
+  color: white;
+}
+.finput .textbox {
+  height: 100px;
+  overflow: scroll;
+}
+
+.finput .condition-acc {
+  background-color: rgb(234, 255, 0);
+  color: rgb(249, 249, 248);
+  border: none;
+  border-radius: 0.5rem;
+}
+.finput input {
+  pointer-events: none;
+}
+.finput .textbox {
+  pointer-events: visible;
+}

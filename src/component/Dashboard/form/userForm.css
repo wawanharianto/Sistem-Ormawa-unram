@@ -27,11 +27,11 @@
   justify-content: center;
   flex-direction: column;
   margin-top: 30px;
-  padding-left: 30%;
+  padding-left: 60vh;
   padding-right: 20vh;
 }
 
-.userContainer button {
+.userContainer .btn-addUser {
   width: 4rem;
   margin-right: 0;
   margin-left: auto;
@@ -109,16 +109,35 @@
   .tUser td {
     padding: 1rem 1rem;
   }
+  .tUserContainer {
+    margin-left: -20vh;
+  }
 }
 @media only screen and (max-width: 920px) {
   .tUserContainer {
-    padding-left: 20%;
+    padding-left: 50vh;
+    padding-right: 2vh;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .tUserContainer {
+    padding-left: 40vh;
     padding-right: 2vh;
   }
 }
 @media only screen and (max-width: 500px) {
   .tUserContainer {
-    padding-left: 2vh;
+    padding-left: 30vh;
     padding-right: 2vh;
+    overflow: auto;
+  }
+  .tfooter {
+    width: 67vh;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .tUserContainer .btn-addUser {
+    margin-left: 55vh;
   }
 }
