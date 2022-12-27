@@ -107,7 +107,7 @@
   z-index: 3;
   display: flex;
   justify-content: center;
-  top: 10vh;
+  top: 8vh;
   bottom: 0;
   left: 0;
   right: 0;
@@ -141,8 +141,7 @@
   display: flex;
   align-items: center;
 
-  margin-bottom: 4px;
-  padding: 2px 0px 2px 19px;
+  padding: 1px 0px 1px 10px;
   border-radius: 20px;
 }
 
@@ -176,7 +175,7 @@
   margin-bottom: 40px;
 }
 .sideDash-fgap {
-  gap: 25px;
+  gap: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -186,10 +185,9 @@
 .icon:hover {
   cursor: pointer;
 }
-.select-f {
+.c-SideDash .select-f {
   background-color: #4dbc9b;
   border-radius: 1rem;
-  padding: 0 0.5rem 0 0;
 }
 
 /* css hide sidebar to mode mobile */

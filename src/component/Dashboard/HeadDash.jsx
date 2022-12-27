@@ -7,12 +7,6 @@ import { LogOut, reset, currentLogin } from '../../features/auth';
 function HeadDash() {
   // link sidebar
   const activePage = window.location.pathname;
-  const dashboard = document.getElementById('dashboard');
-  const pengajuan = document.getElementById('pengajuan');
-  const lpj = document.getElementById('lpj');
-  const spj = document.getElementById('spj');
-  const arsip = document.getElementById('arsip');
-  const users = document.getElementById('users');
   console.log(activePage);
   const sidelink = document.querySelectorAll('div a').forEach((link) => {
     if (link.href.includes(`${activePage}`)) {
