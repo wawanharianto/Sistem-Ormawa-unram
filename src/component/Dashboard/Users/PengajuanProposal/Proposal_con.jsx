@@ -21,7 +21,19 @@ function Proposal_con() {
 
   const getProposal = async () => {
     const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
-    setProposals(response.data.result);
+    setProposals(response.data.result.map(d => {
+      return {
+        select: false,
+        id: d.id,
+        nama_kegiatan: d.nama_kegiatan,
+        nama_organisasi: d.nama_organisasi,
+        jumlah_dana: d.jumlah_dana,
+        ketua_panitia: d.ketua_panitia,
+        nomer_ketum: d.nomer_ketum,
+        dana_disetujui: d.dana_disetujui,
+        status: d.status
+      };
+    }));
     setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
@@ -51,6 +63,23 @@ function Proposal_con() {
   const handleAddProposal = () => {
     navigate('add');
   };
+
+  const multipleDeleteById = async () => {
+    let arrayIds = [];
+    proposals.forEach(d => {
+      if (d.select) {
+        arrayIds.push(d.id);
+      }
+    });
+    console.log(arrayIds);
+    // await axios.delete(`http://localhost:3000/proposal/${arrayIds}`)
+    //   .then(data => {
+    //     console.log(data);
+    //     getProposal();
+    //   })
+    //   .catch(err => alert(err));
+  }
+
   return (
     <>
       <div className="Proposal_container">
@@ -71,7 +100,7 @@ function Proposal_con() {
               </div>
             </form>
             <div className="fbtn">
-              <button>
+              <button onClick={() => multipleDeleteById()}>
                 <i class="fa-solid fa-trash-can"></i> Delete
               </button>
               <button onClick={handleAddProposal}>
@@ -97,7 +126,19 @@ function Proposal_con() {
               {proposals.map((proposal, index) => (
                 <tr key={proposal.id}>
                   <td>
-                    <input type="checkbox" /> {index + 1}
+                    <input type="checkbox" checked={proposal.select} onChange={
+                      (e)=>{
+                        let value = e.target.checked;
+                        setProposals(
+                          proposals.map(d => {
+                            if (d.id == proposal.id) {
+                              d.select = value;
+                            }
+                            return d;
+                          })
+                        );
+                      }
+                    }/> {index + 1}
                   </td>
                   <td>{proposal.nama_kegiatan}</td>
                   <td>{proposal.nama_organisasi}</td>
