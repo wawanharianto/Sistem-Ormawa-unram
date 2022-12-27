@@ -15,6 +15,7 @@
 .burger-button {
   display: flex;
   /* display: none; */
+  margin-top: -3vh;
 }
 
 .menu-button,
@@ -37,7 +38,6 @@
   position: relative;
   width: 20px;
   height: 20px;
-  margin-top: -0.5rem;
   left: 1.5rem;
   cursor: pointer;
 }

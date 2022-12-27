@@ -146,13 +146,19 @@ function HeadDash() {
                 <p id="pengajuan">Pengajuan Proposal</p>
               </div>
             </a>
-            <a href="/lpj">
+            <a href="/pengajuan-dana">
+              <div id="pengajuan" className="icon" onClick={clickhandle}>
+                <i class="fa-solid fa-dollar-sign"></i>
+                <p id="pengajuan">Pengajuan Dana</p>
+              </div>
+            </a>
+            <a href="/LPJ">
               <div id="lpj" className="icon " onClick={clickhandle}>
                 <i id="lpj" class="fa-regular fa-file-lines"></i>
                 <p id="lpj">LPJ</p>
               </div>
             </a>
-            <a href="/spj">
+            <a href="/SPJ">
               <div id="spj" className="icon" onClick={clickhandle}>
                 <i id="spj" class="fa-regular fa-file"></i>
                 <p id="spj">SPJ</p>

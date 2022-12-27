@@ -11,6 +11,11 @@ import AddProposal from './pages/Users/AddProposal';
 import PengajuanProposal_con from './pages/Users/PengajuanProposal_con';
 import Register from './component/Dashboard/Users/Register/Register';
 import ApproveProposal from './pages/Users/ApproveProposal';
+import PengajuanDana from './pages/Users/PengajuanDana';
+
+import LPJ from './pages/Users/LPJ';
+import SPJ from './pages/Users/SPJ';
+import AddPengajuanDana from './pages/Users/AddPengajuanDana';
 
 function App() {
   return (
@@ -27,6 +32,10 @@ function App() {
           <Route path="pengajuan-proposal/add" element={<AddProposal />} />
           <Route path="register" element={<Register />} />
           <Route path="approve-proposal" element={<ApproveProposal />} />
+          <Route path="pengajuan-dana" element={<PengajuanDana />} />
+          <Route path="pengajuan-dana/add" element={<AddPengajuanDana />} />
+          <Route path="LPJ" element={<LPJ />} />
+          <Route path="SPJ" element={<SPJ />} />
         </Routes>
       </BrowserRouter>
     </div>
