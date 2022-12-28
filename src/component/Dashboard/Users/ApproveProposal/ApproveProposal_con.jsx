@@ -19,7 +19,7 @@ function ApproveProposal_con() {
             <p>Details Pengajuan Proposal</p>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
-          <form className="addProposal" action="">
+          <form className="addProposal read-only" action="">
             <hr className="line" />
             <div className="finput">
               <p>Nama Kegiatan</p>

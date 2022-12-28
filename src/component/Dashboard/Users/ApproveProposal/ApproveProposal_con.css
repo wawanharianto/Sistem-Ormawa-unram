@@ -25,9 +25,9 @@
   border: none;
   border-radius: 0.5rem;
 }
-.finput input {
+.read-only .finput input {
   pointer-events: none;
 }
-.finput .textbox {
+.read-only .finput .textbox {
   pointer-events: visible;
 }
