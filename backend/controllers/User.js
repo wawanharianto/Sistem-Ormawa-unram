@@ -12,6 +12,9 @@ export const getUsers = async (req, res) => {
   const totalRows = await Users.count({
     where: {
       [Op.or]: [{
+        id: {
+          [Op.like]: '%' + search + '%'
+        },
         username: {
           [Op.like]: '%' + search + '%'
         }
@@ -25,9 +28,12 @@ export const getUsers = async (req, res) => {
   const totalPage = Math.ceil(totalRows / limit);
   try {
     const response = await Users.findAll({
-      attributes: ['id','uuid', 'username', 'email', 'role', 'profilePic'],
+      attributes: ['id', 'uuid', 'username', 'email', 'role', 'profilePic'],
       where: {
         [Op.or]: [{
+          id: {
+            [Op.like]: '%' + search + '%'
+          },
           username: {
             [Op.like]: '%' + search + '%'
           }
@@ -50,6 +56,20 @@ export const getUsers = async (req, res) => {
       totalRows: totalRows,
       totalPage: totalPage,
     });
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+}
+
+export const getUsersbyId = async (req, res) => {
+  try {
+    const response = await Users.findOne({
+      attributes: ['uuid', 'username', 'email', 'role', 'password' ,'profilePic'],
+      where: {
+        uuid: req.params.uuid
+      }
+    })
+    res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }

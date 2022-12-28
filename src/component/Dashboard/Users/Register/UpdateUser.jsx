@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Register.css';
 import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
 
-function Register() {
+function UpdateUser() {
   const [username, setusername] = useState('');
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
@@ -11,6 +12,24 @@ function Register() {
   const [role, setrole] = useState('');
   const [msg, setMsg] = useState('');
   const [popUp, setPopUp] = useState(false);
+  const navigate = useNavigate();
+  const { uuid } = useParams();
+
+  useEffect(() => {
+    const getUserById = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/users/${uuid}`);
+        setusername(response.data.username);
+        setemail(response.data.email);
+        setrole(response.data.role);
+      } catch (error) {
+        if (error.response) {
+          setMsg(error.response.data.msg);
+        }
+      }
+    };
+    getUserById();
+  }, [uuid]);
 
   const loadImage = (e) => {
     const image = e.target.files[0];
@@ -22,7 +41,7 @@ function Register() {
     closepop.classList.toggle('popshow');
   };
 
-  const Register = async (e) => {
+  const updateUser = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('username', username);
@@ -31,17 +50,16 @@ function Register() {
     formData.append('confPassword', confpass);
     formData.append('file', file);
     formData.append('role', role);
-    console.log(role);
 
     try {
-      await axios.post('http://localhost:3000/users', formData, {
+      await axios.patch(`http://localhost:3000/users/${uuid}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
       });
-      setMsg('success');
+      setMsg('success update data');
       console.log(msg);
-      if (msg == 'success') {
+      if (msg == 'success update data') {
         console.log('OK');
         this.props.navigation.navigate('/dashboard');
       }
@@ -56,9 +74,9 @@ function Register() {
   return (
     <>
       <div className="conRegister">
-        <h2>Register User</h2>
-        <form onSubmit={Register} className="form-Register" action="">
-          <h2>REGISTER</h2>
+        <h2>Update User</h2>
+        <form onSubmit={updateUser} className="form-Register" action="">
+          <h2>UPDATE DATA USER</h2>
           <hr className="line-space" />
           <div className="item-set">
             <label> Username</label>
@@ -99,7 +117,7 @@ function Register() {
             {/* <input type="text" placeholder="role" value={role} onChange={(e) => setrole(e.target.value)} /> */}
           </div>
           <button type="submit" onClick={handleClose}>
-            Register
+            Update 
           </button>
         </form>
       </div>
@@ -113,4 +131,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default UpdateUser;

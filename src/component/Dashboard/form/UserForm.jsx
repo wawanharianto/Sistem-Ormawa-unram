@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './userForm.css';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function UserForm() {
   const [users, setUsers] = useState([]);
@@ -87,7 +87,8 @@ function UserForm() {
                   <td>{user.role}</td>
                   <td className="form-icon">
                     <i class="fa-solid fa-trash" onClick={() => deleteUsers(user.uuid)} />
-                    <i class="fa-solid fa-pen" />
+                    <Link 
+                    to={`/users/edit/${user.uuid}`} class="fa-solid fa-pen" />
                   </td>
                 </tr>
               ))}

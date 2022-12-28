@@ -16,6 +16,8 @@ import PengajuanDana from './pages/Users/PengajuanDana';
 import LPJ from './pages/Users/LPJ';
 import SPJ from './pages/Users/SPJ';
 import AddPengajuanDana from './pages/Users/AddPengajuanDana';
+import UpdateUsers from './pages/Users/EditUsers';
+import UpdateProposals from './pages/Users/EditProposal';
 
 function App() {
   return (
@@ -28,8 +30,10 @@ function App() {
           <Route path="/dashboard" element={<Dashboard_con />} />
           <Route path="users" element={<Users_con />} />
           <Route path="users/add" element={<AddUsers />} />
+          <Route path="users/edit/:uuid" element={<UpdateUsers />} />
           <Route path="pengajuan-proposal" element={<PengajuanProposal_con />} />
           <Route path="pengajuan-proposal/add" element={<AddProposal />} />
+          <Route path="proposal/edit/:uuid" element={<UpdateProposals />} />
           <Route path="register" element={<Register />} />
           <Route path="approve-proposal" element={<ApproveProposal />} />
           <Route path="pengajuan-dana" element={<PengajuanDana />} />

@@ -3,6 +3,7 @@ import './Proposal_con.css';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Proposal_con() {
   const [proposals, setProposals] = useState([]);
@@ -24,6 +25,7 @@ function Proposal_con() {
     setProposals(response.data.result.map(d => {
       return {
         select: false,
+        uuid: d.uuid,
         id: d.id,
         nama_kegiatan: d.nama_kegiatan,
         nama_organisasi: d.nama_organisasi,
@@ -72,12 +74,12 @@ function Proposal_con() {
       }
     });
     console.log(arrayIds);
-    // await axios.delete(`http://localhost:3000/proposal/${arrayIds}`)
-    //   .then(data => {
-    //     console.log(data);
-    //     getProposal();
-    //   })
-    //   .catch(err => alert(err));
+    await axios.delete(`http://localhost:3000/proposal/${arrayIds}`)
+      .then(data => {
+        console.log(data);
+        getProposal();
+      })
+      .catch(err => alert(err));
   }
 
   return (
@@ -152,9 +154,9 @@ function Proposal_con() {
                       <button className="view">
                         <i class="fa-regular fa-file"></i>
                       </button>
-                      <button className="sunting">
+                      <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
                         <i class="fa-regular fa-pen-to-square"></i>
-                      </button>
+                      </Link>
                       <button className="delete" onClick={() => deleteProposal(proposal.uuid)}>
                         <i class="fa-solid fa-delete-left"></i>
                       </button>

@@ -1,6 +1,9 @@
 ### GET ALL USER ATAU SEARCH BY USERNAME
 GET http://localhost:3000/users/?search=
 
+###
+GET http://localhost:3000/users/uuid
+
 ### GET USER LOGIN
 GET http://localhost:3000/currentusers
 

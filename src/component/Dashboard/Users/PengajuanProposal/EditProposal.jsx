@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './PengajuanProposal.css';
 import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
 
-function PengajuanProposal() {
+function UpdateProposal() {
   const [kegiatan, setKegiatan] = useState('');
   const [organisasi, setOrganisasi] = useState('');
   const [dana, setDana] = useState('');
@@ -14,6 +15,29 @@ function PengajuanProposal() {
   const [file, setFile] = useState('');
   const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
+  const { uuid } = useParams();
+
+  useEffect(() => {
+    const getProposalById = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/proposal/${uuid}`);
+        setKegiatan(response.data.nama_kegiatan);
+        setOrganisasi(response.data.nama_organisasi);
+        setDana(response.data.jumlah_dana);
+        setKetupat(response.data.ketua_panitia);
+        setNohp(response.data.nomer_ketupat);
+        setTanggal(response.data.tanggal_pelaksanaan);
+        setTempat(response.data.tempat_pelaksanaan);
+        setKetum(response.data.nomer_ketum);
+      } catch (error) {
+        if (error.response) {
+          setMsg(error.response.data.msg);
+        }
+      }
+    };
+    getProposalById();
+  }, [uuid]);
 
   const loadFile = (e) => {
     const proposal = e.target.files[0];
@@ -25,7 +49,7 @@ function PengajuanProposal() {
     closepop.classList.toggle('popshow');
   };
 
-  const addProposal = async (e) => {
+  const updateProposal = async (e) => {
     e.prevenDefault();
     const formData = new FormData();
     formData.append('nama_kegiatan', kegiatan);
@@ -40,7 +64,7 @@ function PengajuanProposal() {
     formData.append('status', status);
 
     try {
-      await axios.post('http://localhost:3000/proposal/', formData, {
+      await axios.patch(`http://localhost:3000/proposal/${uuid}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
@@ -70,7 +94,7 @@ function PengajuanProposal() {
             <p>Add Proposal</p>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
-          <form onSubmit={addProposal} className="addProposal" action=''>
+          <form onSubmit={updateProposal} className="addProposal" action=''>
             <hr className="line" />
             <div className="finput">
               <p>Nama Kegiatan</p>
@@ -149,13 +173,7 @@ function PengajuanProposal() {
             </div>
             <div className="fbtn-form">
               <button type='submit' className="Ajukan" onClick={handleClose}>
-                <i class="fa-solid fa-location-arrow"></i>Ajukan
-              </button>
-              <button type='submit' className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-              <button type='submit' className="Ajukan">
-                <i class="fa-solid fa-xmark"></i>Cancel
+                <i class="fa-solid fa-location-arrow"></i>Update
               </button>
             </div>
           </form>
@@ -171,4 +189,4 @@ function PengajuanProposal() {
   );
 }
 
-export default PengajuanProposal;
+export default UpdateProposal;
