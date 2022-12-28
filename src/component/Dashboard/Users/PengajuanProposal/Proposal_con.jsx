@@ -24,6 +24,7 @@ function Proposal_con() {
     setProposals(response.data.result.map(d => {
       return {
         select: false,
+        uuid: d.uuid,
         id: d.id,
         nama_kegiatan: d.nama_kegiatan,
         nama_organisasi: d.nama_organisasi,
@@ -72,12 +73,12 @@ function Proposal_con() {
       }
     });
     console.log(arrayIds);
-    // await axios.delete(`http://localhost:3000/proposal/${arrayIds}`)
-    //   .then(data => {
-    //     console.log(data);
-    //     getProposal();
-    //   })
-    //   .catch(err => alert(err));
+    await axios.delete(`http://localhost:3000/proposal/${arrayIds}`)
+      .then(data => {
+        console.log(data);
+        getProposal();
+      })
+      .catch(err => alert(err));
   }
 
   return (

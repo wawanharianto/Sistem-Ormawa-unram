@@ -62,7 +62,7 @@ function PengajuanProposal() {
     <>
       <div className="addPropalForm-container">
         <div className="hProposalForm">
-          <h2>Pengajual Propsal</h2>
+          <h2>Pengajual Proposal</h2>
           <p>Add Proposal</p>
         </div>
         <div className="formaddProp">
