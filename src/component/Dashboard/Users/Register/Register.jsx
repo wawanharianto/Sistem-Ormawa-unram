@@ -91,7 +91,7 @@ function Register() {
             >
               <option>-- select --</option>
               <option value="mahasiswa">Mahasiswa</option>
-              <option value="superUser">Super User</option>
+              <option value="admin">Super User</option>
               <option value="WD3">Wakil Dekan 3</option>
               <option value="adminAkademik">Admin Akademik</option>
               <option value="adminKeuangan">Admin Keuangan</option>

@@ -19,7 +19,7 @@ function UpdateUser() {
     const getUserById = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/users/${uuid}`);
-        setusername(response.data.name);
+        setusername(response.data.username);
         setemail(response.data.email);
         setrole(response.data.role);
       } catch (error) {
@@ -109,7 +109,7 @@ function UpdateUser() {
             >
               <option>-- select --</option>
               <option value="mahasiswa">Mahasiswa</option>
-              <option value="superUser">Super User</option>
+              <option value="admin">Super User</option>
               <option value="WD3">Wakil Dekan 3</option>
               <option value="adminAkademik">Admin Akademik</option>
               <option value="adminKeuangan">Admin Keuangan</option>
