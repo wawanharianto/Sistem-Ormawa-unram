@@ -96,6 +96,9 @@ const Proposal = db.define('tb_proposal', {
   url_spj: {
     type: DataTypes.STRING,
   },
+  keterangan_spj: {
+    type: DataTypes.TEXT,
+  },
   keterangan_wd3: {
     type: DataTypes.TEXT,
   },

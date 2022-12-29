@@ -13,6 +13,7 @@ export const updateSpj = async (req, res) => {
 
   if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
+
   if (req.files === null) return res.status(400).json({ msg: "No File Uploaded" });
   const file = req.files.file;
   const fileSize = file.data.length;
@@ -31,6 +32,7 @@ export const updateSpj = async (req, res) => {
         await Proposal.update({
           spj: fileName,
           url_spj: url
+          
         }, {
           where: {
             id: proposal.id
@@ -106,4 +108,29 @@ export const updateBD = async (req, res) => {
   });
 
 
+}
+
+export const updateKeteranganSpj = async (req, res) => {
+  const proposal = await Proposal.findOne({
+    where: {
+      uuid: req.params.id
+    }
+  });
+
+  if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
+
+  const { keterangan_spj } = req.body;
+
+  try {
+    await Proposal.update({
+      keterangan_spj: keterangan_spj,
+    }, {
+      where: {
+        id: proposal.id
+      }
+    }),
+    res.status(200).json({ msg: "update berhasil "});
+  } catch (error) {
+    console.log(error);
+  }
 }
