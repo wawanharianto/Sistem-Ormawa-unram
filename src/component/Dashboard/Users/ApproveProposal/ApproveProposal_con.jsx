@@ -1,7 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ApproveProposal_con.css';
+import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
 
 function ApproveProposal_con() {
+  const [kegiatan, setKegiatan] = useState('');
+  const [organisasi, setOrganisasi] = useState('');
+  const [dana, setDana] = useState('');
+  const [ketupat, setKetupat] = useState('');
+  const [nohp, setNohp] = useState('');
+  const [tanggal, setTanggal] = useState('');
+  const [tempat, setTempat] = useState('');
+  const [ketum, setKetum] = useState('');
+  // const [file, setFile] = useState('');
+  // const [status, setStatus] = useState('Proposal di ajukan');
+  const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
+  const { uuid } = useParams();
+
+  useEffect(() => {
+    const getProposalById = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/proposal/${uuid}`);
+        setKegiatan(response.data.nama_kegiatan);
+        setOrganisasi(response.data.nama_organisasi);
+        setDana(response.data.jumlah_dana);
+        setKetupat(response.data.ketua_panitia);
+        setNohp(response.data.nomer_ketupat);
+        setTanggal(response.data.tanggal_pelaksanaan);
+        setTempat(response.data.tempat_pelaksanaan);
+        setKetum(response.data.nomer_ketum);
+      } catch (error) {
+        if (error.response) {
+          setMsg(error.response.data.msg);
+        }
+      }
+    };
+    getProposalById();
+  }, [uuid]);
+
   // const handleClose = () => {
   //   const closepop = document.getElementsByClassName('popUp')[0];
   //   closepop.classList.toggle('popshow');
@@ -23,7 +60,7 @@ function ApproveProposal_con() {
             <hr className="line" />
             <div className="finput">
               <p>Nama Kegiatan</p>
-              <input type="text" placeholder="Nama Kegiatan"></input>
+              <input type="text" placeholder="Nama Kegiatan" value={kegiatan}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -31,7 +68,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Nama Organisasi</p>
-              <input type="text" placeholder="Nama Organisasi"></input>
+              <input type="text" placeholder="Nama Organisasi" value={organisasi}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -39,7 +76,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Jumlah Dana yang Diajukan</p>
-              <input type="text" placeholder="Jumlah Dana yang Diajukan"></input>
+              <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -47,7 +84,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Nama Ketua Panitia</p>
-              <input type="text" placeholder="Nama Ketua Panitia"></input>
+              <input type="text" placeholder="Nama Ketua Panitia" value={ketupat}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -55,7 +92,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Nomor Hp</p>
-              <input type="text" placeholder="Nomor Hp"></input>
+              <input type="text" placeholder="Nomor Hp" value={nohp}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -63,7 +100,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Tanggal Pelaksanaan</p>
-              <input type="text" placeholder="Tanggal Pelaksanaan"></input>
+              <input type="text" placeholder="Tanggal Pelaksanaan" value={tanggal}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -71,7 +108,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Tempat Pelaksanaan</p>
-              <input type="text" placeholder="Tempat Pelaksanaan"></input>
+              <input type="text" placeholder="Tempat Pelaksanaan" value={tempat}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -79,7 +116,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Nomor Ketua Umum</p>
-              <input type="text" placeholder="Nomor Ketua Umum"></input>
+              <input type="text" placeholder="Nomor Ketua Umum" value={ketum}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>

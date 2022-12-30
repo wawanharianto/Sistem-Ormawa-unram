@@ -35,7 +35,7 @@ function App() {
           <Route path="pengajuan-proposal/add" element={<AddProposal />} />
           <Route path="proposal/edit/:uuid" element={<UpdateProposals />} />
           <Route path="register" element={<Register />} />
-          <Route path="approve-proposal" element={<ApproveProposal />} />
+          <Route path="approve-proposal/:uuid" element={<ApproveProposal />} />
           <Route path="pengajuan-dana" element={<PengajuanDana />} />
           <Route path="pengajuan-dana/add/:uuid" element={<AddPengajuanDana />} />
           <Route path="LPJ" element={<LPJ />} />

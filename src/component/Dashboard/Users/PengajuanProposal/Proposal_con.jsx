@@ -151,9 +151,9 @@ function Proposal_con() {
                   <td>{proposal.status}</td>
                   <td>
                     <div className="fstatustable">
-                      <button className="view">
+                      <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
                         <i class="fa-regular fa-file"></i>
-                      </button>
+                      </Link>
                       <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
                         <i class="fa-regular fa-pen-to-square"></i>
                       </Link>
