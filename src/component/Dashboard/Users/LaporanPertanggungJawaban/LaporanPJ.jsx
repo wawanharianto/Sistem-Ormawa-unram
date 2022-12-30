@@ -1,8 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function PengajuanDana_con() {
+  const [proposals, setProposals] = useState([]);
+  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [pages, setPages] = useState(0);
+  const [rows, setRows] = useState(0);
+  const [keyword, setKeyword] = useState('');
+  const [query, setQuery] = useState('');
+  const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getProposal();
+  }, [page, keyword]);
+
+  const getProposal = async () => {
+    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
+    setProposals(response.data.result.map(d => {
+      return {
+        select: false,
+        uuid: d.uuid,
+        id: d.id,
+        nama_kegiatan: d.nama_kegiatan,
+        nama_organisasi: d.nama_organisasi,
+        jumlah_dana: d.jumlah_dana,
+        ketua_panitia: d.ketua_panitia,
+        nomer_ketum: d.nomer_ketum,
+        dana_disetujui: d.dana_disetujui,
+        status: d.status
+      };
+    }));
+    setPage(response.data.page);
+    setPages(response.data.totalPage);
+    setRows(response.data.totalRows);
+  };
+
+  const changePage = ({ selected }) => {
+    setPage(selected);
+    if (selected === 9) {
+      setMsg('Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!');
+    } else {
+      setMsg('');
+    }
+  };
+
+  const searchData = (e) => {
+    e.preventDefault();
+    setPage(0);
+    setMsg('');
+    setKeyword(query);
+  };
+
   return (
     <>
       <div className="Proposal_container">
@@ -42,36 +96,40 @@ function PengajuanDana_con() {
                 <th>Kontak Kegiatan</th>
                 <th>Dana ACC</th>
                 <th className="head8">Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <input type="checkbox" />1
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <div className="fstatustable">
-                    <button className="view">
-                      <i class="fa-regular fa-file"></i>
-                    </button>
-                    <button className="sunting">
-                      <i class="fa-regular fa-pen-to-square"></i>
-                    </button>
-                    <button className="delete">
-                      <i class="fa-solid fa-delete-left"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+              {proposals.map((proposal, index) => (
+                <tr key={proposal.id}>
+                  <td>
+                    {index + 1}
+                  </td>
+                  <td>{proposal.nama_kegiatan}</td>
+                  <td>{proposal.nama_organisasi}</td>
+                  <td>{proposal.jumlah_dana}</td>
+                  <td>{proposal.ketua_panitia}</td>
+                  <td>{proposal.nomer_ketum}</td>
+                  <td>{proposal.dana_disetujui}</td>
+                  <td>{proposal.status}</td>
+                  <td>
+                    <div className="fstatustable">
+                      <button className="view">
+                        <i class="fa-regular fa-file"></i>
+                      </button>
+                      <Link to={``} className="sunting">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </Link>
+                      <button className="delete">
+                        <i class="fa-solid fa-delete-left"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
-          {/* <div className="tfooter tfooter1">
+          <div className="tfooter tfooter1">
             <p>Total Rows: {rows}</p>
             <p>
               Page: {rows ? page + 1 : 0} of {pages}
@@ -92,7 +150,7 @@ function PengajuanDana_con() {
                 disabledLinkClassName={'pagination-link is-disabled'}
               />
             </nav>
-          </div> */}
+          </div>
         </div>
       </div>
     </>

@@ -113,14 +113,14 @@ function Proposal_con() {
           <table className="tabPengajuanProposal">
             <thead>
               <tr>
-                <th>No</th>
+              <th>No</th>
                 <th>Nama Kegiatan</th>
                 <th>Nama Organisasi</th>
                 <th>Dana Permintaan</th>
                 <th>Ketua Panitia</th>
-                <th>Kontak Ketua</th>
+                <th>Kontak Kegiatan</th>
                 <th>Dana ACC</th>
-                <th>Status</th>
+                <th className="head8">Status</th>
                 <th>Action</th>
               </tr>
             </thead>

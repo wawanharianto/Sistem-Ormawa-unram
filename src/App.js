@@ -37,7 +37,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="approve-proposal" element={<ApproveProposal />} />
           <Route path="pengajuan-dana" element={<PengajuanDana />} />
-          <Route path="pengajuan-dana/add" element={<AddPengajuanDana />} />
+          <Route path="pengajuan-dana/add/:uuid" element={<AddPengajuanDana />} />
           <Route path="LPJ" element={<LPJ />} />
           <Route path="SPJ" element={<SPJ />} />
         </Routes>

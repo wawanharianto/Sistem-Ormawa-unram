@@ -151,12 +151,12 @@ function PengajuanProposal() {
               <button type='submit' className="Ajukan" onClick={handleClose}>
                 <i class="fa-solid fa-location-arrow"></i>Ajukan
               </button>
-              <button type='submit' className="Ajukan">
+              {/* <button type='submit' className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
               <button type='submit' className="Ajukan">
                 <i class="fa-solid fa-xmark"></i>Cancel
-              </button>
+              </button> */}
             </div>
           </form>
         </div>
