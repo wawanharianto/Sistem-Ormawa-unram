@@ -123,12 +123,13 @@ function HeadDash() {
                 <p id="arsip">Arsip</p>
               </div>
             </a>
+            {user && user.role === "admin" && (
             <a href="/users">
               <div id="users" className="icon">
                 <i id="users" class="fa-solid fa-user"></i>
                 <p id="users">Users</p>
               </div>
-            </a>
+            </a>)}
           </div>
         </div>
       </div>
