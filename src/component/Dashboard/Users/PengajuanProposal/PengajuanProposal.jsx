@@ -26,7 +26,7 @@ function PengajuanProposal() {
   };
 
   const addProposal = async (e) => {
-    e.prevenDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('nama_kegiatan', kegiatan);
     formData.append('nama_organisasi', organisasi);
