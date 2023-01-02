@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './Proposal_con.css';
+
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
-function Proposal_con() {
+function Arsipx() {
   const [proposals, setProposals] = useState([]);
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(10);
@@ -43,11 +43,6 @@ function Proposal_con() {
     setRows(response.data.totalRows);
   };
 
-  const deleteProposal = async (proposalId) => {
-    await axios.delete(`http://localhost:3000/proposal/${proposalId}`);
-    getProposal();
-  };
-
   const changePage = ({ selected }) => {
     setPage(selected);
     if (selected === 9) {
@@ -64,36 +59,15 @@ function Proposal_con() {
     setKeyword(query);
   };
 
-  const handleAddProposal = () => {
-    navigate('add');
-  };
-
-  const multipleDeleteById = async () => {
-    let arrayIds = [];
-    proposals.forEach((d) => {
-      if (d.select) {
-        arrayIds.push(d.id);
-      }
-    });
-    console.log(arrayIds);
-    await axios
-      .delete(`http://localhost:3000/proposal/${arrayIds}`)
-      .then((data) => {
-        console.log(data);
-        getProposal();
-      })
-      .catch((err) => alert(err));
-  };
-
   return (
     <>
       <div className="Proposal_container">
         <div className="hProposal">
-          <h2>Pengajuan Proposals</h2>
+          <h2>ARSIP DATA</h2>
         </div>
         <div className="tProposal_container">
           <div className="headtproposal">
-            <h3>Form Pengajuan Proposal</h3>
+            <h3>Arsip dokumen</h3>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
           <hr />
@@ -105,12 +79,12 @@ function Proposal_con() {
               </div>
             </form>
             <div className="fbtn">
-              <a onClick={() => multipleDeleteById()}>
+              {/* <button>
                 <i class="fa-solid fa-trash-can"></i> Delete
-              </a>
-              <a onClick={handleAddProposal}>
+              </button>
+              <button>
                 <i class="fa-solid fa-plus"></i>Tambah Proposal
-              </a>
+              </button> */}
             </div>
           </div>
           <table className="tabPengajuanProposal">
@@ -130,24 +104,7 @@ function Proposal_con() {
             <tbody>
               {proposals.map((proposal, index) => (
                 <tr key={proposal.id}>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={proposal.select}
-                      onChange={(e) => {
-                        let value = e.target.checked;
-                        setProposals(
-                          proposals.map((d) => {
-                            if (d.id == proposal.id) {
-                              d.select = value;
-                            }
-                            return d;
-                          })
-                        );
-                      }}
-                    />{' '}
-                    {index + 1}
-                  </td>
+                  <td>{index + 1}</td>
                   <td>{proposal.nama_kegiatan}</td>
                   <td>{proposal.nama_organisasi}</td>
                   <td>{proposal.jumlah_dana}</td>
@@ -157,13 +114,13 @@ function Proposal_con() {
                   <td>{proposal.status}</td>
                   <td>
                     <div className="fstatustable">
-                      <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
+                      <button className="view">
                         <i class="fa-regular fa-file"></i>
-                      </Link>
-                      <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
+                      </button>
+                      <Link to={``} className="sunting">
                         <i class="fa-regular fa-pen-to-square"></i>
                       </Link>
-                      <button className="delete" onClick={() => deleteProposal(proposal.uuid)}>
+                      <button className="delete">
                         <i class="fa-solid fa-delete-left"></i>
                       </button>
                     </div>
@@ -200,4 +157,4 @@ function Proposal_con() {
   );
 }
 
-export default Proposal_con;
+export default Arsipx;

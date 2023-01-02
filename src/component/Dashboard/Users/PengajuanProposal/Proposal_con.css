@@ -1,5 +1,5 @@
 .Proposal_container {
-  background-color: rgb(236, 240, 240);
+  background-color: rgb(244, 246, 246);
   display: flex;
   justify-items: center;
   flex-direction: column;
@@ -22,7 +22,7 @@
 }
 
 .hProposal {
-  background-color: rgb(117, 240, 205);
+  background-color: #e6f5f0;
   height: 80px;
   margin: 10vh 0 0 0;
 }
@@ -62,20 +62,31 @@
   margin-left: 3px;
   margin-top: 8px;
 }
-.fbtn button {
+.fbtn a {
   border: none;
   margin-right: 10px;
   padding: 6px 20px;
   border-radius: 4px;
+  color: white;
 }
-.fbtn button {
+.fbtn a {
   cursor: pointer;
 }
-.fbtn button i {
+.fbtn a i {
   margin-right: 10px;
 }
-.fbtn button:hover {
-  background-color: rgb(185, 186, 187);
+
+.fbtn a:nth-child(1) {
+  background-color: #cc2525;
+}
+.fbtn a:nth-child(1):hover {
+  background-color: #ac1c1c;
+}
+.fbtn a:nth-child(2) {
+  background-color: #20b486;
+}
+.fbtn a:nth-child(2):hover {
+  background-color: #278f6d;
 }
 
 .tabPengajuanProposal {
@@ -92,6 +103,10 @@
 .tabPengajuanProposal tr th:nth-child(1) {
   background-color: #20b486;
   border-radius: 4px 0 0 0;
+}
+.tabPengajuanProposal tr th:nth-child(8) {
+  background-color: #20b486;
+  border-radius: 0 0 0 0;
 }
 .tabPengajuanProposal tr th:nth-child(9) {
   background-color: #20b486;

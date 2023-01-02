@@ -60,45 +60,6 @@ function HeadDash() {
     }
   };
 
-  const clickhandle = (data) => {
-    // const comClick = data.target;
-    // const dashboard = document.getElementById('dashboard');
-    // const pengajuan = document.getElementById('pengajuan');
-    // const lpj = document.getElementById('lpj');
-    // const spj = document.getElementById('spj');
-    // const arsip = document.getElementById('arsip');
-    // const users = document.getElementById('users');
-    // const activePage = window.location.pathname;
-    // const reset = document.getElementsByClassName('select-f');
-    // console.log(activePage);
-    // [...reset].forEach((data) => {
-    //   data.classList.remove('select-f');
-    // });
-    // if (comClick.id == 'dashboard') {
-    //   navigate('/dashboard');
-    //   dashboard.classList.add('select-f');
-    // }
-    // if (comClick.id == 'pengajuan') {
-    //   // console.log('OK');
-    //   pengajuan.classList.add('select-f');
-    // }
-    // if (comClick.id == 'lpj') {
-    //   // console.log('OK');
-    //   lpj.classList.add('select-f');
-    // }
-    // if (comClick.id == 'spj') {
-    //   // console.log('OK');
-    //   spj.classList.add('select-f');
-    // }
-    // if (comClick.id == 'arsip') {
-    //   // console.log('OK');
-    //   arsip.classList.add('select-f');
-    // }
-    // if (comClick.id == 'users') {
-    //   navigate('/dashboard/users');
-    //   users.classList.add('select-f');
-    // }
-  };
   return (
     <>
       <div className="HeadDash on-burger">
@@ -129,43 +90,43 @@ function HeadDash() {
           <p>{user?.username || ''}</p>
           <div className="sideDash-f sideDash-fgap">
             <a href="/dashboard">
-              <div id="dashboard" className="icon" onClick={clickhandle}>
+              <div id="dashboard" className="icon">
                 <i id="dashboard" class="fa-solid fa-qrcode" />
                 <p id="dashboard">Dashboard</p>
               </div>
             </a>
             <a href="/pengajuan-proposal">
-              <div id="pengajuan" className="icon" onClick={clickhandle}>
+              <div id="pengajuan" className="icon">
                 <i id="pengajuan" class="fa-solid fa-file-circle-plus"></i>
                 <p id="pengajuan">Pengajuan Proposal</p>
               </div>
             </a>
             <a href="/pengajuan-dana">
-              <div id="pengajuan" className="icon" onClick={clickhandle}>
+              <div id="pengajuan" className="icon">
                 <i class="fa-solid fa-dollar-sign"></i>
                 <p id="pengajuan">Pengajuan Dana</p>
               </div>
             </a>
             <a href="/SPJ">
-              <div id="spj" className="icon" onClick={clickhandle}>
+              <div id="spj" className="icon">
                 <i id="spj" class="fa-regular fa-file"></i>
                 <p id="spj">SPJ</p>
               </div>
             </a>
             <a href="/LPJ">
-              <div id="lpj" className="icon " onClick={clickhandle}>
+              <div id="lpj" className="icon ">
                 <i id="lpj" class="fa-regular fa-file-lines"></i>
                 <p id="lpj">LPJ</p>
               </div>
             </a>
             <a href="/arsip">
-              <div id="arsip" className="icon" onClick={clickhandle}>
+              <div id="arsip" className="icon">
                 <i id="arsip" class="fa-solid fa-folder-tree"></i>
                 <p id="arsip">Arsip</p>
               </div>
             </a>
             <a href="/users">
-              <div id="users" className="icon" onClick={clickhandle}>
+              <div id="users" className="icon">
                 <i id="users" class="fa-solid fa-user"></i>
                 <p id="users">Users</p>
               </div>

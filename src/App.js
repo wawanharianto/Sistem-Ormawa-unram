@@ -18,6 +18,7 @@ import SPJ from './pages/Users/SPJ';
 import AddPengajuanDana from './pages/Users/AddPengajuanDana';
 import UpdateUsers from './pages/Users/EditUsers';
 import UpdateProposals from './pages/Users/EditProposal';
+import Arsip from './pages/Users/Arsip';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="pengajuan-dana/add/:uuid" element={<AddPengajuanDana />} />
           <Route path="LPJ" element={<LPJ />} />
           <Route path="SPJ" element={<SPJ />} />
+          <Route path="arsip" element={<Arsip />} />
         </Routes>
       </BrowserRouter>
     </div>

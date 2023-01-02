@@ -185,6 +185,13 @@
 .icon:hover {
   cursor: pointer;
 }
+.sideDash-f a {
+  /* background-color: #6d6d6d; */
+  border-radius: 14px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
 .c-SideDash .select-f {
   background-color: #4dbc9b;
   border-radius: 1rem;
@@ -238,11 +245,9 @@
     width: 10vh;
     animation: fadeInLeft;
     animation-duration: 0.5s;
-    /* margin-left: -1rem; */
   }
   .burger-button {
     display: flex;
-    /* display: none; */
   }
   .on-burger {
     padding-left: 1rem;
