@@ -74,10 +74,8 @@ function HeadDash() {
           <i class="fa-solid fa-circle" />
         </h1>
         <div className="backBeranda">
-          <i class="fa-solid fa-house"></i>
-          <p>Beranda</p>
-
           <a onClick={logout}>
+            <p>Logout</p>
             <i class="fa-solid fa-right-from-bracket"></i>
           </a>
         </div>

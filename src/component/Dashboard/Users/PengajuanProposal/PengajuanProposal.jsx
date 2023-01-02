@@ -26,7 +26,7 @@ function PengajuanProposal() {
   };
 
   const addProposal = async (e) => {
-    e.prevenDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('nama_kegiatan', kegiatan);
     formData.append('nama_organisasi', organisasi);
@@ -38,6 +38,7 @@ function PengajuanProposal() {
     formData.append('nomer_ketum', ketum);
     formData.append('file', file);
     formData.append('status', status);
+    console.log(tanggal);
 
     try {
       await axios.post('http://localhost:3000/proposal/', formData, {
@@ -70,7 +71,7 @@ function PengajuanProposal() {
             <p>Add Proposal</p>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
-          <form onSubmit={addProposal} className="addProposal" action=''>
+          <form onSubmit={addProposal} className="addProposal" action="">
             <hr className="line" />
             <div className="finput">
               <p>Nama Kegiatan</p>
@@ -114,7 +115,7 @@ function PengajuanProposal() {
             </div>
             <div className="finput">
               <p>Tanggal Pelaksanaan</p>
-              <input type="text" placeholder="Tanggal Pelaksanaan" value={tanggal} onChange={(e) => setTanggal(e.target.value)}></input>
+              <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal} onChange={(e) => setTanggal(e.target.value)}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -138,7 +139,7 @@ function PengajuanProposal() {
             </div>
             <div className="finput">
               <p>Proposal</p>
-              <input type="file" name='file' onChange={loadFile}></input>
+              <input type="file" name="file" onChange={loadFile}></input>
             </div>
 
             <div className="finput">
@@ -148,7 +149,7 @@ function PengajuanProposal() {
               </button>
             </div>
             <div className="fbtn-form">
-              <button type='submit' className="Ajukan" onClick={handleClose}>
+              <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-location-arrow"></i>Ajukan
               </button>
               {/* <button type='submit' className="Ajukan">

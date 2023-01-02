@@ -119,13 +119,16 @@
   border: none;
   border-radius: 3px;
 }
-.fstatustable button:nth-child(1) {
+.fstatustable .view {
   background-color: #20b486;
 }
-.fstatustable button:nth-child(2) {
+.fstatustable .view:hover {
+  background-color: #0a4d38;
+}
+.fstatustable .edit {
   background-color: #2752c6;
 }
-.fstatustable button:nth-child(3) {
+.fstatustable .delete {
   background-color: #cc2525;
 }
 .fstatustable button:hover {

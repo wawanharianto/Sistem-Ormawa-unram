@@ -57,12 +57,12 @@ function Proposal_con() {
     }
   };
 
-  const searchData = (e) => {
-    e.preventDefault();
-    setPage(0);
-    setMsg('');
-    setKeyword(query);
-  };
+  // const searchData = (e) => {
+  //   e.preventDefault();
+  //   setPage(0);
+  //   setMsg('');
+  //   setKeyword(query);
+  // };
 
   const handleAddProposal = () => {
     navigate('add');
@@ -98,12 +98,10 @@ function Proposal_con() {
           </div>
           <hr />
           <div className="fproposaltabel">
-            <form onSubmit={searchData}>
-              <div className="fsearch">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
-              </div>
-            </form>
+            <div className="fsearch">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
+            </div>
             <div className="fbtn">
               <a onClick={() => multipleDeleteById()}>
                 <i class="fa-solid fa-trash-can"></i> Delete
@@ -128,48 +126,55 @@ function Proposal_con() {
               </tr>
             </thead>
             <tbody>
-              {proposals.map((proposal, index) => (
-                <tr key={proposal.id}>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={proposal.select}
-                      onChange={(e) => {
-                        let value = e.target.checked;
-                        setProposals(
-                          proposals.map((d) => {
-                            if (d.id == proposal.id) {
-                              d.select = value;
-                            }
-                            return d;
-                          })
-                        );
-                      }}
-                    />{' '}
-                    {index + 1}
-                  </td>
-                  <td>{proposal.nama_kegiatan}</td>
-                  <td>{proposal.nama_organisasi}</td>
-                  <td>{proposal.jumlah_dana}</td>
-                  <td>{proposal.ketua_panitia}</td>
-                  <td>{proposal.nomer_ketum}</td>
-                  <td>{proposal.dana_disetujui}</td>
-                  <td>{proposal.status}</td>
-                  <td>
-                    <div className="fstatustable">
-                      <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
-                        <i class="fa-regular fa-file"></i>
-                      </Link>
-                      <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </Link>
-                      <button className="delete" onClick={() => deleteProposal(proposal.uuid)}>
-                        <i class="fa-solid fa-delete-left"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {proposals
+                .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query))
+                .map((proposal, index) => (
+                  <tr key={proposal.id}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={proposal.select}
+                        onChange={(e) => {
+                          let value = e.target.checked;
+                          setProposals(
+                            proposals.map((d) => {
+                              if (d.id == proposal.id) {
+                                d.select = value;
+                              }
+                              return d;
+                            })
+                          );
+                        }}
+                      />{' '}
+                      {index + 1}
+                    </td>
+                    <td>{proposal.nama_kegiatan}</td>
+                    <td>{proposal.nama_organisasi}</td>
+                    <td>{proposal.jumlah_dana}</td>
+                    <td>{proposal.ketua_panitia}</td>
+                    <td>{proposal.nomer_ketum}</td>
+                    <td>{proposal.dana_disetujui}</td>
+                    <td>{proposal.status}</td>
+                    <td>
+                      <div className="fstatustable">
+                        <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
+                          <button className="view">
+                            <i class="fa-regular fa-file"></i>
+                          </button>
+                        </Link>
+
+                        <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
+                          <button className="edit">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                          </button>
+                        </Link>
+                        <button className="delete" onClick={() => deleteProposal(proposal.uuid)}>
+                          <i class="fa-solid fa-delete-left"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
           <div className="tfooter tfooter1">

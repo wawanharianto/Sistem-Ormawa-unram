@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import './Arsip.css';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
@@ -78,13 +78,13 @@ function Arsipx() {
                 <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
               </div>
             </form>
-            <div className="fbtn">
-              {/* <button>
-                <i class="fa-solid fa-trash-can"></i> Delete
-              </button>
-              <button>
-                <i class="fa-solid fa-plus"></i>Tambah Proposal
-              </button> */}
+            <div className="fexport">
+              <form action="">
+                <input type="date" />
+                <p>To</p>
+                <input type="date" name="" id="" />
+                <button>export</button>
+              </form>
             </div>
           </div>
           <table className="tabPengajuanProposal">
