@@ -14,14 +14,14 @@ function Login() {
 
   useEffect(() => {
     if (user || isSuccess) {
-      navigate("/dashboard");
+      navigate('/dashboard');
     }
     dispatch(reset());
   }, [user, isSuccess, dispatch, navigate]);
 
   const Auth = async (e) => {
     e.preventDefault();
-    dispatch(LoginUser({ username, password }))
+    dispatch(LoginUser({ username, password }));
   };
 
   return (
@@ -32,7 +32,7 @@ function Login() {
           <span>login to Continue</span>
 
           <form onSubmit={Auth} action="">
-            {isError && <p className='has-text-centered'>{message}</p>}
+            {isError && <p className="has-text-centered">{message}</p>}
             <div className="username">
               <i class="fa-solid fa-user"></i>
               <input type="text" name="username" id="" placeholder="Username" value={username} onChange={(e) => setusername(e.target.value)} />
@@ -42,9 +42,7 @@ function Login() {
               <input type="password" name="password" id="" placeholder="Password" value={password} onChange={(e) => setpassword(e.target.value)} />
             </div>
 
-            <button type="submit">
-
-              {isLoading ? "Loading..." : "Login"}</button>
+            <button type="submit">{isLoading ? 'Loading...' : 'Login'}</button>
           </form>
         </div>
 

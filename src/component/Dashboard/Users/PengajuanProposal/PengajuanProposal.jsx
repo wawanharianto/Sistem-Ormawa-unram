@@ -58,7 +58,25 @@ function PengajuanProposal() {
       }
     }
   };
+  const nominalDana = document.getElementsByClassName('dana')[0];
+  nominalDana.addEventListener('keyup', function (e) {
+    nominalDana.value = formatRp(this.value, 'Rp. ');
+  });
+  function formatRp(angka, prefix) {
+    var number_string = angka.replace(/[^,\d]/g, '').toString(),
+      split = number_string.split(','),
+      sisa = split[0].length % 3,
+      rupiah = split[0].substr(0, sisa),
+      ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
+    if (ribuan) {
+      const separator = sisa ? '.' : '';
+      rupiah += separator + ribuan.join('.');
+    }
+
+    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+    return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+  }
   return (
     <>
       <div className="addPropalForm-container">
@@ -91,7 +109,7 @@ function PengajuanProposal() {
             </div>
             <div className="finput">
               <p>Jumlah Dana yang Diajukan</p>
-              <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana} onChange={(e) => setDana(e.target.value)}></input>
+              <input className="dana" type="text" placeholder="Jumlah Dana yang Diajukan" value={dana} onChange={(e) => setDana(e.target.value)}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
@@ -107,7 +125,7 @@ function PengajuanProposal() {
             </div>
             <div className="finput">
               <p>Nomor Hp</p>
-              <input type="text" placeholder="Nomor Hp" value={nohp} onChange={(e) => setNohp(e.target.value)}></input>
+              <input type="number" placeholder="Nomor Hp" value={nohp} onChange={(e) => setNohp(e.target.value)}></input>
             </div>
             <div className="finput">
               <p className="hide">....</p>
