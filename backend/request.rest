@@ -40,8 +40,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "Febrian",
-  "password": "12345"
+  "username": "briand",
+  "password": "1"
 }
 
 ### LOGOUT

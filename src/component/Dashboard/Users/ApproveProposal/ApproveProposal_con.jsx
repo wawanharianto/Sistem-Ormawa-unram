@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ApproveProposal_con.css';
 import axios from 'axios';
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function ApproveProposal_con() {
   const [kegiatan, setKegiatan] = useState('');
@@ -12,8 +12,10 @@ function ApproveProposal_con() {
   const [tanggal, setTanggal] = useState('');
   const [tempat, setTempat] = useState('');
   const [ketum, setKetum] = useState('');
-  // const [file, setFile] = useState('');
-  // const [status, setStatus] = useState('Proposal di ajukan');
+  const [url, setUrl] = useState('');
+  const [namafile, setNamaFile] = useState('');
+  const [ketwd3, setKetWd3] = useState('');
+  const [status, setStatus] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
   const { uuid } = useParams();
@@ -30,6 +32,8 @@ function ApproveProposal_con() {
         setTanggal(response.data.tanggal_pelaksanaan);
         setTempat(response.data.tempat_pelaksanaan);
         setKetum(response.data.nomer_ketum);
+        setUrl(response.data.url_proposal);
+        setNamaFile(response.data.proposal);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -38,6 +42,29 @@ function ApproveProposal_con() {
     };
     getProposalById();
   }, [uuid]);
+
+  const updateKetWD3 = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('status', status);
+    formData.append('keterangan_wd3', ketwd3);
+    try {
+      await axios.patch(`http://localhost:3000/updateketeranganwd3/${uuid}`, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        }
+      });
+      setMsg('success update data');
+      console.log(msg);
+      if (msg == 'success update data') {
+        console.log('OK');
+      }
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  }
 
   // const handleClose = () => {
   //   const closepop = document.getElementsByClassName('popUp')[0];
@@ -56,7 +83,7 @@ function ApproveProposal_con() {
             <p>Details Pengajuan Proposal</p>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
-          <form className="addProposal read-only" action="">
+          <form onSubmit={updateKetWD3} className="addProposal read-only" action="">
             <hr className="line" />
             <div className="finput">
               <p>Nama Kegiatan</p>
@@ -125,11 +152,11 @@ function ApproveProposal_con() {
             <div className="finput">
               <p>Download Proposal</p>
               <div className="load-file">
-                <button>
+                <a href={url}>
                   {' '}
                   <i class="fa-solid fa-file-arrow-down"></i>Download
-                </button>
-                <p>nama file</p>
+                </a>
+                <p>{namafile}</p>
               </div>
             </div>
 
@@ -141,16 +168,16 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Keterangan Oleh WD3</p>
-              <input className="textbox" type="text" placeholder="silahkan isi ..." />
+              <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
             </div>
             <div className="fbtn-form">
-              <button type="submit" className="Ajukan">
+              <button onClick={()=> setStatus('Proposal di setujui')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
-              <button type="submit" className="Ajukan">
+              {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-              <button type="submit" className="Ajukan">
+              </button> */}
+              <button onClick={()=> setStatus('proposal di tolak')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-xmark"></i>Tolak
               </button>
             </div>
