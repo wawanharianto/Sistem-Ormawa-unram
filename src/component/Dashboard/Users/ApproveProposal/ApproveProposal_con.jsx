@@ -46,8 +46,8 @@ function ApproveProposal_con() {
   const updateKetWD3 = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append('keterangan_wd3', ketwd3);
     formData.append('status', status);
-    formData.append('keteranganwd3', ketwd3);
     try {
       await axios.patch(`http://localhost:3000/updateketeranganwd3/${uuid}`, formData, {
         headers: {
@@ -64,12 +64,14 @@ function ApproveProposal_con() {
         setMsg(error.response.data.msg);
       }
     }
+    console.log(ketwd3);
+    handleClose();
   };
 
-  // const handleClose = () => {
-  //   const closepop = document.getElementsByClassName('popUp')[0];
-  //   closepop.classList.toggle('popshow');
-  // };
+  const handleClose = () => {
+    const closepop = document.getElementsByClassName('popUp')[0];
+    closepop.classList.toggle('popshow');
+  };
 
   return (
     <>
@@ -163,7 +165,7 @@ function ApproveProposal_con() {
             <div className="finput">
               <p>Status</p>
               <button disabled className="condition-acc">
-                <i class="fa-solid fa-circle-info"></i> Proposal di ajukan
+                <i class="fa-solid fa-circle-info"></i> {status}
               </button>
             </div>
             <div className="finput">
@@ -177,7 +179,7 @@ function ApproveProposal_con() {
               {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button> */}
-              <button onClick={() => setStatus('proposal di tolak')} type="submit" className="Ajukan">
+              <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-xmark"></i>Tolak
               </button>
             </div>
