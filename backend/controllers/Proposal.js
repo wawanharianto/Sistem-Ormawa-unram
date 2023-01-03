@@ -365,11 +365,11 @@ export const updateKeteranganWd3 = async (req, res) => {
 
     if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
-    const { keteranganwd3, status } = req.body;
+    const { keterangan_wd3, status } = req.body;
 
     try {
         await Proposal.update({
-            keterangan_wd3: keteranganwd3,
+            keterangan_wd3: keterangan_wd3,
             status: status
         }, {
             where: {
