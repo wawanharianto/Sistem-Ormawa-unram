@@ -58,25 +58,7 @@ function PengajuanProposal() {
       }
     }
   };
-  // const nominalDana = document.getElementsByClassName('dana')[0];
-  // nominalDana.addEventListener('keyup', function (e) {
-  //   nominalDana.value = formatRp(this.value, 'Rp. ');
-  // });
-  // function formatRp(angka, prefix) {
-  //   var number_string = angka.replace(/[^,\d]/g, '').toString(),
-  //     split = number_string.split(','),
-  //     sisa = split[0].length % 3,
-  //     rupiah = split[0].substr(0, sisa),
-  //     ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-  //   if (ribuan) {
-  //     const separator = sisa ? '.' : '';
-  //     rupiah += separator + ribuan.join('.');
-  //   }
-
-  //   rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-  //   return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
-  // }
   return (
     <>
       <div className="addPropalForm-container">
@@ -170,12 +152,6 @@ function PengajuanProposal() {
               <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-location-arrow"></i>Ajukan
               </button>
-              {/* <button type='submit' className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-              <button type='submit' className="Ajukan">
-                <i class="fa-solid fa-xmark"></i>Cancel
-              </button> */}
             </div>
           </form>
         </div>
@@ -190,4 +166,24 @@ function PengajuanProposal() {
   );
 }
 
+// //Rupiah format
+// const nominalDana = document.getElementsByClassName('dana')[0];
+// nominalDana.addEventListener('keyup', (e) => {
+//   nominalDana.value = formatRp(this.value, 'Rp. ');
+// });
+// function formatRp(angka, prefix) {
+//   var number_string = angka.replace(/[^,\d]/g, '').toString(),
+//     split = number_string.split(','),
+//     sisa = split[0].length % 3,
+//     rupiah = split[0].substr(0, sisa),
+//     ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+//   if (ribuan) {
+//     const separator = sisa ? '.' : '';
+//     rupiah += separator + ribuan.join('.');
+//   }
+
+//   rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+//   return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+// }
 export default PengajuanProposal;

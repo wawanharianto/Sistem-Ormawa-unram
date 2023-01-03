@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ApproveProposal_con.css';
 import axios from 'axios';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 function ApproveProposal_con() {
   const [kegiatan, setKegiatan] = useState('');
@@ -47,12 +47,12 @@ function ApproveProposal_con() {
     e.preventDefault();
     const formData = new FormData();
     formData.append('status', status);
-    formData.append('keterangan_wd3', ketwd3);
+    formData.append('keteranganwd3', ketwd3);
     try {
       await axios.patch(`http://localhost:3000/updateketeranganwd3/${uuid}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
-        }
+        },
       });
       setMsg('success update data');
       console.log(msg);
@@ -64,7 +64,7 @@ function ApproveProposal_con() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   // const handleClose = () => {
   //   const closepop = document.getElementsByClassName('popUp')[0];
@@ -171,13 +171,13 @@ function ApproveProposal_con() {
               <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
             </div>
             <div className="fbtn-form">
-              <button onClick={()=> setStatus('Proposal di setujui')} type="submit" className="Ajukan">
+              <button onClick={() => setStatus('Proposal di setujui')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
               {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button> */}
-              <button onClick={()=> setStatus('proposal di tolak')} type="submit" className="Ajukan">
+              <button onClick={() => setStatus('proposal di tolak')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-xmark"></i>Tolak
               </button>
             </div>

@@ -44,6 +44,7 @@ function Proposal_con() {
   };
 
   const deleteProposal = async (proposalId) => {
+    console.log(proposalId);
     await axios.delete(`http://localhost:3000/proposal/${proposalId}`);
     getProposal();
   };
@@ -168,9 +169,42 @@ function Proposal_con() {
                             <i class="fa-regular fa-pen-to-square"></i>
                           </button>
                         </Link>
-                        <button className="delete" onClick={() => deleteProposal(proposal.uuid)}>
+                        <button
+                          className="delete"
+                          onClick={() => {
+                            console.log(proposal.uuid);
+                            const popupDelete = document.getElementById(proposal.uuid);
+                            popupDelete.classList.toggle('showoff');
+                          }}
+                        >
                           <i class="fa-solid fa-delete-left"></i>
                         </button>
+                      </div>
+                      {/* popup */}
+                      <div id={proposal.uuid} className="popUp-Delete showoff">
+                        <div className="box">
+                          <p>apakah anda mau menghapus ini ?</p>
+                          <div className="g-btn">
+                            <button
+                              className="setuju"
+                              onClick={() => {
+                                console.log(proposal.uuid);
+                                deleteProposal(proposal.uuid);
+                              }}
+                            >
+                              OK
+                            </button>
+                            <button
+                              className="cancel"
+                              onClick={() => {
+                                const popupDelete = document.getElementById(proposal.uuid);
+                                popupDelete.classList.toggle('showoff');
+                              }}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </td>
                   </tr>

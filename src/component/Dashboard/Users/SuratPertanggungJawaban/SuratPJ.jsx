@@ -22,20 +22,22 @@ function SuratPJ() {
 
   const getProposal = async () => {
     const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
-    setProposals(response.data.result.map(d => {
-      return {
-        select: false,
-        uuid: d.uuid,
-        id: d.id,
-        nama_kegiatan: d.nama_kegiatan,
-        nama_organisasi: d.nama_organisasi,
-        jumlah_dana: d.jumlah_dana,
-        ketua_panitia: d.ketua_panitia,
-        nomer_ketum: d.nomer_ketum,
-        dana_disetujui: d.dana_disetujui,
-        status: d.status
-      };
-    }));
+    setProposals(
+      response.data.result.map((d) => {
+        return {
+          select: false,
+          uuid: d.uuid,
+          id: d.id,
+          nama_kegiatan: d.nama_kegiatan,
+          nama_organisasi: d.nama_organisasi,
+          jumlah_dana: d.jumlah_dana,
+          ketua_panitia: d.ketua_panitia,
+          nomer_ketum: d.nomer_ketum,
+          dana_disetujui: d.dana_disetujui,
+          status: d.status,
+        };
+      })
+    );
     setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
@@ -56,7 +58,7 @@ function SuratPJ() {
     setMsg('');
     setKeyword(query);
   };
-  
+
   return (
     <>
       <div className="Proposal_container">
@@ -73,7 +75,7 @@ function SuratPJ() {
             <form onSubmit={searchData}>
               <div className="fsearch">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)}/>
+                <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
               </div>
             </form>
             <div className="fbtn">
@@ -102,9 +104,7 @@ function SuratPJ() {
             <tbody>
               {proposals.map((proposal, index) => (
                 <tr key={proposal.id}>
-                  <td>
-                    {index + 1}
-                  </td>
+                  <td>{index + 1}</td>
                   <td>{proposal.nama_kegiatan}</td>
                   <td>{proposal.nama_organisasi}</td>
                   <td>{proposal.jumlah_dana}</td>
@@ -116,12 +116,6 @@ function SuratPJ() {
                     <div className="fstatustable">
                       <button className="view">
                         <i class="fa-regular fa-file"></i>
-                      </button>
-                      <Link to={``} className="sunting">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </Link>
-                      <button className="delete">
-                        <i class="fa-solid fa-delete-left"></i>
                       </button>
                     </div>
                   </td>

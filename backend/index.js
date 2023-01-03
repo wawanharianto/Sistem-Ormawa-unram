@@ -23,7 +23,7 @@ const store = new sessionStore({
 try {
   await db.authenticate();
   console.log('Database Connected...');
-  // await db.sync();
+  await db.sync();
 } catch (error) {
   console.error(error);
 }
@@ -56,6 +56,6 @@ app.use(Authroute);
 app.use(Spjroute);
 app.use(Lpjroute);
 
-// store.sync();
+store.sync();
 
 app.listen(3000, () => console.log('server running at port 3000'));

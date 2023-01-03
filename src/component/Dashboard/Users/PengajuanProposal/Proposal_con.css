@@ -112,19 +112,14 @@
   background-color: #20b486;
   border-radius: 0 4px 0 0;
 }
-.fstatustable button {
+.fstatustable {
   color: white;
-  padding: 4px;
+  padding: 6px;
   margin: 2px;
   border: none;
   border-radius: 3px;
 }
-.fstatustable .view {
-  background-color: #20b486;
-}
-.fstatustable .view:hover {
-  background-color: #0a4d38;
-}
+
 .fstatustable .edit {
   background-color: #2752c6;
 }
@@ -162,4 +157,42 @@
   .hProposal {
     margin: 27vh 0 0 0;
   }
+}
+
+/* css popup delete */
+.popUp-Delete {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(170, 222, 197, 0.2);
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.popUp-Delete .box {
+  background-color: #8ad6b4;
+  padding: 20px;
+  border-radius: 4px;
+}
+.popUp-Delete .g-btn {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  margin-top: 20px;
+}
+.g-btn button {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.g-btn button:hover {
+  background-color: #20b486;
+}
+.showoff {
+  display: none;
 }

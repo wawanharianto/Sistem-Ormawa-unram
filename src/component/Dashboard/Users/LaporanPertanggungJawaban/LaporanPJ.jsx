@@ -22,20 +22,22 @@ function PengajuanDana_con() {
 
   const getProposal = async () => {
     const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
-    setProposals(response.data.result.map(d => {
-      return {
-        select: false,
-        uuid: d.uuid,
-        id: d.id,
-        nama_kegiatan: d.nama_kegiatan,
-        nama_organisasi: d.nama_organisasi,
-        jumlah_dana: d.jumlah_dana,
-        ketua_panitia: d.ketua_panitia,
-        nomer_ketum: d.nomer_ketum,
-        dana_disetujui: d.dana_disetujui,
-        status: d.status
-      };
-    }));
+    setProposals(
+      response.data.result.map((d) => {
+        return {
+          select: false,
+          uuid: d.uuid,
+          id: d.id,
+          nama_kegiatan: d.nama_kegiatan,
+          nama_organisasi: d.nama_organisasi,
+          jumlah_dana: d.jumlah_dana,
+          ketua_panitia: d.ketua_panitia,
+          nomer_ketum: d.nomer_ketum,
+          dana_disetujui: d.dana_disetujui,
+          status: d.status,
+        };
+      })
+    );
     setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
@@ -102,9 +104,7 @@ function PengajuanDana_con() {
             <tbody>
               {proposals.map((proposal, index) => (
                 <tr key={proposal.id}>
-                  <td>
-                    {index + 1}
-                  </td>
+                  <td>{index + 1}</td>
                   <td>{proposal.nama_kegiatan}</td>
                   <td>{proposal.nama_organisasi}</td>
                   <td>{proposal.jumlah_dana}</td>
@@ -117,12 +117,12 @@ function PengajuanDana_con() {
                       <button className="view">
                         <i class="fa-regular fa-file"></i>
                       </button>
-                      <Link to={``} className="sunting">
+                      {/* <Link to={``} className="sunting">
                         <i class="fa-regular fa-pen-to-square"></i>
                       </Link>
                       <button className="delete">
                         <i class="fa-solid fa-delete-left"></i>
-                      </button>
+                      </button> */}
                     </div>
                   </td>
                 </tr>
