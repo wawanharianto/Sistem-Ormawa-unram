@@ -15,9 +15,12 @@ export const ExportToExcel = async (req, res) => {
     }],
     where: {
       tanggal_pelaksanaan: {
-        [Op.between] : [new Date(req.body.startdate),new Date(req.body.enddate)],
+        [Op.between] : [new Date(req.query.startdate),new Date(req.query.enddate)],
       },
-    }
+    },
+    order: [
+      ['tanggal_pelaksanaan', 'ASC']
+  ]
   });
 
   if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
@@ -53,7 +56,7 @@ export const ExportToExcel = async (req, res) => {
     ]], { origin: "A1" });
 
     XLSX.utils.sheet_add_aoa(workSheet, [[
-      { v: `BULAN ${proposal.tanggal_pelaksanaan}`, t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: `DARI TANGGAL ${req.query.startdate} SAMPAI ${req.query.enddate}`, t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
 
     ]], { origin: "A2" });
 

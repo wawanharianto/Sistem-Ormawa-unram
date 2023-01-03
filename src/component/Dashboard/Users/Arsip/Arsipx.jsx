@@ -68,7 +68,7 @@ function Arsipx() {
     formData.append('startdate', startdate);
     formData.append('enddate', enddate);
     try {
-      await axios.get(`http://localhost:3000/export`, formData, 
+      await axios.get(`http://localhost:3000/export?startdate=${startdate}&enddate=${enddate}`, formData, 
       {
         headers: {
           'Content-type': 'multipart/form-data',
@@ -96,6 +96,7 @@ function Arsipx() {
           <div className="headtproposal">
             <h3>Arsip dokumen</h3>
             <i class="fa-solid fa-chevron-down"></i>
+            {/* <button onClick={Export}>export</button> */}
           </div>
           <hr />
           <div className="fproposaltabel">
