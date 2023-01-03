@@ -12,6 +12,8 @@ function Arsipx() {
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
   const [keyword, setKeyword] = useState('');
+  const [startdate, setStartdate] = useState('');
+  const [enddate, setEnddate] = useState('');
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
@@ -35,6 +37,7 @@ function Arsipx() {
           nomer_ketum: d.nomer_ketum,
           dana_disetujui: d.dana_disetujui,
           status: d.status,
+          createdAt: d.createdAt
         };
       })
     );
@@ -59,6 +62,30 @@ function Arsipx() {
     setKeyword(query);
   };
 
+  const Export = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('startdate', startdate);
+    formData.append('enddate', enddate);
+    try {
+      await axios.get(`http://localhost:3000/export`, formData, 
+      {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        }
+      })
+      setMsg('success export data');
+      console.log(msg);
+      if (msg == 'success export data') {
+        console.log('OK');
+      }
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  }
+
   return (
     <>
       <div className="Proposal_container">
@@ -80,10 +107,10 @@ function Arsipx() {
             </form>
             <div className="fexport">
               <form action="">
-                <input type="date" />
+                <input type="date"  value={startdate} onChange={(e)=>setStartdate(e.target.value)} />
                 <p>To</p>
-                <input type="date" name="" id="" />
-                <button>export</button>
+                <input type="date" name="" id="" value={enddate} onChange={(e)=> setEnddate(e.target.value)} />
+                <button onClick={Export}>export</button>
               </form>
             </div>
           </div>

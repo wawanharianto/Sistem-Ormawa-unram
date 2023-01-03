@@ -13,9 +13,11 @@ export const ExportToExcel = async (req, res) => {
       model: Users,
       attributes: ['username', 'email']
     }],
-    // where: {
-    //   createAt: [req.body.tanggal1 , ],
-    // }
+    where: {
+      tanggal_pelaksanaan: {
+        [Op.between] : [new Date(req.body.startdate),new Date(req.body.enddate)],
+      },
+    }
   });
 
   if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
