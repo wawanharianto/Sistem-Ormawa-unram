@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Proposal_con() {
   const [proposals, setProposals] = useState([]);
@@ -11,13 +12,16 @@ function Proposal_con() {
   const [limit, setLimit] = useState(10);
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
+  const [Statuscount, setStatuscount] = useState(0);
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     getProposal();
+    console.log(Statuscount);
   }, [page, keyword]);
 
   const getProposal = async () => {
@@ -41,6 +45,7 @@ function Proposal_con() {
     setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
+    setStatuscount(response.data.totalStatus);
   };
 
   const deleteProposal = async (proposalId) => {
@@ -107,9 +112,10 @@ function Proposal_con() {
               <a onClick={() => multipleDeleteById()}>
                 <i class="fa-solid fa-trash-can"></i> Delete
               </a>
-              <a onClick={handleAddProposal}>
+              { user && user.role == "mahasiswa" && Statuscount <= 2 && (
+                <a onClick={handleAddProposal}>
                 <i class="fa-solid fa-plus"></i>Tambah Proposal
-              </a>
+              </a>)}
             </div>
           </div>
           <table className="tabPengajuanProposal">

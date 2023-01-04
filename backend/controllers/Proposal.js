@@ -11,6 +11,22 @@ export const getProposal = async (req, res) => {
     const search = req.query.search || "";
     const offset = limit * page;
     try {
+        let totalStatus;
+        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
+            totalStatus = await Proposal.count({
+                where: {
+                    status: "Selesai"
+                }
+            })
+        } else {
+            totalStatus = await Proposal.count({
+                where: {
+                    userId: req.userId,
+                    status: "Selesai"
+                }
+            })
+        }
+        //GET TOTAL ROWS
         let totalRows;
         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
             totalRows = await Proposal.count({
@@ -101,6 +117,7 @@ export const getProposal = async (req, res) => {
             limit: limit,
             totalRows: totalRows,
             totalPage: totalPage,
+            totalStatus: totalStatus
         });
     } catch (error) {
         res.status(500).json({ msg: error.message });
