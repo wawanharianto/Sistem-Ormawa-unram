@@ -187,10 +187,9 @@ function Proposal_con() {
                           <div className="g-btn">
                             <button
                               className="setuju"
-                              onClick={() => {
-                                console.log(proposal.uuid);
-                                deleteProposal(proposal.uuid);
-                              }}
+                              onClick={() =>
+                                deleteProposal(proposal.uuid)
+                              }
                             >
                               OK
                             </button>
