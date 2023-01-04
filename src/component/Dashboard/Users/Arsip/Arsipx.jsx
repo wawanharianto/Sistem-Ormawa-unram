@@ -37,7 +37,7 @@ function Arsipx() {
           nomer_ketum: d.nomer_ketum,
           dana_disetujui: d.dana_disetujui,
           status: d.status,
-          createdAt: d.createdAt
+          createdAt: d.createdAt,
         };
       })
     );
@@ -68,12 +68,11 @@ function Arsipx() {
     formData.append('startdate', startdate);
     formData.append('enddate', enddate);
     try {
-      await axios.get(`http://localhost:3000/export?startdate=${startdate}&enddate=${enddate}`, formData, 
-      {
+      await axios.get(`http://localhost:3000/export?startdate=${startdate}&enddate=${enddate}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
-        }
-      })
+        },
+      });
       setMsg('success export data');
       console.log(msg);
       if (msg == 'success export data') {
@@ -84,7 +83,7 @@ function Arsipx() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   return (
     <>
@@ -108,9 +107,9 @@ function Arsipx() {
             </form>
             <div className="fexport">
               <form action="">
-                <input type="date"  value={startdate} onChange={(e)=>setStartdate(e.target.value)} />
+                <input type="date" value={startdate} onChange={(e) => setStartdate(e.target.value)} />
                 <p>To</p>
-                <input type="date" name="" id="" value={enddate} onChange={(e)=> setEnddate(e.target.value)} />
+                <input type="date" name="" id="" value={enddate} onChange={(e) => setEnddate(e.target.value)} />
                 <button onClick={Export}>export</button>
               </form>
             </div>
@@ -143,13 +142,7 @@ function Arsipx() {
                   <td>
                     <div className="fstatustable">
                       <button className="view">
-                        <i class="fa-regular fa-file"></i>
-                      </button>
-                      <Link to={``} className="sunting">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      </Link>
-                      <button className="delete">
-                        <i class="fa-solid fa-delete-left"></i>
+                        <i class="fa-solid fa-file-export"></i>
                       </button>
                     </div>
                   </td>

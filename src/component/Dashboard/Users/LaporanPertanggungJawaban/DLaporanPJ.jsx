@@ -1,4 +1,5 @@
 import React from 'react';
+import './DLaporanPJ.css';
 
 function DLaporanPJ() {
   return (
@@ -150,17 +151,17 @@ function DLaporanPJ() {
             <p></p>
             <p className="holder-finput">Keterangan</p>
           </div>
-          <div className="btn-komfirm">
-            <button type="submit" className="Ajukan">
+          <div className="btn-komfirm-lpj">
+            <button type="submit" className="setuju">
               <i class="fa-solid fa-check"></i>Setuju
             </button>
-            <button type="submit" className="Ajukan">
-              <i class="fa-solid fa-check"></i>Revisi
+            <button type="submit" className="revisi">
+              <i class="fa-solid fa-pen"></i>Revisi
             </button>
-            <button type="submit" className="Ajukan">
-              <i class="fa-solid fa-check"></i>Tolak
+            <button type="submit" className="tolak">
+              <i class="fa-solid fa-xmark"></i>Tolak
             </button>
-            <button type="submit" className="Ajukan">
+            <button type="submit" className="edit">
               <i class="fa-solid fa-floppy-disk"></i>Edit
             </button>
           </div>
