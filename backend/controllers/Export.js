@@ -86,7 +86,7 @@ export const ExportToExcel = async (req, res) => {
 
     workSheet["!merges"] = merge;
 
-    XLSX.writeFile(workBook,"DATA EXPORT.xlsx", { compression: true });
+    XLSX.writeFile(workBook,`DATA EXPORT ${req.query.startdate} sampai ${req.query.enddate}.xlsx`, { compression: true });
 
     res.status(200).json({ msg: "Export Data successfuly" });
   } catch (error) {
