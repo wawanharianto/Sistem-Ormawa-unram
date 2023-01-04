@@ -10,21 +10,42 @@ export const getProposal = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const search = req.query.search || "";
     const offset = limit * page;
-    const totalRows = await Proposal.count({
-        [Op.or]: [{
-            nama_kegiatan: {
-                [Op.like]: '%' + search + '%'
-            }
-        }, {
-            nama_organisasi: {
-                [Op.like]: '%' + search + '%'
-            }
-        }]
-    });
-    const totalPage = Math.ceil(totalRows / limit);
     try {
+        let totalRows;
+        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
+            totalRows = await Proposal.count({
+                [Op.or]: [{
+                    nama_kegiatan: {
+                        [Op.like]: '%' + search + '%'
+                    }
+                }, {
+                    nama_organisasi: {
+                        [Op.like]: '%' + search + '%'
+                    }
+                }]
+            });
+
+        } else {
+            totalRows = await Proposal.count({
+                where: {
+                    userId: req.userId,
+                    [Op.or]: [{
+                        nama_kegiatan: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }, {
+                        nama_organisasi: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }]
+                }
+            });
+        }
+        const totalPage = Math.ceil(totalRows / limit);
+
+        //GET DATA
         let response;
-        if (req.role === "admin" || req.role === "WD3") {
+        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
             response = await Proposal.findAll({
                 attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
                 where: {
@@ -110,7 +131,7 @@ export const getProposalbyId = async (req, res) => {
         });
         if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
         let response;
-        if (req.role === "admin" || req.role === "WD3") {
+        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
             response = await Proposal.findOne({
                 attributes: ['uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'proposal', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
                 where: {
@@ -211,7 +232,7 @@ export const updateProposal = async (req, res) => {
     const url = `${req.protocol}://${req.get("host")}/proposal/${fileName}`;
 
     try {
-        if (req.role === "admin") {
+        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
             await Proposal.update({
                 nama_kegiatan: nama_kegiatan,
                 nama_organisasi: nama_organisasi,
@@ -439,7 +460,7 @@ export const updateRevisi = async (req, res) => {
     const url = `${req.protocol}://${req.get("host")}/proposal/${fileName}`;
 
     try {
-        if (req.role === "admin") {
+        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
             await Proposal.update({
                 proposal: fileName,
                 url_proposal: url
