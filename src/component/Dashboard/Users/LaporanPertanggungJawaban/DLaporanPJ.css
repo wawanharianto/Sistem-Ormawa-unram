@@ -1,0 +1,24 @@
+.btn-komfirm-lpj {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  gap: 10px;
+}
+.btn-komfirm-lpj button {
+  padding: 10px 16px;
+  border: none;
+  color: white;
+  border-radius: 4px;
+}
+.btn-komfirm-lpj .setuju {
+  background-color: #4dbc9b;
+}
+.btn-komfirm-lpj .revisi {
+  background-color: #fed700;
+}
+.btn-komfirm-lpj .tolak {
+  background-color: #f7084c;
+}
+.btn-komfirm-lpj .edit {
+  background-color: #004fe3;
+}
