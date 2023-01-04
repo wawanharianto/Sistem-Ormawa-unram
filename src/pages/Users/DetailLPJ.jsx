@@ -1,7 +1,6 @@
 import React from 'react';
-import DLaporanPJ from '../../component/Dashboard/Users/LaporanPertanggungJawaban/DLaporanPJ';
 import LayoutUser from './LayoutUser';
-
+import DLaporanPJ from '../../component/Dashboard/Users/LaporanPertanggungJawaban/DLaporanPJ';
 function DetailLPJ() {
   return (
     <LayoutUser>

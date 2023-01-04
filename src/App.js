@@ -19,6 +19,7 @@ import AddPengajuanDana from './pages/Users/AddPengajuanDana';
 import UpdateUsers from './pages/Users/EditUsers';
 import UpdateProposals from './pages/Users/EditProposal';
 import Arsip from './pages/Users/Arsip';
+import DetailSPJ from './pages/Users/DetailSPJ';
 import DetailLPJ from './pages/Users/DetailLPJ';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="LPJ/details" element={<DetailLPJ />} />
 
           <Route path="SPJ" element={<SPJ />} />
+          <Route path="SPJ/details" element={<DetailSPJ />} />
           <Route path="arsip" element={<Arsip />} />
         </Routes>
       </BrowserRouter>

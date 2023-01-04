@@ -1,4 +1,5 @@
 import React from 'react';
+import './DSuratPJ.css';
 
 function DSuratPJ() {
   return (
@@ -80,7 +81,7 @@ function DSuratPJ() {
               <p className="kosong">Nomor Ketua Umum</p>
             </div>
             <div className="finput">
-              <p>Upload Laporan Pertanggung Jawaban</p>
+              <p>Upload Berkas SPJ</p>
               <div className="file-up">
                 <button>
                   <i class="fa-solid fa-file-arrow-up"></i>Choose file
@@ -99,7 +100,7 @@ function DSuratPJ() {
               </div>
             </div>
             <div className="finput">
-              <p>Laporan Pertanggung Jawaban</p>
+              <p>Berkas File SPJ</p>
               <div className="file-BSPJ">
                 <button>
                   <i class="fa-solid fa-download"></i>Download File
@@ -108,7 +109,7 @@ function DSuratPJ() {
               </div>
             </div>
             <div className="finput">
-              <p>Revisi LPJ Dari bagian akademik</p>
+              <p>Revisi SPJ Dari bagian keuangan</p>
               <div className="file-BSPJ">
                 <button>
                   <i class="fa-solid fa-download"></i>Download File
@@ -155,7 +156,15 @@ function DSuratPJ() {
             <p></p>
             <p className="holder-finput">Keterangan</p>
           </div>
-
+          <div className="finput">
+            <p>Revisi Revisi Berkas file SPJ</p>
+            <div className="file-BSPJ">
+              <button>
+                <i class="fa-solid fa-download"></i>Download File
+              </button>
+              <p className="text">nama file .pdf</p>
+            </div>
+          </div>
           <div className="btn-komfirm-lpj">
             <button type="submit" className="setuju">
               <i class="fa-solid fa-check"></i>Setuju

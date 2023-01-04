@@ -1,0 +1,68 @@
+.btn-komfirm-lpj {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  gap: 10px;
+}
+.btn-komfirm-lpj button {
+  padding: 10px 16px;
+  border: none;
+  color: white;
+  border-radius: 4px;
+}
+.btn-komfirm-lpj .setuju {
+  background-color: #4dbc9b;
+}
+.btn-komfirm-lpj .revisi {
+  background-color: #fed700;
+}
+.btn-komfirm-lpj .tolak {
+  background-color: #f7084c;
+}
+.btn-komfirm-lpj .edit {
+  background-color: #004fe3;
+}
+
+.file-up {
+  background-color: #ebeded;
+  padding: 10px;
+  display: flex;
+  justify-content: left;
+  margin-left: 1rem;
+  border-radius: 8px;
+}
+.file-up button {
+  background-color: #4dbc9b;
+  color: white;
+}
+.file-up p {
+  text-align: left;
+  margin-left: 4px;
+}
+.status {
+  display: flex;
+}
+.status button {
+  font-size: 16px;
+  width: 200px;
+  box-sizing: border-box;
+}
+.finput .status button {
+  background-color: #4dbc9b;
+}
+.finput .status .input-status {
+  width: 40%;
+}
+
+.finput .file-BSPJ {
+  background-color: #ebeded;
+  display: flex;
+  padding: 2px 2px;
+  margin-left: 10px;
+  border-radius: 8px;
+}
+
+.file-BSPJ button {
+  background-color: #4dbc9b;
+  color: white;
+}
