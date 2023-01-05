@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './PengajuanProposal.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function PengajuanProposal() {
   const [kegiatan, setKegiatan] = useState('');
@@ -12,8 +13,22 @@ function PengajuanProposal() {
   const [tempat, setTempat] = useState('');
   const [ketum, setKetum] = useState('');
   const [file, setFile] = useState('');
+  const [Statuscount, setStatuscount] = useState(0);
   const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    getProposal();
+    if (Statuscount >= 2) {
+      navigate('/dashboard');
+    }
+  }, [Statuscount])
+
+  const getProposal = async () => {
+    const response  = await axios.get(`http://localhost:3000/proposal?search_query=`);
+    setStatuscount(response.data.totalStatus);
+  }
 
   const loadFile = (e) => {
     const proposal = e.target.files[0];

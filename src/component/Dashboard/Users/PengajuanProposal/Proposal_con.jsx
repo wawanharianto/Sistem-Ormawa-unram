@@ -21,7 +21,6 @@ function Proposal_con() {
 
   useEffect(() => {
     getProposal();
-    console.log(Statuscount);
   }, [page, keyword]);
 
   const getProposal = async () => {
@@ -112,7 +111,16 @@ function Proposal_con() {
               <button onClick={() => multipleDeleteById()}>
                 <i class="fa-solid fa-trash-can"></i> Delete
               </button>
-              {user && user.role == 'mahasiswa' && Statuscount <= 2 && (
+
+              {Statuscount >= 2 ? (
+                ''
+              ) : (
+                <a onClick={handleAddProposal}>
+                  <i class="fa-solid fa-plus"></i>Tambah Proposal
+                </a>
+              )}
+
+              {user && user.role != 'mahasiswa' && (
                 <a onClick={handleAddProposal}>
                   <i class="fa-solid fa-plus"></i>Tambah Proposal
                 </a>
