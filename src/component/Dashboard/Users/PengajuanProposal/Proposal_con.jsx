@@ -136,7 +136,7 @@ function Proposal_con() {
             </thead>
             <tbody>
               {proposals
-                .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query))
+                .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
                 .map((proposal, index) => (
                   <tr key={proposal.id}>
                     <td>

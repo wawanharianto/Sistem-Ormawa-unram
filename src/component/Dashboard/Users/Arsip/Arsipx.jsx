@@ -106,18 +106,18 @@ function Arsipx() {
               </div>
             </form>
             <div className="item-set">
-            <select
-              className="role"
-              value={sort}
-              onChange={(e) => {
-                setSort(e.target.value);
-              }}
-            >
-              <option>-- Sort By --</option>
-              <option value="ASC">Tanggal ASC</option>
-              <option value="DESC">Tanggal DESC</option>
-            </select>
-          </div>
+              <select
+                className="role"
+                value={sort}
+                onChange={(e) => {
+                  setSort(e.target.value);
+                }}
+              >
+                <option>-- Sort By --</option>
+                <option value="ASC">Tanggal ASC</option>
+                <option value="DESC">Tanggal DESC</option>
+              </select>
+            </div>
             <div className="fexport">
               <form action="">
                 <input type="date" value={startdate} onChange={(e) => setStartdate(e.target.value)} />
@@ -141,7 +141,7 @@ function Arsipx() {
               </tr>
             </thead>
             <tbody>
-              {proposals.map((proposal, index) => (
+              {proposals.filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query)).map((proposal, index) => (
                 <tr key={proposal.id}>
                   <td>{index + 1}</td>
                   <td>{proposal.nama_kegiatan}</td>
