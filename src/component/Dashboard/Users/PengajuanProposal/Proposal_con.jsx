@@ -21,6 +21,7 @@ function Proposal_con() {
 
   useEffect(() => {
     getProposal();
+    console.log(Statuscount);
   }, [page, keyword]);
 
   const getProposal = async () => {
@@ -112,15 +113,11 @@ function Proposal_con() {
                 <i class="fa-solid fa-trash-can"></i> Delete
               </a>
 
-              {(Statuscount >= 2) ? '' : (
+              {(Statuscount >= 2 && user && user.role == "mahasiswa") ? '' : (
                 <a onClick={handleAddProposal}>
                   <i class="fa-solid fa-plus"></i>Tambah Proposal
                 </a>)}
 
-              {user && user.role != "mahasiswa" && (
-                <a onClick={handleAddProposal}>
-                  <i class="fa-solid fa-plus"></i>Tambah Proposal
-                </a>)}
             </div>
           </div>
           <table className="tabPengajuanProposal">
