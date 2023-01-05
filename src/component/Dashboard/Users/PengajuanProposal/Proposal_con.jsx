@@ -115,15 +115,15 @@ function Proposal_con() {
               {Statuscount >= 2 ? (
                 ''
               ) : (
-                <a onClick={handleAddProposal}>
+                <button onClick={handleAddProposal}>
                   <i class="fa-solid fa-plus"></i>Tambah Proposal
-                </a>
+                </button>
               )}
 
               {user && user.role != 'mahasiswa' && (
-                <a onClick={handleAddProposal}>
+                <button onClick={handleAddProposal}>
                   <i class="fa-solid fa-plus"></i>Tambah Proposal
-                </a>
+                </button>
               )}
             </div>
           </div>
