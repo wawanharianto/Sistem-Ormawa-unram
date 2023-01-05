@@ -1,5 +1,5 @@
 .userContainer {
-  background-color: #f9f9f9;
+  background-color: #f4f6f6;
   position: relative;
   bottom: 0;
   top: 0;
@@ -27,8 +27,8 @@
   justify-content: center;
   flex-direction: column;
   margin-top: 30px;
-  padding-left: 60vh;
-  padding-right: 20vh;
+  padding-left: 40vh;
+  padding-right: 10vh;
 }
 
 .userContainer .btn-addUser {
@@ -40,9 +40,13 @@
 .tUser {
   border-collapse: collapse;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
+  font-size: 12 px;
+  box-sizing: border-box;
 }
-.tUser th,
+.tUser tr:nth-child(1) th {
+  padding: 20px;
+}
 .tUser td {
   /* border: 1px solid black; */
   /* border-collapse: collapse; */
@@ -63,6 +67,9 @@
 .tUser th:nth-child(5) {
   background-color: #20b486;
 }
+.tUser tbody tr td:nth-child(1) input {
+  margin-right: 10px;
+}
 .tfooter {
   background-color: #ffffff;
   border-radius: 0 0 10px 10px;
@@ -70,6 +77,7 @@
   gap: 10px;
   justify-content: right;
   padding-right: 3rem;
+  width: 100%;
 }
 
 .tfooter p {

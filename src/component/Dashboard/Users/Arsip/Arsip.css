@@ -22,3 +22,6 @@
   background-color: #218e6a;
   color: white;
 }
+.tabPengajuanProposal tr:nth-child(1) .head8 {
+  border-radius: 0 4px 0 0;
+}
