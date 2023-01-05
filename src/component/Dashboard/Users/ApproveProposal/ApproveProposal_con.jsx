@@ -153,7 +153,7 @@ function ApproveProposal_con() {
             </div>
             <div className="finput">
               <p>Download Proposal</p>
-              <div className="load-file">
+              <div className="down-approve">
                 <a href={url}>
                   {' '}
                   <i class="fa-solid fa-file-arrow-down"></i>Download

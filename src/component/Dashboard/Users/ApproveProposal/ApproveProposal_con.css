@@ -31,3 +31,30 @@
 .read-only .finput .textbox {
   pointer-events: visible;
 }
+
+.finput .down-approve {
+  background-color: #ebeded;
+  box-sizing: border-box;
+  margin-left: 0.5rem;
+  display: flex;
+  padding: 8px;
+  justify-content: left;
+  width: 45%;
+  border-radius: 4px;
+}
+.finput .down-approve a {
+  background-color: #4dbc9b;
+  padding: 4px;
+  border-radius: 2px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.finput .down-approve p {
+  text-align: left;
+  margin-left: 2px;
+  font-size: 10px;
+}

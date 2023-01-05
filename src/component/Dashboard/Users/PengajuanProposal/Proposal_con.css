@@ -62,21 +62,21 @@
   margin-left: 3px;
   margin-top: 8px;
 }
-.fbtn a {
+.fbtn button {
   border: none;
   margin-right: 10px;
   padding: 6px 20px;
   border-radius: 4px;
   color: white;
 }
-.fbtn a {
+.fbtn button {
   cursor: pointer;
 }
-.fbtn a i {
+.fbtn button i {
   margin-right: 10px;
 }
 
-.fbtn a:nth-child(1) {
+.fbtn button:nth-child(1) {
   background-color: #cc2525;
 }
 .fbtn a:nth-child(1):hover {
@@ -118,12 +118,23 @@
   margin: 2px;
   border: none;
   border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
-
-.fstatustable .edit {
+.fstatustable button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+}
+.fstatustable .views-prop {
+  background-color: #20b486;
+}
+.fstatustable .edit-prop {
   background-color: #2752c6;
 }
-.fstatustable .delete {
+.fstatustable .delete-prop {
   background-color: #cc2525;
 }
 .fstatustable button:hover {
@@ -132,9 +143,6 @@
 /* effect bottom line table */
 .tabPengajuanProposal tr {
   border-bottom: 2px solid rgb(176, 173, 173);
-}
-.tabPengajuanProposal tr:nth-child(1) {
-  border: none;
 }
 
 .tProposal_container .tfooter1 {
