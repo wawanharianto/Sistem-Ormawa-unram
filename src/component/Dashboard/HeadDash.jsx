@@ -74,7 +74,7 @@ function HeadDash() {
           <i class="fa-solid fa-circle" />
         </h1>
         <div className="backBeranda">
-          <a onClick={logout}>
+          <a onClick={logout} className="logout">
             <p>Logout</p>
             <i class="fa-solid fa-right-from-bracket"></i>
           </a>
@@ -93,7 +93,7 @@ function HeadDash() {
                 <p id="dashboard">Dashboard</p>
               </div>
             </a>
-            {user && user.role !== "adminKeuangan" && (
+            {user && user.role !== 'adminKeuangan' && (
               <a href="/pengajuan-proposal">
                 <div id="pengajuan" className="icon">
                   <i id="pengajuan" class="fa-solid fa-file-circle-plus"></i>
@@ -101,7 +101,7 @@ function HeadDash() {
                 </div>
               </a>
             )}
-            {user && user.role !== "adminAkademik" && (
+            {user && user.role !== 'adminAkademik' && (
               <a href="/pengajuan-dana">
                 <div id="pengajuan" className="icon">
                   <i class="fa-solid fa-dollar-sign"></i>
@@ -109,7 +109,7 @@ function HeadDash() {
                 </div>
               </a>
             )}
-            {user && user.role !== "adminAkademik" && (
+            {user && user.role !== 'adminAkademik' && (
               <a href="/SPJ">
                 <div id="spj" className="icon">
                   <i id="spj" class="fa-regular fa-file"></i>
@@ -117,7 +117,7 @@ function HeadDash() {
                 </div>
               </a>
             )}
-            {user && user.role !== "adminKeuangan" && (
+            {user && user.role !== 'adminKeuangan' && (
               <a href="/LPJ">
                 <div id="lpj" className="icon ">
                   <i id="lpj" class="fa-regular fa-file-lines"></i>
@@ -125,7 +125,7 @@ function HeadDash() {
                 </div>
               </a>
             )}
-            {user && user.role !== "mahasiswa" && (
+            {user && user.role !== 'mahasiswa' && (
               <a href="/arsip">
                 <div id="arsip" className="icon">
                   <i id="arsip" class="fa-solid fa-folder-tree"></i>
@@ -133,13 +133,14 @@ function HeadDash() {
                 </div>
               </a>
             )}
-            {user && user.role === "admin" && (
+            {user && user.role === 'admin' && (
               <a href="/users">
                 <div id="users" className="icon">
                   <i id="users" class="fa-solid fa-user"></i>
                   <p id="users">Users</p>
                 </div>
-              </a>)}
+              </a>
+            )}
           </div>
         </div>
       </div>

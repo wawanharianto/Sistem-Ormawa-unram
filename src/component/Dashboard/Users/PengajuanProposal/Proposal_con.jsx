@@ -198,6 +198,7 @@ function Proposal_con() {
                       {/* popup */}
                       <div id={proposal.uuid} className="popUp-Delete showoff">
                         <div className="box">
+                          <i class="fa-solid fa-circle-exclamation icon"></i>
                           <p>apakah anda mau menghapus {proposal.nama_kegiatan} ?</p>
                           <div className="g-btn">
                             <button className="setuju" onClick={() => deleteProposal(proposal.uuid)}>

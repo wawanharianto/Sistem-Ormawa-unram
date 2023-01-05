@@ -67,20 +67,23 @@
   /* transform: rotate(-405deg); */
   display: none;
 }
-
-.backBeranda * {
+.backBeranda {
   color: #6d6d6d;
 }
 .backBeranda a {
   display: flex;
-  margin-right: 10px;
+  margin-right: 60px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
+.backBeranda .logout:hover {
+  color: #0a7c5c;
+}
 
 .backBeranda p {
   margin-right: 1rem;
+  font-weight: 500;
 }
 
 .HeadDash h1 {

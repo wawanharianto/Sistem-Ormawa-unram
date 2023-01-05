@@ -94,11 +94,10 @@
   width: 100%;
   border-collapse: collapse;
 }
-.tabPengajuanProposal tr th {
-  padding: 4px;
-}
+
 .tabPengajuanProposal tr th {
   background-color: #20b486;
+  padding: 1rem;
 }
 .tabPengajuanProposal tr th:nth-child(1) {
   background-color: #20b486;
@@ -127,6 +126,7 @@
   height: 30px;
   border: none;
   border-radius: 8px;
+  color: white;
 }
 .fstatustable .views-prop {
   background-color: #20b486;
@@ -181,8 +181,18 @@
   bottom: 0;
 }
 
+.popUp-Delete .box i {
+  margin-left: 0;
+  margin-right: 100%;
+  color: #d92d20;
+  font-size: 30px;
+  margin-bottom: 20px;
+  background-color: rgba(204, 154, 112, 0.2);
+  padding: 10px;
+  border-radius: 30px;
+}
 .popUp-Delete .box {
-  background-color: #8ad6b4;
+  background-color: #fdfffe;
   padding: 20px;
   border-radius: 4px;
 }
@@ -190,13 +200,22 @@
   display: flex;
   justify-content: right;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .g-btn button {
   border: none;
   padding: 4px 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.g-btn button:nth-child(2) {
+  background-color: #ac1c1c;
+  color: white;
+}
+.g-btn button:nth-child(1) {
+  background-color: rgb(243, 244, 246);
+  border: 2px solid black;
 }
 .g-btn button:hover {
   background-color: #20b486;

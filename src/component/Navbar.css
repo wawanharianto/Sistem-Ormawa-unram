@@ -9,6 +9,8 @@
   z-index: 999;
   margin-top: 0%;
   margin-bottom: 100%;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 .navContainer a {
   color: #4c3555;

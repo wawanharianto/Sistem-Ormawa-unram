@@ -1,28 +1,37 @@
 .Dashboard {
-  background-color: #f9f9f9;
-  position: relative;
-  bottom: 0;
+  background-color: #f4f6f6;
+  box-sizing: border-box;
   top: 0;
   right: 0;
   left: 0;
   min-height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 40vh;
+  padding-top: 15vh;
+  padding-right: 10vh;
+}
+.Dashboard .container-dashboard {
+  /* background-color: #4dbc9b; */
+  align-items: center;
+  width: 100%;
 }
 .listfile {
   margin-top: 10vh;
-  margin-left: 15%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   color: #4dbc9b;
+  gap: 10px;
 }
 .listfile .icon {
   display: flex;
-  padding: 10px 20px 10px 10px;
+  padding: 15px;
   background-color: rgb(255, 255, 255);
-  margin-right: 20px;
-  margin-top: 1rem;
-  min-width: 14%;
+  width: 200px;
+  border-radius: 10px;
 }
 .listfile .icon i {
   font-size: 40px;
@@ -40,19 +49,25 @@
 
 .Chart {
   margin-top: 2rem;
-  margin-left: 20%;
-  margin-right: 8%;
-
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  border-radius: 18px;
 }
 .Chart p {
   color: #64748b;
 }
 .Graphic {
-  position: relative;
-  width: 80%;
-  margin-top: 3rem;
-  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.graphicbar {
+  /* background-color: #4dbc9b; */
+  width: 100%;
 }
