@@ -132,24 +132,9 @@ export const getProposalArsip = async (req, res) => {
     const offset = limit * page;
     try {
         //GET TOTAL ROWS
-        let totalRows;
-        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
-            totalRows = await Proposal.count({
-                [Op.or]: [{
-                    nama_kegiatan: {
-                        [Op.like]: '%' + search + '%'
-                    }
-                }, {
-                    nama_organisasi: {
-                        [Op.like]: '%' + search + '%'
-                    }
-                }]
-            });
-
-        } else {
-            totalRows = await Proposal.count({
+        let totalRows = await Proposal.count({
                 where: {
-                    userId: req.userId,
+                    status: 'Selesai',
                     [Op.or]: [{
                         nama_kegiatan: {
                             [Op.like]: '%' + search + '%'
@@ -161,7 +146,6 @@ export const getProposalArsip = async (req, res) => {
                     }]
                 }
             });
-        }
         const totalPage = Math.ceil(totalRows / limit);
 
         //GET DATA
@@ -170,6 +154,7 @@ export const getProposalArsip = async (req, res) => {
             response = await Proposal.findAll({
                 attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
                 where: {
+                    status: 'Selesai',
                     [Op.or]: [{
                         nama_kegiatan: {
                             [Op.like]: '%' + search + '%'

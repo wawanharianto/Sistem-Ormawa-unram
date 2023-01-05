@@ -42,10 +42,9 @@ function App() {
           <Route path="pengajuan-dana" element={<PengajuanDana />} />
           <Route path="pengajuan-dana/add/:uuid" element={<AddPengajuanDana />} />
           <Route path="LPJ" element={<LPJ />} />
-          <Route path="LPJ/details" element={<DetailLPJ />} />
-
+          <Route path="LPJ/details/:uuid" element={<DetailLPJ />} />
           <Route path="SPJ" element={<SPJ />} />
-          <Route path="SPJ/details" element={<DetailSPJ />} />
+          <Route path="SPJ/details/:uuid" element={<DetailSPJ />} />
           <Route path="arsip" element={<Arsip />} />
         </Routes>
       </BrowserRouter>

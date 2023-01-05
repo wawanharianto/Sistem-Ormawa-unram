@@ -115,7 +115,7 @@ function PengajuanDana_con() {
                   <td>{proposal.status}</td>
                   <td>
                     <div className="fstatustable">
-                      <button className="view-lpj">
+                      <button onClick={()=>navigate(`details/${proposal.uuid}`)} className="view-lpj">
                         <i class="fa-regular fa-file"></i>
                       </button>
                       {/* <Link to={``} className="sunting">

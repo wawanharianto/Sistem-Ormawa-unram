@@ -115,7 +115,7 @@ function SuratPJ() {
                   <td>{proposal.status}</td>
                   <td>
                     <div className="fstatustable">
-                      <button className="view-spj">
+                      <button onClick={()=> navigate(`details/:${proposal.uuid}`)} className="view-spj">
                         <i class="fa-regular fa-file"></i>
                       </button>
                     </div>
