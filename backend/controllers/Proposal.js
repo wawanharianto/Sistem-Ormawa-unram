@@ -22,7 +22,7 @@ export const getProposal = async (req, res) => {
             totalStatus = await Proposal.count({
                 where: {
                     userId: req.userId,
-                    status: "Selesai"
+                    status: !"Selesai"
                 }
             })
         }

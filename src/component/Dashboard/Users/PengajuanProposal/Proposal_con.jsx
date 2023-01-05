@@ -12,7 +12,7 @@ function Proposal_con() {
   const [limit, setLimit] = useState(10);
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
-  const [Statuscount, setStatuscount] = useState(0);
+  const [Statuscount, setStatuscount] = useState(4);
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
@@ -26,6 +26,7 @@ function Proposal_con() {
 
   const getProposal = async () => {
     const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
+    console.log(response);
     setProposals(
       response.data.result.map((d) => {
         return {
@@ -112,10 +113,16 @@ function Proposal_con() {
               <a onClick={() => multipleDeleteById()}>
                 <i class="fa-solid fa-trash-can"></i> Delete
               </a>
-              { user && user.role == "mahasiswa" && Statuscount <= 2 && (
+
+              {(Statuscount >= 2) ? '' : (
                 <a onClick={handleAddProposal}>
-                <i class="fa-solid fa-plus"></i>Tambah Proposal
-              </a>)}
+                  <i class="fa-solid fa-plus"></i>Tambah Proposal
+                </a>)}
+
+              {user && user.role != "mahasiswa" && (
+                <a onClick={handleAddProposal}>
+                  <i class="fa-solid fa-plus"></i>Tambah Proposal
+                </a>)}
             </div>
           </div>
           <table className="tabPengajuanProposal">
