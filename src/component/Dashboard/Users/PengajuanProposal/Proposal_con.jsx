@@ -109,13 +109,14 @@ function Proposal_con() {
               <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
             </div>
             <div className="fbtn">
-              <a onClick={() => multipleDeleteById()}>
+              <button onClick={() => multipleDeleteById()}>
                 <i class="fa-solid fa-trash-can"></i> Delete
-              </a>
-              { user && user.role == "mahasiswa" && Statuscount <= 2 && (
+              </button>
+              {user && user.role == 'mahasiswa' && Statuscount <= 2 && (
                 <a onClick={handleAddProposal}>
-                <i class="fa-solid fa-plus"></i>Tambah Proposal
-              </a>)}
+                  <i class="fa-solid fa-plus"></i>Tambah Proposal
+                </a>
+              )}
             </div>
           </div>
           <table className="tabPengajuanProposal">
@@ -165,18 +166,18 @@ function Proposal_con() {
                     <td>
                       <div className="fstatustable">
                         <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
-                          <button className="view">
+                          <button className="views-prop">
                             <i class="fa-regular fa-file"></i>
                           </button>
                         </Link>
 
                         <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
-                          <button className="edit">
+                          <button className="edit-prop">
                             <i class="fa-regular fa-pen-to-square"></i>
                           </button>
                         </Link>
                         <button
-                          className="delete"
+                          className="delete-prop"
                           onClick={() => {
                             console.log(proposal.uuid);
                             const popupDelete = document.getElementById(proposal.uuid);
@@ -191,12 +192,7 @@ function Proposal_con() {
                         <div className="box">
                           <p>apakah anda mau menghapus {proposal.nama_kegiatan} ?</p>
                           <div className="g-btn">
-                            <button
-                              className="setuju"
-                              onClick={() =>
-                                deleteProposal(proposal.uuid)
-                              }
-                            >
+                            <button className="setuju" onClick={() => deleteProposal(proposal.uuid)}>
                               OK
                             </button>
                             <button
