@@ -86,9 +86,14 @@ function UserForm() {
                   <td>{user.email}</td>
                   <td>{user.role}</td>
                   <td className="form-icon">
-                    <i class="fa-solid fa-trash" onClick={() => deleteUsers(user.uuid)} />
-                    <Link 
-                    to={`/users/edit/${user.uuid}`} class="fa-solid fa-pen" />
+                    <button className="delete-user">
+                      <i class="fa-solid fa-trash" onClick={() => deleteUsers(user.uuid)} />
+                    </button>
+                    <Link to={`/users/edit/${user.uuid}`}>
+                      <button className="sunting-user">
+                        <i class="fa-solid fa-user-pen"></i>
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               ))}

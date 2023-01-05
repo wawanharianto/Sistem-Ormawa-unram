@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import './LaporanPJ.css';
 
 function PengajuanDana_con() {
   const [proposals, setProposals] = useState([]);
@@ -114,7 +115,7 @@ function PengajuanDana_con() {
                   <td>{proposal.status}</td>
                   <td>
                     <div className="fstatustable">
-                      <button className="view">
+                      <button className="view-lpj">
                         <i class="fa-regular fa-file"></i>
                       </button>
                       {/* <Link to={``} className="sunting">

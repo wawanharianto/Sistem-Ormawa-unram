@@ -18,3 +18,7 @@
   background-color: rgb(33, 142, 106);
   border-radius: 4px;
 }
+.fstatustable .export {
+  background-color: #218e6a;
+  color: white;
+}

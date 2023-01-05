@@ -77,18 +77,33 @@
   font-size: 16px;
 }
 
-.tUser .form-icon {
-  font-size: 20px;
+.form-icon {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+  box-sizing: border-box;
 }
-.form-icon i:nth-child(1) {
-  color: red;
+.form-icon .delete-user {
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  background-color: rgb(238, 27, 27);
   cursor: pointer;
 }
-.form-icon i:nth-child(2) {
-  color: rgb(221, 255, 53);
-  cursor: pointer;
+.form-icon .delete-user:hover {
+  background-color: rgb(161, 156, 156);
+}
+.form-icon .sunting-user {
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  background-color: rgb(27, 69, 238);
+}
+.form-icon .sunting-user:hover {
+  background-color: rgb(161, 156, 156);
 }
 .btn-addUser {
   width: 5rem;

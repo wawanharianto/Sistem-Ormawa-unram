@@ -1,3 +1,12 @@
 .tabPengajuanProposal .head8 {
   border-radius: 0 4px 0 0;
 }
+
+.fstatustable .view-dana {
+  background-color: #20b486;
+  color: white;
+}
+.fstatustable .sunting-dana {
+  background-color: #2320b4;
+  color: white;
+}
