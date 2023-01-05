@@ -12,7 +12,7 @@ function Proposal_con() {
   const [limit, setLimit] = useState(10);
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
-  const [Statuscount, setStatuscount] = useState(4);
+  const [Statuscount, setStatuscount] = useState(0);
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
@@ -21,12 +21,10 @@ function Proposal_con() {
 
   useEffect(() => {
     getProposal();
-    console.log(Statuscount);
   }, [page, keyword]);
 
   const getProposal = async () => {
     const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
-    console.log(response);
     setProposals(
       response.data.result.map((d) => {
         return {
