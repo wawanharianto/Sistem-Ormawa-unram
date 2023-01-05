@@ -141,7 +141,7 @@ function Arsipx() {
                   <td>{proposal.status}</td>
                   <td>
                     <div className="fstatustable">
-                      <button className="view">
+                      <button className="export">
                         <i class="fa-solid fa-file-export"></i>
                       </button>
                     </div>
