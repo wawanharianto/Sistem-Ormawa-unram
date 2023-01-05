@@ -124,6 +124,72 @@ export const getProposal = async (req, res) => {
     }
 }
 
+export const getProposalArsip = async (req, res) => {
+    const page = parseInt(req.query.page) || 0;
+    const limit = parseInt(req.query.limit) || 10;
+    const search = req.query.search || "";
+    const sortby = req.query.sortby || "ASC";
+    const offset = limit * page;
+    try {
+        //GET TOTAL ROWS
+        let totalRows = await Proposal.count({
+                where: {
+                    status: 'Selesai',
+                    [Op.or]: [{
+                        nama_kegiatan: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }, {
+                        nama_organisasi: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }]
+                }
+            });
+        const totalPage = Math.ceil(totalRows / limit);
+
+        //GET DATA
+        let response;
+        if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
+            response = await Proposal.findAll({
+                attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
+                where: {
+                    status: 'Selesai',
+                    [Op.or]: [{
+                        nama_kegiatan: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }, {
+                        nama_organisasi: {
+                            [Op.like]: '%' + search + '%'
+                        }
+                    }]
+                },
+                include: [{
+                    model: Users,
+                    attributes: ['username', 'email']
+                }],
+                offset: offset,
+                limit: limit,
+                order: [
+                    ['tanggal_pelaksanaan', sortby]
+                ]
+            });
+        } else {
+            res.status(403).json({ msg: 'Akses Dilarang' })
+        }
+        res.status(200).json({
+            result: response,
+            page: page,
+            limit: limit,
+            totalRows: totalRows,
+            totalPage: totalPage,
+        });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}
+
 export const getProposalView = async (req, res) => {
     try {
         let response = await Proposal.findAll({

@@ -15,6 +15,7 @@ function Arsipx() {
   const [startdate, setStartdate] = useState('');
   const [enddate, setEnddate] = useState('');
   const [query, setQuery] = useState('');
+  const [sort, setSort] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ function Arsipx() {
   }, [page, keyword]);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
+    const response = await axios.get(`http://localhost:3000/arsip?search_query=${keyword}&page=${page}&limit=${limit}&sortby=${sort}`);
     setProposals(
       response.data.result.map((d) => {
         return {
@@ -32,7 +33,7 @@ function Arsipx() {
           id: d.id,
           nama_kegiatan: d.nama_kegiatan,
           nama_organisasi: d.nama_organisasi,
-          jumlah_dana: d.jumlah_dana,
+          tanggal_pelaksanaan: d.tanggal_pelaksanaan,
           ketua_panitia: d.ketua_panitia,
           nomer_ketum: d.nomer_ketum,
           dana_disetujui: d.dana_disetujui,
@@ -85,6 +86,61 @@ function Arsipx() {
     }
   };
 
+  function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    //Set the sorting direction to ascending:
+    dir = "asc"; 
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+      //start by saying: no switching is done:
+      switching = false;
+      rows = table?.rows || '';
+      /*Loop through all table rows (except the
+      first, which contains table headers):*/
+      for (i = 1; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /*check if the two rows should switch place,
+        based on the direction, asc or desc:*/
+        if (dir == "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch= true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        //Each time a switch is done, increase this count by 1:
+        switchcount ++;      
+      } else {
+        /*If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again.*/
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+
   return (
     <>
       <div className="Proposal_container">
@@ -95,7 +151,6 @@ function Arsipx() {
           <div className="headtproposal">
             <h3>Arsip dokumen</h3>
             <i class="fa-solid fa-chevron-down"></i>
-            {/* <button onClick={Export}>export</button> */}
           </div>
           <hr />
           <div className="fproposaltabel">
@@ -114,38 +169,30 @@ function Arsipx() {
               </form>
             </div>
           </div>
-          <table className="tabPengajuanProposal">
+          <table id='myTable' className="tabPengajuanProposal">
             <thead>
               <tr>
                 <th>No</th>
-                <th>Nama Kegiatan</th>
-                <th>Nama Organisasi</th>
-                <th>Dana Permintaan</th>
+                <th onClick={()=> sortTable(0)}>Nama Kegiatan</th>
+                <th onClick={()=> sortTable(1)}>Nama Organisasi</th>
+                <th onClick={()=> sortTable(2)}>Tanggal Pelaksanaan</th>
                 <th>Ketua Panitia</th>
                 <th>Kontak Kegiatan</th>
                 <th>Dana ACC</th>
                 <th className="head8">Status</th>
-                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {proposals.map((proposal, index) => (
+              {proposals.filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query)).map((proposal, index) => (
                 <tr key={proposal.id}>
                   <td>{index + 1}</td>
                   <td>{proposal.nama_kegiatan}</td>
                   <td>{proposal.nama_organisasi}</td>
-                  <td>{proposal.jumlah_dana}</td>
+                  <td>{proposal.tanggal_pelaksanaan}</td>
                   <td>{proposal.ketua_panitia}</td>
                   <td>{proposal.nomer_ketum}</td>
                   <td>{proposal.dana_disetujui}</td>
                   <td>{proposal.status}</td>
-                  <td>
-                    <div className="fstatustable">
-                      <button className="export">
-                        <i class="fa-solid fa-file-export"></i>
-                      </button>
-                    </div>
-                  </td>
                 </tr>
               ))}
             </tbody>

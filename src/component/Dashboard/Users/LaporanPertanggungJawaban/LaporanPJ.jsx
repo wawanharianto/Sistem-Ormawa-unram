@@ -73,12 +73,12 @@ function PengajuanDana_con() {
           </div>
           <hr />
           <div className="fproposaltabel">
-            <form>
+
               <div className="fsearch">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" className="search" placeholder="Search" />
+                <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)}/>
               </div>
-            </form>
+
             <div className="fbtn">
               {/* <button>
                 <i class="fa-solid fa-trash-can"></i> Delete
@@ -103,7 +103,7 @@ function PengajuanDana_con() {
               </tr>
             </thead>
             <tbody>
-              {proposals.map((proposal, index) => (
+              {proposals.filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query)).map((proposal, index) => (
                 <tr key={proposal.id}>
                   <td>{index + 1}</td>
                   <td>{proposal.nama_kegiatan}</td>
@@ -115,7 +115,7 @@ function PengajuanDana_con() {
                   <td>{proposal.status}</td>
                   <td>
                     <div className="fstatustable">
-                      <button className="view-lpj">
+                      <button onClick={() => navigate(`details/${proposal.uuid}`)} className="view-lpj">
                         <i class="fa-regular fa-file"></i>
                       </button>
                       {/* <Link to={``} className="sunting">

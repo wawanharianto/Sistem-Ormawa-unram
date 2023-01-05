@@ -59,10 +59,6 @@ function PengajuanDana_con() {
     setKeyword(query);
   };
 
-  const handleAddProposal = () => {
-    navigate('add');
-  };
-
   return (
     <>
       <div className="Proposal_container">
@@ -106,7 +102,7 @@ function PengajuanDana_con() {
               </tr>
             </thead>
             <tbody>
-              {proposals.map((proposal, index) => (
+              {proposals.filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query)).map((proposal, index) => (
                 <tr key={proposal.id}>
                   <td>{index + 1}</td>
                   <td>{proposal.nama_kegiatan}</td>

@@ -1,11 +1,12 @@
 import express from "express";
-import { getProposal,getProposalbyId,getProposalView ,createProposal, updateProposal, deleteProposal, deleteMultiple, setStatus, updateKeteranganWd3, updateKeteranganKeuangan, updateRevisi } from "../controllers/Proposal.js";
+import { getProposal,getProposalArsip,getProposalbyId,getProposalView ,createProposal, updateProposal, deleteProposal, deleteMultiple, setStatus, updateKeteranganWd3, updateKeteranganKeuangan, updateRevisi } from "../controllers/Proposal.js";
 import { ExportToExcel } from "../controllers/Export.js";
 import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
 
 const Proposalroute = express.Router();
 
 Proposalroute.get('/proposal', verifyUser, getProposal);
+Proposalroute.get('/arsip', verifyUser, getProposalArsip);
 Proposalroute.get('/proposal/:uuid', verifyUser, getProposalbyId);
 Proposalroute.get('/pengumuman', getProposalView);
 Proposalroute.get('/export', ExportToExcel);

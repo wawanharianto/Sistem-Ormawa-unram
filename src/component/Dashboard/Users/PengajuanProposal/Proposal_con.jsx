@@ -112,19 +112,12 @@ function Proposal_con() {
                 <i class="fa-solid fa-trash-can"></i> Delete
               </button>
 
-              {Statuscount >= 2 ? (
-                ''
-              ) : (
+              {(Statuscount >= 2 && user && user.role == "mahasiswa") ? '' : (
                 <button onClick={handleAddProposal}>
                   <i class="fa-solid fa-plus"></i>Tambah Proposal
                 </button>
               )}
 
-              {user && user.role != 'mahasiswa' && (
-                <button onClick={handleAddProposal}>
-                  <i class="fa-solid fa-plus"></i>Tambah Proposal
-                </button>
-              )}
             </div>
           </div>
           <table className="tabPengajuanProposal">
@@ -143,7 +136,7 @@ function Proposal_con() {
             </thead>
             <tbody>
               {proposals
-                .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query))
+                .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
                 .map((proposal, index) => (
                   <tr key={proposal.id}>
                     <td>
