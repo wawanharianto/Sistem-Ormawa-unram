@@ -96,7 +96,6 @@ function Register() {
               <option value="adminAkademik">Admin Akademik</option>
               <option value="adminKeuangan">Admin Keuangan</option>
             </select>
-            {/* <input type="text" placeholder="role" value={role} onChange={(e) => setrole(e.target.value)} /> */}
           </div>
           <button type="submit" onClick={handleClose}>
             Register

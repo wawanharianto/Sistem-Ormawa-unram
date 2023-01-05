@@ -59,10 +59,6 @@ function PengajuanDana_con() {
     setKeyword(query);
   };
 
-  const handleAddProposal = () => {
-    navigate('add');
-  };
-
   return (
     <>
       <div className="Proposal_container">

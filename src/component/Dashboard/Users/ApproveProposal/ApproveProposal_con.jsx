@@ -15,7 +15,7 @@ function ApproveProposal_con() {
   const [url, setUrl] = useState('');
   const [namafile, setNamaFile] = useState('');
   const [ketwd3, setKetWd3] = useState('');
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
   const { uuid } = useParams();

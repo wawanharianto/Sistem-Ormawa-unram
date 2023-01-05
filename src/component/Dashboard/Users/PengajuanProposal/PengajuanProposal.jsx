@@ -65,7 +65,7 @@ function PengajuanProposal() {
       console.log(msg);
       if (msg == 'success') {
         console.log('OK');
-        this.props.navigation.navigate('PengajuanProposal');
+        navigate('/pengajuan-proposal');
       }
     } catch (error) {
       if (error.response) {

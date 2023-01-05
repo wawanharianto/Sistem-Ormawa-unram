@@ -21,7 +21,6 @@ function Proposal_con() {
 
   useEffect(() => {
     getProposal();
-    console.log(Statuscount);
   }, [page, keyword]);
 
   const getProposal = async () => {
