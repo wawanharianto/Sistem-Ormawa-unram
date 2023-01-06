@@ -164,6 +164,9 @@ function ApproveProposal_con() {
 
             <div className="finput">
               <p>Status</p>
+              <button disabled className="condition-acc ">
+                <i class="fa-solid fa-circle-info"></i> {status}
+              </button>
               <button disabled className="condition-acc">
                 <i class="fa-solid fa-circle-info"></i> {status}
               </button>

@@ -70,6 +70,9 @@
 .tUser tbody tr td:nth-child(1) input {
   margin-right: 10px;
 }
+.tUser tbody {
+  text-align: center;
+}
 .tfooter {
   background-color: #ffffff;
   border-radius: 0 0 10px 10px;

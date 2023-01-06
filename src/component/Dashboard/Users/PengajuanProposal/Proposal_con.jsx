@@ -96,145 +96,148 @@ function Proposal_con() {
         <div className="hProposal">
           <h2>Pengajuan Proposals</h2>
         </div>
-        <div className="tProposal_container">
-          <div className="headtproposal">
-            <h3>Form Pengajuan Proposal</h3>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <hr />
-          <div className="fproposaltabel">
-            <div className="fsearch">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
+        <div className="container-tabel">
+          <div className="tProposal_container">
+            <div className="headtproposal">
+              <h3>Form Pengajuan Proposal</h3>
+              <i class="fa-solid fa-chevron-down"></i>
             </div>
-            <div className="fbtn">
-              <button onClick={() => multipleDeleteById()}>
-                <i class="fa-solid fa-trash-can"></i> Delete
-              </button>
-
-              {(Statuscount >= 2 && user && user.role == "mahasiswa") ? '' : (
-                <button onClick={handleAddProposal}>
-                  <i class="fa-solid fa-plus"></i>Tambah Proposal
+            <hr />
+            <div className="fproposaltabel">
+              <div className="fsearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
+              </div>
+              <div className="fbtn">
+                <button onClick={() => multipleDeleteById()}>
+                  <i class="fa-solid fa-trash-can"></i> Delete
                 </button>
-              )}
 
+                {Statuscount >= 2 && user && user.role == 'mahasiswa' ? (
+                  ''
+                ) : (
+                  <button onClick={handleAddProposal}>
+                    <i class="fa-solid fa-plus"></i>Tambah Proposal
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-          <table className="tabPengajuanProposal">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Nama Kegiatan</th>
-                <th>Nama Organisasi</th>
-                <th>Dana Permintaan</th>
-                <th>Ketua Panitia</th>
-                <th>Kontak Kegiatan</th>
-                <th>Dana ACC</th>
-                <th className="head8">Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {proposals
-                .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
-                .map((proposal, index) => (
-                  <tr key={proposal.id}>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={proposal.select}
-                        onChange={(e) => {
-                          let value = e.target.checked;
-                          setProposals(
-                            proposals.map((d) => {
-                              if (d.id == proposal.id) {
-                                d.select = value;
-                              }
-                              return d;
-                            })
-                          );
-                        }}
-                      />{' '}
-                      {index + 1}
-                    </td>
-                    <td>{proposal.nama_kegiatan}</td>
-                    <td>{proposal.nama_organisasi}</td>
-                    <td>{proposal.jumlah_dana}</td>
-                    <td>{proposal.ketua_panitia}</td>
-                    <td>{proposal.nomer_ketum}</td>
-                    <td>{proposal.dana_disetujui}</td>
-                    <td>{proposal.status}</td>
-                    <td>
-                      <div className="fstatustable">
-                        <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
-                          <button className="views-prop">
-                            <i class="fa-regular fa-file"></i>
-                          </button>
-                        </Link>
-
-                        <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
-                          <button className="edit-prop">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                          </button>
-                        </Link>
-                        <button
-                          className="delete-prop"
-                          onClick={() => {
-                            console.log(proposal.uuid);
-                            const popupDelete = document.getElementById(proposal.uuid);
-                            popupDelete.classList.toggle('showoff');
+            <table className="tabPengajuanProposal">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Kegiatan</th>
+                  <th>Nama Organisasi</th>
+                  <th>Dana Permintaan</th>
+                  <th>Ketua Panitia</th>
+                  <th>Kontak Kegiatan</th>
+                  <th>Dana ACC</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {proposals
+                  .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
+                  .map((proposal, index) => (
+                    <tr key={proposal.id}>
+                      <td>
+                        <input
+                          type="checkbox"
+                          checked={proposal.select}
+                          onChange={(e) => {
+                            let value = e.target.checked;
+                            setProposals(
+                              proposals.map((d) => {
+                                if (d.id == proposal.id) {
+                                  d.select = value;
+                                }
+                                return d;
+                              })
+                            );
                           }}
-                        >
-                          <i class="fa-solid fa-delete-left"></i>
-                        </button>
-                      </div>
-                      {/* popup */}
-                      <div id={proposal.uuid} className="popUp-Delete showoff">
-                        <div className="box">
-                          <i class="fa-solid fa-circle-exclamation icon"></i>
-                          <p>apakah anda mau menghapus {proposal.nama_kegiatan} ?</p>
-                          <div className="g-btn">
-                            <button className="setuju" onClick={() => deleteProposal(proposal.uuid)}>
-                              OK
+                        />{' '}
+                        {index + 1}
+                      </td>
+                      <td>{proposal.nama_kegiatan}</td>
+                      <td>{proposal.nama_organisasi}</td>
+                      <td>{proposal.jumlah_dana}</td>
+                      <td>{proposal.ketua_panitia}</td>
+                      <td>{proposal.nomer_ketum}</td>
+                      <td>{proposal.dana_disetujui}</td>
+                      <td>{proposal.status}</td>
+                      <td>
+                        <div className="fstatustable">
+                          <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
+                            <button className="views-prop">
+                              <i class="fa-regular fa-file"></i>
                             </button>
-                            <button
-                              className="cancel"
-                              onClick={() => {
-                                const popupDelete = document.getElementById(proposal.uuid);
-                                popupDelete.classList.toggle('showoff');
-                              }}
-                            >
-                              Cancel
+                          </Link>
+
+                          <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
+                            <button className="edit-prop">
+                              <i class="fa-regular fa-pen-to-square"></i>
                             </button>
+                          </Link>
+                          <button
+                            className="delete-prop"
+                            onClick={() => {
+                              console.log(proposal.uuid);
+                              const popupDelete = document.getElementById(proposal.uuid);
+                              popupDelete.classList.toggle('showoff');
+                            }}
+                          >
+                            <i class="fa-solid fa-delete-left"></i>
+                          </button>
+                        </div>
+                        {/* popup */}
+                        <div id={proposal.uuid} className="popUp-Delete showoff">
+                          <div className="box">
+                            <i class="fa-solid fa-circle-exclamation icon"></i>
+                            <p>apakah anda mau menghapus {proposal.nama_kegiatan} ?</p>
+                            <div className="g-btn">
+                              <button className="setuju" onClick={() => deleteProposal(proposal.uuid)}>
+                                OK
+                              </button>
+                              <button
+                                className="cancel"
+                                onClick={() => {
+                                  const popupDelete = document.getElementById(proposal.uuid);
+                                  popupDelete.classList.toggle('showoff');
+                                }}
+                              >
+                                Cancel
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-          <div className="tfooter tfooter1">
-            <p>Total Rows: {rows}</p>
-            <p>
-              Page: {rows ? page + 1 : 0} of {pages}
-            </p>
-            <p className="has-text-centered has-text-danger">{msg}</p>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+            <div className="tfooter tfooter1">
+              <p>Total Rows: {rows}</p>
+              <p>
+                Page: {rows ? page + 1 : 0} of {pages}
+              </p>
+              <p className="has-text-centered has-text-danger">{msg}</p>
 
-            <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
-              <ReactPaginate
-                previousLabel={'< Prev'}
-                nextLabel={'Next >'}
-                pageCount={Math.min(10, pages)}
-                onPageChange={changePage}
-                containerClassName={'pagination-list'}
-                pageLinkClassName={'pagination-link'}
-                previousLinkClassName={'pagination-previous'}
-                nextLinkClassName={'pagination-next'}
-                activeLinkClassName={'pagination-link is-current'}
-                disabledLinkClassName={'pagination-link is-disabled'}
-              />
-            </nav>
+              <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
+                <ReactPaginate
+                  previousLabel={'< Prev'}
+                  nextLabel={'Next >'}
+                  pageCount={Math.min(10, pages)}
+                  onPageChange={changePage}
+                  containerClassName={'pagination-list'}
+                  pageLinkClassName={'pagination-link'}
+                  previousLinkClassName={'pagination-previous'}
+                  nextLinkClassName={'pagination-next'}
+                  activeLinkClassName={'pagination-link is-current'}
+                  disabledLinkClassName={'pagination-link is-disabled'}
+                />
+              </nav>
+            </div>
           </div>
         </div>
       </div>
