@@ -32,6 +32,7 @@ function ApproveProposal_con() {
         setTanggal(response.data.tanggal_pelaksanaan);
         setTempat(response.data.tempat_pelaksanaan);
         setKetum(response.data.nomer_ketum);
+        setStatus(response.data.status);
         setUrl(response.data.url_proposal);
         setNamaFile(response.data.proposal);
       } catch (error) {
@@ -154,7 +155,7 @@ function ApproveProposal_con() {
             <div className="finput">
               <p>Download Proposal</p>
               <div className="down-approve">
-                <a href={url}>
+                <a href={url} target="_blank">
                   {' '}
                   <i class="fa-solid fa-file-arrow-down"></i>Download
                 </a>

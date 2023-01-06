@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './PengajuanProposal.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
 function PengajuanProposal() {
   const [kegiatan, setKegiatan] = useState('');
@@ -17,10 +18,11 @@ function PengajuanProposal() {
   const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(()=> {
     getProposal();
-    if (Statuscount >= 2) {
+    if (user && user.role === "mahasiswa" && Statuscount >= 2) {
       navigate('/dashboard');
     }
   }, [Statuscount])
@@ -181,7 +183,7 @@ function PengajuanProposal() {
   );
 }
 
-// //Rupiah format
+//Rupiah format
 // const nominalDana = document.getElementsByClassName('dana')[0];
 // nominalDana.addEventListener('keyup', (e) => {
 //   nominalDana.value = formatRp(this.value, 'Rp. ');
