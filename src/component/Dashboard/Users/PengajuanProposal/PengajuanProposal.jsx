@@ -183,7 +183,7 @@ function PengajuanProposal() {
   );
 }
 
-// //Rupiah format
+//Rupiah format
 // const nominalDana = document.getElementsByClassName('dana')[0];
 // nominalDana.addEventListener('keyup', (e) => {
 //   nominalDana.value = formatRp(this.value, 'Rp. ');

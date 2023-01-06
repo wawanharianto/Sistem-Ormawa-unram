@@ -32,6 +32,7 @@ function ApproveProposal_con() {
         setTanggal(response.data.tanggal_pelaksanaan);
         setTempat(response.data.tempat_pelaksanaan);
         setKetum(response.data.nomer_ketum);
+        setStatus(response.data.status);
         setUrl(response.data.url_proposal);
         setNamaFile(response.data.proposal);
       } catch (error) {
