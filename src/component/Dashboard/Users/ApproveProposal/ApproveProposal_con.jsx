@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ApproveProposal_con.css';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { createCacheKeyComparator } from 'reselect/es/defaultMemoize';
 
 function ApproveProposal_con() {
   const [kegiatan, setKegiatan] = useState('');
@@ -74,6 +75,27 @@ function ApproveProposal_con() {
     closepop.classList.toggle('popshow');
   };
 
+  // check kondition button setujui/ tolak
+  if (status == 'Proposal di setujui') {
+    const conditionAcc = document.getElementsByClassName('condition-acc')[0];
+    conditionAcc.style.backgroundColor = 'green';
+    const icon = conditionAcc.getElementsByTagName('i')[0];
+    console.log(icon);
+    icon.className = 'fa-solid fa-check';
+  } else if (status == 'Proposal di tolak') {
+    const conditionAcc = document.getElementsByClassName('condition-acc')[0];
+
+    conditionAcc.style.backgroundColor = 'red';
+    const icon = conditionAcc.getElementsByTagName('i')[0];
+    console.log(icon);
+    icon.className = 'fa-solid fa-x';
+  }
+  // const handleSetuju = () => {
+  //   const conditionAcc = document.getElementsByClassName('condition-acc')[0];
+  //   if (status == 'Proposal di setujui') {
+  //     conditionAcc.style.backgroundColor = 'green';
+  //   }
+  // };
   return (
     <>
       <div className="addPropalForm-container">
@@ -168,16 +190,20 @@ function ApproveProposal_con() {
               <button disabled className="condition-acc ">
                 <i class="fa-solid fa-circle-info"></i> {status}
               </button>
-              <button disabled className="condition-acc">
-                <i class="fa-solid fa-circle-info"></i> {status}
-              </button>
             </div>
             <div className="finput">
               <p>Keterangan Oleh WD3</p>
               <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
             </div>
             <div className="fbtn-form">
-              <button onClick={() => setStatus('Proposal di setujui')} type="submit" className="Ajukan">
+              <button
+                onClick={() => {
+                  setStatus('Proposal di setujui');
+                  // handleSetuju();
+                }}
+                type="submit"
+                className="Ajukan"
+              >
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
               {/* <button type="submit" className="Ajukan">
