@@ -1,5 +1,5 @@
 .Proposal_container {
-  background-color: rgb(31, 195, 195);
+  background-color: rgb(243, 246, 246);
   display: flex;
   justify-items: center;
   flex-direction: column;
@@ -7,7 +7,7 @@
 }
 
 .container-tabel {
-  background-color: #20b486;
+  /* background-color: #20b486; */
   justify-content: center;
   align-items: center;
   padding-left: 15%;

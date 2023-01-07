@@ -24,7 +24,15 @@
   color: rgb(249, 249, 248);
   border: none;
   border-radius: 0.5rem;
+  width: fit-content;
+  font-size: 12px;
+  text-align: center;
+  align-items: center;
 }
+.finput .condition-acc i {
+  font-size: 12px;
+}
+
 .read-only .finput input {
   pointer-events: none;
 }
@@ -33,28 +41,37 @@
 }
 
 .finput .down-approve {
-  background-color: #ebeded;
-  box-sizing: border-box;
-  margin-left: 0.5rem;
   display: flex;
+  background-color: #ebeded;
   padding: 8px;
+  border-radius: 10px;
   justify-content: left;
-  width: 45%;
-  border-radius: 4px;
+  align-items: center;
+  gap: 10px;
 }
 .finput .down-approve a {
   background-color: #4dbc9b;
-  padding: 4px;
-  border-radius: 2px;
+  padding: 8px 20px;
+  border-radius: 8px;
   text-decoration: none;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+}
+.finput .down-approve a:hover {
+  background-color: #2f6f5b;
 }
 .finput .down-approve p {
   text-align: left;
   margin-left: 2px;
   font-size: 10px;
+}
+
+.fbtn-form .tolak {
+  background-color: #f7084c;
+}
+.fbtn-form .tolak:hover {
+  background-color: #b00838;
 }

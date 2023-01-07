@@ -103,125 +103,131 @@ function ApproveProposal_con() {
           <h2>Pengajual Propsal</h2>
           <p>List Pengajuan / Detail</p>
         </div>
-        <div className="formaddProp">
-          <div className="headForm">
-            <p>Details Pengajuan Proposal</p>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <form onSubmit={updateKetWD3} className="addProposal read-only" action="">
-            <hr className="line" />
-            <div className="finput">
-              <p>Nama Kegiatan</p>
-              <input type="text" placeholder="Nama Kegiatan" value={kegiatan}></input>
+        <div className="container-formAddProp">
+          <div className="formaddProp">
+            <div className="headForm">
+              <p>Details Pengajuan Proposal</p>
+              <i class="fa-solid fa-chevron-down"></i>
             </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Nama Kegiatan</p>
-            </div>
-            <div className="finput">
-              <p>Nama Organisasi</p>
-              <input type="text" placeholder="Nama Organisasi" value={organisasi}></input>
-            </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Nama Organisasi</p>
-            </div>
-            <div className="finput">
-              <p>Jumlah Dana yang Diajukan</p>
-              <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana}></input>
-            </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Jumlah Dana yang Diajukan</p>
-            </div>
-            <div className="finput">
-              <p>Nama Ketua Panitia</p>
-              <input type="text" placeholder="Nama Ketua Panitia" value={ketupat}></input>
-            </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Nama Ketua Panitia</p>
-            </div>
-            <div className="finput">
-              <p>Nomor Hp</p>
-              <input type="text" placeholder="Nomor Hp" value={nohp}></input>
-            </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Nomor HP</p>
-            </div>
-            <div className="finput">
-              <p>Tanggal Pelaksanaan</p>
-              <input type="text" placeholder="Tanggal Pelaksanaan" value={tanggal}></input>
-            </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Tanggal Pelaksanaan</p>
-            </div>
-            <div className="finput">
-              <p>Tempat Pelaksanaan</p>
-              <input type="text" placeholder="Tempat Pelaksanaan" value={tempat}></input>
-            </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Tempat Pelaksanaan</p>
-            </div>
-            <div className="finput">
-              <p>Nomor Ketua Umum</p>
-              <input type="text" placeholder="Nomor Ketua Umum" value={ketum}></input>
-            </div>
-            <div className="finput">
-              <p className="hide">....</p>
-              <p className="kosong">Nomor Ketua Umum</p>
-            </div>
-            <div className="finput">
-              <p>Download Proposal</p>
-              <div className="down-approve">
-                <a href={url} target="_blank">
-                  {' '}
-                  <i class="fa-solid fa-file-arrow-down"></i>Download
-                </a>
-                <p>{namafile}</p>
+            <form onSubmit={updateKetWD3} className="addProposal read-only" action="">
+              <hr className="line" />
+              <div className="finput">
+                <p>Nama Kegiatan</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan}></input>
+                  <p className="kosong">Nama Kegiatan</p>
+                </div>
               </div>
-            </div>
 
-            <div className="finput">
-              <p>Status</p>
-              <button disabled className="condition-acc ">
-                <i class="fa-solid fa-circle-info"></i> {status}
-              </button>
-            </div>
-            <div className="finput">
-              <p>Keterangan Oleh WD3</p>
-              <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
-            </div>
-            <div className="fbtn-form">
-              <button
-                onClick={() => {
-                  setStatus('Proposal di setujui');
-                  // handleSetuju();
-                }}
-                type="submit"
-                className="Ajukan"
-              >
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>
-              {/* <button type="submit" className="Ajukan">
+              <div className="finput">
+                <p>Nama Organisasi</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Nama Organisasi" value={organisasi}></input>
+                  <p className="kosong">Nama Organisasi</p>
+                </div>
+              </div>
+
+              <div className="finput">
+                <p>Jumlah Dana yang Diajukan</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana}></input>
+                  <p className="kosong">Jumlah Dana yang Diajukan</p>
+                </div>
+              </div>
+
+              <div className="finput">
+                <p>Nama Ketua Panitia</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat}></input>
+                  <p className="kosong">Nama Ketua Panitia</p>
+                </div>
+              </div>
+
+              <div className="finput">
+                <p>Nomor Hp</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Nomor Hp" value={nohp}></input>
+                  <p className="kosong">Nomor HP</p>
+                </div>
+              </div>
+
+              <div className="finput">
+                <p>Tanggal Pelaksanaan</p>
+                <div className="contInput">
+                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal}></input>
+                  <p className="kosong">Tanggal Pelaksanaan</p>
+                </div>
+              </div>
+              <div className="finput">
+                <p>Tempat Pelaksanaan</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat}></input>
+                  <p className="kosong">Tempat Pelaksanaan</p>
+                </div>
+              </div>
+
+              <div className="finput">
+                <p>Nomor Ketua Umum</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum}></input>
+                  <p className="kosong">Nomor Ketua Umum</p>
+                </div>
+              </div>
+              <div className="finput">
+                <p>Download Proposal</p>
+                <div className="contInput">
+                  <div className="down-approve">
+                    <a href={url} target="_blank">
+                      {' '}
+                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                    </a>
+                    <p>{namafile}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="finput">
+                <p>Status</p>
+                <div className="contInput">
+                  <button disabled className="condition-acc ">
+                    <i class="fa-solid fa-circle-info"></i> {status}
+                  </button>
+                </div>
+              </div>
+              <div className="finput">
+                <p>Keterangan Oleh WD3</p>
+                <div className="contInput">
+                  <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
+                </div>
+              </div>
+              <div className="fbtn-form">
+                <button
+                  onClick={() => {
+                    setStatus('Proposal di setujui');
+                    // handleSetuju();
+                  }}
+                  type="submit"
+                  className="Ajukan"
+                >
+                  <i class="fa-solid fa-check"></i>Setuju
+                </button>
+                {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button> */}
-              <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="Ajukan">
-                <i class="fa-solid fa-xmark"></i>Tolak
-              </button>
-            </div>
-          </form>
+                <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
+                  <i class="fa-solid fa-xmark"></i>Tolak
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       {/* <div className="popUp pophide">
         <div className="conPopUp" onClick={handleClose}>
           <button>X</button>
           <p></p>
-        </div>
-      </div> */}
+          </div>
+        </div> */}
     </>
   );
 }

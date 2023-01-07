@@ -21,15 +21,28 @@
   justify-content: space-between;
   padding-top: 30px;
 }
-
+.container-formAddProp {
+  /* background-color: #367cff; */
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10vh;
+  padding-top: 10vh;
+  padding-left: 40vh;
+  box-sizing: border-box;
+  display: flex;
+}
 .formaddProp {
-  height: 100%;
-  margin-left: 44vh;
-  margin-top: 3rem;
-  margin-right: 3rem;
-  background-color: rgb(255, 255, 255);
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 2rem;
   border-radius: 10px;
+  box-sizing: border-box;
+
+  margin-right: 5vh;
+  width: 100%;
 }
 .formaddProp .headForm {
   display: flex;
@@ -51,10 +64,33 @@
   gap: 8px;
   justify-content: center;
 }
+.finput .contInput {
+  /* background-color: #367cff; */
+  margin: 0 10px 10px 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
 .formaddProp .finput input {
-  margin-left: 10px;
-  margin-right: 100px;
-  width: 90vh;
+  width: inherit;
+  font-size: 12px;
+}
+.finput .contInput p {
+  margin-top: 2px;
+}
+.finput * {
+  box-sizing: border-box;
+}
+.contInput .permohonan .icon {
+  font-size: 12px;
+}
+.contInput .permohonan {
+  width: fit-content;
+  box-sizing: border-box;
+  font-size: 12px;
+  margin-left: 0;
+  padding: 8px;
+  background-color: #fdfdfd;
 }
 
 .finput input {
@@ -67,9 +103,8 @@
 .finput p {
   color: #4dbc9b;
   margin-top: 10px;
-  width: 200px;
+  width: 20%;
   text-align: right;
-  margin-left: 100px;
 }
 .finput button {
   margin-left: 10px;
@@ -122,10 +157,10 @@
   background-color: #4dbc9b;
 }
 .fbtn-form button:nth-child(1):hover {
-  background-color: #72e5c2;
+  background-color: #326c5a;
   cursor: pointer;
 }
-.fbtn-form button:nth-child(2) {
+/* .fbtn-form button:nth-child(2) {
   background-color: #367cff;
 }
 .fbtn-form button:nth-child(2):hover {
@@ -138,9 +173,9 @@
 .fbtn-form button:nth-child(3):hover {
   background-color: #f03d70;
   cursor: pointer;
-}
+} */
 
-@media only screen and (max-width: 1224px) {
+/* @media only screen and (max-width: 1224px) {
   .formaddProp {
     margin-left: 30vh;
 
@@ -207,4 +242,4 @@
 
     margin-right: 1vh;
   }
-}
+} */

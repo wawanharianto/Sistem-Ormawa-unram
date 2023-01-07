@@ -41,7 +41,7 @@
   border-collapse: collapse;
   background-color: #ffffff;
   border-radius: 10px 10px 0 0;
-  font-size: 12 px;
+  font-size: 12px;
   box-sizing: border-box;
 }
 .tUser tr:nth-child(1) th {
