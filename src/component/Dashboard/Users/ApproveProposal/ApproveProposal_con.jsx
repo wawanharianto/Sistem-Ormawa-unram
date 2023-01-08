@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ApproveProposal_con.css';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { createCacheKeyComparator } from 'reselect/es/defaultMemoize';
 
@@ -19,6 +20,7 @@ function ApproveProposal_con() {
   const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
   const { uuid } = useParams();
 
   useEffect(() => {
@@ -68,6 +70,7 @@ function ApproveProposal_con() {
     }
     console.log(ketwd3);
     handleClose();
+    navigate('/pengajuan-proposal');
   };
 
   const handleClose = () => {
@@ -201,22 +204,41 @@ function ApproveProposal_con() {
                 </div>
               </div>
               <div className="fbtn-form">
-                <button
+                { user && user.role == 'WD3' &&
+                (<button
                   onClick={() => {
-                    setStatus('Proposal di setujui');
+                    setStatus('Proposal Pengajuan Dana');
                     // handleSetuju();
                   }}
                   type="submit"
                   className="Ajukan"
                 >
                   <i class="fa-solid fa-check"></i>Setuju
-                </button>
+                </button>)}
+
+                { user && user.role == 'admin' &&
+                (<button
+                  onClick={() => {
+                    setStatus('Proposal Pengajuan Dana');
+                    // handleSetuju();
+                  }}
+                  type="submit"
+                  className="Ajukan"
+                >
+                  <i class="fa-solid fa-check"></i>Setuju
+                </button>)}
                 {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button> */}
-                <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
+                {status !== "Proposal Pengajuan Dana" && user && user.role == 'WD3' && 
+                  (<button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
                   <i class="fa-solid fa-xmark"></i>Tolak
-                </button>
+                </button>)}
+
+                {user && user.role == 'admin' && 
+                  (<button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
+                  <i class="fa-solid fa-xmark"></i>Tolak
+                </button>)}
               </div>
             </form>
           </div>
