@@ -1,4 +1,8 @@
-.finput .confInput .status {
-  padding: 0;
-  background-color: aqua;
+.finput .contInput .status {
+  padding: 8px;
+  width: fit-content;
+  font-size: 12px;
+}
+.finput .contInput .status i {
+  font-size: 12px;
 }
