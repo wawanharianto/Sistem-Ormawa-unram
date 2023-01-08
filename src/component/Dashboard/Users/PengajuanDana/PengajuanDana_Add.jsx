@@ -122,32 +122,11 @@ function PengajuanDana_Add() {
               <p className="hide">....</p>
               <p className="kosong">Nomor Ketua Umum</p>
             </div>
-            <div className="finput">
-              <p>UploadLPJ</p>
-              <div className="load-file">
-                <button>
-                  {' '}
-                  <i class="fa-solid fa-file-arrow-up"></i>Choose file
-                </button>
-              </div>
-            </div>
 
             <div className="finput">
               <p>Status</p>
               <button disabled className="condition-acc">
                 <i class="fa-solid fa-circle-info"></i> Proposal di ajukan
-              </button>
-            </div>
-
-            <div className="fbtn-form">
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-xmark"></i>Tolak
               </button>
             </div>
           </form>
@@ -179,7 +158,7 @@ function PengajuanDana_Add() {
               <i class="fa-solid fa-check"></i>Setuju
             </button>
             <button type="submit" className="Ajukan">
-              <i class="fa-solid fa-floppy-disk"></i>Edit
+              <i class="fa-solid fa-floppy-disk"></i>Simpan
             </button>
           </div>
         </form>

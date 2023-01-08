@@ -108,7 +108,7 @@ function DSuratPJ() {
                 <p className="text">nama file .pdf</p>
               </div>
             </div>
-            <div className="finput">
+            {/* <div className="finput">
               <p>Revisi SPJ Dari bagian keuangan</p>
               <div className="file-BSPJ">
                 <button>
@@ -116,22 +116,19 @@ function DSuratPJ() {
                 </button>
                 <p className="text">nama file .pdf</p>
               </div>
-            </div>
+            </div> */}
             <div className="finput">
               <p>Keterangan Dari bagian akademik</p>
               <input type="text" placeholder="Nomor Ketua Umum"></input>
             </div>
-            {/* <div className="fbtn-form">
+            <div className="fbtn-form">
               <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
               <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-xmark"></i>Tolak
-              </button>
-            </div> */}
+            </div>
           </form>
         </div>
         <form action="" className="form-Komfirmasi">
@@ -172,11 +169,8 @@ function DSuratPJ() {
             <button type="submit" className="revisi">
               <i class="fa-solid fa-pen"></i>Revisi
             </button>
-            <button type="submit" className="tolak">
-              <i class="fa-solid fa-xmark"></i>Tolak
-            </button>
             <button type="submit" className="edit">
-              <i class="fa-solid fa-floppy-disk"></i>Edit
+              <i class="fa-solid fa-floppy-disk"></i>Simpan
             </button>
           </div>
         </form>

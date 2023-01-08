@@ -117,9 +117,6 @@ function PengajuanDana_con() {
                       <td>{proposal.status}</td>
                       <td>
                         <div className="fstatustable">
-                          <button className="view-dana">
-                            <i class="fa-regular fa-file"></i>
-                          </button>
                           <Link to={`add/${proposal.uuid}`} className="sunting">
                             <button className="sunting-dana">
                               <i class="fa-regular fa-pen-to-square"></i>
