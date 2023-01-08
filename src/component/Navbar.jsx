@@ -34,7 +34,7 @@ const Navbar = () => {
             <a href="login">Login</a>
           </li>
         </ul>
-        <div className="showoff">
+        <div className="showoff-nav">
           <div className="burger-button ">
             <input id="menu-toggle" type="checkbox" value={isChecked} onChange={handleChecked} />
             <label class="menu-button-container" for="menu-toggle">

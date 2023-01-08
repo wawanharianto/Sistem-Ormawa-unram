@@ -38,7 +38,7 @@
 }
 
 /* burger button */
-.showoff {
+.showoff-nav {
   display: none;
 }
 .burger-button {
@@ -134,7 +134,7 @@
     color: #1d0225;
   }
 
-  .showoff {
+  .showoff-nav {
     z-index: 200;
     position: fixed;
     display: flex;

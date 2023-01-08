@@ -22,7 +22,7 @@
   padding-top: 30px;
 }
 .container-formAddProp {
-  background-color: #367cff;
+  /* background-color: #367cff; */
   font-size: 12px;
   display: flex;
   align-items: center;
@@ -161,6 +161,44 @@
 .fbtn-form button:nth-child(1):hover {
   background-color: #326c5a;
   cursor: pointer;
+}
+
+/* valid form */
+.popup-valid {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-valid .container-popup {
+  background-color: #fdfdfd;
+  width: 400px;
+  border-radius: 4px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.popup-valid .container-popup button {
+  padding: 6px 24px;
+  border: none;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  background-color: #c71818;
+  margin-top: 20px;
+}
+.popup-valid .container-popup button:hover {
+  background-color: #f43a3a;
+}
+.validshow {
+  display: none;
 }
 /* .fbtn-form button:nth-child(2) {
   background-color: #367cff;

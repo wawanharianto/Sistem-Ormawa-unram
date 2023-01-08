@@ -55,7 +55,6 @@ function PengajuanProposal() {
     formData.append('nomer_ketum', ketum);
     formData.append('file', file);
     formData.append('status', status);
-    console.log(tanggal);
 
     try {
       await axios.post('http://localhost:3000/proposal/', formData, {
@@ -65,13 +64,15 @@ function PengajuanProposal() {
       });
       setMsg('success');
       console.log(msg);
-      if (msg == 'success') {
+      if (msg == 'success' || msg == 'No File Uploaded') {
         console.log('OK');
         navigate('/pengajuan-proposal');
       }
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        const popUpValid = document.getElementsByClassName('popup-valid')[0];
+        popUpValid.classList.toggle('validshow');
       }
     }
   };
@@ -187,6 +188,19 @@ function PengajuanProposal() {
         <div className="conPopUp" onClick={handleClose}>
           <button>X</button>
           <p>{msg}</p>
+        </div>
+      </div>
+      <div className="popup-valid validshow">
+        <div className="container-popup">
+          <p> Periksa data!</p>
+          <p>Ada kesalahan di data yang anda input.</p>
+          <button
+            onClick={() => {
+              document.getElementsByClassName('popup-valid')[0].classList.toggle('validshow');
+            }}
+          >
+            ok
+          </button>
         </div>
       </div>
     </>

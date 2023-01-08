@@ -79,7 +79,7 @@ function ApproveProposal_con() {
   };
 
   // check kondition button setujui/ tolak
-  if (status == 'Proposal di setujui') {
+  if (status == 'Proposal Pengajuan Dana') {
     const conditionAcc = document.getElementsByClassName('condition-acc')[0];
     conditionAcc.style.backgroundColor = 'green';
     const icon = conditionAcc.getElementsByTagName('i')[0];
@@ -204,41 +204,45 @@ function ApproveProposal_con() {
                 </div>
               </div>
               <div className="fbtn-form">
-                { user && user.role == 'WD3' &&
-                (<button
-                  onClick={() => {
-                    setStatus('Proposal Pengajuan Dana');
-                    // handleSetuju();
-                  }}
-                  type="submit"
-                  className="Ajukan"
-                >
-                  <i class="fa-solid fa-check"></i>Setuju
-                </button>)}
+                {user && user.role == 'WD3' && (
+                  <button
+                    onClick={() => {
+                      setStatus('Proposal Pengajuan Dana');
+                      // handleSetuju();
+                    }}
+                    type="submit"
+                    className="Ajukan"
+                  >
+                    <i class="fa-solid fa-check"></i>Setuju
+                  </button>
+                )}
 
-                { user && user.role == 'admin' &&
-                (<button
-                  onClick={() => {
-                    setStatus('Proposal Pengajuan Dana');
-                    // handleSetuju();
-                  }}
-                  type="submit"
-                  className="Ajukan"
-                >
-                  <i class="fa-solid fa-check"></i>Setuju
-                </button>)}
+                {user && user.role == 'admin' && (
+                  <button
+                    onClick={() => {
+                      setStatus('Proposal Pengajuan Dana');
+                      // handleSetuju();
+                    }}
+                    type="submit"
+                    className="Ajukan"
+                  >
+                    <i class="fa-solid fa-check"></i>Setuju
+                  </button>
+                )}
                 {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button> */}
-                {status !== "Proposal Pengajuan Dana" && user && user.role == 'WD3' && 
-                  (<button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
-                  <i class="fa-solid fa-xmark"></i>Tolak
-                </button>)}
+                {status !== 'Proposal Pengajuan Dana' && user && user.role == 'WD3' && (
+                  <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
+                    <i class="fa-solid fa-xmark"></i>Tolak
+                  </button>
+                )}
 
-                {user && user.role == 'admin' && 
-                  (<button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
-                  <i class="fa-solid fa-xmark"></i>Tolak
-                </button>)}
+                {user && user.role == 'admin' && (
+                  <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
+                    <i class="fa-solid fa-xmark"></i>Tolak
+                  </button>
+                )}
               </div>
             </form>
           </div>
