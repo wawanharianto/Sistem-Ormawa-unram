@@ -9,60 +9,106 @@
   border: none;
   color: white;
   border-radius: 4px;
+  display: flex;
+  gap: 10px;
 }
 .btn-komfirm-lpj .setuju {
   background-color: #4dbc9b;
 }
+.btn-komfirm-lpj .setuju:hover {
+  background-color: #337d67;
+}
 .btn-komfirm-lpj .revisi {
   background-color: #fed700;
+}
+.btn-komfirm-lpj .revisi:hover {
+  background-color: #817531;
 }
 .btn-komfirm-lpj .tolak {
   background-color: #f7084c;
 }
+.btn-komfirm-lpj .tolak:hover {
+  background-color: #b10838;
+}
 .btn-komfirm-lpj .edit {
   background-color: #004fe3;
+}
+.btn-komfirm-lpj .edit:hover {
+  background-color: #083ea2;
 }
 
 .file-up {
   background-color: #ebeded;
-  padding: 10px;
   display: flex;
+  align-items: center;
   justify-content: left;
-  margin-left: 1rem;
-  border-radius: 8px;
+  padding: 10px 0;
+  border-radius: 10px;
 }
 .file-up button {
   background-color: #4dbc9b;
   color: white;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 20px;
 }
 .file-up p {
   text-align: left;
   margin-left: 4px;
 }
+.file-up button:hover {
+  background-color: #286452;
+}
 .status {
   display: flex;
+  gap: 10px;
+  /* background-color: #004fe3; */
+
+  justify-content: left;
+  align-items: center;
 }
-.status button {
-  font-size: 16px;
-  width: 200px;
-  box-sizing: border-box;
-}
-.finput .status button {
-  background-color: #4dbc9b;
+.status .condition-acc {
+  padding: 10px 24px;
+  height: fit-content;
 }
 .finput .status .input-status {
-  width: 40%;
+  width: 100%;
+}
+
+.finput .status button {
+  background-color: #4dbc9b;
 }
 
 .finput .file-BSPJ {
   background-color: #ebeded;
   display: flex;
-  padding: 2px 2px;
-  margin-left: 10px;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+  padding: 5px;
   border-radius: 8px;
 }
-
+.finput .file-BSPJ .text {
+  text-align: left;
+  padding-left: 10px;
+}
 .file-BSPJ button {
+  height: fit-content;
+  padding: 10px 20px;
+  font-size: 12px;
+  align-items: center;
+  border-radius: 10px;
   background-color: #4dbc9b;
   color: white;
+}
+
+.file-BSPJ button i {
+  font-size: 12px;
+}
+.finput .text-konfirmasi {
+  color: #888888;
+  margin: 0;
+  text-align: left;
+  padding: 4px 0 0 10px;
 }

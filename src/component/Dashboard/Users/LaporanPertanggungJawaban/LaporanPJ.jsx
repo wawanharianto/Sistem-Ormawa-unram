@@ -66,6 +66,7 @@ function PengajuanDana_con() {
         <div className="hProposal">
           <h2>Pengajuan Proposals</h2>
         </div>
+
         <div className="container-tabel">
           <div className="tProposal_container">
             <div className="headtproposal">
@@ -98,7 +99,7 @@ function PengajuanDana_con() {
                   <th>Ketua Panitia</th>
                   <th>Kontak Kegiatan</th>
                   <th>Dana ACC</th>
-                  <th className="head8">Status</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>

@@ -22,7 +22,7 @@
   padding-top: 30px;
 }
 .container-formAddProp {
-  /* background-color: #367cff; */
+  background-color: #367cff;
   font-size: 12px;
   display: flex;
   align-items: center;
@@ -32,6 +32,8 @@
   padding-left: 40vh;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
+  padding-right: 5vh;
 }
 .formaddProp {
   display: flex;
@@ -41,7 +43,7 @@
   border-radius: 10px;
   box-sizing: border-box;
 
-  margin-right: 5vh;
+  /* margin-right: 5vh; */
   width: 100%;
 }
 .formaddProp .headForm {
