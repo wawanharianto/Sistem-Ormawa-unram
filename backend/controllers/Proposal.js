@@ -494,11 +494,11 @@ export const updateKeteranganKeuangan = async (req, res) => {
 
     if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
-    const { keterangankeuangan, dana_disetujui } = req.body;
+    const { keterangan_keuangan, dana_disetujui } = req.body;
 
     try {
         await Proposal.update({
-            keterangan_keuangan: keterangankeuangan,
+            keterangan_keuangan: keterangan_keuangan,
             dana_disetujui: dana_disetujui
         }, {
             where: {
@@ -542,11 +542,14 @@ export const updateRevisi = async (req, res) => {
     }
     const url = `${req.protocol}://${req.get("host")}/proposal/${fileName}`;
 
+    const { status } = req.body;
+
     try {
         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
             await Proposal.update({
                 proposal: fileName,
-                url_proposal: url
+                url_proposal: url,
+                status: status
             }, {
                 where: {
                     id: proposal.id
@@ -556,7 +559,8 @@ export const updateRevisi = async (req, res) => {
             if (req.userId !== proposal.userId) return res.status(403).json({ msg: "Akses terlarang" });
             await Proposal.update({
                 proposal: fileName,
-                url_proposal: url
+                url_proposal: url,
+                status: status
             }, {
                 where: {
                     [Op.and]: [{ id: proposal.id }, { userId: req.userId }]
