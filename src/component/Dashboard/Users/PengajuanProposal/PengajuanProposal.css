@@ -51,6 +51,9 @@
   justify-content: space-between;
   color: rgb(85, 169, 141);
 }
+.formaddProp .headForm p {
+  font-weight: 600;
+}
 .formaddProp .line {
   margin-top: 10px;
   border: 1px solid rgb(203, 203, 203);
@@ -76,6 +79,9 @@
 .formaddProp .finput input {
   width: inherit;
   font-size: 12px;
+}
+.finput {
+  font-weight: 600;
 }
 .finput .contInput p {
   margin-top: 2px;

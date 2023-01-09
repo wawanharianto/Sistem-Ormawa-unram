@@ -75,3 +75,50 @@
 .fbtn-form .tolak:hover {
   background-color: #b00838;
 }
+
+.download-acc {
+  margin-top: 20px;
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+
+  padding: 2rem;
+}
+.download-acc .headcontent {
+  display: flex;
+  justify-content: space-between;
+}
+.download-acc .headcontent h4 {
+  font-weight: 500;
+}
+.download-acc .line {
+  margin-top: 10px;
+  border: 1px solid rgb(200, 198, 198);
+  border-radius: 4px;
+}
+.download-acc .finput {
+  display: flex;
+  margin-top: 20px;
+}
+.download-acc .finput .download-file {
+  background-color: #4dbc9b;
+  border: none;
+  font-size: 12px;
+  color: white;
+}
+.download-acc .finput .download-file:hover {
+  background-color: #388970;
+}
+.download-acc .finput .download-file i {
+  font-size: 12px;
+}
+.download-acc .finput .name {
+  color: #818181;
+}
+
+.headcontent * {
+  color: #4dbc9b;
+}
+.downloadHide {
+  display: none;
+}

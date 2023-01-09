@@ -121,6 +121,9 @@
   background-color: #20b486;
   border-radius: 0 4px 0 0;
 }
+.tabPengajuanProposal tr td {
+  max-width: 150px;
+}
 .fstatustable {
   color: white;
   padding: 6px;
