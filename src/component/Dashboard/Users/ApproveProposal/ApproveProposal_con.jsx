@@ -83,14 +83,14 @@ function ApproveProposal_con() {
     const conditionAcc = document.getElementsByClassName('condition-acc')[0];
     conditionAcc.style.backgroundColor = 'green';
     const icon = conditionAcc.getElementsByTagName('i')[0];
-    console.log(icon);
+    // console.log(icon);
     icon.className = 'fa-solid fa-check';
   } else if (status == 'Proposal di tolak') {
     const conditionAcc = document.getElementsByClassName('condition-acc')[0];
 
     conditionAcc.style.backgroundColor = 'red';
     const icon = conditionAcc.getElementsByTagName('i')[0];
-    console.log(icon);
+    // console.log(icon);
     icon.className = 'fa-solid fa-x';
   }
   // const handleSetuju = () => {
@@ -208,7 +208,14 @@ function ApproveProposal_con() {
                   <button
                     onClick={() => {
                       setStatus('Proposal Pengajuan Dana');
-                      // handleSetuju();
+
+                      // belum berfungsi dia akan di eksekusi ketika 1/2 detik [belum bekerja]
+                      navigate('/pengajuan-proposal');
+                      console.log('Ok');
+                      setInterval(kembali, 1000);
+                      const kembali = () => {
+                        console.log('ok');
+                      };
                     }}
                     type="submit"
                     className="Ajukan"
