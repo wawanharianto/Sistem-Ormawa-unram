@@ -79,7 +79,7 @@ function ApproveProposal_con() {
   };
 
   // check kondition button setujui/ tolak
-  if (status == 'Proposal Pengajuan Dana') {
+  if (status == 'Proposal ACC') {
     const conditionAcc = document.getElementsByClassName('condition-acc')[0];
     conditionAcc.style.backgroundColor = 'green';
     const icon = conditionAcc.getElementsByTagName('i')[0];
@@ -207,7 +207,7 @@ function ApproveProposal_con() {
                 {user && user.role == 'WD3' && (
                   <button
                     onClick={() => {
-                      setStatus('Proposal Pengajuan Dana');
+                      setStatus('Proposal ACC');
                       // handleSetuju();
                     }}
                     type="submit"
@@ -220,7 +220,7 @@ function ApproveProposal_con() {
                 {user && user.role == 'admin' && (
                   <button
                     onClick={() => {
-                      setStatus('Proposal Pengajuan Dana');
+                      setStatus('Proposal ACC');
                       // handleSetuju();
                     }}
                     type="submit"
@@ -232,7 +232,7 @@ function ApproveProposal_con() {
                 {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button> */}
-                {status !== 'Proposal Pengajuan Dana' && user && user.role == 'WD3' && (
+                {status !== 'Proposal ACC' && user && user.role == 'WD3' && (
                   <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
                     <i class="fa-solid fa-xmark"></i>Tolak
                   </button>

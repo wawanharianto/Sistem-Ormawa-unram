@@ -28,6 +28,7 @@ function UpdateProposal() {
         setNohp(response.data.nomer_ketupat);
         setTanggal(response.data.tanggal_pelaksanaan);
         setTempat(response.data.tempat_pelaksanaan);
+        setStatus(response.data.status);
         setKetum(response.data.nomer_ketum);
       } catch (error) {
         if (error.response) {
@@ -162,7 +163,7 @@ function UpdateProposal() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="status">
-                    <i class="fa-solid fa-circle-exclamation"></i> permohonan
+                    <i class="fa-solid fa-circle-exclamation"></i>{status}
                   </button>
                 </div>
               </div>

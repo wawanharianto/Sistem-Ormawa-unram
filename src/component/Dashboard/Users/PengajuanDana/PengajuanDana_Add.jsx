@@ -13,7 +13,7 @@ function PengajuanDana_Add() {
   const [tempat, setTempat] = useState('');
   const [ketum, setKetum] = useState('');
   // const [file, setFile] = useState('');
-  // const [status, setStatus] = useState('Proposal di ajukan');
+  const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
   const { uuid } = useParams();
@@ -29,6 +29,7 @@ function PengajuanDana_Add() {
         setNohp(response.data.nomer_ketupat);
         setTanggal(response.data.tanggal_pelaksanaan);
         setTempat(response.data.tempat_pelaksanaan);
+        setStatus(response.data.status);
         setKetum(response.data.nomer_ketum);
       } catch (error) {
         if (error.response) {
@@ -152,7 +153,7 @@ function PengajuanDana_Add() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="condition-acc">
-                    <i class="fa-solid fa-circle-info"></i> Proposal di setujui
+                    <i class="fa-solid fa-circle-info"></i> {status}
                   </button>
                 </div>
               </div>
@@ -198,7 +199,7 @@ function PengajuanDana_Add() {
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
               <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Edit
+                <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>
           </form>
