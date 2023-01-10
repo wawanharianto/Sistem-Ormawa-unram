@@ -30,7 +30,7 @@ export const updateSpj = async (req, res) => {
   file.mv(`./spjData/spj/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
-      if (req.role === "admin") {
+      if (req.role === "admin" || req.role === "adminKeuangan") {
         await Proposal.update({
           spj: fileName,
           url_spj: url,
@@ -85,7 +85,7 @@ export const updateBD = async (req, res) => {
   file.mv(`./spjData/berkasDukung/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
-      if (req.role === "admin") {
+      if (req.role === "admin" || req.role === "adminKeuangan") {
         await Proposal.update({
           berkas_dukung: fileName,
           url_bd: url

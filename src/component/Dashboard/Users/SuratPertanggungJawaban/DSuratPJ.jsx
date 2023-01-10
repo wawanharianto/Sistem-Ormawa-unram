@@ -274,7 +274,7 @@ function DSuratPJ() {
               </div> */}
               <div className="fbtn-form">
                 {status !== 'SPJ' && (<button onClick={() => { setStatus('SPJ'); updateSPJ(); updateBerkasDukung(); }} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-check"></i>Setuju
+                  <i class="fa-solid fa-check"></i>Ajukan SPJ
                 </button>)}
                 <button onClick={() => { updateSPJ(); updateBerkasDukung(); }} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
