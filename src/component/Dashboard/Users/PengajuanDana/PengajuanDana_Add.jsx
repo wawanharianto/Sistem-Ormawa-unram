@@ -259,10 +259,10 @@ function PengajuanDana_Add() {
               <p></p>
             </div>
             <div className="btn-komfirm">
-              {status == 'Berkegiatan' ? ('') : (<button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+              {status == 'Berkegiatan' ? ('') : (<button type="submit" className="Ajukan" onClick={() => setStatus('Berkegiatan')}>
                 <i class="fa-solid fa-check"></i>Setuju
               </button>)}
-              <button type="submit" className="Ajukan" onClick={() => setStatus('Berkegiatan')}>
+              <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>

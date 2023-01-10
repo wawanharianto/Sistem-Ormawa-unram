@@ -22,7 +22,7 @@ function SuratPJ() {
   }, [page, keyword]);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
+    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=Berkegiatan&status=SPJ&status=SPJ Revisi`);
     setProposals(
       response.data.result.map((d) => {
         return {

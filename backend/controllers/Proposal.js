@@ -9,6 +9,9 @@ export const getProposal = async (req, res) => {
     const page = parseInt(req.query.page) || 0;
     const limit = parseInt(req.query.limit) || 10;
     const search = req.query.search || "";
+    const status = req.query.status || [''];
+    const status1 = req.query.status || "";
+    const status2 = req.query.status || "";
     const offset = limit * page;
     try {
         let totalStatus;
@@ -65,6 +68,9 @@ export const getProposal = async (req, res) => {
             response = await Proposal.findAll({
                 attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
                 where: {
+                    [Op.and]: [{
+                        status: status,
+                    }],
                     [Op.or]: [{
                         nama_kegiatan: {
                             [Op.like]: '%' + search + '%'
@@ -90,6 +96,9 @@ export const getProposal = async (req, res) => {
                 attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
                 where: {
                     userId: req.userId,
+                    [Op.and]: [{
+                        status: status,
+                    }],
                     [Op.or]: [{
                         nama_kegiatan: {
                             [Op.like]: '%' + search + '%'

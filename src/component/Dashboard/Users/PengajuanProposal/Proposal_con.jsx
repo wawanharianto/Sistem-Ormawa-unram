@@ -17,6 +17,7 @@ function Proposal_con() {
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
+  // const status = ['Proposal di ajukan']
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function Proposal_con() {
   }, [page, keyword]);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}`);
+    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=Proposal di ajukan&status=Proposal ditolak`);
     setProposals(
       response.data.result.map((d) => {
         return {
