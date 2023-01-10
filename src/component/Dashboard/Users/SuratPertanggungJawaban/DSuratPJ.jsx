@@ -84,10 +84,18 @@ function DSuratPJ() {
                 <p>Upload Berkas SPJ</p>
                 <div className="contInput">
                   <div className="file-up">
-                    <button>
-                      <i class="fa-solid fa-file-arrow-up"></i>Choose file
-                    </button>
-                    <p className="text">name file .pdf</p>
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <input type="file" className="upload"></input>
+                    {/* <p className="text">name file .pdf</p> */}
+                  </div>
+                </div>
+              </div>
+              <div className="finput">
+                <p>Upload Berkas Dukung</p>
+                <div className="contInput">
+                  <div className="file-up">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <input type="file" className="upload"></input>
                   </div>
                 </div>
               </div>
@@ -115,7 +123,7 @@ function DSuratPJ() {
                 </div>
               </div>
               <div className="finput">
-                <p>Revisi SPJ Dari bagian keuangan</p>
+                <p>Download Berkas Dukung</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
                     <button>
@@ -125,40 +133,40 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
-              <div className="finput">
+              {/* <div className="finput">
                 <p>Keterangan Dari bagian akademik</p>
                 <div className="contInput">
                   <input type="text" placeholder="Nomor Ketua Umum"></input>
                 </div>
+              </div> */}
+              <div className="fbtn-form">
+                <button type="submit" className="Ajukan">
+                  <i class="fa-solid fa-check"></i>Setuju
+                </button>
+                <button type="submit" className="Ajukan">
+                  <i class="fa-solid fa-floppy-disk"></i>Simpan
+                </button>
+                {/* <button type="submit" className="Ajukan">
+                  <i class="fa-solid fa-xmark"></i>Tolak
+                </button> */}
               </div>
-              {/* <div className="fbtn-form">
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-check"></i>Setuju
-                </button>
-                <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-                </button>
-                <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-xmark"></i>Tolak
-                </button>
-            </div> */}
             </form>
           </div>
           <form action="" className="form-Komfirmasi">
             <div className="headForm">
-              <p>Kolom Komfirmasi Bagian Akademik</p>
+              <p>Kolom Komfirmasi SPJ</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <hr className="line" />
             <div className="finput">
-              <p>Nama Kegiatan</p>
+              <p>Keterangan SPJ</p>
               <div className="contInput">
                 <input type="text" placeholder="Nomor Ketua Umum" className="textbox"></input>
                 <p className="text-konfirmasi">Nama Kegiatan</p>
               </div>
             </div>
             <div className="finput">
-              <p>Keterangan bagian akademmik</p>
+              <p>Keterangan bagian Keuangan</p>
               <div className="contInput">
                 <input type="text" placeholder="Nomor Ketua Umum"></input>
                 <p className="text-konfirmasi">Keterangan</p>
@@ -183,11 +191,11 @@ function DSuratPJ() {
               <button type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>
-              <button type="submit" className="tolak">
+              {/* <button type="submit" className="tolak">
                 <i class="fa-solid fa-xmark"></i>Tolak
-              </button>
+              </button> */}
               <button type="submit" className="edit">
-                <i class="fa-solid fa-floppy-disk"></i>Edit
+                <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>
           </form>

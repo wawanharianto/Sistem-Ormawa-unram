@@ -114,7 +114,7 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
-              <div className="finput">
+              {/* <div className="finput">
                 <p>Revisi LPJ Dari bagian akademik</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
@@ -124,24 +124,24 @@ function DSuratPJ() {
                     <p className="text">nama file .pdf</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="finput">
                 <p>Keterangan Dari bagian akademik</p>
                 <div className="contInput">
                   <input type="text" placeholder="Nomor Ketua Umum"></input>
                 </div>
               </div>
-              {/* <div className="fbtn-form">
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-              <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-xmark"></i>Tolak
+              <div className="fbtn-form">
+                <button type="submit" className="Ajukan">
+                  <i class="fa-solid fa-check"></i>Setuju
                 </button>
-            </div> */}
+                <button type="submit" className="Ajukan">
+                  <i class="fa-solid fa-floppy-disk"></i>Simpan
+                </button>
+                {/* <button type="submit" className="Ajukan">
+                  <i class="fa-solid fa-xmark"></i>Tolak
+                </button> */}
+              </div>
             </form>
           </div>
           <form action="" className="form-Komfirmasi">
@@ -153,15 +153,15 @@ function DSuratPJ() {
             <div className="finput">
               <p>Nama Kegiatan</p>
               <div className="contInput">
-                <input type="text" placeholder="Nomor Ketua Umum" className="textbox"></input>
-                <p className="text-konfirmasi">Nama Kegiatan</p>
+                <input type="text" placeholder="Ketikan Disini" className="textbox"></input>
+                <p className="text-konfirmasi"></p>
               </div>
             </div>
 
             <div className="finput">
-              <p>Keterangan bagian akademmik</p>
+              <p>Keterangan bagian Akademik</p>
               <div className="contInput">
-                <input type="text" placeholder="Nomor Ketua Umum"></input>
+                <input type="text" placeholder="Ketikan disini ..."></input>
                 <p className="text-konfirmasi">Keterangan</p>
               </div>
             </div>
@@ -173,11 +173,11 @@ function DSuratPJ() {
               <button type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>
-              <button type="submit" className="tolak">
-                <i class="fa-solid fa-xmark"></i>Tolak
-              </button>
+              {/* <button type="submit" className="tolak">
+                  <i class="fa-solid fa-xmark"></i>Tolak
+                </button> */}
               <button type="submit" className="edit">
-                <i class="fa-solid fa-floppy-disk"></i>Edit
+                <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>
           </form>
