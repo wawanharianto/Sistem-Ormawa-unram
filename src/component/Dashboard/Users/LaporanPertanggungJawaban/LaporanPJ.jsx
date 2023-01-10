@@ -22,7 +22,7 @@ function PengajuanDana_con() {
   }, [page, keyword]);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}status=SPJ Diterima`);
+    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=SPJ Diterima&status=Selesai`);
     setProposals(
       response.data.result.map((d) => {
         return {
