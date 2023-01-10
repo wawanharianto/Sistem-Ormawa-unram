@@ -10,6 +10,8 @@ export const updateSpj = async (req, res) => {
     }
   });
 
+  const { status } = req.body;
+
 
   if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
@@ -31,7 +33,8 @@ export const updateSpj = async (req, res) => {
       if (req.role === "admin") {
         await Proposal.update({
           spj: fileName,
-          url_spj: url
+          url_spj: url,
+          status: status
           
         }, {
           where: {
@@ -42,7 +45,8 @@ export const updateSpj = async (req, res) => {
         if (req.userId !== proposal.userId) return res.status(403).json({ msg: "Akses terlarang" });
         await Proposal.update({
           spj: fileName,
-          url_spj: url
+          url_spj: url,
+          status: status
         }, {
           where: {
             [Op.and]: [{ id: proposal.id }, { userId: req.userId }]
