@@ -112,11 +112,26 @@ function PengajuanProposal() {
                   <input
                     className="dana"
                     type="text"
-                    placeholder="Jumlah Dana yang Diajukan"
                     value={dana}
+                    placeholder="Jumlah Dana yang Diajukan"
                     onChange={(e) => {
-                      setDana(e.target.value);
-                      handleRp(e.target.value);
+                      const formatRupiah = (angka, prefix) => {
+                        let number_string = angka.replace(/[^,\d]/g, '').toString(),
+                          split = number_string.split(','),
+                          sisa = split[0].length % 3,
+                          rupiah = split[0].substr(0, sisa),
+                          ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                        // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                        if (ribuan) {
+                          let separator = sisa ? '.' : '';
+                          rupiah += separator + ribuan.join('.');
+                        }
+
+                        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                        return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+                      };
+                      setDana(formatRupiah(e.target.value, 'Rp. '));
                     }}
                   ></input>
                   <p className="kosong">Jumlah Dana yang Diajukan</p>
@@ -207,51 +222,4 @@ function PengajuanProposal() {
   );
 }
 
-//Rupiah format
-const handleRp = (data) => {
-  const nominalDana = document.getElementsByClassName('dana')[0];
-  nominalDana.addEventListener('keyup', (data) => {
-    nominalDana.value = formatRp(data, 'Rp. ');
-  });
-};
-function formatRp(angka, prefix) {
-  var number_string = angka.replace(/[^,\d]/g, '').toString(),
-    split = number_string.split(','),
-    sisa = split[0].length % 3,
-    rupiah = split[0].substr(0, sisa),
-    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-  // tambahkan titik jika yang di input sudah menjadi angka ribuan
-  if (ribuan) {
-    let separator = sisa ? '.' : '';
-    rupiah += separator + ribuan.join('.');
-  }
-
-  rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-  return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
-}
-// const nominalDana = document.getElementsByClassName('dana')[0].addEventListener('keyup', (e) => {
-//   console.log(e);
-// });
-// console.log(nominalDana);
-// if (nominalDana) {
-//   nominalDana.addEventListener('keyup', (e) => {
-//     nominalDana.value = formatRp(this.value, 'Rp. ');
-//   });
-// }
-// function formatRp(angka, prefix) {
-//   var number_string = angka.replace(/[^,\d]/g, '').toString(),
-//     split = number_string.split(','),
-//     sisa = split[0].length % 3,
-//     rupiah = split[0].substr(0, sisa),
-//     ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-//   if (ribuan) {
-//     const separator = sisa ? '.' : '';
-//     rupiah += separator + ribuan.join('.');
-//   }
-
-//   rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-//   return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
-// }
 export default PengajuanProposal;
