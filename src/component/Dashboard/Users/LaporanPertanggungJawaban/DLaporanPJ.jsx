@@ -130,8 +130,10 @@ function DSuratPJ() {
   }
 
   const btnRevisi = document.getElementById('btn_revisi');
+  const btnSetuju = document.getElementById('btn_setuju');
   if (status == 'Selesai') {
     btnRevisi.style.visibility = 'hidden';
+    btnSetuju.style.visibility = 'hidden';
   } else {
     // btnRevisi.style.visibility = 'visible';
   }
@@ -290,7 +292,7 @@ function DSuratPJ() {
               </div>
             </div>
 
-            <div className="btn-komfirm-lpj">
+            <div id='btn_setuju' className="btn-komfirm-lpj">
               <button onClick={() => setStatus('Selesai')} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
