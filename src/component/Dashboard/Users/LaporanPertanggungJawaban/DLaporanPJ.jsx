@@ -13,7 +13,7 @@ function DSuratPJ() {
   const [file, setFile] = useState('');
   const [url, setUrl] = useState('');
   const [namafile, setNamaFile] = useState('');
-  const [status, setStatus] = useState('Proposal di ajukan');
+  const [status, setStatus] = useState('');
   const [keterangan_akademik, setKetAkademik] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
   const [msg, setMsg] = useState('');
@@ -100,6 +100,7 @@ function DSuratPJ() {
     e.preventDefault();
     const formData = new FormData();
     formData.append('keterangan_akademik', keterangan_akademik);
+    formData.append('file', file);
     formData.append('status', status);
 
     try {
@@ -276,6 +277,15 @@ function DSuratPJ() {
               </div>
             </div>
 
+            <div className="finput">
+              <p>Revisi file SPJ</p>
+              <div className="contInput">
+                <div className="file-BSPJ">
+                <input type="file" name="file" onChange={loadFile}></input>
+                </div>
+              </div>
+            </div>
+
             <div className="btn-komfirm-lpj">
               <button onClick={()=>{ setStatus('Selesai'); updateKetAkademik(); }} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
@@ -286,7 +296,7 @@ function DSuratPJ() {
               {/* <button type="submit" className="tolak">
                   <i class="fa-solid fa-xmark"></i>Tolak
                 </button> */}
-              <button type="submit" className="edit">
+              <button onClick={()=> {setStatus('LPJ Revisi'); updateKetAkademik();}} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>

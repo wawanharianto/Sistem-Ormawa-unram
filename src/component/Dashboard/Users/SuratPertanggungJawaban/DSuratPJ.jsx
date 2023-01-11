@@ -18,7 +18,7 @@ function DSuratPJ() {
   const [urlDukungSPJ, setUrlDukungSPJ] = useState('');
   const [namafileSPJ, setNamaFileSPJ] = useState('');
   const [namafileDukungSPJ, setNamaFileDukungSPJ] = useState('');
-  const [status, setStatus] = useState('Proposal di ajukan');
+  const [status, setStatus] = useState('');
   const [keterangan_spj, setKetSpj] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
   const [msg, setMsg] = useState('');
@@ -92,7 +92,7 @@ function DSuratPJ() {
     formData.append('file', fileBerkas);
 
     try {
-      await axios.patch(`http://localhost:3000/spj/${uuid}`, formData, {
+      await axios.patch(`http://localhost:3000/spj/berkasdukung/${uuid}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
@@ -109,10 +109,58 @@ function DSuratPJ() {
     }
   }
 
+  const revisiSPJ = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', fileSPJ);
+
+    try {
+      await axios.patch(`http://localhost:3000/spj/revisi/${uuid}`, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      });
+      setMsg('success');
+      console.log(msg);
+      if (msg == 'success') {
+        console.log('Success update spj');
+      }
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  }
+
+  const revisiBerkasDukung = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', fileBerkas);
+
+    try {
+      await axios.patch(`http://localhost:3000/spj/berkasdukung/revisi/${uuid}`, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      });
+      setMsg('success');
+      console.log(msg);
+      if (msg == 'success') {
+        console.log('Success update spj');
+      }
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  }
+
   const updateKetSPJ = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('keterangan_spj', keterangan_spj);
+    formData.append('file', fileSPJ);
+    formData.append('status', status);
 
     try {
       await axios.patch(`http://localhost:3000/spj/ketspj/${uuid}`, formData, {
@@ -276,7 +324,7 @@ function DSuratPJ() {
                 {status !== 'SPJ' && (<button onClick={() => { setStatus('SPJ'); updateSPJ(); updateBerkasDukung(); }} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan SPJ
                 </button>)}
-                <button onClick={() => { updateSPJ(); updateBerkasDukung(); }} type="submit" className="Ajukan">
+                <button onClick={() => { revisiSPJ(); revisiBerkasDukung(); }} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
                 {/* <button type="submit" className="Ajukan">
@@ -307,13 +355,10 @@ function DSuratPJ() {
             </div>
 
             <div className="finput">
-              <p>Revisi Revisi Berkas file SPJ</p>
+              <p>Revisi file SPJ</p>
               <div className="contInput">
                 <div className="file-BSPJ">
-                  <button type="file">
-                    <i class="fa-solid fa-upload"></i>Choose File
-                  </button>
-                  <p className="text">nama file .pdf</p>
+                <input type="file" name="file" onChange={loadFileSPJ}></input>
                 </div>
               </div>
             </div>
@@ -321,13 +366,13 @@ function DSuratPJ() {
               <button onClick={() => { setStatus('SPJ Diterima'); updateKetSPJ() }} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
-              {status !== 'SPJ Diterima' && (<button onClick={() => { setStatus('SPJ Revis'); updateKetSPJ(); }} type="submit" className="revisi">
+              {status !== 'SPJ Diterima' && (<button onClick={() => { setStatus('SPJ Revisi'); updateKetSPJ(); }} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>)}
               {/* <button type="submit" className="tolak">
                 <i class="fa-solid fa-xmark"></i>Tolak
               </button> */}
-              <button onClick={() => updateKetSPJ()} type="submit" className="edit">
+              <button onClick={() =>{setStatus('SPJ Revisi'); updateKetSPJ()}} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>
