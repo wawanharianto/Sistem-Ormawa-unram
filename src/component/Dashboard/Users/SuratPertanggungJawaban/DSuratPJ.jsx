@@ -63,7 +63,7 @@ function DSuratPJ() {
   };
 
   const updateSPJ = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('file', fileSPJ);
     formData.append('status', status);
@@ -87,7 +87,7 @@ function DSuratPJ() {
   }
 
   const updateBerkasDukung = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('file', fileBerkas);
 
@@ -110,7 +110,7 @@ function DSuratPJ() {
   }
 
   const revisiSPJ = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('file', fileSPJ);
 
@@ -133,7 +133,7 @@ function DSuratPJ() {
   }
 
   const revisiBerkasDukung = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('file', fileBerkas);
 
@@ -156,7 +156,7 @@ function DSuratPJ() {
   }
 
   const updateKetSPJ = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('keterangan_spj', keterangan_spj);
     formData.append('file', fileSPJ);
@@ -302,6 +302,7 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
+              
               <div className="finput">
                 <p>Download Berkas Dukung</p>
                 <div className="contInput">
@@ -314,12 +315,7 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
-              {/* <div className="finput">
-                <p>Keterangan Dari bagian akademik</p>
-                <div className="contInput">
-                  <input type="text" placeholder="Nomor Ketua Umum"></input>
-                </div>
-              </div> */}
+              
               <div className="fbtn-form">
                 {status !== 'SPJ' && (<button onClick={() => { setStatus('SPJ'); updateSPJ(); updateBerkasDukung(); }} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan SPJ
@@ -327,9 +323,7 @@ function DSuratPJ() {
                 <button onClick={() => { revisiSPJ(); revisiBerkasDukung(); }} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-                {/* <button type="submit" className="Ajukan">
-                  <i class="fa-solid fa-xmark"></i>Tolak
-                </button> */}
+                
               </div>
             </form>
           </div>
@@ -366,12 +360,11 @@ function DSuratPJ() {
               <button onClick={() => { setStatus('SPJ Diterima'); updateKetSPJ() }} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
+
               {status !== 'SPJ Diterima' && (<button onClick={() => { setStatus('SPJ Revisi'); updateKetSPJ(); }} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>)}
-              {/* <button type="submit" className="tolak">
-                <i class="fa-solid fa-xmark"></i>Tolak
-              </button> */}
+              
               <button onClick={() =>{setStatus('SPJ Revisi'); updateKetSPJ()}} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>

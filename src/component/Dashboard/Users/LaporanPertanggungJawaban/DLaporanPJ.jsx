@@ -50,7 +50,7 @@ function DSuratPJ() {
   };
 
   const updateLPJ = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
     formData.append('status', status);
@@ -74,7 +74,7 @@ function DSuratPJ() {
   }
 
   const revisiLPJ = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
 
@@ -97,7 +97,7 @@ function DSuratPJ() {
   }
 
   const updateKetAkademik = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('keterangan_akademik', keterangan_akademik);
     formData.append('file', file);
@@ -231,27 +231,16 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
-              {/* <div className="finput">
-                <p>Revisi LPJ Dari bagian akademik</p>
-                <div className="contInput">
-                  <div className="file-BSPJ">
-                    <button>
-                      <i class="fa-solid fa-download"></i>Download File
-                    </button>
-                    <p className="text">nama file .pdf</p>
-                  </div>
-                </div>
-              </div> */}
+              
               <div className="fbtn-form">
                 {status !== 'LPJ Di Ajukan' && (<button onClick={()=> {setStatus('LPJ Di Ajukan'); updateLPJ();}} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan
                 </button>)}
-                <button onClick={()=>{revisiLPJ();}} type="submit" className="Ajukan">
+
+                <button onClick={()=>revisiLPJ()} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-                {/* <button type="submit" className="Ajukan">
-                  <i class="fa-solid fa-xmark"></i>Tolak
-                </button> */}
+                
               </div>
             </form>
           </div>
@@ -290,12 +279,11 @@ function DSuratPJ() {
               <button onClick={()=>{ setStatus('Selesai'); updateKetAkademik(); }} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
+              
               {status !== 'Selesai' &&(<button onClick={()=>{ setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>)}
-              {/* <button type="submit" className="tolak">
-                  <i class="fa-solid fa-xmark"></i>Tolak
-                </button> */}
+              
               <button onClick={()=> {setStatus('LPJ Revisi'); updateKetAkademik();}} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>

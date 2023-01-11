@@ -85,6 +85,7 @@ function PengajuanDana_Add() {
     const formData = new FormData();
     formData.append('keterangan_keuangan', keterangan_keuangan);
     formData.append('dana_disetujui', dana_disetujui);
+    formData.append('status', status);
 
     try {
       await axios.patch(`http://localhost:3000/updatekeuangan/${uuid}`, formData, {
@@ -259,7 +260,7 @@ function PengajuanDana_Add() {
               <p></p>
             </div>
             <div className="btn-komfirm">
-              {status == 'Berkegiatan' ? ('') : (<button type="submit" className="Ajukan" onClick={() => setStatus('Berkegiatan')}>
+              {status == 'Berkegiatan' ? ('') : (<button type="submit" className="Ajukan" onClick={() => {setStatus('Berkegiatan'); updateKetKeuangan();}}>
                 <i class="fa-solid fa-check"></i>Setuju
               </button>)}
               <button type="submit" className="Ajukan">

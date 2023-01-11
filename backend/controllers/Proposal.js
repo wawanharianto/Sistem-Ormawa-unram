@@ -503,12 +503,13 @@ export const updateKeteranganKeuangan = async (req, res) => {
 
     if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
-    const { keterangan_keuangan, dana_disetujui } = req.body;
+    const { keterangan_keuangan, dana_disetujui, status } = req.body;
 
     try {
         await Proposal.update({
             keterangan_keuangan: keterangan_keuangan,
-            dana_disetujui: dana_disetujui
+            dana_disetujui: dana_disetujui,
+            status: status
         }, {
             where: {
                 id: proposal.id
