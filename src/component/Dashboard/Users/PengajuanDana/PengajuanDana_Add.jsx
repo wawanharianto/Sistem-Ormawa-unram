@@ -275,7 +275,30 @@ function PengajuanDana_Add() {
             <div className="finput">
               <p>Jumlah Dana Yang di setujui</p>
               <div className="contInput">
-                <input value={dana_disetujui} onChange={(e) => setDanaSetuju(e.target.value)} type="text" placeholder="Ketikan disini ..."></input>
+                <input
+                  value={dana_disetujui}
+                  onChange={(e) => {
+                    const formatRupiah = (angka, prefix) => {
+                      let number_string = angka.replace(/[^,\d]/g, '').toString(),
+                        split = number_string.split(','),
+                        sisa = split[0].length % 3,
+                        rupiah = split[0].substr(0, sisa),
+                        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                      // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                      if (ribuan) {
+                        let separator = sisa ? '.' : '';
+                        rupiah += separator + ribuan.join('.');
+                      }
+
+                      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                      return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+                    };
+                    setDanaSetuju(formatRupiah(e.target.value, 'Rp. '));
+                  }}
+                  type="text"
+                  placeholder="Ketikan disini ..."
+                ></input>
                 <p className="kosong">jumlah dana yang di setujui</p>
               </div>
             </div>
