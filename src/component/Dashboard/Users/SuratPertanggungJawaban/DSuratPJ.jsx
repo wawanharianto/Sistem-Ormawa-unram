@@ -109,6 +109,12 @@ function DSuratPJ() {
     }
   }
 
+  const spj = async (e) => {
+    e.preventDefault();
+    updateSPJ();
+    updateBerkasDukung();
+  }
+
   const revisiSPJ = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -181,13 +187,18 @@ function DSuratPJ() {
   }
 
   //check status button
+  const btn = document.getElementById('btn_ajukan');
   if (status == 'SPJ') {
-    const btn = document.getElementById('btn_ajukan');
     btn.style.visibility = 'hidden';
+  }else {
+    btn.style.visibility = 'visible';
   }
-  if (status == 'SPJ diterima') {
-    const btn = document.getElementById('btn_revisi');
-    btn.style.visibility = 'hidden';
+
+  const btnRevisi = document.getElementById('btn_revisi');
+  if (status == 'SPJ Diterima') {
+    btnRevisi.style.visibility = 'hidden';
+  }else {
+    btnRevisi.style.visibility = 'visible';
   }
 
   return (
@@ -203,7 +214,7 @@ function DSuratPJ() {
               <p>Detail Pengajuan Dana</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
-            <form onSubmit={() => { updateSPJ(); updateBerkasDukung(); }} className="addProposal" action="">
+            <form onSubmit={spj} className="addProposal" action="">
               <hr className="line" />
               <div className="finput">
                 <p>Nama Kegiatan</p>

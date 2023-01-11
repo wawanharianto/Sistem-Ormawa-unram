@@ -122,13 +122,18 @@ function DSuratPJ() {
   }
 
   //check status button
-  if (status == 'LPJ diajukan') {
-    const btn = document.getElementById('btn_ajukan');
+  const btn = document.getElementById('btn_ajukan');
+  if (status == 'LPJ Di Ajukan') {
     btn.style.visibility = 'hidden';
+  } else {
+    btn.style.visibility = 'visible';
   }
+
+  const btnRevisi = document.getElementById('btn_revisi');
   if (status == 'Selesai') {
-    const btn = document.getElementById('btn_revisi');
-    btn.style.visibility = 'hidden';
+    btnRevisi.style.visibility = 'hidden';
+  } else {
+    btnRevisi.style.visibility = 'visible';
   }
 
   return (
@@ -214,7 +219,7 @@ function DSuratPJ() {
                 <p>Upload Laporan Pertanggung Jawaban</p>
                 <div className="contInput">
                   <div className="file-up">
-                  <input type="file" name="file" onChange={loadFile}></input>
+                    <input type="file" name="file" onChange={loadFile}></input>
                   </div>
                 </div>
               </div>
@@ -233,7 +238,7 @@ function DSuratPJ() {
                 <p>Laporan Pertanggung Jawaban</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
-                  <a href={url} target="_blank">
+                    <a href={url} target="_blank">
                       {' '}
                       <i class="fa-solid fa-file-arrow-down"></i>Download
                     </a>
@@ -241,16 +246,16 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="fbtn-form">
-                <button id='btn_ajukan' onClick={()=> {setStatus('LPJ Di Ajukan'), updateLPJ()}} type="submit" className="Ajukan">
+                <button id='btn_ajukan' onClick={() => { setStatus('LPJ Di Ajukan'); updateLPJ() }} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan
                 </button>
 
-                <button onClick={()=>revisiLPJ()} type="submit" className="Ajukan">
+                <button onClick={() => revisiLPJ()} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-                
+
               </div>
             </form>
           </div>
@@ -280,21 +285,21 @@ function DSuratPJ() {
               <p>Revisi file SPJ</p>
               <div className="contInput">
                 <div className="file-BSPJ">
-                <input type="file" name="file" onChange={loadFile}></input>
+                  <input type="file" name="file" onChange={loadFile}></input>
                 </div>
               </div>
             </div>
 
             <div className="btn-komfirm-lpj">
-              <button onClick={()=>{ setStatus('Selesai'); updateKetAkademik(); }} type="submit" className="setuju">
+              <button onClick={() => { setStatus('Selesai'); updateKetAkademik(); }} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
 
-              <button id='btn_revisi' onClick={()=>{ setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="revisi">
+              <button id='btn_revisi' onClick={() => { setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>
-              
-              <button onClick={()=> {setStatus('LPJ Revisi'); updateKetAkademik();}} type="submit" className="edit">
+
+              <button onClick={() => { setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>
