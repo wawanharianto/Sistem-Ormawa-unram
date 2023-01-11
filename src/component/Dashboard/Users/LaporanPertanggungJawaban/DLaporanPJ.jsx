@@ -50,7 +50,7 @@ function DSuratPJ() {
   };
 
   const updateLPJ = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
     formData.append('status', status);
@@ -97,7 +97,7 @@ function DSuratPJ() {
   }
 
   const updateKetAkademik = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('keterangan_akademik', keterangan_akademik);
     formData.append('file', file);
@@ -126,14 +126,14 @@ function DSuratPJ() {
   if (status == 'LPJ Di Ajukan') {
     btn.style.visibility = 'hidden';
   } else {
-    btn.style.visibility = 'visible';
+    // btn.style.visibility = 'visible';
   }
 
   const btnRevisi = document.getElementById('btn_revisi');
   if (status == 'Selesai') {
     btnRevisi.style.visibility = 'hidden';
   } else {
-    btnRevisi.style.visibility = 'visible';
+    // btnRevisi.style.visibility = 'visible';
   }
 
   return (
@@ -149,7 +149,7 @@ function DSuratPJ() {
               <p>Detail Pengajuan Dana</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
-            <form className="addProposal" action="">
+            <form onSubmit={updateLPJ} className="addProposal" action="">
               <hr className="line" />
               <div className="finput">
                 <p>Nama Kegiatan</p>
@@ -248,18 +248,18 @@ function DSuratPJ() {
               </div>
 
               <div className="fbtn-form">
-                <button id='btn_ajukan' onClick={() => { setStatus('LPJ Di Ajukan'); updateLPJ() }} type="submit" className="Ajukan">
+                <button id='btn_ajukan' onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan
                 </button>
 
-                <button onClick={() => revisiLPJ()} type="submit" className="Ajukan">
+                <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
 
               </div>
             </form>
           </div>
-          <form action="" className="form-Komfirmasi">
+          <form onSubmit={updateKetAkademik} className="form-Komfirmasi">
             <div className="headForm">
               <p>Kolom Komfirmasi Bagian Akademik</p>
               <i class="fa-solid fa-chevron-down"></i>
@@ -291,15 +291,15 @@ function DSuratPJ() {
             </div>
 
             <div className="btn-komfirm-lpj">
-              <button onClick={() => { setStatus('Selesai'); updateKetAkademik(); }} type="submit" className="setuju">
+              <button onClick={() => setStatus('Selesai')} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
 
-              <button id='btn_revisi' onClick={() => { setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="revisi">
+              <button id='btn_revisi' onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>
 
-              <button onClick={() => { setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="edit">
+              <button onClick={() => setStatus(status)} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>

@@ -191,14 +191,14 @@ function DSuratPJ() {
   if (status == 'SPJ') {
     btn.style.visibility = 'hidden';
   }else {
-    btn.style.visibility = 'visible';
+    // btn.style.visibility = 'visible';
   }
 
   const btnRevisi = document.getElementById('btn_revisi');
   if (status == 'SPJ Diterima') {
     btnRevisi.style.visibility = 'hidden';
   }else {
-    btnRevisi.style.visibility = 'visible';
+    // btnRevisi.style.visibility = 'visible';
   }
 
   return (
@@ -341,7 +341,7 @@ function DSuratPJ() {
                   <i class="fa-solid fa-check"></i>Ajukan SPJ
                 </button>
 
-                <button onClick={() => setStatus('SPJ')} type="submit" className="Ajukan">
+                <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
 
@@ -386,7 +386,7 @@ function DSuratPJ() {
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>
 
-              <button onClick={() => setStatus('SPJ Revisi')} type="submit" className="edit">
+              <button onClick={() => setStatus(status)} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>
