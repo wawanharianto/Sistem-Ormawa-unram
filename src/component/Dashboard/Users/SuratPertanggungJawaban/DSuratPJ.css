@@ -112,6 +112,43 @@
   text-align: left;
   padding: 4px 0 0 10px;
 }
-.finput .upload {
-  background-color: #004fe3;
+
+.finput .file-upload .upload {
+  position: absolute;
+  visibility: hidden;
+}
+.finput .file-upload {
+  background-color: #ffffff;
+  width: 200px;
+  padding: 6px 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: rgb(98, 97, 97);
+  border: 2px solid #848484;
+}
+.finput .file-upload:hover {
+  background-color: #d0ece7;
+}
+.finput .text-upload {
+  color: #7a7a7b;
+  text-align: left;
+  margin-left: 10px;
+}
+.finput .btn_download {
+  background-color: #088470;
+  padding: 6px 14px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: white;
+}
+.finput .btn_download:hover {
+  background-color: #0bb599;
 }

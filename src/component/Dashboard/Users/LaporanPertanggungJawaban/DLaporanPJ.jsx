@@ -17,6 +17,8 @@ function DSuratPJ() {
   const [keterangan_akademik, setKetAkademik] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
   const [msg, setMsg] = useState('');
+  const [nameLPJ, setNameLPJ] = useState('');
+  const [nameRevisiLPJ, setNameRevisiLPJ] = useState('');
   const navigate = useNavigate();
   const { uuid } = useParams();
 
@@ -47,6 +49,7 @@ function DSuratPJ() {
   const loadFile = (e) => {
     const proposal = e.target.files[0];
     setFile(proposal);
+    setNameLPJ(e.target.files[0].name);
   };
 
   const updateLPJ = async (e) => {
@@ -221,7 +224,12 @@ function DSuratPJ() {
                 <p>Upload Laporan Pertanggung Jawaban</p>
                 <div className="contInput">
                   <div className="file-up">
-                    <input type="file" name="file" onChange={loadFile}></input>
+                    <label className="file-upload">
+                      <i class="fa-solid fa-file-arrow-up"></i>
+                      <input type="file" name="file" onChange={loadFile} className="upload"></input>
+                      <span>Select File</span>
+                    </label>
+                    <p className="text-upload">{nameLPJ}</p>
                   </div>
                 </div>
               </div>
@@ -240,8 +248,7 @@ function DSuratPJ() {
                 <p>Laporan Pertanggung Jawaban</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
-                    <a href={url} target="_blank">
-                      {' '}
+                    <a href={url} target="_blank" className="btn_download">
                       <i class="fa-solid fa-file-arrow-down"></i>Download
                     </a>
                     <p>{namafile}</p>
@@ -286,7 +293,21 @@ function DSuratPJ() {
               <p>Revisi file SPJ</p>
               <div className="contInput">
                 <div className="file-BSPJ">
-                  <input type="file" name="file" onChange={loadFile}></input>
+                  <label className="file-upload">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <input
+                      type="file"
+                      name="file"
+                      onChange={(e) => {
+                        const proposal = e.target.files[0];
+                        setFile(proposal);
+                        setNameRevisiLPJ(e.target.files[0].name);
+                      }}
+                      className="upload"
+                    ></input>
+                    <span>Select File</span>
+                  </label>
+                  <p className="text-upload">{nameRevisiLPJ}</p>
                 </div>
               </div>
             </div>

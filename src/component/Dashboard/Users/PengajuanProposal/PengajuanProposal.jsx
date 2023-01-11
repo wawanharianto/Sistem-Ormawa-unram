@@ -17,6 +17,7 @@ function PengajuanProposal() {
   const [Statuscount, setStatuscount] = useState(0);
   const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
+  const [nameProp, setNameProp] = useState('');
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
@@ -35,6 +36,7 @@ function PengajuanProposal() {
   const loadFile = (e) => {
     const proposal = e.target.files[0];
     setFile(proposal);
+    setNameProp(e.target.files[0].name);
   };
 
   const handleClose = () => {
@@ -178,7 +180,13 @@ function PengajuanProposal() {
               <div className="finput">
                 <p>Proposal</p>
                 <div className="contInput">
-                  <input type="file" name="file" onChange={loadFile}></input>
+                  <div className="content">
+                    <label className="file-upload">
+                      <input type="file" name="file" onChange={loadFile} className="upload"></input>
+                      <span>Choose File</span>
+                    </label>
+                    <p className="text-upload">{nameProp}</p>
+                  </div>
                 </div>
               </div>
 

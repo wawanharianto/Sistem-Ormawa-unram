@@ -20,6 +20,7 @@ function PengajuanDana_Add() {
   const [keterangan_keuangan, setKetKeuangan] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
   const [msg, setMsg] = useState('');
+  const [namePropWD3, setNamePropWD3] = useState('');
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { uuid } = useParams();
@@ -55,6 +56,7 @@ function PengajuanDana_Add() {
   const loadFile = (e) => {
     const proposal = e.target.files[0];
     setFile(proposal);
+    setNamePropWD3(e.target.files[0].name);
   };
 
   // const handleClose = () => {
@@ -84,7 +86,7 @@ function PengajuanDana_Add() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   const updateKetKeuangan = async (e) => {
     e.preventDefault();
@@ -98,7 +100,7 @@ function PengajuanDana_Add() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
-      })
+      });
       setMsg('success update ket keuangan');
       console.log(msg);
       if (msg == 'success update ket keuangan') {
@@ -109,7 +111,7 @@ function PengajuanDana_Add() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   // check kondition button setujui/ tolak
   if (status == 'Proposal ACC') {
@@ -215,7 +217,13 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Upload Proposal sudah ada ttd WDIII</p>
                 <div className="contInput">
-                  <input type="file" name="file" onChange={loadFile}></input>
+                  <div className="content">
+                    <label className="file-upload">
+                      <input type="file" name="file" onChange={loadFile} className="upload"></input>
+                      <span>Choose File</span>
+                    </label>
+                    <p className="text-upload">{namePropWD3}</p>
+                  </div>
                 </div>
               </div>
 
@@ -228,18 +236,20 @@ function PengajuanDana_Add() {
                 </div>
               </div>
 
-              {status == 'Proposal pengajuan dana' && (<div className="finput">
-                <p>Download proposal sudah ada ttd WDIII</p>
-                <div className="contInput">
-                  <div className="down-approve">
-                    <a href={url} target="_blank">
-                      {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
-                    </a>
-                    <p>{namafile}</p>
+              {status == 'Proposal pengajuan dana' && (
+                <div className="finput">
+                  <p>Download proposal sudah ada ttd WDIII</p>
+                  <div className="contInput">
+                    <div className="down-approve">
+                      <a href={url} target="_blank">
+                        {' '}
+                        <i class="fa-solid fa-file-arrow-down"></i>Download
+                      </a>
+                      <p>{namafile}</p>
+                    </div>
                   </div>
                 </div>
-              </div>)}
+              )}
 
               <div className="fbtn-form">
                 <button onClick={() => setStatus('Proposal pengajuan dana')} type="submit" className="Ajukan">
@@ -277,10 +287,10 @@ function PengajuanDana_Add() {
                 <i class="fa-solid fa-check"></i>Setuju
               </button>)} */}
 
-              <button id='btn_setuju' onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan" >
+              <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
-              
+
               <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>

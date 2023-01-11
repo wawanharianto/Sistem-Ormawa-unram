@@ -24,6 +24,9 @@ function DSuratPJ() {
   const [msg, setMsg] = useState('');
   const [msg1, setMsg1] = useState('');
   const [msg2, setMsg2] = useState('');
+  const [nameFileSpj, setNameFileSpj] = useState('');
+  const [nameFilePdkg, setNameFilePdkg] = useState('');
+  const [nameRevisiSpj, setNameRevisiSpj] = useState('');
   const navigate = useNavigate();
   const { uuid } = useParams();
 
@@ -42,7 +45,7 @@ function DSuratPJ() {
         setKetum(response.data.nomer_ketum);
         setUrlSPJ(response.data.url_spj);
         setNamaFileSPJ(response.data.spj);
-        setNamaFileDukungSPJ(response.data.berkas_dukung)
+        setNamaFileDukungSPJ(response.data.berkas_dukung);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -55,11 +58,13 @@ function DSuratPJ() {
   const loadFileSPJ = (e) => {
     const proposal = e.target.files[0];
     setFileSPJ(proposal);
+    setNameFileSpj(e.target.files[0].name);
   };
 
   const loadFileDukungSPJ = (e) => {
     const proposal = e.target.files[0];
     setFileBerkas(proposal);
+    setNameFilePdkg(e.target.files[0].name);
   };
 
   const updateSPJ = async (e) => {
@@ -84,7 +89,7 @@ function DSuratPJ() {
         setMsg1(error.response.data.msg);
       }
     }
-  }
+  };
 
   const updateBerkasDukung = async (e) => {
     // e.preventDefault();
@@ -107,13 +112,13 @@ function DSuratPJ() {
         setMsg2(error.response.data.msg);
       }
     }
-  }
+  };
 
   const spj = async (e) => {
     e.preventDefault();
     updateSPJ();
     updateBerkasDukung();
-  }
+  };
 
   const revisiSPJ = async (e) => {
     e.preventDefault();
@@ -136,7 +141,7 @@ function DSuratPJ() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   const revisiBerkasDukung = async (e) => {
     e.preventDefault();
@@ -159,7 +164,7 @@ function DSuratPJ() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   const updateKetSPJ = async (e) => {
     e.preventDefault();
@@ -173,7 +178,7 @@ function DSuratPJ() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
-      })
+      });
       setMsg('success update ket keuangan');
       console.log(msg);
       if (msg == 'success update ket keuangan') {
@@ -184,13 +189,13 @@ function DSuratPJ() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   //check status button
   const btn = document.getElementById('btn_ajukan');
   if (status == 'SPJ') {
     btn.style.visibility = 'hidden';
-  }else {
+  } else {
     // btn.style.visibility = 'visible';
   }
 
@@ -199,7 +204,7 @@ function DSuratPJ() {
   if (status == 'SPJ Diterima') {
     btnRevisi.style.visibility = 'hidden';
     btnSetuju.style.visibility = 'hidden';
-  }else {
+  } else {
     // btnRevisi.style.visibility = 'visible';
   }
 
@@ -285,9 +290,14 @@ function DSuratPJ() {
                 <p>Upload Berkas SPJ</p>
                 <div className="contInput">
                   <div className="file-up">
-                    <i class="fa-solid fa-file-arrow-up"></i>
-                    <input type="file" className="upload" onChange={loadFileSPJ}></input>
-                    {/* <p className="text">name file .pdf</p> */}
+                    <label className="file-upload">
+                      <i class="fa-solid fa-file-arrow-up"></i>
+                      <input type="file" className="upload" onChange={loadFileSPJ}></input>
+                      {/* <p className="text">name file .pdf</p> */}
+                      <span>Select File</span>
+                    </label>
+                    <p className="text-upload">{nameFileSpj}</p>
+                    <p></p>
                   </div>
                 </div>
               </div>
@@ -295,8 +305,12 @@ function DSuratPJ() {
                 <p>Upload Berkas Dukung</p>
                 <div className="contInput">
                   <div className="file-up">
-                    <i class="fa-solid fa-file-arrow-up"></i>
-                    <input type="file" className="upload" onChange={loadFileDukungSPJ}></input>
+                    <label className="file-upload">
+                      <i class="fa-solid fa-file-arrow-up"></i>
+                      <input type="file" className="upload" onChange={loadFileDukungSPJ}></input>
+                      <span>Select File</span>
+                    </label>
+                    <p className="text-upload">{nameFilePdkg}</p>
                   </div>
                 </div>
               </div>
@@ -308,7 +322,7 @@ function DSuratPJ() {
                     <button disabled className="condition-acc">
                       <i class="fa-solid fa-check"></i> {status}
                     </button>
-                    <input className="input-status" type="text" placeholder="text"></input>
+                    {/* <input className="input-status" type="text" placeholder="text"></input> */}
                   </div>
                 </div>
               </div>
@@ -316,8 +330,7 @@ function DSuratPJ() {
                 <p>Berkas File SPJ</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
-                    <a href={urlSPJ} target="_blank">
-                      {' '}
+                    <a href={urlSPJ} target="_blank" className="btn_download">
                       <i class="fa-solid fa-file-arrow-down"></i>Download
                     </a>
                     <p className="text">{namafileSPJ}</p>
@@ -329,7 +342,7 @@ function DSuratPJ() {
                 <p>Download Berkas Dukung</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
-                    <a href={urlDukungSPJ} target="_blank">
+                    <a href={urlDukungSPJ} target="_blank" className="btn_download">
                       {' '}
                       <i class="fa-solid fa-file-arrow-down"></i>Download
                     </a>
@@ -339,14 +352,13 @@ function DSuratPJ() {
               </div>
 
               <div className="fbtn-form">
-                <button id='btn_ajukan' onClick={() => setStatus('SPJ')} type="submit" className="Ajukan">
+                <button id="btn_ajukan" onClick={() => setStatus('SPJ')} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan SPJ
                 </button>
 
                 <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-
               </div>
             </form>
           </div>
@@ -375,16 +387,30 @@ function DSuratPJ() {
               <p>Revisi file SPJ</p>
               <div className="contInput">
                 <div className="file-BSPJ">
-                  <input type="file" name="file" onChange={loadFileSPJ}></input>
+                  <label className="file-upload">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <input
+                      type="file"
+                      name="file"
+                      onChange={(e) => {
+                        const proposal = e.target.files[0];
+                        setFileSPJ(proposal);
+                        setNameRevisiSpj(e.target.files[0].name);
+                      }}
+                      className="upload"
+                    ></input>
+                    <span>Select File</span>
+                  </label>
+                  <p className="text-upload">{nameRevisiSpj}</p>
                 </div>
               </div>
             </div>
             <div className="btn-komfirm-lpj">
-              <button id='btn_setuju' onClick={() => setStatus('SPJ Diterima')} type="submit" className="setuju">
+              <button id="btn_setuju" onClick={() => setStatus('SPJ Diterima')} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
 
-              <button id='btn_revisi' onClick={() => setStatus('SPJ Revisi')} type="submit" className="revisi">
+              <button id="btn_revisi" onClick={() => setStatus('SPJ Revisi')} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>
 
