@@ -110,7 +110,7 @@ function DSuratPJ() {
   }
 
   const revisiSPJ = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('file', fileSPJ);
 
@@ -133,7 +133,7 @@ function DSuratPJ() {
   }
 
   const revisiBerkasDukung = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('file', fileBerkas);
 
@@ -156,7 +156,7 @@ function DSuratPJ() {
   }
 
   const updateKetSPJ = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('keterangan_spj', keterangan_spj);
     formData.append('file', fileSPJ);
@@ -180,6 +180,16 @@ function DSuratPJ() {
     }
   }
 
+  //check status button
+  if (status == 'SPJ') {
+    const btn = document.getElementById('btn_ajukan');
+    btn.style.visibility = 'hidden';
+  }
+  if (status == 'SPJ diterima') {
+    const btn = document.getElementById('btn_revisi');
+    btn.style.visibility = 'hidden';
+  }
+
   return (
     <>
       <div className="addPropalForm-container">
@@ -193,8 +203,7 @@ function DSuratPJ() {
               <p>Detail Pengajuan Dana</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
-            {/* onSubmit={()=> {updateSPJ(); updateBerkasDukung();}} */}
-            <form className="addProposal" action="">
+            <form onSubmit={() => { updateSPJ(); updateBerkasDukung(); }} className="addProposal" action="">
               <hr className="line" />
               <div className="finput">
                 <p>Nama Kegiatan</p>
@@ -302,7 +311,7 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="finput">
                 <p>Download Berkas Dukung</p>
                 <div className="contInput">
@@ -315,19 +324,20 @@ function DSuratPJ() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="fbtn-form">
-                {status !== 'SPJ' && (<button onClick={() => { setStatus('SPJ'); updateSPJ(); updateBerkasDukung(); }} type="submit" className="Ajukan">
+                <button id='btn_ajukan' onClick={() => setStatus('SPJ')} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan SPJ
-                </button>)}
-                <button onClick={() => { revisiSPJ(); revisiBerkasDukung(); }} type="submit" className="Ajukan">
+                </button>
+
+                <button onClick={() => setStatus('SPJ')} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-                
+
               </div>
             </form>
           </div>
-          <form action="" className="form-Komfirmasi">
+          <form onSubmit={updateKetSPJ} className="form-Komfirmasi">
             <div className="headForm">
               <p>Kolom Komfirmasi SPJ</p>
               <i class="fa-solid fa-chevron-down"></i>
@@ -352,20 +362,20 @@ function DSuratPJ() {
               <p>Revisi file SPJ</p>
               <div className="contInput">
                 <div className="file-BSPJ">
-                <input type="file" name="file" onChange={loadFileSPJ}></input>
+                  <input type="file" name="file" onChange={loadFileSPJ}></input>
                 </div>
               </div>
             </div>
             <div className="btn-komfirm-lpj">
-              <button onClick={() => { setStatus('SPJ Diterima'); updateKetSPJ() }} type="submit" className="setuju">
+              <button onClick={() => setStatus('SPJ Diterima')} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
 
-              {status !== 'SPJ Diterima' && (<button onClick={() => { setStatus('SPJ Revisi'); updateKetSPJ(); }} type="submit" className="revisi">
+              <button id='btn_revisi' onClick={() => setStatus('SPJ Revisi')} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
-              </button>)}
-              
-              <button onClick={() =>{setStatus('SPJ Revisi'); updateKetSPJ()}} type="submit" className="edit">
+              </button>
+
+              <button onClick={() => setStatus('SPJ Revisi')} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>

@@ -121,6 +121,16 @@ function DSuratPJ() {
     }
   }
 
+  //check status button
+  if (status == 'LPJ diajukan') {
+    const btn = document.getElementById('btn_ajukan');
+    btn.style.visibility = 'hidden';
+  }
+  if (status == 'Selesai') {
+    const btn = document.getElementById('btn_revisi');
+    btn.style.visibility = 'hidden';
+  }
+
   return (
     <>
       <div className="addPropalForm-container">
@@ -233,9 +243,9 @@ function DSuratPJ() {
               </div>
               
               <div className="fbtn-form">
-                {status !== 'LPJ Di Ajukan' && (<button onClick={()=> {setStatus('LPJ Di Ajukan'); updateLPJ();}} type="submit" className="Ajukan">
+                <button id='btn_ajukan' onClick={()=> {setStatus('LPJ Di Ajukan'), updateLPJ()}} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan
-                </button>)}
+                </button>
 
                 <button onClick={()=>revisiLPJ()} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
@@ -279,10 +289,10 @@ function DSuratPJ() {
               <button onClick={()=>{ setStatus('Selesai'); updateKetAkademik(); }} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
-              
-              {status !== 'Selesai' &&(<button onClick={()=>{ setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="revisi">
+
+              <button id='btn_revisi' onClick={()=>{ setStatus('LPJ Revisi'); updateKetAkademik(); }} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
-              </button>)}
+              </button>
               
               <button onClick={()=> {setStatus('LPJ Revisi'); updateKetAkademik();}} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
