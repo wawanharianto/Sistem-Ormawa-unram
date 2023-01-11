@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './PengajuanDana_Add.css';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function PengajuanDana_Add() {
@@ -15,10 +16,11 @@ function PengajuanDana_Add() {
   const [file, setFile] = useState('');
   const [url, setUrl] = useState('');
   const [namafile, setNamaFile] = useState('');
-  const [status, setStatus] = useState('Proposal di ajukan');
+  const [status, setStatus] = useState('');
   const [keterangan_keuangan, setKetKeuangan] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
   const [msg, setMsg] = useState('');
+  const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { uuid } = useParams();
 
@@ -44,6 +46,10 @@ function PengajuanDana_Add() {
       }
     };
     getProposalById();
+    if (user && user.role !== 'admin') {
+      const btn = document.getElementById('btn_setuju');
+      btn.style.visibility = 'hidden';
+    }
   }, [uuid]);
 
   const loadFile = (e) => {
@@ -119,6 +125,12 @@ function PengajuanDana_Add() {
     const icon = conditionAcc.getElementsByTagName('i')[0];
     console.log(icon);
     icon.className = 'fa-solid fa-x';
+  }
+
+  //check status button
+  if (status == 'Berkegiatan') {
+    const btn = document.getElementById('btn_setuju');
+    btn.style.visibility = 'hidden';
   }
 
   return (
@@ -236,6 +248,7 @@ function PengajuanDana_Add() {
               </div>
             </form>
           </div>
+
           <form onSubmit={updateKetKeuangan} className="form-Komfirmasi">
             <div className="headForm">
               <p>Kolom Komfirmasi Bagian Keuangan</p>
@@ -260,10 +273,15 @@ function PengajuanDana_Add() {
               <p></p>
             </div>
             <div className="btn-komfirm">
-              {status == 'Berkegiatan' ? ('') : (<button type="submit" className="Ajukan" onClick={() => {setStatus('Berkegiatan'); updateKetKeuangan();}}>
+              {/* {status == 'Berkegiatan' ? ('') : (<button id='btn_setuju' onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan" >
                 <i class="fa-solid fa-check"></i>Setuju
-              </button>)}
-              <button type="submit" className="Ajukan">
+              </button>)} */}
+
+              <button id='btn_setuju' onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan" >
+                <i class="fa-solid fa-check"></i>Setuju
+              </button>
+              
+              <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
             </div>
