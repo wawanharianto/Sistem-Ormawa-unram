@@ -71,7 +71,7 @@ function DSuratPJ() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   const revisiLPJ = async (e) => {
     // e.preventDefault();
@@ -94,7 +94,7 @@ function DSuratPJ() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   const updateKetAkademik = async (e) => {
     e.preventDefault();
@@ -119,7 +119,7 @@ function DSuratPJ() {
         setMsg(error.response.data.msg);
       }
     }
-  }
+  };
 
   //check status button
   const btn = document.getElementById('btn_ajukan');
@@ -250,14 +250,13 @@ function DSuratPJ() {
               </div>
 
               <div className="fbtn-form">
-                <button id='btn_ajukan' onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
+                <button id="btn_ajukan" onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan
                 </button>
 
                 <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-
               </div>
             </form>
           </div>
@@ -292,12 +291,12 @@ function DSuratPJ() {
               </div>
             </div>
 
-            <div id='btn_setuju' className="btn-komfirm-lpj">
-              <button onClick={() => setStatus('Selesai')} type="submit" className="setuju">
+            <div className="btn-komfirm-lpj">
+              <button onClick={() => setStatus('Selesai')} type="submit" id="btn_setuju" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
 
-              <button id='btn_revisi' onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
+              <button id="btn_revisi" onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
                 <i class="fa-solid fa-pen"></i>Revisi
               </button>
 
