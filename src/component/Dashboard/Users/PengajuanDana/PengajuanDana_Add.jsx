@@ -251,11 +251,18 @@ function PengajuanDana_Add() {
                 </div>
               )}
 
-              <div className="fbtn-form">
+              {user && user.role === 'mahasiswa' && (<div className="fbtn-form">
                 <button onClick={() => setStatus('Proposal pengajuan dana')} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-floppy-disk"></i>Simpan
+                  <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
                 </button>
-              </div>
+              </div>)}
+
+              {user && user.role == 'admin' && (<div className="fbtn-form">
+                <button onClick={() => setStatus('Proposal pengajuan dana')} type="submit" className="Ajukan">
+                  <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
+                </button>
+              </div>)}
+              
             </form>
           </div>
 
@@ -305,11 +312,7 @@ function PengajuanDana_Add() {
             <div className="finput">
               <p></p>
             </div>
-            <div className="btn-komfirm">
-              {/* {status == 'Berkegiatan' ? ('') : (<button id='btn_setuju' onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan" >
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>)} */}
-
+            {status === "adminKeuangan" && (<div className="btn-komfirm">
               <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
@@ -317,7 +320,17 @@ function PengajuanDana_Add() {
               <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
-            </div>
+            </div>)}
+
+            {user && user.role == 'admin' && (<div className="btn-komfirm">
+              <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+                <i class="fa-solid fa-check"></i>Setuju
+              </button>
+
+              <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+                <i class="fa-solid fa-floppy-disk"></i>Simpan
+              </button>
+            </div>)}
           </form>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 function DSuratPJ() {
   const [kegiatan, setKegiatan] = useState('');
   const [organisasi, setOrganisasi] = useState('');
@@ -19,6 +21,7 @@ function DSuratPJ() {
   const [msg, setMsg] = useState('');
   const [nameLPJ, setNameLPJ] = useState('');
   const [nameRevisiLPJ, setNameRevisiLPJ] = useState('');
+  const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { uuid } = useParams();
 
@@ -256,7 +259,7 @@ function DSuratPJ() {
                 </div>
               </div>
 
-              <div className="fbtn-form">
+              {user && user.role === "mahasiswa" && (<div className="fbtn-form">
                 <button id="btn_ajukan" onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan
                 </button>
@@ -264,7 +267,17 @@ function DSuratPJ() {
                 <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-              </div>
+              </div>)}
+
+              {user && user.role == 'admin' && (<div className="fbtn-form">
+                <button id="btn_ajukan" onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
+                  <i class="fa-solid fa-check"></i>Ajukan
+                </button>
+
+                <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
+                  <i class="fa-solid fa-floppy-disk"></i>Simpan
+                </button>
+              </div>)}
             </form>
           </div>
           <form onSubmit={updateKetAkademik} className="form-Komfirmasi">
@@ -312,7 +325,7 @@ function DSuratPJ() {
               </div>
             </div>
 
-            <div className="btn-komfirm-lpj">
+            {user && user.role === "adminAkademik" && (<div className="btn-komfirm-lpj">
               <button onClick={() => setStatus('Selesai')} type="submit" id="btn_setuju" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
@@ -324,7 +337,21 @@ function DSuratPJ() {
               <button onClick={() => setStatus(status)} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
-            </div>
+            </div>)}
+
+            {user && user.role == 'admin' && (<div className="btn-komfirm-lpj">
+              <button onClick={() => setStatus('Selesai')} type="submit" id="btn_setuju" className="setuju">
+                <i class="fa-solid fa-check"></i>Setuju
+              </button>
+
+              <button id="btn_revisi" onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
+                <i class="fa-solid fa-pen"></i>Revisi
+              </button>
+
+              <button onClick={() => setStatus(status)} type="submit" className="edit">
+                <i class="fa-solid fa-floppy-disk"></i>Simpan
+              </button>
+            </div>)}
           </form>
         </div>
       </div>

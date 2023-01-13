@@ -90,8 +90,8 @@ function ApproveProposal_con() {
     const icon = conditionAcc.getElementsByTagName('i')[0];
     // console.log(icon);
     icon.className = 'fa-solid fa-check';
-    const downloadShow = document.getElementsByClassName('download-acc')[0];
-    downloadShow.classList.remove('downloadHide');
+    // const downloadShow = document.getElementsByClassName('download-acc')[0];
+    // downloadShow.classList.remove('downloadHide');
   } else if (status == 'Proposal di tolak') {
     const conditionAcc = document.getElementsByClassName('condition-acc')[0];
 
@@ -311,7 +311,7 @@ function ApproveProposal_con() {
               </div>
             </form>
           </div>
-          <div className="download-acc downloadShow">
+          {status == 'Proposal ACC' && (<div className="download-acc downloadShow">
             <div className="headcontent">
               <h4>Lembar Pengesahan Proposal</h4>
               <i class="fa-solid fa-chevron-down"></i>
@@ -320,6 +320,7 @@ function ApproveProposal_con() {
             <div className="finput">
               <p>Download Proposal</p>
               <div className="contInput">
+<<<<<<< HEAD
                 {status == 'Proposal ACC' && (
                   <div className="down-approve">
                     <button
@@ -333,10 +334,23 @@ function ApproveProposal_con() {
                     <p className="name">File Lembar Pengesahan.pdf</p>
                   </div>
                 )}
+=======
+                <div className="down-approve">
+                  <button
+                    className="download-file"
+                    onClick={() => {
+                      window.location.href = '../Document/Pengesahan.pdf';
+                    }}
+                  >
+                    <i class="fa-solid fa-file-arrow-down"></i>Download
+                  </button>
+                  <p className="name">File Lembar Pengesahan.pdf</p>
+                </div>
+>>>>>>> 7e2bddf3e0336bf19d153869ecc85a3d25a54099
                 <p className="kosong">File Lembar Pengesahaan</p>
               </div>
             </div>
-          </div>
+          </div>)}
         </div>
       </div>
       {/* <div className="popUp pophide">
