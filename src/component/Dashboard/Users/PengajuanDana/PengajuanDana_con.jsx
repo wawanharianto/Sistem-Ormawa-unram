@@ -130,7 +130,7 @@ function PengajuanDana_con() {
               </tbody>
             </table>
             <div className="tfooter tfooter1">
-              <p>Total Rows: {rows}</p>
+              {/* <p>Total Rows: {rows}</p> */}
               <p>
                 Page: {rows ? page + 1 : 0} of {pages}
               </p>

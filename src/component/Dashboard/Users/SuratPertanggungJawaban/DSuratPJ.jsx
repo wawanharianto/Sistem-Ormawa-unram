@@ -362,6 +362,16 @@ function DSuratPJ() {
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
               </div>)}
+
+              {user && user.role == 'admin' &&(<div className="fbtn-form">
+                <button id="btn_ajukan" onClick={() => setStatus('SPJ')} type="submit" className="Ajukan">
+                  <i class="fa-solid fa-check"></i>Ajukan SPJ
+                </button>
+
+                <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
+                  <i class="fa-solid fa-floppy-disk"></i>Simpan
+                </button>
+              </div>)}
             </form>
           </div>
           <form onSubmit={updateKetSPJ} className="form-Komfirmasi">
@@ -408,6 +418,20 @@ function DSuratPJ() {
               </div>
             </div>
             {user && user.role === "adminKeuangan" &&(<div className="btn-komfirm-lpj">
+              <button id="btn_setuju" onClick={() => setStatus('SPJ Diterima')} type="submit" className="setuju">
+                <i class="fa-solid fa-check"></i>Setuju
+              </button>
+
+              <button id="btn_revisi" onClick={() => setStatus('SPJ Revisi')} type="submit" className="revisi">
+                <i class="fa-solid fa-pen"></i>Revisi
+              </button>
+
+              <button onClick={() => setStatus(status)} type="submit" className="edit">
+                <i class="fa-solid fa-floppy-disk"></i>Simpan
+              </button>
+            </div>)}
+
+            {user && user.role == 'admin' &&(<div className="btn-komfirm-lpj">
               <button id="btn_setuju" onClick={() => setStatus('SPJ Diterima')} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>

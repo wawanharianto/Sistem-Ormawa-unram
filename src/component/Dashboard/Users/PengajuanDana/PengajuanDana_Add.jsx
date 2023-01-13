@@ -256,6 +256,13 @@ function PengajuanDana_Add() {
                   <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
                 </button>
               </div>)}
+
+              {user && user.role == 'admin' && (<div className="fbtn-form">
+                <button onClick={() => setStatus('Proposal pengajuan dana')} type="submit" className="Ajukan">
+                  <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
+                </button>
+              </div>)}
+              
             </form>
           </div>
 
@@ -305,7 +312,17 @@ function PengajuanDana_Add() {
             <div className="finput">
               <p></p>
             </div>
-            {status === "adminKeuangan" &&(<div className="btn-komfirm">
+            {status === "adminKeuangan" && (<div className="btn-komfirm">
+              <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+                <i class="fa-solid fa-check"></i>Setuju
+              </button>
+
+              <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+                <i class="fa-solid fa-floppy-disk"></i>Simpan
+              </button>
+            </div>)}
+
+            {user && user.role == 'admin' && (<div className="btn-komfirm">
               <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
