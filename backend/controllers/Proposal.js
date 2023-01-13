@@ -432,11 +432,15 @@ export const deleteMultiple = async (req, res) => {
 
         }
 
-        await Proposal.destroy({
-            where: {
-                id: req.body.id
-            }
-        });
+        try {
+            await Proposal.destroy({
+                where: {
+                    id: req.body.id
+                }
+            });
+        } catch (error) {
+            res.status(500).json({ msg: "Data belum dipilih" });
+        }
 
         res.status(200).json({ msg: "Proposal deleted successfuly" });
     } catch (error) {
