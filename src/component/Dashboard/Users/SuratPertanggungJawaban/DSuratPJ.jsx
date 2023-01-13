@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './DSuratPJ.css';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function DSuratPJ() {
   const [kegiatan, setKegiatan] = useState('');
@@ -27,6 +28,7 @@ function DSuratPJ() {
   const [nameFileSpj, setNameFileSpj] = useState('');
   const [nameFilePdkg, setNameFilePdkg] = useState('');
   const [nameRevisiSpj, setNameRevisiSpj] = useState('');
+  const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { uuid } = useParams();
 
@@ -351,7 +353,7 @@ function DSuratPJ() {
                 </div>
               </div>
 
-              <div className="fbtn-form">
+              {user && user.role === "mahasiswa" &&(<div className="fbtn-form">
                 <button id="btn_ajukan" onClick={() => setStatus('SPJ')} type="submit" className="Ajukan">
                   <i class="fa-solid fa-check"></i>Ajukan SPJ
                 </button>
@@ -359,7 +361,7 @@ function DSuratPJ() {
                 <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
                   <i class="fa-solid fa-floppy-disk"></i>Simpan
                 </button>
-              </div>
+              </div>)}
             </form>
           </div>
           <form onSubmit={updateKetSPJ} className="form-Komfirmasi">
@@ -405,7 +407,7 @@ function DSuratPJ() {
                 </div>
               </div>
             </div>
-            <div className="btn-komfirm-lpj">
+            {user && user.role === "adminKeuangan" &&(<div className="btn-komfirm-lpj">
               <button id="btn_setuju" onClick={() => setStatus('SPJ Diterima')} type="submit" className="setuju">
                 <i class="fa-solid fa-check"></i>Setuju
               </button>
@@ -417,7 +419,7 @@ function DSuratPJ() {
               <button onClick={() => setStatus(status)} type="submit" className="edit">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button>
-            </div>
+            </div>)}
           </form>
         </div>
       </div>
