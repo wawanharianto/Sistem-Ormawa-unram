@@ -73,8 +73,9 @@ function ApproveProposal_con() {
     navigate('/pengajuan-proposal');
   };
 
-  const kembali = () => {
-    navigate('/pengajuan-proposal');
+  const ClosePopUp = () => {
+    const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
+    PopUpSetuju.classList.toggle('SetujuShow');
   };
 
   const handleClose = () => {
@@ -216,9 +217,11 @@ function ApproveProposal_con() {
                   <button
                     onClick={() => {
                       setStatus('Proposal ACC');
+                      const PopUpSetuju = document.getElementsByClassName('popUpSetuju-Approve')[0];
+                      PopUpSetuju.classList.toggle('SetujuShow');
 
                       // belum berfungsi dia akan di eksekusi ketika 1/2 detik [belum bekerja]
-                      setInterval(kembali, 1000);
+                      setTimeout(ClosePopUp, 1000);
                     }}
                     type="submit"
                     className="Ajukan"
@@ -228,30 +231,82 @@ function ApproveProposal_con() {
                 )}
 
                 {user && user.role == 'admin' && (
-                  <button
-                    onClick={() => {
-                      setStatus('Proposal ACC');
-                      // handleSetuju();
-                    }}
-                    type="submit"
-                    className="Ajukan"
-                  >
-                    <i class="fa-solid fa-check"></i>Setuju
-                  </button>
+                  <>
+                    <button
+                      onClick={() => {
+                        setStatus('Proposal ACC');
+                        // handleSetuju();
+                        const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
+                        PopUpSetuju.classList.toggle('SetujuShow');
+
+                        setTimeout(ClosePopUp, 2000);
+                      }}
+                      type="submit"
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-check"></i>Setuju
+                    </button>
+                    <div className="popUp-Approve SetujuShow">
+                      <div className="container-popUp">
+                        <div className="icon">
+                          <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p>Berhasil ACC Proposal</p>
+                      </div>
+                    </div>
+                  </>
                 )}
                 {/* <button type="submit" className="Ajukan">
                 <i class="fa-solid fa-floppy-disk"></i>Simpan
               </button> */}
                 {status !== 'Proposal ACC' && user && user.role == 'WD3' && (
-                  <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
-                    <i class="fa-solid fa-xmark"></i>Tolak
-                  </button>
+                  <>
+                    <button
+                      onClick={() => {
+                        setStatus('Proposal di tolak');
+                        const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
+                        PopUpTolak.classList.toggle('TolakShow');
+                        setTimeout(() => {
+                          PopUpTolak.classList.toggle('TolakShow');
+                        }, 2000);
+                        navigate('/pengajuan-proposal');
+                      }}
+                      type="submit"
+                      className="tolak"
+                    >
+                      <i class="fa-solid fa-xmark"></i>Tolak
+                    </button>
+                  </>
                 )}
 
                 {user && user.role == 'admin' && (
-                  <button onClick={() => setStatus('Proposal di tolak')} type="submit" className="tolak">
-                    <i class="fa-solid fa-xmark"></i>Tolak
-                  </button>
+                  <>
+                    <button
+                      onClick={(e) => {
+                        setStatus('Proposal di tolak');
+                        const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
+                        PopUpTolak.classList.toggle('TolakShow');
+                        setTimeout(() => {
+                          PopUpTolak.classList.toggle('TolakShow');
+                        }, 2000);
+                        setTimeout(() => {
+                          navigate('/pengajuan-proposal');
+                        }, 2000);
+                      }}
+                      type="submit"
+                      className="tolak"
+                    >
+                      <i class="fa-solid fa-xmark"></i>Tolak
+                    </button>
+                    <div className="popUp-Approve TolakShow">
+                      <div className="container-popUp">
+                        <div className="icon-x">
+                          <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <p>Proposal Berhasil Ditolak</p>
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
             </form>
@@ -265,17 +320,19 @@ function ApproveProposal_con() {
             <div className="finput">
               <p>Download Proposal</p>
               <div className="contInput">
-                {status == 'Proposal ACC' && (<div className="down-approve">
-                  <button
-                    className="download-file"
-                    onClick={() => {
-                      window.location.href = '../Document/Pengesahan.pdf';
-                    }}
-                  >
-                    <i class="fa-solid fa-file-arrow-down"></i>Download
-                  </button>
-                  <p className="name">File Lembar Pengesahan.pdf</p>
-                </div>)}
+                {status == 'Proposal ACC' && (
+                  <div className="down-approve">
+                    <button
+                      className="download-file"
+                      onClick={() => {
+                        window.location.href = '../Document/Pengesahan.pdf';
+                      }}
+                    >
+                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                    </button>
+                    <p className="name">File Lembar Pengesahan.pdf</p>
+                  </div>
+                )}
                 <p className="kosong">File Lembar Pengesahaan</p>
               </div>
             </div>

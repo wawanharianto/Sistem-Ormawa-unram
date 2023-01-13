@@ -25,7 +25,7 @@ function Proposal_con() {
   }, [page, keyword]);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=Proposal di ajukan&status=Proposal ditolak`);
+    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=Proposal di ajukan&status=Proposal di tolak`);
     setProposals(
       response.data.result.map((d) => {
         return {
