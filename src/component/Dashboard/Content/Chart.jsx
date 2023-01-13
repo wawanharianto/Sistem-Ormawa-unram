@@ -17,7 +17,7 @@ function Chart() {
   const dataFetch = async () => {
     const dataormawa = [];
     await axios
-      .get(`http://localhost:3000/proposal?search_query=${keyword}`)
+      .get(`http://localhost:3000/proposal?search_query=`)
       .then((res) => {
         console.log(res);
         for (const dataObj of res.data.result) {

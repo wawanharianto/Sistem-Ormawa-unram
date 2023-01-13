@@ -73,6 +73,10 @@ function ApproveProposal_con() {
     navigate('/pengajuan-proposal');
   };
 
+  const kembali = () => {
+    navigate('/pengajuan-proposal');
+  };
+
   const handleClose = () => {
     const closepop = document.getElementsByClassName('popUp')[0];
     closepop.classList.toggle('popshow');
@@ -214,12 +218,7 @@ function ApproveProposal_con() {
                       setStatus('Proposal ACC');
 
                       // belum berfungsi dia akan di eksekusi ketika 1/2 detik [belum bekerja]
-                      navigate('/pengajuan-proposal');
-                      console.log('Ok');
                       setInterval(kembali, 1000);
-                      const kembali = () => {
-                        console.log('ok');
-                      };
                     }}
                     type="submit"
                     className="Ajukan"
@@ -266,7 +265,7 @@ function ApproveProposal_con() {
             <div className="finput">
               <p>Download Proposal</p>
               <div className="contInput">
-                <div className="down-approve">
+                {status == 'Proposal ACC' && (<div className="down-approve">
                   <button
                     className="download-file"
                     onClick={() => {
@@ -276,7 +275,7 @@ function ApproveProposal_con() {
                     <i class="fa-solid fa-file-arrow-down"></i>Download
                   </button>
                   <p className="name">File Lembar Pengesahan.pdf</p>
-                </div>
+                </div>)}
                 <p className="kosong">File Lembar Pengesahaan</p>
               </div>
             </div>
