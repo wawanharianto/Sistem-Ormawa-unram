@@ -285,7 +285,7 @@ export const createProposal = async (req, res) => {
             });
             res.json({ msg: "Upload Data Berhasil" });
         } catch (error) {
-            console.log(error);
+            res.status(500).json({ msg: error.message });
         }
     })
 }
@@ -362,7 +362,7 @@ export const updateProposal = async (req, res) => {
         }
         res.status(200).json({ msg: "Proposal updated successfuly" });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: error.message });
     }
 
 }
@@ -394,7 +394,7 @@ export const deleteProposal = async (req, res) => {
         }
         res.status(200).json({ msg: "Proposal deleted successfuly" });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: error.message });
     }
 
 }
@@ -440,7 +440,7 @@ export const deleteMultiple = async (req, res) => {
 
         res.status(200).json({ msg: "Proposal deleted successfuly" });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: error.message });
     }
 
 }
@@ -465,7 +465,7 @@ export const setStatus = async (req, res) => {
             }
         })
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: error.message });
     }
 }
 
@@ -490,7 +490,7 @@ export const updateKeteranganWd3 = async (req, res) => {
             }
         })
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: error.message });
     }
 }
 
@@ -517,7 +517,7 @@ export const updateKeteranganKeuangan = async (req, res) => {
         })
         res.status(200).json({ msg: "update berhasil " });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: error.message });
     }
 }
 
@@ -579,6 +579,6 @@ export const updateRevisi = async (req, res) => {
         }
         res.status(200).json({ msg: "Proposal updated successfuly" });
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: error.message });
     }
 }
