@@ -65,11 +65,6 @@ function PengajuanProposal() {
         },
       });
       setMsg('success');
-      console.log(msg);
-      if (msg == 'success' || msg == 'No File Uploaded') {
-        console.log('OK');
-        navigate('/pengajuan-proposal');
-      }
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -199,7 +194,24 @@ function PengajuanProposal() {
                 </div>
               </div>
               <div className="fbtn-form">
-                <button type="submit" className="Ajukan">
+                <button
+                  type="submit"
+                  className="Ajukan"
+                  onClick={() => {
+                    if (msg == 'success') {
+                      const PopUpAjukan = document.getElementsByClassName('popUp-Ajukan')[0];
+                      PopUpAjukan.classList.toggle('AjukanShow');
+
+                      setTimeout(() => {
+                        PopUpAjukan.classList.toggle('AjukanShow');
+                      }, 2500);
+
+                      setTimeout(() => {
+                        navigate('/pengajuan-proposal');
+                      }, 1000);
+                    }
+                  }}
+                >
                   <i class="fa-solid fa-location-arrow"></i>Ajukan
                 </button>
               </div>
@@ -207,10 +219,12 @@ function PengajuanProposal() {
           </div>
         </div>
       </div>
-      <div className="popUp pophide">
-        <div className="conPopUp" onClick={handleClose}>
-          <button>X</button>
-          <p>{msg}</p>
+      <div className="popUp-Ajukan AjukanShow">
+        <div className="container-popUp">
+          <div className="icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <p>Propsal Berhasil di Ajukan</p>
         </div>
       </div>
       <div className="popup-valid validshow">

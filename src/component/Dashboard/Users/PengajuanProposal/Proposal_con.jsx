@@ -82,13 +82,18 @@ function Proposal_con() {
       }
     });
     console.log(arrayIds);
-    await axios
-      .delete(`http://localhost:3000/proposal/${arrayIds}`)
-      .then((data) => {
-        console.log(data);
-        getProposal();
-      })
-      .catch((err) => alert(err));
+    if (arrayIds.length == 0) {
+      console.log('Tidak ada data');
+    } else {
+      console.log(arrayIds);
+      await axios
+        .delete(`http://localhost:3000/proposal/${arrayIds}`)
+        .then((data) => {
+          console.log(data);
+          getProposal();
+        })
+        .catch((err) => alert(err));
+    }
   };
 
   return (
