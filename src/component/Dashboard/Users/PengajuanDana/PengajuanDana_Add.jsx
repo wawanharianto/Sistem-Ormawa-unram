@@ -251,18 +251,53 @@ function PengajuanDana_Add() {
                 </div>
               )}
 
-              {user && user.role === 'mahasiswa' && (<div className="fbtn-form">
-                <button onClick={() => setStatus('Proposal pengajuan dana')} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
-                </button>
-              </div>)}
+              {user && user.role === 'mahasiswa' && (
+                <div className="fbtn-form">
+                  <button
+                    onClick={() => {
+                      setStatus('Proposal pengajuan dana');
+                      const PopUpDanaAju = document.getElementsByClassName('popUp-Ajukan')[0];
+                      PopUpDanaAju.classList.toggle('AjukanShow');
+                      setTimeout(() => {
+                        PopUpDanaAju.classList.toggle('AjukanShow');
+                      }, 2000);
+                    }}
+                    type="submit"
+                    className="Ajukan"
+                  >
+                    <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
+                  </button>
+                </div>
+              )}
 
-              {user && user.role == 'admin' && (<div className="fbtn-form">
-                <button onClick={() => setStatus('Proposal pengajuan dana')} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
-                </button>
-              </div>)}
-              
+              {user && user.role == 'admin' && (
+                <>
+                  <div className="fbtn-form">
+                    <button
+                      onClick={() => {
+                        setStatus('Proposal pengajuan dana');
+                        const PopUpDanaAju = document.getElementsByClassName('popUp-Ajukan')[0];
+                        PopUpDanaAju.classList.toggle('AjukanShow');
+                        setTimeout(() => {
+                          PopUpDanaAju.classList.toggle('AjukanShow');
+                        }, 2000);
+                      }}
+                      type="submit"
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
+                    </button>
+                  </div>
+                  <div className="popUp-Ajukan AjukanShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Berhasil Mengajukan Dana</p>
+                    </div>
+                  </div>
+                </>
+              )}
             </form>
           </div>
 
@@ -312,25 +347,73 @@ function PengajuanDana_Add() {
             <div className="finput">
               <p></p>
             </div>
-            {status === "adminKeuangan" && (<div className="btn-komfirm">
-              <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>
+            {status === 'adminKeuangan' && (
+              <>
+                <div className="btn-komfirm">
+                  <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+                    <i class="fa-solid fa-check"></i>Setuju
+                  </button>
 
-              <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-            </div>)}
+                  <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                  </button>
+                </div>
+              </>
+            )}
 
-            {user && user.role == 'admin' && (<div className="btn-komfirm">
-              <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>
+            {user && user.role == 'admin' && (
+              <>
+                <div className="btn-komfirm">
+                  <button
+                    id="btn_setuju"
+                    onClick={() => {
+                      setStatus('Berkegiatan');
+                      const BKpopUp = document.getElementsByClassName('popUp-Bkeuangan')[0];
+                      BKpopUp.classList.toggle('BKShow');
+                      setTimeout(() => {
+                        BKpopUp.classList.toggle('BKShow');
+                      }, 2500);
+                    }}
+                    type="submit"
+                    className="Ajukan"
+                  >
+                    <i class="fa-solid fa-check"></i>Setuju
+                  </button>
 
-              <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-            </div>)}
+                  <button
+                    onClick={() => {
+                      setStatus('Berkegiatan');
+                      const BKpopUp = document.getElementsByClassName('popUp-Bkeuangan')[1];
+                      BKpopUp.classList.toggle('BKShow');
+                      setTimeout(() => {
+                        BKpopUp.classList.toggle('BKShow');
+                      }, 2000);
+                    }}
+                    type="submit"
+                    className="Ajukan"
+                  >
+                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                  </button>
+                </div>
+                <div className="popUp-Bkeuangan BKShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>Berhasil!</p>
+                    <p>Menyetujui Pengajuan Dana</p>
+                  </div>
+                </div>
+                <div className="popUp-Bkeuangan BKShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>Berhasil! Menyimpan</p>
+                  </div>
+                </div>
+              </>
+            )}
           </form>
         </div>
       </div>
