@@ -388,6 +388,10 @@ function PengajuanDana_Add() {
                       setTimeout(() => {
                         BKpopUp.classList.toggle('BKShow');
                       }, 2000);
+
+                      setTimeout(() => {
+                        navigate('/pengajuan-dana');
+                      }, 1500);
                     }}
                     type="submit"
                     className="Ajukan"
