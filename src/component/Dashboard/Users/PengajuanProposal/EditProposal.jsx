@@ -132,14 +132,14 @@ function UpdateProposal() {
               <div className="finput">
                 <p>Nomor Hp</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Hp" value={nohp} onChange={(e) => setNohp(e.target.value)}></input>
+                  <input type="number" placeholder="Nomor Hp" value={nohp} onChange={(e) => setNohp(e.target.value)}></input>
                   <p className="kosong">Nomor HP</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Tanggal Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="date " placeholder="Tanggal Pelaksanaan" value={tanggal} onChange={(e) => setTanggal(e.target.value)}></input>
+                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal} onChange={(e) => setTanggal(e.target.value)}></input>
                   <p className="kosong">Tanggal Pelaksanaan</p>
                 </div>
               </div>
@@ -153,7 +153,7 @@ function UpdateProposal() {
               <div className="finput">
                 <p>Nomor Ketua Umum</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum} onChange={(e) => setKetum(e.target.value)}></input>
+                  <input type="number" placeholder="Nomor Ketua Umum" value={ketum} onChange={(e) => setKetum(e.target.value)}></input>
                   <p className="kosong">Nomor Ketua Umum</p>
                 </div>
               </div>

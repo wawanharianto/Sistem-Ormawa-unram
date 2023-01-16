@@ -167,7 +167,7 @@ function PengajuanProposal() {
               <div className="finput">
                 <p>Nomor Ketua Umum</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum} onChange={(e) => setKetum(e.target.value)}></input>
+                  <input type="number" placeholder="Nomor Ketua Umum" value={ketum} onChange={(e) => setKetum(e.target.value)}></input>
                   <p className="kosong">Nomor Ketua Umum</p>
                 </div>
               </div>
