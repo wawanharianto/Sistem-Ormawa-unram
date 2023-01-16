@@ -11,6 +11,8 @@ function UpdateProposal() {
   const [tanggal, setTanggal] = useState('');
   const [tempat, setTempat] = useState('');
   const [ketum, setKetum] = useState('');
+  const [url, setUrl] = useState('');
+  const [namafile, setNamaFile] = useState('');
   const [file, setFile] = useState('');
   const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
@@ -30,6 +32,8 @@ function UpdateProposal() {
         setTempat(response.data.tempat_pelaksanaan);
         setStatus(response.data.status);
         setKetum(response.data.nomer_ketum);
+        setUrl(response.data.url_proposal);
+        setNamaFile(response.data.proposal);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -157,6 +161,18 @@ function UpdateProposal() {
                 <p>Proposal</p>
                 <div className="contInput">
                   <input type="file" name="file" onChange={loadFile}></input>
+                </div>
+              </div>
+              <div className="finput">
+                <p>Download Proposal</p>
+                <div className="contInput">
+                  <div className="down-approve">
+                    <a href={url} target="_blank">
+                      {' '}
+                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                    </a>
+                    <p>{namafile}</p>
+                  </div>
                 </div>
               </div>
               <div className="finput">

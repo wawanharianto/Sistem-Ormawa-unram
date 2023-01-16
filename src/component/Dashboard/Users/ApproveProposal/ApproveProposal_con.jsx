@@ -110,13 +110,13 @@ function ApproveProposal_con() {
     <>
       <div className="addPropalForm-container">
         <div className="hProposalForm">
-          <h2>Pengajual Propsal</h2>
+          <h2>Form Approve Wakil Dekan III</h2>
           <p>List Pengajuan / Detail</p>
         </div>
         <div className="container-formAddProp">
           <div className="formaddProp">
             <div className="headForm">
-              <p>Details Pengajuan Proposal</p>
+              <p>Form Approve WD III</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={updateKetWD3} className="addProposal read-only" action="">
