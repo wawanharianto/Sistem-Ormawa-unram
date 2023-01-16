@@ -118,7 +118,25 @@ function UpdateProposal() {
               <div className="finput">
                 <p>Jumlah Dana yang Diajukan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana} onChange={(e) => setDana(e.target.value)}></input>
+                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana} onChange={(e) => {
+                    const formatRupiah = (angka, prefix) => {
+                      let number_string = angka.replace(/[^,\d]/g, '').toString(),
+                        split = number_string.split(','),
+                        sisa = split[0].length % 3,
+                        rupiah = split[0].substr(0, sisa),
+                        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                      // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                      if (ribuan) {
+                        let separator = sisa ? '.' : '';
+                        rupiah += separator + ribuan.join('.');
+                      }
+
+                      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                      return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+                    };
+                    setDana(formatRupiah(e.target.value, 'Rp. '))
+                  }}></input>
                   <p className="kosong">Jumlah Dana yang Diajukan</p>
                 </div>
               </div>

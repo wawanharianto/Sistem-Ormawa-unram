@@ -72,6 +72,7 @@ function PengajuanProposal() {
         popUpValid.classList.toggle('validshow');
       }
     }
+    console.log(msg);
   };
 
   return (
@@ -197,20 +198,20 @@ function PengajuanProposal() {
                 <button
                   type="submit"
                   className="Ajukan"
-                  onClick={() => {
-                    if (msg == 'success') {
-                      const PopUpAjukan = document.getElementsByClassName('popUp-Ajukan')[0];
-                      PopUpAjukan.classList.toggle('AjukanShow');
+                  // onClick={() => {
+                  //   if (msg == 'success') {
+                  //     const PopUpAjukan = document.getElementsByClassName('popUp-Ajukan')[0];
+                  //     PopUpAjukan.classList.toggle('AjukanShow');
 
-                      setTimeout(() => {
-                        PopUpAjukan.classList.toggle('AjukanShow');
-                      }, 2500);
+                  //     setTimeout(() => {
+                  //       PopUpAjukan.classList.toggle('AjukanShow');
+                  //     }, 2500);
 
-                      setTimeout(() => {
-                        navigate('/pengajuan-proposal');
-                      }, 1000);
-                    }
-                  }}
+                  //     setTimeout(() => {
+                  //       navigate('/pengajuan-proposal');
+                  //     }, 1000);
+                  //   }
+                  // }}
                 >
                   <i class="fa-solid fa-location-arrow"></i>Ajukan
                 </button>
