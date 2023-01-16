@@ -139,8 +139,8 @@ function PengajuanDana_Add() {
     <>
       <div className="addPropalForm-container">
         <div className="hProposalForm">
-          <h2>Pengajual Propsal</h2>
-          <p>List Pengajuan / Detail</p>
+          <h2>Pengajuan Dana</h2>
+          <p>List Pengajuan / Detail Dana</p>
         </div>
         <div className="container-formAddProp">
           <div className="formaddProp">
@@ -268,7 +268,7 @@ function PengajuanDana_Add() {
 
           <form onSubmit={updateKetKeuangan} className="form-Komfirmasi">
             <div className="headForm">
-              <p>Kolom Komfirmasi Bagian Keuangan</p>
+              <p>Kolom Konfirmasi Bagian Keuangan</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <hr className="line" />

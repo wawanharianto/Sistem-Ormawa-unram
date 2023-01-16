@@ -14,7 +14,7 @@ function Footer() {
             kedokteran@unram.ac.id
           </p>
         </div>
-        <p>2020 — Fakultas Kedokteran Universitas Mataram</p>
+        <p>2022 — Fakultas Kedokteran Universitas Mataram</p>
       </footer>
     </>
   );

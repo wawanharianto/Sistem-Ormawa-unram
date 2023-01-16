@@ -194,7 +194,7 @@ function PengajuanProposal() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="permohonan">
-                    <i class="fa-solid fa-circle-exclamation icon"></i> permohonan
+                    <i class="fa-solid fa-circle-exclamation icon"></i> {status}
                   </button>
                 </div>
               </div>

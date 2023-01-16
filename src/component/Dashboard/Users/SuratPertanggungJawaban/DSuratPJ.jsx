@@ -214,13 +214,13 @@ function DSuratPJ() {
     <>
       <div className="addPropalForm-container">
         <div className="hProposalForm">
-          <h2>Laporan Pertanggung Jawaban</h2>
-          <p>List Pengajuan/ Proposal</p>
+          <h2>Surat Pertanggung Jawaban</h2>
+          <p>List SPJ/ Detail SPJ</p>
         </div>
         <div className="container-formAddProp">
           <div className="formaddProp">
             <div className="headForm">
-              <p>Detail Pengajuan Dana</p>
+              <p>Detail Upload Surat Pertanggung Jawaban</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={spj} className="addProposal" action="">
@@ -376,7 +376,7 @@ function DSuratPJ() {
           </div>
           <form onSubmit={updateKetSPJ} className="form-Komfirmasi">
             <div className="headForm">
-              <p>Kolom Komfirmasi SPJ</p>
+              <p>Kolom Konfirmasi SPJ</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <hr className="line" />

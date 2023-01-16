@@ -8,9 +8,9 @@ function Content() {
       <article className="contentContainer">
         <div className="sideLeft">
           <h2>
-            Administrasi <br /> Organisasi Mahsiswa
+            Administrasi <br /> Organisasi Mahasiswa
           </h2>
-          <p>Sistem Admistrasi Organisasi Mahasiswa Fakultas Kedokteran Universitas Mataram</p>
+          <p>Sistem Administrasi Organisasi Mahasiswa Fakultas Kedokteran Universitas Mataram</p>
           <div className="conButton">
             <a href="pengumuman">
               <button>Pengumuman</button>

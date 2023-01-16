@@ -64,12 +64,12 @@ function PengajuanDana_con() {
     <>
       <div className="Proposal_container">
         <div className="hProposal">
-          <h2>Pengajuan Proposals</h2>
+          <h2>Pengajuan Dana</h2>
         </div>
         <div className="container-tabel">
           <div className="tProposal_container">
             <div className="headtproposal">
-              <h3>Laporan Pengajuan Dana</h3>
+              <h3>List Pengajuan Dana</h3>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <hr />

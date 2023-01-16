@@ -95,7 +95,7 @@ function Proposal_con() {
     <>
       <div className="Proposal_container">
         <div className="hProposal">
-          <h2>Pengajuan Proposals</h2>
+          <h2>Pengajuan Proposal</h2>
         </div>
         <div className="container-tabel">
           <div className="tProposal_container">

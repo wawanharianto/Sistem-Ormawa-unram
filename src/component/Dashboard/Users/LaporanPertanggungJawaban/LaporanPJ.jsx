@@ -64,7 +64,7 @@ function PengajuanDana_con() {
     <>
       <div className="Proposal_container">
         <div className="hProposal">
-          <h2>Pengajuan Proposals</h2>
+          <h2>Laporan Pertanggung Jawaban</h2>
         </div>
 
         <div className="container-tabel">

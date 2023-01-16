@@ -149,12 +149,12 @@ function DSuratPJ() {
       <div className="addPropalForm-container">
         <div className="hProposalForm">
           <h2>Laporan Pertanggung Jawaban</h2>
-          <p>List Pengajuan/ Proposal</p>
+          <p>List LPJ/ Detail LPJ</p>
         </div>
         <div className="container-formAddProp">
           <div className="formaddProp">
             <div className="headForm">
-              <p>Detail Pengajuan Dana</p>
+              <p>Detail Laporan Pertanggung Jawaban</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={updateLPJ} className="addProposal" action="">
@@ -282,7 +282,7 @@ function DSuratPJ() {
           </div>
           <form onSubmit={updateKetAkademik} className="form-Komfirmasi">
             <div className="headForm">
-              <p>Kolom Komfirmasi Bagian Akademik</p>
+              <p>Kolom Konfirmasi Bagian Akademik</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <hr className="line" />
@@ -303,7 +303,7 @@ function DSuratPJ() {
             </div>
 
             <div className="finput">
-              <p>Revisi file SPJ</p>
+              <p>Revisi file LPJ</p>
               <div className="contInput">
                 <div className="file-BSPJ">
                   <label className="file-upload">

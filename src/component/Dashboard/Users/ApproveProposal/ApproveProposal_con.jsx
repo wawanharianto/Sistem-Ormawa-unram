@@ -320,7 +320,6 @@ function ApproveProposal_con() {
             <div className="finput">
               <p>Download Proposal</p>
               <div className="contInput">
-<<<<<<< HEAD
                 {status == 'Proposal ACC' && (
                   <div className="down-approve">
                     <button
@@ -334,19 +333,6 @@ function ApproveProposal_con() {
                     <p className="name">File Lembar Pengesahan.pdf</p>
                   </div>
                 )}
-=======
-                <div className="down-approve">
-                  <button
-                    className="download-file"
-                    onClick={() => {
-                      window.location.href = '../Document/Pengesahan.pdf';
-                    }}
-                  >
-                    <i class="fa-solid fa-file-arrow-down"></i>Download
-                  </button>
-                  <p className="name">File Lembar Pengesahan.pdf</p>
-                </div>
->>>>>>> 7e2bddf3e0336bf19d153869ecc85a3d25a54099
                 <p className="kosong">File Lembar Pengesahaan</p>
               </div>
             </div>

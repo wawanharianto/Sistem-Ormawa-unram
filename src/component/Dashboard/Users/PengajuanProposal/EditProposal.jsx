@@ -86,13 +86,13 @@ function UpdateProposal() {
     <>
       <div className="addPropalForm-container">
         <div className="hProposalForm">
-          <h2>Pengajual Proposal</h2>
-          <p>Add Proposal</p>
+          <h2>Edit Proposal</h2>
+          <p>Edit Proposal</p>
         </div>
         <div className="container-formAddProp">
           <div className="formaddProp">
             <div className="headForm">
-              <p>Add Proposal</p>
+              <p>Edit Proposal</p>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={updateProposal} className="addProposal" action="">
