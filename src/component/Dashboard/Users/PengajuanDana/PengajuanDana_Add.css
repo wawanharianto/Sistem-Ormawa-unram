@@ -74,3 +74,31 @@
 .finput .upload-btn:hover {
   background-color: #347864;
 }
+
+/* pop Up Bagian Keuangan */
+.popUp-Bkeuangan {
+  background-color: rgba(1, 1, 1, 0.1);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popUp-Bkeuangan .container-popUp {
+  background-color: #ffffff;
+  width: 400px;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.BKShow {
+  display: none;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import './DLaporanPJ.css';
 
 function DSuratPJ() {
   const [kegiatan, setKegiatan] = useState('');
@@ -259,25 +260,71 @@ function DSuratPJ() {
                 </div>
               </div>
 
-              {user && user.role === "mahasiswa" && (<div className="fbtn-form">
-                <button id="btn_ajukan" onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-check"></i>Ajukan
-                </button>
+              {user && user.role === 'mahasiswa' && (
+                <div className="fbtn-form">
+                  <button id="btn_ajukan" onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
+                    <i class="fa-solid fa-check"></i>Ajukan
+                  </button>
 
-                <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-floppy-disk"></i>Simpan
-                </button>
-              </div>)}
+                  <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
+                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                  </button>
+                </div>
+              )}
 
-              {user && user.role == 'admin' && (<div className="fbtn-form">
-                <button id="btn_ajukan" onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-check"></i>Ajukan
-                </button>
+              {user && user.role == 'admin' && (
+                <>
+                  <div className="fbtn-form">
+                    <button
+                      id="btn_ajukan"
+                      onClick={() => {
+                        setStatus('LPJ Di Ajukan');
+                        const popUpAjukan = document.getElementsByClassName('popUp-LPJ')[0];
+                        popUpAjukan.classList.toggle('LPJShow');
+                        setTimeout(() => {
+                          popUpAjukan.classList.toggle('LPJShow');
+                        }, 2500);
+                      }}
+                      type="submit"
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-check"></i>Ajukan
+                    </button>
 
-                <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
-                  <i class="fa-solid fa-floppy-disk"></i>Simpan
-                </button>
-              </div>)}
+                    <button
+                      onClick={() => {
+                        setStatus(status);
+                        const PopUpSimpan = document.getElementsByClassName('popUp-LPJ')[1];
+                        PopUpSimpan.classList.toggle('LPJShow');
+                        setTimeout(() => {
+                          PopUpSimpan.classList.toggle('LPJShow');
+                        }, 2000);
+                      }}
+                      type="submit"
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-floppy-disk"></i>Simpan
+                    </button>
+                  </div>
+                  <div className="popUp-LPJ LPJShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Berhasil!</p>
+                      <p>Mengajukan Laporan Pertanggung Jawaban</p>
+                    </div>
+                  </div>
+                  <div className="popUp-LPJ LPJShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Berhasil Menyimpan Pembaruan</p>
+                    </div>
+                  </div>
+                </>
+              )}
             </form>
           </div>
           <form onSubmit={updateKetAkademik} className="form-Komfirmasi">
@@ -325,33 +372,98 @@ function DSuratPJ() {
               </div>
             </div>
 
-            {user && user.role === "adminAkademik" && (<div className="btn-komfirm-lpj">
-              <button onClick={() => setStatus('Selesai')} type="submit" id="btn_setuju" className="setuju">
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>
+            {user && user.role === 'adminAkademik' && (
+              <div className="btn-komfirm-lpj">
+                <button onClick={() => setStatus('Selesai')} type="submit" id="btn_setuju" className="setuju">
+                  <i class="fa-solid fa-check"></i>Setuju
+                </button>
 
-              <button id="btn_revisi" onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
-                <i class="fa-solid fa-pen"></i>Revisi
-              </button>
+                <button id="btn_revisi" onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
+                  <i class="fa-solid fa-pen"></i>Revisi
+                </button>
 
-              <button onClick={() => setStatus(status)} type="submit" className="edit">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-            </div>)}
+                <button onClick={() => setStatus(status)} type="submit" className="edit">
+                  <i class="fa-solid fa-floppy-disk"></i>Simpan
+                </button>
+              </div>
+            )}
 
-            {user && user.role == 'admin' && (<div className="btn-komfirm-lpj">
-              <button onClick={() => setStatus('Selesai')} type="submit" id="btn_setuju" className="setuju">
-                <i class="fa-solid fa-check"></i>Setuju
-              </button>
+            {user && user.role == 'admin' && (
+              <>
+                <div className="btn-komfirm-lpj">
+                  <button
+                    onClick={() => {
+                      setStatus('Selesai');
+                      const popUpKLPJ = document.getElementsByClassName('popUp-KLPJ')[0];
+                      popUpKLPJ.classList.toggle('LPJShow');
+                      setTimeout(() => {
+                        popUpKLPJ.classList.toggle('LPJShow');
+                      }, 2000);
+                    }}
+                    type="submit"
+                    id="btn_setuju"
+                    className="setuju"
+                  >
+                    <i class="fa-solid fa-check"></i>Setuju
+                  </button>
 
-              <button id="btn_revisi" onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
-                <i class="fa-solid fa-pen"></i>Revisi
-              </button>
+                  <button
+                    id="btn_revisi"
+                    onClick={() => {
+                      setStatus('LPJ Revisi');
+                      const popUpKLPJ = document.getElementsByClassName('popUp-KLPJ')[1];
+                      popUpKLPJ.classList.toggle('LPJShow');
+                      setTimeout(() => {
+                        popUpKLPJ.classList.toggle('LPJShow');
+                      }, 2000);
+                    }}
+                    type="submit"
+                    className="revisi"
+                  >
+                    <i class="fa-solid fa-pen"></i>Revisi
+                  </button>
 
-              <button onClick={() => setStatus(status)} type="submit" className="edit">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button>
-            </div>)}
+                  <button
+                    onClick={() => {
+                      setStatus(status);
+                      const popUpKLPJ = document.getElementsByClassName('popUp-KLPJ')[2];
+                      popUpKLPJ.classList.toggle('LPJShow');
+                      setTimeout(() => {
+                        popUpKLPJ.classList.toggle('LPJShow');
+                      }, 2000);
+                    }}
+                    type="submit"
+                    className="edit"
+                  >
+                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                  </button>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>LPJ Berhasil DiSetujui</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-exclamation"></i>
+                    </div>
+                    <p>LPJ Revisi</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>Berhasi Perbarui!</p>
+                  </div>
+                </div>
+              </>
+            )}
           </form>
         </div>
       </div>

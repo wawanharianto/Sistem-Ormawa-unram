@@ -210,6 +210,36 @@
 .validshow {
   display: none;
 }
+
+.popUp-Ajukan {
+  background-color: rgba(1, 1, 1, 0.1);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.popUp-Ajukan .container-popUp {
+  background-color: #ffffff;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+.AjukanShow {
+  display: none;
+}
 /* .fbtn-form button:nth-child(2) {
   background-color: #367cff;
 }

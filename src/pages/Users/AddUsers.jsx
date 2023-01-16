@@ -18,8 +18,8 @@ function AddUsers() {
     if (isError) {
       navigate('/login');
     }
-    if (user && user.role !== "admin") {
-      navigate('/dashboard')
+    if (user && user.role !== 'admin') {
+      navigate('/dashboard');
     }
   }, [isError, user, dispatch]);
 

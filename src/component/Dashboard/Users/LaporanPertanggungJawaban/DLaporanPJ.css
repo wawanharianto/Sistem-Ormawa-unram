@@ -1,0 +1,52 @@
+/* POP UP LPJ */
+
+.popUp-LPJ {
+  background-color: rgba(1, 1, 1, 0.1);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popUp-LPJ .container-popUp {
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.popUp-KLPJ {
+  background-color: rgba(1, 1, 1, 0.1);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popUp-KLPJ .container-popUp {
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  border-radius: 20px;
+}
+.LPJShow {
+  display: none;
+}
