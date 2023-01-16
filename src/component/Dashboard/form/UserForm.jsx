@@ -28,8 +28,9 @@ function UserForm() {
   };
 
   const deleteUsers = async (productId) => {
-    await axios.delete(`http://localhost:3000/users/${productId}`);
-    getUsers();
+    const popUp = document.getElementById(productId);
+    console.log(popUp);
+    popUp.classList.toggle('deleteShow');
   };
 
   const changePage = ({ selected }) => {
@@ -95,6 +96,46 @@ function UserForm() {
                       </button>
                     </Link>
                   </td>
+                  {/* POP UP */}
+                  <div id={user.uuid} className="popUpContainer deleteShow">
+                    <div className="container-content">
+                      <p className="text"> Apakah anda benar ingin menghapus {user.username} ?</p>
+                      <div className="cont-btn">
+                        <button
+                          onClick={async () => {
+                            const popUp = document.getElementById(user.uuid);
+                            popUp.classList.toggle('deleteShow');
+                            await axios.delete(`http://localhost:3000/users/${user.uuid}`);
+                            // bikinin try catch nangkep berhasil atau tidak
+                            const popUpDelete = document.getElementById(user.uuid + 1);
+                            popUpDelete.classList.toggle('deleteShow');
+                            setTimeout(() => {
+                              getUsers();
+                              popUpDelete.classList.toggle('deleteShow');
+                            }, 2000);
+                          }}
+                        >
+                          ok
+                        </button>
+                        <button
+                          onClick={() => {
+                            const popUp = document.getElementById(user.uuid);
+                            popUp.classList.toggle('deleteShow');
+                          }}
+                        >
+                          cencel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div id={user.uuid + 1} className="popUpContainer deleteShow">
+                    <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p> Akun Berhasil Di hapus</p>
+                    </div>
+                  </div>
                 </tr>
               ))}
             </tbody>
