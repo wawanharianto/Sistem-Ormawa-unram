@@ -74,27 +74,27 @@ function Proposal_con() {
     navigate('add');
   };
 
-  const multipleDeleteById = async () => {
-    let arrayIds = [];
-    proposals.forEach((d) => {
-      if (d.select) {
-        arrayIds.push(d.id);
-      }
-    });
-    console.log(arrayIds);
-    if (arrayIds.length == 0) {
-      console.log('Tidak ada data');
-    } else {
-      console.log(arrayIds);
-      await axios
-        .delete(`http://localhost:3000/proposal/${arrayIds}`)
-        .then((data) => {
-          console.log(data);
-          getProposal();
-        })
-        .catch((err) => alert(err));
-    }
-  };
+  // const multipleDeleteById = async () => {
+  //   let arrayIds = [];
+  //   proposals.forEach((d) => {
+  //     if (d.select) {
+  //       arrayIds.push(d.id);
+  //     }
+  //   });
+  //   console.log(arrayIds);
+  //   if (arrayIds.length == 0) {
+  //     console.log('Tidak ada data');
+  //   } else {
+  //     console.log(arrayIds);
+  //     await axios
+  //       .delete(`http://localhost:3000/proposal/${arrayIds}`)
+  //       .then((data) => {
+  //         console.log(data);
+  //         getProposal();
+  //       })
+  //       .catch((err) => alert(err));
+  //   }
+  // };
 
   return (
     <>
@@ -115,9 +115,9 @@ function Proposal_con() {
                 <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
               </div>
               <div className="fbtn">
-                <button onClick={() => multipleDeleteById()}>
+                {/* <button onClick={() => multipleDeleteById()}>
                   <i class="fa-solid fa-trash-can"></i> Delete
-                </button>
+                </button> */}
 
                 {Statuscount >= 3 && user && user.role == 'mahasiswa' ? (
                   ''
@@ -148,7 +148,7 @@ function Proposal_con() {
                   .map((proposal, index) => (
                     <tr key={proposal.id}>
                       <td>
-                        <input
+                        {/* <input
                           type="checkbox"
                           checked={proposal.select}
                           onChange={(e) => {
@@ -162,7 +162,7 @@ function Proposal_con() {
                               })
                             );
                           }}
-                        />{' '}
+                        />{' '} */}
                         {index + 1}
                       </td>
                       <td>{proposal.nama_kegiatan}</td>

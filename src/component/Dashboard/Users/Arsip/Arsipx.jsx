@@ -63,6 +63,29 @@ function Arsipx() {
     setKeyword(query);
   };
 
+  const multipleDeleteById = async (e) => {
+    e.preventDefault();
+    let arrayIds = [];
+    proposals.forEach((d) => {
+      if (d.select) {
+        arrayIds.push(d.id);
+      }
+    });
+    console.log(arrayIds);
+    if (arrayIds.length == 0) {
+      console.log('Tidak ada data');
+    } else {
+      console.log(arrayIds);
+      await axios
+        .delete(`http://localhost:3000/proposal/${arrayIds}`)
+        .then((data) => {
+          console.log(data);
+          getProposal();
+        })
+        .catch((err) => alert(err));
+    }
+  };
+
   const Export = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -171,6 +194,9 @@ function Arsipx() {
               </form>
               <div className="fexport">
                 <form action="">
+                <button onClick={multipleDeleteById}>
+                  <i class="fa-solid fa-trash-can"></i> Delete
+                </button>
                   <input type="date" value={startdate} onChange={(e) => setStartdate(e.target.value)} />
                   <p>To</p>
                   <input type="date" name="" id="" value={enddate} onChange={(e) => setEnddate(e.target.value)} />
@@ -196,7 +222,22 @@ function Arsipx() {
                   .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
                   .map((proposal, index) => (
                     <tr key={proposal.id}>
-                      <td>{index + 1}</td>
+                      <td><input
+                          type="checkbox"
+                          checked={proposal.select}
+                          onChange={(e) => {
+                            let value = e.target.checked;
+                            setProposals(
+                              proposals.map((d) => {
+                                if (d.id == proposal.id) {
+                                  d.select = value;
+                                }
+                                return d;
+                              })
+                            );
+                          }}
+                        />{' '}
+                        {index + 1}</td>
                       <td>{proposal.nama_kegiatan}</td>
                       <td>{proposal.nama_organisasi}</td>
                       <td>{proposal.tanggal_pelaksanaan}</td>
