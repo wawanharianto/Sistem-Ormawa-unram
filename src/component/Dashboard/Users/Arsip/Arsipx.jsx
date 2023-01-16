@@ -208,9 +208,9 @@ function Arsipx() {
               <thead>
                 <tr>
                   <th>No</th>
-                  <th onClick={() => sortTable(0)}>Nama Kegiatan</th>
-                  <th onClick={() => sortTable(1)}>Nama Organisasi</th>
-                  <th onClick={() => sortTable(2)}>Tanggal Pelaksanaan</th>
+                  <th>Nama Kegiatan</th>
+                  <th onClick={() => sortTable(0)}>Nama Organisasi</th>
+                  <th onClick={() => sortTable(1)}>Tanggal Pelaksanaan</th>
                   <th>Ketua Panitia</th>
                   <th>Kontak Kegiatan</th>
                   <th>Dana ACC</th>
