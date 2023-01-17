@@ -86,16 +86,16 @@
   margin-right: 10px;
 }
 
-.fbtn button:nth-child(1) {
+/* .fbtn button:nth-child(1) {
   background-color: #cc2525;
 }
 .fbtn button:nth-child(1):hover {
   background-color: #752222;
-}
-.fbtn button:nth-child(2) {
+} */
+.fbtn button:nth-child(1) {
   background-color: #2016a5;
 }
-.fbtn button:nth-child(2):hover {
+.fbtn button:nth-child(1):hover {
   background-color: #141662;
 }
 

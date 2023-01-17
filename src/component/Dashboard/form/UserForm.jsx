@@ -133,7 +133,7 @@ function UserForm() {
                       <div className="icon">
                         <i class="fa-solid fa-check"></i>
                       </div>
-                      <p> Akun Berhasil Di hapus</p>
+                      <p> Akun Berhasil Di hapus {user.username}</p>
                     </div>
                   </div>
                 </tr>

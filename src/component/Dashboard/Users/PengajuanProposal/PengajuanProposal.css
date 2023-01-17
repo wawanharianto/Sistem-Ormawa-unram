@@ -240,6 +240,59 @@
 .AjukanShow {
   display: none;
 }
+
+/* PopUP permission */
+.containerPopUp_Permission {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(1, 1, 1, 0.2);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.containerPopUp_Permission .container_content {
+  width: 400px;
+  height: 200px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.containerPopUp_Permission .container_content .btn {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.containerPopUp_Permission .container_content .btn button {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+}
+.containerPopUp_Permission .container_content .btn button:nth-child(1) {
+  background-color: #0da25d;
+}
+.containerPopUp_Permission .container_content .btn button:nth-child(1):hover {
+  background-color: #095533;
+}
+.containerPopUp_Permission .container_content .btn button:nth-child(2) {
+  background-color: #df2222;
+}
+.containerPopUp_Permission .container_content .btn button:nth-child(2):hover {
+  background-color: #84140c;
+}
+.permitShow {
+  display: none;
+}
 /* .fbtn-form button:nth-child(2) {
   background-color: #367cff;
 }

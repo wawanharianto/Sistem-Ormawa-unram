@@ -18,6 +18,7 @@ function PengajuanProposal() {
   const [status, setStatus] = useState('Proposal di ajukan');
   const [msg, setMsg] = useState('');
   const [nameProp, setNameProp] = useState('');
+  const [conPop, setConPop] = useState(false);
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
@@ -57,22 +58,30 @@ function PengajuanProposal() {
     formData.append('nomer_ketum', ketum);
     formData.append('file', file);
     formData.append('status', status);
-
     try {
       await axios.post('http://localhost:3000/proposal/', formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
       });
-      setMsg('success');
+      const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
+      permitPopUp.classList.toggle('permitShow');
+      const popUpBerhasil = document.getElementsByClassName('popUp-Ajukan')[0];
+      popUpBerhasil.classList.toggle('AjukanShow');
+      setTimeout(() => {
+        popUpBerhasil.classList.toggle('AjukanShow');
+        navigate('/pengajuan-proposal');
+      }, 2000);
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
+
+        permitPopUp.classList.toggle('permitShow');
         const popUpValid = document.getElementsByClassName('popup-valid')[0];
         popUpValid.classList.toggle('validshow');
       }
     }
-    console.log(msg);
   };
 
   return (
@@ -196,30 +205,41 @@ function PengajuanProposal() {
               </div>
               <div className="fbtn-form">
                 <button
-                  type="submit"
                   className="Ajukan"
-                  // onClick={() => {
-                  //   if (msg == 'success') {
-                  //     const PopUpAjukan = document.getElementsByClassName('popUp-Ajukan')[0];
-                  //     PopUpAjukan.classList.toggle('AjukanShow');
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
 
-                  //     setTimeout(() => {
-                  //       PopUpAjukan.classList.toggle('AjukanShow');
-                  //     }, 2500);
-
-                  //     setTimeout(() => {
-                  //       navigate('/pengajuan-proposal');
-                  //     }, 1000);
-                  //   }
-                  // }}
+                    permitPopUp.classList.toggle('permitShow');
+                  }}
                 >
                   <i class="fa-solid fa-location-arrow"></i>Ajukan
                 </button>
+              </div>
+              <div className="containerPopUp_Permission permitShow">
+                <div className="container_content">
+                  <p>Apakah Anda Benar Ingin Mengajukan Proposal Ini ?</p>
+
+                  <div className="btn">
+                    <button type="submit">ok</button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
+
+                        permitPopUp.classList.toggle('permitShow');
+                      }}
+                    >
+                      cencel
+                    </button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
         </div>
       </div>
+
       <div className="popUp-Ajukan AjukanShow">
         <div className="container-popUp">
           <div className="icon">

@@ -221,7 +221,6 @@ function ApproveProposal_con() {
                       // belum berfungsi dia akan di eksekusi ketika 1/2 detik [belum bekerja]
                       setTimeout(ClosePopUp, 1000);
                     }}
-                    type="submit"
                     className="Ajukan"
                   >
                     <i class="fa-solid fa-check"></i>Setuju
@@ -232,14 +231,9 @@ function ApproveProposal_con() {
                   <>
                     <button
                       onClick={() => {
-                        setStatus('Proposal ACC');
-                        // handleSetuju();
-                        const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
-                        PopUpSetuju.classList.toggle('SetujuShow');
-
-                        setTimeout(ClosePopUp, 2000);
+                        const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                        popUpPermit.classList.toggle('permitShow');
                       }}
-                      type="submit"
                       className="Ajukan"
                     >
                       <i class="fa-solid fa-check"></i>Setuju
@@ -252,6 +246,36 @@ function ApproveProposal_con() {
                         <p>Berhasil ACC Proposal</p>
                       </div>
                     </div>
+                    <div className="container-popup-permit permitShow">
+                      <div className="container-content">
+                        <p> apakah anda yakin ingin menyetujui proposal ini ?</p>
+                        <div className="btn-permit">
+                          <button
+                            type="submit"
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                              setStatus('Proposal ACC');
+                              // handleSetuju();
+                              const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
+                              PopUpSetuju.classList.toggle('SetujuShow');
+
+                              setTimeout(ClosePopUp, 2000);
+                            }}
+                          >
+                            ok
+                          </button>
+                          <button
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                            }}
+                          >
+                            cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </>
                 )}
                 {/* <button type="submit" className="Ajukan">
@@ -261,13 +285,13 @@ function ApproveProposal_con() {
                   <>
                     <button
                       onClick={() => {
-                        setStatus('Proposal di tolak');
-                        const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
-                        PopUpTolak.classList.toggle('TolakShow');
-                        setTimeout(() => {
-                          PopUpTolak.classList.toggle('TolakShow');
-                        }, 2000);
-                        navigate('/pengajuan-proposal');
+                        // setStatus('Proposal di tolak');
+                        // const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
+                        // PopUpTolak.classList.toggle('TolakShow');
+                        // setTimeout(() => {
+                        //   PopUpTolak.classList.toggle('TolakShow');
+                        // }, 2000);
+                        // navigate('/pengajuan-proposal');
                       }}
                       type="submit"
                       className="tolak"
@@ -281,21 +305,47 @@ function ApproveProposal_con() {
                   <>
                     <button
                       onClick={(e) => {
-                        setStatus('Proposal di tolak');
-                        const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
-                        PopUpTolak.classList.toggle('TolakShow');
-                        setTimeout(() => {
-                          PopUpTolak.classList.toggle('TolakShow');
-                        }, 2000);
-                        setTimeout(() => {
-                          navigate('/pengajuan-proposal');
-                        }, 2000);
+                        const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                        popUpPermit.classList.toggle('permitShow');
                       }}
                       type="submit"
                       className="tolak"
                     >
                       <i class="fa-solid fa-xmark"></i>Tolak
                     </button>
+                    <div className="container-popup-permit permitShow">
+                      <div className="container-content">
+                        <p> apakah anda yakin ingin menolak proposal ini ?</p>
+                        <div className="btn-permit">
+                          <button
+                            type="submit"
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                              popUpPermit.classList.toggle('permitShow');
+                              setStatus('Proposal di tolak');
+                              const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
+                              PopUpTolak.classList.toggle('TolakShow');
+                              setTimeout(() => {
+                                PopUpTolak.classList.toggle('TolakShow');
+                              }, 2000);
+                              setTimeout(() => {
+                                navigate('/pengajuan-proposal');
+                              }, 2000);
+                            }}
+                          >
+                            ok
+                          </button>
+                          <button
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                              popUpPermit.classList.toggle('permitShow');
+                            }}
+                          >
+                            cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                     <div className="popUp-Approve TolakShow">
                       <div className="container-popUp">
                         <div className="icon-x">

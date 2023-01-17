@@ -178,10 +178,58 @@
   color: rgb(128, 11, 0);
   margin-bottom: 20px;
 }
+
+.container-popup-permit {
+  background-color: rgba(1, 1, 1, 0.2);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-popup-permit .container-content {
+  width: 400px;
+  height: 200px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container-popup-permit .container-content .btn-permit {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 20px;
+}
+.container-popup-permit .container-content .btn-permit button {
+  padding: 4px 10px;
+}
+.container-popup-permit .container-content .btn-permit button:nth-child(1) {
+  background-color: #50b595;
+}
+.container-popup-permit .container-content .btn-permit button:nth-child(1):hover {
+  background-color: #39816a;
+}
+.container-popup-permit .container-content .btn-permit button:nth-child(2) {
+  background-color: #c91616;
+}
+.container-popup-permit .container-content .btn-permit button:nth-child(2):hover {
+  background-color: #6e0d0d;
+}
 .SetujuShow {
   display: none;
 }
 
 .TolakShow {
+  display: none;
+}
+.permitShow {
   display: none;
 }

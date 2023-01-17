@@ -421,12 +421,6 @@ function PengajuanDana_Add() {
           </form>
         </div>
       </div>
-      {/* <div className="popUp pophide">
-        <div className="conPopUp" onClick={handleClose}>
-          <button>X</button>
-          <p></p>
-        </div>
-      </div> */}
     </>
   );
 }
