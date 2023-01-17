@@ -130,7 +130,7 @@ function DSuratPJ() {
 
   //check status button
   const btn = document.getElementById('btn_ajukan');
-  if (status == 'LPJ Di Ajukan') {
+  if (status == 'LPJ Di Ajukan' || status == 'LPJ Revisi') {
     btn.style.visibility = 'hidden';
   } else {
     // btn.style.visibility = 'visible';

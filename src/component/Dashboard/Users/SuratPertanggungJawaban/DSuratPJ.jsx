@@ -48,6 +48,8 @@ function DSuratPJ() {
         setUrlSPJ(response.data.url_spj);
         setNamaFileSPJ(response.data.spj);
         setNamaFileDukungSPJ(response.data.berkas_dukung);
+        setKetSpj(response.data.keterangan_spj);
+        console.log(response);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -195,7 +197,7 @@ function DSuratPJ() {
 
   //check status button
   const btn = document.getElementById('btn_ajukan');
-  if (status == 'SPJ') {
+  if (status == 'SPJ' || status == 'SPJ Revisi') {
     btn.style.visibility = 'hidden';
   } else {
     // btn.style.visibility = 'visible';
@@ -440,7 +442,7 @@ function DSuratPJ() {
             <div className="finput">
               <p>Keterangan dari bagian Keuangan</p>
               <div className="contInput">
-                <input type="text" placeholder="Nomor Ketua Umum" value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)}></input>
+                <input type="text" placeholder={keterangan_spj? keterangan_spj : "Keterangan SPJ"} value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)}></input>
                 <p className="text-konfirmasi">Keterangan</p>
               </div>
             </div>
