@@ -49,9 +49,12 @@ function Proposal_con() {
   };
 
   const deleteProposal = async (proposalId) => {
-    console.log(proposalId);
     await axios.delete(`http://localhost:3000/proposal/${proposalId}`);
-    getProposal();
+    const popUpDelete = document.getElementById(proposalId + 1);
+    popUpDelete.classList.toggle('SetujuShow');
+    setTimeout(() => {
+      getProposal();
+    }, 2000);
   };
 
   const changePage = ({ selected }) => {
@@ -202,7 +205,14 @@ function Proposal_con() {
                             <i class="fa-solid fa-circle-exclamation icon"></i>
                             <p>apakah anda mau menghapus {proposal.nama_kegiatan} ?</p>
                             <div className="g-btn">
-                              <button className="setuju" onClick={() => deleteProposal(proposal.uuid)}>
+                              <button
+                                className="setuju"
+                                onClick={() => {
+                                  const popupDelete = document.getElementById(proposal.uuid);
+                                  popupDelete.classList.toggle('showoff');
+                                  deleteProposal(proposal.uuid);
+                                }}
+                              >
                                 OK
                               </button>
                               <button
@@ -215,6 +225,14 @@ function Proposal_con() {
                                 Cancel
                               </button>
                             </div>
+                          </div>
+                        </div>
+                        <div id={proposal.uuid + 1} className="popUp-Approve SetujuShow">
+                          <div className="container-popUp">
+                            <div className="icon">
+                              <i class="fa-solid fa-check"></i>
+                            </div>
+                            <p>Berhasil Dihapus</p>
                           </div>
                         </div>
                       </td>

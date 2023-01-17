@@ -73,12 +73,6 @@ function UpdateProposal() {
           'Content-type': 'multipart/form-data',
         },
       });
-      setMsg('success');
-      console.log(msg);
-      if (msg == 'success') {
-        console.log('OK');
-        this.props.navigation.navigate('PengajuanProposal');
-      }
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -118,25 +112,30 @@ function UpdateProposal() {
               <div className="finput">
                 <p>Jumlah Dana yang Diajukan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana} onChange={(e) => {
-                    const formatRupiah = (angka, prefix) => {
-                      let number_string = angka.replace(/[^,\d]/g, '').toString(),
-                        split = number_string.split(','),
-                        sisa = split[0].length % 3,
-                        rupiah = split[0].substr(0, sisa),
-                        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+                  <input
+                    type="text"
+                    placeholder="Jumlah Dana yang Diajukan"
+                    value={dana}
+                    onChange={(e) => {
+                      const formatRupiah = (angka, prefix) => {
+                        let number_string = angka.replace(/[^,\d]/g, '').toString(),
+                          split = number_string.split(','),
+                          sisa = split[0].length % 3,
+                          rupiah = split[0].substr(0, sisa),
+                          ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-                      // tambahkan titik jika yang di input sudah menjadi angka ribuan
-                      if (ribuan) {
-                        let separator = sisa ? '.' : '';
-                        rupiah += separator + ribuan.join('.');
-                      }
+                        // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                        if (ribuan) {
+                          let separator = sisa ? '.' : '';
+                          rupiah += separator + ribuan.join('.');
+                        }
 
-                      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-                      return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
-                    };
-                    setDana(formatRupiah(e.target.value, 'Rp. '))
-                  }}></input>
+                        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                        return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+                      };
+                      setDana(formatRupiah(e.target.value, 'Rp. '));
+                    }}
+                  ></input>
                   <p className="kosong">Jumlah Dana yang Diajukan</p>
                 </div>
               </div>
@@ -197,23 +196,64 @@ function UpdateProposal() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="status">
-                    <i class="fa-solid fa-circle-exclamation"></i>{status}
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    {status}
                   </button>
                 </div>
               </div>
               <div className="fbtn-form">
-                <button type="submit" className="Ajukan" onClick={handleClose}>
+                <button
+                  className="Ajukan"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                    popUpPermit.classList.toggle('permitShow');
+                  }}
+                >
                   <i class="fa-solid fa-location-arrow"></i>Update
                 </button>
+                <div className="container-popup-permit permitShow">
+                  <div className="container-content">
+                    <p> apakah anda yakin ingin menolak proposal ini ?</p>
+                    <div className="btn-permit">
+                      <button
+                        type="submit"
+                        onClick={() => {
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                          popUpPermit.classList.toggle('permitShow');
+                          const popUpUpdate = document.getElementsByClassName('popUp-Approve')[0];
+                          popUpUpdate.classList.toggle('SetujuShow');
+                          setTimeout(() => {
+                            popUpUpdate.classList.toggle('SetujuShow');
+                            navigate('/pengajuan-proposal');
+                          }, 2000);
+                        }}
+                      >
+                        ok
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                          popUpPermit.classList.toggle('permitShow');
+                        }}
+                      >
+                        cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="popUp-Approve SetujuShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>Berhasil Di Ubah</p>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
-        </div>
-      </div>
-      <div className="popUp pophide">
-        <div className="conPopUp" onClick={handleClose}>
-          <button>X</button>
-          <p>{msg}</p>
         </div>
       </div>
     </>

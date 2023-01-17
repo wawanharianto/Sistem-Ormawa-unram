@@ -206,13 +206,15 @@
   border-radius: 30px;
 }
 .popUp-Delete .box {
+  width: 400px;
+  height: 200px;
   background-color: #fdfffe;
   padding: 20px;
   border-radius: 4px;
 }
 .popUp-Delete .g-btn {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   gap: 10px;
   margin-top: 50px;
 }
@@ -234,6 +236,7 @@
 .g-btn button:hover {
   background-color: #20b486;
 }
+
 .showoff {
   display: none;
 }
