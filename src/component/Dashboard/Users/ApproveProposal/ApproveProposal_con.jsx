@@ -38,6 +38,7 @@ function ApproveProposal_con() {
         setStatus(response.data.status);
         setUrl(response.data.url_proposal);
         setNamaFile(response.data.proposal);
+        setKetWd3(response.data.keterangan_wd3);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);

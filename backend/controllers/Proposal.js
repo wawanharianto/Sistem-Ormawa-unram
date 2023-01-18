@@ -10,8 +10,6 @@ export const getProposal = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const search = req.query.search || "";
     const status = req.query.status || [''];
-    const status1 = req.query.status || "";
-    const status2 = req.query.status || "";
     const offset = limit * page;
     try {
         let totalStatus;
