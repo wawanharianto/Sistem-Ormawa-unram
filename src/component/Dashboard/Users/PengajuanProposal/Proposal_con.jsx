@@ -46,7 +46,6 @@ function Proposal_con() {
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
     setStatuscount(response.data.totalStatus);
-    console.log(response);
   };
 
   const deleteProposal = async (proposalId) => {

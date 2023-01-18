@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 import './Pengumuman.css';
 
 function Pengumuman() {
   const [proposals, setProposals] = useState([]);
+  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [pages, setPages] = useState(0);
+  const [rows, setRows] = useState(0);
+  const [keyword, setKeyword] = useState('');
   useEffect(() => {
     getProposal();
   }, []);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/pengumuman`);
+    const response = await axios.get(`http://localhost:3000/pengumuman?search_query=${keyword}&page=${page}&limit=${limit}`);
     setProposals(response.data.result);
+    setPage(response.data.page);
+    setPages(response.data.totalPage);
+    setRows(response.data.totalRows);
+    console.log(response);
+  };
+
+  const changePage = ({ selected }) => {
+    setPage(selected);
   };
 
   return (
@@ -30,17 +44,38 @@ function Pengumuman() {
             </tr>
           </thead>
           <tbody>
-          {proposals.map((proposal, index)=>(
-            <tr key={proposal.id}>
-              <td>{index + 1}</td>
-              <td>{proposal.nama_organisasi}</td>
-              <td>{proposal.nama_kegiatan}</td>
-              <td>{proposal.status}</td>
-            </tr>
-          ))}
+            {proposals.map((proposal, index) => (
+              <tr key={proposal.id}>
+                <td>{index + 1}</td>
+                <td>{proposal.nama_organisasi}</td>
+                <td>{proposal.nama_kegiatan}</td>
+                <td>{proposal.status}</td>
+              </tr>
+            ))}
           </tbody>
 
         </table>
+        <div className="tfooter tfooter1">
+          {/* <p>Total Rows: {rows}</p> */}
+          <p>
+            Page: {rows ? page + 1 : 0} of {pages}
+          </p>
+
+          <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
+            <ReactPaginate
+              previousLabel={'< Prev'}
+              nextLabel={'Next >'}
+              pageCount={Math.min(10, pages)}
+              onPageChange={changePage}
+              containerClassName={'pagination-list'}
+              pageLinkClassName={'pagination-link'}
+              previousLinkClassName={'pagination-previous'}
+              nextLinkClassName={'pagination-next'}
+              activeLinkClassName={'pagination-link is-current'}
+              disabledLinkClassName={'pagination-link is-disabled'}
+            />
+          </nav>
+        </div>
       </article>
     </>
   );
