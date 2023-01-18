@@ -275,12 +275,8 @@ function PengajuanDana_Add() {
                   <div className="fbtn-form">
                     <button
                       onClick={() => {
-                        setStatus('Proposal pengajuan dana');
-                        const PopUpDanaAju = document.getElementsByClassName('popUp-Ajukan')[0];
-                        PopUpDanaAju.classList.toggle('AjukanShow');
-                        setTimeout(() => {
-                          PopUpDanaAju.classList.toggle('AjukanShow');
-                        }, 2000);
+                        const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                        popUpPermit.classList.toggle('permitShow');
                       }}
                       type="submit"
                       className="Ajukan"
@@ -294,6 +290,37 @@ function PengajuanDana_Add() {
                         <i class="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil Mengajukan Dana</p>
+                    </div>
+                  </div>
+                  <div className="container-popup-permit permitShow">
+                    <div className="container-content">
+                      <p> Apakah Anda sudah yakin untuk mengajukan dana ?</p>
+                      <div className="btn-permit">
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                            popUpPermit.classList.toggle('permitShow');
+                            setStatus('Proposal pengajuan dana');
+
+                            const PopUpSetuju = document.getElementsByClassName('popUp-Ajukan')[0];
+                            PopUpSetuju.classList.toggle('AjukanShow');
+                            setTimeout(() => {
+                              PopUpSetuju.classList.toggle('AjukanShow');
+                            }, 2000);
+                          }}
+                        >
+                          ok
+                        </button>
+                        <button
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                            popUpPermit.classList.toggle('permitShow');
+                          }}
+                        >
+                          cancel
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </>
@@ -367,18 +394,44 @@ function PengajuanDana_Add() {
                   <button
                     id="btn_setuju"
                     onClick={() => {
-                      setStatus('Berkegiatan');
-                      const BKpopUp = document.getElementsByClassName('popUp-Bkeuangan')[0];
-                      BKpopUp.classList.toggle('BKShow');
-                      setTimeout(() => {
-                        BKpopUp.classList.toggle('BKShow');
-                      }, 2500);
+                      const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                      popUpPermit.classList.toggle('permitShow');
                     }}
                     type="submit"
                     className="Ajukan"
                   >
                     <i class="fa-solid fa-check"></i>Setuju
                   </button>
+                  <div className="container-popup-permit permitShow">
+                    <div className="container-content">
+                      <p> Apakah Anda yakin menyetujui pengajuan dana tersebut ?</p>
+                      <div className="btn-permit">
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                            popUpPermit.classList.toggle('permitShow');
+                            setStatus('Berkegiatan');
+                            const BKpopUp = document.getElementsByClassName('popUp-Bkeuangan')[0];
+                            BKpopUp.classList.toggle('BKShow');
+                            setTimeout(() => {
+                              BKpopUp.classList.toggle('BKShow');
+                            }, 2500);
+                          }}
+                        >
+                          ok
+                        </button>
+                        <button
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                            popUpPermit.classList.toggle('permitShow');
+                          }}
+                        >
+                          cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
                   <button
                     onClick={() => {

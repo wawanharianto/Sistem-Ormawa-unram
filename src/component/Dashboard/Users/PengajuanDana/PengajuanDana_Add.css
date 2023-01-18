@@ -52,13 +52,14 @@
 .btn-komfirm button:nth-child(1) {
   background-color: #4dbc9b;
 }
-.btn-komfirm button:nth-child(2) {
-  background-color: #231aa8;
-}
+
 .btn-komfirm button:nth-child(1):hover {
   background-color: #2d6c59;
 }
-.btn-komfirm button:nth-child(2):hover {
+.btn-komfirm button:nth-child(3) {
+  background-color: #231aa8;
+}
+.btn-komfirm button:nth-child(3):hover {
   background-color: #171166;
 }
 
@@ -101,4 +102,10 @@
 }
 .BKShow {
   display: none;
+}
+
+.container-popup-permit .container-content .btn-permit button {
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
