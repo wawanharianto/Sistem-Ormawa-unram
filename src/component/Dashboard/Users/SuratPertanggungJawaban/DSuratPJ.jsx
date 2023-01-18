@@ -397,16 +397,9 @@ function DSuratPJ() {
                     <button
                       id="btn_ajukan"
                       onClick={() => {
-                        setStatus('SPJ');
-
-                        const PopUpSPJ = document.getElementsByClassName('popUp-SPJ')[0];
-                        console.log(PopUpSPJ);
-                        PopUpSPJ.classList.toggle('SPJShow');
-                        setTimeout(() => {
-                          PopUpSPJ.classList.toggle('SPJShow');
-                        }, 2500);
+                        const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                        popUpPermit.classList.toggle('permitShow');
                       }}
-                      type="submit"
                       className="Ajukan"
                     >
                       <i class="fa-solid fa-check"></i>Ajukan SPJ
@@ -446,6 +439,37 @@ function DSuratPJ() {
                       <p>Menyimpan Data</p>
                     </div>
                   </div>
+                  <div className="container-popup-permit permitShow">
+                    <div className="container-content">
+                      <p> apakah data SPJ anda sudah benar ?</p>
+                      <div className="btn-permit">
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                            popUpPermit.classList.toggle('permitShow');
+                            setStatus('SPJ');
+
+                            const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
+                            PopUpSetuju.classList.toggle('SPJShow');
+                            setTimeout(() => {
+                              PopUpSetuju.classList.toggle('SPJShow');
+                            }, 2000);
+                          }}
+                        >
+                          ok
+                        </button>
+                        <button
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                            popUpPermit.classList.toggle('permitShow');
+                          }}
+                        >
+                          cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </>
               )}
             </form>
@@ -466,7 +490,7 @@ function DSuratPJ() {
             <div className="finput">
               <p>Keterangan dari bagian Keuangan</p>
               <div className="contInput">
-                <input type="text" placeholder={keterangan_spj? keterangan_spj : "Keterangan SPJ"} value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)}></input>
+                <input type="text" placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'} value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)}></input>
                 <p className="text-konfirmasi">Keterangan</p>
               </div>
             </div>
@@ -515,14 +539,9 @@ function DSuratPJ() {
                   <button
                     id="btn_setuju"
                     onClick={() => {
-                      setStatus('SPJ Diterima');
-                      const PopUpAcc = document.getElementsByClassName('popUp-KSPJ')[0];
-                      PopUpAcc.classList.toggle('SPJShow');
-                      setTimeout(() => {
-                        PopUpAcc.classList.toggle('SPJShow');
-                      }, 2000);
+                      const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                      popUpPermit.classList.toggle('permitShow');
                     }}
-                    type="submit"
                     className="setuju"
                   >
                     <i class="fa-solid fa-check"></i>Setuju
@@ -531,13 +550,8 @@ function DSuratPJ() {
                   <button
                     id="btn_revisi"
                     onClick={() => {
-                      setStatus('SPJ Revisi');
-
-                      const PopUpRevisi = document.getElementsByClassName('popUp-KSPJ')[1];
-                      PopUpRevisi.classList.toggle('SPJShow');
-                      setTimeout(() => {
-                        PopUpRevisi.classList.toggle('SPJShow');
-                      }, 2000);
+                      const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
+                      popUpPermit.classList.toggle('permitShow');
                     }}
                     type="submit"
                     className="revisi"
@@ -560,6 +574,37 @@ function DSuratPJ() {
                     <i class="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
+                <div className="container-popup-permit permitShow">
+                  <div className="container-content">
+                    <p> apakah anda yakin ingin menyetujui SPJ ini ?</p>
+                    <div className="btn-permit">
+                      <button
+                        type="submit"
+                        onClick={() => {
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                          popUpPermit.classList.toggle('permitShow');
+                          setStatus('SPJ Diterima');
+
+                          const PopUpSetuju = document.getElementsByClassName('popUp-KSPJ')[0];
+                          PopUpSetuju.classList.toggle('SPJShow');
+                          setTimeout(() => {
+                            PopUpSetuju.classList.toggle('SPJShow');
+                          }, 2000);
+                        }}
+                      >
+                        ok
+                      </button>
+                      <button
+                        onClick={() => {
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                          popUpPermit.classList.toggle('permitShow');
+                        }}
+                      >
+                        cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
@@ -569,6 +614,38 @@ function DSuratPJ() {
                     <p>Menyetujui SPJ</p>
                   </div>
                 </div>
+                <div className="container-popup-permit permitShow">
+                  <div className="container-content">
+                    <p> Apakah Anda yakin ingin merevisi SPJ ini ?</p>
+                    <div className="btn-permit">
+                      <button
+                        type="submit"
+                        onClick={() => {
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
+                          popUpPermit.classList.toggle('permitShow');
+                          setStatus('SPJ Revisi');
+
+                          const PopUpSetuju = document.getElementsByClassName('popUp-KSPJ')[1];
+                          PopUpSetuju.classList.toggle('SPJShow');
+                          setTimeout(() => {
+                            PopUpSetuju.classList.toggle('SPJShow');
+                          }, 2000);
+                        }}
+                      >
+                        ok
+                      </button>
+                      <button
+                        onClick={() => {
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
+                          popUpPermit.classList.toggle('permitShow');
+                        }}
+                      >
+                        cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">

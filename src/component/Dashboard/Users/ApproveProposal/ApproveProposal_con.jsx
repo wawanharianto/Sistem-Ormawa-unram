@@ -77,6 +77,7 @@ function ApproveProposal_con() {
   const ClosePopUp = () => {
     const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
     PopUpSetuju.classList.toggle('SetujuShow');
+    navigate('/pengajuan-proposal');
   };
 
   const handleClose = () => {
