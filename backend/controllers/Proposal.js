@@ -31,30 +31,20 @@ export const getProposal = async (req, res) => {
         let totalRows;
         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
             totalRows = await Proposal.count({
-                [Op.or]: [{
-                    nama_kegiatan: {
-                        [Op.like]: '%' + search + '%'
-                    }
-                }, {
-                    nama_organisasi: {
-                        [Op.like]: '%' + search + '%'
-                    }
-                }]
+                where: {
+                    [Op.and]: [{
+                        status: status,
+                    }],
+                }
             });
 
         } else {
             totalRows = await Proposal.count({
                 where: {
                     userId: req.userId,
-                    [Op.or]: [{
-                        nama_kegiatan: {
-                            [Op.like]: '%' + search + '%'
-                        }
-                    }, {
-                        nama_organisasi: {
-                            [Op.like]: '%' + search + '%'
-                        }
-                    }]
+                    [Op.and]: [{
+                        status: status,
+                    }],
                 }
             });
         }
@@ -130,6 +120,140 @@ export const getProposal = async (req, res) => {
         res.status(500).json({ msg: error.message });
     }
 }
+
+// export const getProposal = async (req, res) => {
+//     const page = parseInt(req.query.page) || 0;
+//     const limit = parseInt(req.query.limit) || 10;
+//     const search = req.query.search || "";
+//     const status = req.query.status || [''];
+//     const offset = limit * page;
+//     try {
+//         let totalStatus;
+//         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
+//             totalStatus = await Proposal.count({
+//                 where: {
+//                     status: "Selesai"
+//                 }
+//             })
+//         } else {
+//             totalStatus = await Proposal.count({
+//                 where: {
+//                     userId: req.userId,
+//                     status: !"Selesai"
+//                 }
+//             })
+//         }
+//         //GET TOTAL ROWS
+//         let totalRows_PengajuanProp;
+//         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
+//             totalRows = await Proposal.count({
+//                 where: {
+//                     [Op.and]: [{
+//                         status: status,
+//                     }],
+//                     [Op.or]: [{
+//                         nama_kegiatan: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }, {
+//                         nama_organisasi: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }]
+//                 }
+//             });
+
+//         } else {
+//             totalRows = await Proposal.count({
+//                 where: {
+//                     userId: req.userId,
+//                     [Op.or]: [{
+//                         nama_kegiatan: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }, {
+//                         nama_organisasi: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }]
+//                 }
+//             });
+//         }
+//         const totalPage_PengajuanProp = Math.ceil(totalRows_PengajuanProp / limit);
+
+//         //GET DATA
+//         let response;
+//         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
+//             response = await Proposal.findAll({
+//                 attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_spj', 'keterangan_akademik', 'dana_disetujui', 'status'],
+//                 where: {
+//                     [Op.and]: [{
+//                         status: status,
+//                     }],
+//                     [Op.or]: [{
+//                         nama_kegiatan: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }, {
+//                         nama_organisasi: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }]
+//                 },
+//                 include: [{
+//                     model: Users,
+//                     attributes: ['username', 'email']
+//                 }],
+//                 offset: offset,
+//                 limit: limit,
+//                 order: [
+//                     ['id', 'ASC']
+//                 ]
+//             });
+//         } else {
+//             response = await Proposal.findAll({
+//                 attributes: ['id', 'uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_spj', 'keterangan_akademik', 'dana_disetujui', 'status'],
+//                 where: {
+//                     userId: req.userId,
+//                     [Op.and]: [{
+//                         status: status,
+//                     }],
+//                     [Op.or]: [{
+//                         nama_kegiatan: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }, {
+//                         nama_organisasi: {
+//                             [Op.like]: '%' + search + '%'
+//                         }
+//                     }]
+//                 },
+//                 include: [{
+//                     model: Users,
+//                     attributes: ['username', 'email']
+//                 }],
+//                 offset: offset,
+//                 limit: limit,
+//                 order: [
+//                     ['id', 'ASC']
+//                 ]
+//             });
+//         }
+//         res.status(200).json({
+//             result: response,
+//             page: page,
+//             limit: limit,
+//             totalRows_PengajuanProp: totalRows_PengajuanProp,
+//             totalPage_PengajuanProp: totalPage_PengajuanProp,
+//             // totalPage_PengajuanDana: totalPage_PengajuanDana,
+//             // totalPage_PengajuanSPJ: totalPage_PengajuanSPJ,
+//             // totalPage_PengajuanLPJ: totalPage_PengajuanLPJ,
+//             totalStatus: totalStatus
+//         });
+//     } catch (error) {
+//         res.status(500).json({ msg: error.message });
+//     }
+// }
 
 export const getProposalArsip = async (req, res) => {
     const page = parseInt(req.query.page) || 0;
