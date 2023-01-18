@@ -19,6 +19,7 @@ function PengajuanDana_Add() {
   const [status, setStatus] = useState('');
   const [keterangan_keuangan, setKetKeuangan] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
+  const [ketwd3, setKetWd3] = useState('');
   const [msg, setMsg] = useState('');
   const [namePropWD3, setNamePropWD3] = useState('');
   const { user } = useSelector((state) => state.auth);
@@ -40,6 +41,7 @@ function PengajuanDana_Add() {
         setKetum(response.data.nomer_ketum);
         setUrl(response.data.url_proposal);
         setNamaFile(response.data.proposal);
+        setKetWd3(response.data.keterangan_wd3);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -211,6 +213,13 @@ function PengajuanDana_Add() {
                 <div className="contInput">
                   <input type="text" placeholder="Nomor Ketua Umum" value={ketum} readOnly={true}></input>
                   <p className="kosong">Nomor Ketua Umum</p>
+                </div>
+              </div>
+
+              <div className="finput">
+                <p>Keterangan Oleh WD3</p>
+                <div className="contInput">
+                  <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} readOnly={true} />
                 </div>
               </div>
 

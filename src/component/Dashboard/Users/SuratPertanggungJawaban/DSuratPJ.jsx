@@ -21,6 +21,7 @@ function DSuratPJ() {
   const [namafileDukungSPJ, setNamaFileDukungSPJ] = useState('');
   const [status, setStatus] = useState('');
   const [keterangan_spj, setKetSpj] = useState('');
+  const [keterangan_keuangan, setKetKeuangan] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
   const [msg, setMsg] = useState('');
   const [msg1, setMsg1] = useState('');
@@ -49,7 +50,9 @@ function DSuratPJ() {
         setNamaFileSPJ(response.data.spj);
         setNamaFileDukungSPJ(response.data.berkas_dukung);
         setKetSpj(response.data.keterangan_spj);
-        console.log(response);
+        setKetKeuangan(response.data.keterangan_keuangan);
+        setDanaSetuju(response.data.dana_disetujui);
+
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -290,6 +293,27 @@ function DSuratPJ() {
                   <p className="kosong">Nomor Ketua Umum</p>
                 </div>
               </div>
+
+              <div className="finput">
+              <p>Jumlah Dana Yang di setujui</p>
+              <div className="contInput">
+                <input
+                  value={dana_disetujui}
+                  readOnly={true}
+                  type="text"
+                  placeholder="Data belum di input"
+                ></input>
+                <p className="kosong">jumlah dana yang di setujui</p>
+              </div>
+            </div>
+
+              <div className="finput">
+                <p>Keterangan Oleh Bagian Keuangan</p>
+                <div className="contInput">
+                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_keuangan} readOnly={true} />
+                </div>
+              </div>
+
               <div className="finput">
                 <p>Upload Berkas SPJ</p>
                 <div className="contInput">
