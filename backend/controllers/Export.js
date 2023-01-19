@@ -8,12 +8,13 @@ import { ClientRequest } from "http";
 
 export const ExportToExcel = async (req, res) => {
   const proposal = await Proposal.findAll({
-    attributes: ['uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'dana_disetujui', 'status'],
+    attributes: ['uuid', 'nama_kegiatan', 'nama_organisasi', 'jumlah_dana', 'ketua_panitia', 'nomer_ketupat', 'tanggal_pelaksanaan', 'tempat_pelaksanaan', 'nomer_ketum', 'url_proposal', 'spj', 'url_spj', 'berkas_dukung', 'url_bd', 'lpj', 'url_lpj', 'keterangan_wd3', 'keterangan_keuangan', 'keterangan_akademik', 'keterangan_spj' ,'dana_disetujui', 'status'],
     include: [{
       model: Users,
       attributes: ['username', 'email']
     }],
     where: {
+      status: 'Selesai',
       tanggal_pelaksanaan: {
         [Op.between] : [new Date(req.query.startdate),new Date(req.query.enddate)],
       },
@@ -34,6 +35,16 @@ export const ExportToExcel = async (req, res) => {
       ketua_panitia: row.ketua_panitia,
       tanggal_pelaksanaan: row.tanggal_pelaksanaan,
       tempat_pelaksanaan: row.tempat_pelaksanaan,
+      nomer_ketum: row.nomer_ketum,
+      dana_disetujui: row.dana_disetujui,
+      keterangan_wd3: row.keterangan_wd3,
+      keterangan_keuangan: row.keterangan_keuangan,
+      keterangan_spj: row.keterangan_spj,
+      keterangan_akademik: row.keterangan_akademik,
+      url_proposal: row.url_proposal,
+      url_spj: row.url_spj,
+      url_bd: row.url_bd,
+      url_lpj: row.url_lpj,
     }));
 
     const workSheet = XLSX.utils.json_to_sheet(rows, { origin: "A4" });
@@ -47,6 +58,16 @@ export const ExportToExcel = async (req, res) => {
       { v: "Ketua Panitia", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
       { v: "Tanggal Pelaksanaan", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
       { v: "Tempat Pelaksanaan", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Nomer Ketua Umum", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Dana ACC", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Keterangan Wakil Dekan III", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Keterangan Pengajuan Dana", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Keterangan Surat Pertanggung Jawaban", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Keterangan Akademik", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Proposal", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Surat Pertanggung Jawaban", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Berkas Surat Pertanggung Jawaban", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
+      { v: "Laporan Pertanggung Jawaban", t: "s", s: { font: { name: "Times New Roman", sz: 12, bold: true }, alignment: { wrapText: false, vertical: "center", horizontal: "center" } } },
 
     ]], { origin: "A4" });
 
@@ -66,6 +87,17 @@ export const ExportToExcel = async (req, res) => {
     const width_col4 = rows.reduce((w, r) => Math.max(w, r.ketua_panitia.length), 20);
     const width_col5 = rows.reduce((w, r) => Math.max(w, r.tanggal_pelaksanaan.length), 25);
     const width_col6 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 25);
+    const width_col7 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 25);
+    const width_col8 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 25);
+    const width_col9 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col10 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col11 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col12 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col13 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col14 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col15 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col16 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
+    const width_col17 = rows.reduce((w, r) => Math.max(w, r.tempat_pelaksanaan.length), 40);
 
     workSheet["!cols"] = [{ wch: width_col1 },
     { wch: width_col2 },
@@ -73,6 +105,17 @@ export const ExportToExcel = async (req, res) => {
     { wch: width_col4 },
     { wch: width_col5 },
     { wch: width_col6 },
+    { wch: width_col7 },
+    { wch: width_col8 },
+    { wch: width_col9 },
+    { wch: width_col10 },
+    { wch: width_col11 },
+    { wch: width_col12 },
+    { wch: width_col13 },
+    { wch: width_col14 },
+    { wch: width_col15 },
+    { wch: width_col16 },
+    { wch: width_col17 },
     ];
 
     workSheet["!rows"] = [
