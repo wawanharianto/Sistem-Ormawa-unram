@@ -49,6 +49,7 @@ function DSuratPJ() {
         setUrlSPJ(response.data.url_spj);
         setNamaFileSPJ(response.data.spj);
         setNamaFileDukungSPJ(response.data.berkas_dukung);
+        setUrlDukungSPJ(response.data.url_bd);
         setKetSpj(response.data.keterangan_spj);
         setKetKeuangan(response.data.keterangan_keuangan);
         setDanaSetuju(response.data.dana_disetujui);
