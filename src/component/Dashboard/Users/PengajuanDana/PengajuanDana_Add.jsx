@@ -227,7 +227,7 @@ function PengajuanDana_Add() {
                 </div>
               </div>
 
-              {user && user.role === "mahasiswa" && user && user.role === "admin" (<div className="finput">
+              {user && user.role === "mahasiswa" && user && user.role === "admin" &&(<div className="finput">
                 <p>Upload Proposal sudah ada ttd WDIII</p>
                 <div className="contInput">
                   <div className="content">
