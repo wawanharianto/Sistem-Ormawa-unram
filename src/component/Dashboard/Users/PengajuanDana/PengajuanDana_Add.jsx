@@ -227,7 +227,7 @@ function PengajuanDana_Add() {
                 </div>
               </div>
 
-              {user && user.role === "mahasiswa" && user && user.role === "admin" &&(<div className="finput">
+              {user && user.role === "mahasiswa" || user && user.role === "admin" ? (<div className="finput">
                 <p>Upload Proposal sudah ada ttd WDIII</p>
                 <div className="contInput">
                   <div className="content">
@@ -238,7 +238,7 @@ function PengajuanDana_Add() {
                     <p className="text-upload">{namePropWD3}</p>
                   </div>
                 </div>
-              </div>)}
+              </div>) : ""}
 
               <div className="finput">
                 <p>Status</p>
@@ -268,7 +268,7 @@ function PengajuanDana_Add() {
                 <div className="fbtn-form">
                   <button
                     onClick={() => {
-                      setStatus('Proposal pengajuan dana');
+                      setStatus(status);
                       const PopUpDanaAju = document.getElementsByClassName('popUp-Ajukan')[0];
                       PopUpDanaAju.classList.toggle('AjukanShow');
                       setTimeout(() => {
@@ -288,6 +288,7 @@ function PengajuanDana_Add() {
                   <div className="fbtn-form">
                     <button
                       onClick={() => {
+                        setStatus(status);
                         const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                         popUpPermit.classList.toggle('permitShow');
                       }}
@@ -448,7 +449,7 @@ function PengajuanDana_Add() {
 
                   <button
                     onClick={() => {
-                      setStatus('Berkegiatan');
+                      setStatus(status);
                       const BKpopUp = document.getElementsByClassName('popUp-Bkeuangan')[1];
                       BKpopUp.classList.toggle('BKShow');
                       setTimeout(() => {
