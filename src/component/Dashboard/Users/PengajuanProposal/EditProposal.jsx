@@ -72,6 +72,13 @@ function UpdateProposal() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
+      }).then(()=> setMsg('success')).catch(function (error) {
+        if (error.response) {
+          setMsg(error.response.data);
+          setMsg(error.response.status);
+        } else {
+          setMsg(error.message);
+        }
       });
     } catch (error) {
       if (error.response) {

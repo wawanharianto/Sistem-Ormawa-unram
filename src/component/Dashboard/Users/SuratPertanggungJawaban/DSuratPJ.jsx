@@ -86,18 +86,14 @@ function DSuratPJ() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
-      }).catch(function (error) {
+      }).then(() => setMsg2('success')).catch(function (error) {
         if (error.response) {
-          setMsg1(error.response.data);
-          setMsg1(error.response.status);
+          setMsg2(error.response.data);
+          setMsg2(error.response.status);
         } else {
-          setMsg1(error.message);
+          setMsg2(error.message);
         }
       });
-      setMsg1('success');
-      if (msg1 == 'success') {
-        console.log('Success update SPJ');
-      }
     } catch (error) {
       if (error.response) {
         setMsg1(error.response.data.msg);
@@ -115,7 +111,7 @@ function DSuratPJ() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
-      }).catch(function (error) {
+      }).then(() => setMsg2('success')).catch(function (error) {
         if (error.response) {
           setMsg2(error.response.data);
           setMsg2(error.response.status);
@@ -123,11 +119,6 @@ function DSuratPJ() {
           setMsg2(error.message);
         }
       });
-      setMsg2('success');
-      // console.log(msg2);
-      if (msg2 == 'success') {
-        console.log('Success update Berkas Dukung');
-      }
     } catch (error) {
       if (error.response) {
         setMsg2(error.response.data.msg);
@@ -461,9 +452,6 @@ function DSuratPJ() {
                           type="submit"
                           onClick={() => {
                             if (msg1 == 'success' && msg2 == 'success') {
-                              console.log("ERROR");
-                            } else {
-                              
                               const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                               popUpPermit.classList.toggle('permitShow');
                               setStatus('SPJ');
@@ -473,6 +461,9 @@ function DSuratPJ() {
                               setTimeout(() => {
                                 PopUpSetuju.classList.toggle('SPJShow');
                               }, 2000);
+                            } else {
+                              console.log("ERROR");
+
                             }
                           }}
                         >

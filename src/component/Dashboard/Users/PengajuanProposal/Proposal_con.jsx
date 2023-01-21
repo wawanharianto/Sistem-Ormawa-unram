@@ -183,11 +183,11 @@ function Proposal_con() {
                             </button>
                           </Link>
 
-                          <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
+                          {user && user.role !== 'adminAkademik'&& (<Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
                             <button className="edit-prop">
                               <i class="fa-regular fa-pen-to-square"></i>
                             </button>
-                          </Link>
+                          </Link>)}
                           <button
                             className="delete-prop"
                             onClick={() => {
