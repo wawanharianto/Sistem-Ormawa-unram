@@ -214,7 +214,7 @@ function UpdateProposal() {
                 </button>
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
-                    <p> apakah anda yakin ingin menolak proposal ini ?</p>
+                    <p> Apakah anda yakin ingin meng-update proposal ini ?</p>
                     <div className="btn-permit">
                       <button
                         type="submit"

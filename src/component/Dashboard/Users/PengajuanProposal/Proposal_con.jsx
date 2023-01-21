@@ -117,19 +117,19 @@ function Proposal_con() {
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
               </div>
-              <div className="fbtn">
+              {user && user.role !== 'WD3' && user && user.role !== 'adminAkademik'&&(<div className="fbtn">
                 {/* <button onClick={() => multipleDeleteById()}>
                   <i class="fa-solid fa-trash-can"></i> Delete
                 </button> */}
 
-                {Statuscount >= 3 && user && user.role == 'mahasiswa' ? (
+                {Statuscount >= 3 && user && user.role == 'mahasiswa' && user ? (
                   ''
                 ) : (
                   <button onClick={handleAddProposal}>
                     <i class="fa-solid fa-plus"></i>Tambah Proposal
                   </button>
                 )}
-              </div>
+              </div>)}
             </div>
             <table className="tabPengajuanProposal">
               <thead>

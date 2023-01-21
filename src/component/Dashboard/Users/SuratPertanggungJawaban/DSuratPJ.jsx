@@ -86,9 +86,15 @@ function DSuratPJ() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
+      }).catch(function (error) {
+        if (error.response) {
+          setMsg1(error.response.data);
+          setMsg1(error.response.status);
+        } else {
+          setMsg1(error.message);
+        }
       });
       setMsg1('success');
-      console.log(msg1);
       if (msg1 == 'success') {
         console.log('Success update SPJ');
       }
@@ -109,9 +115,16 @@ function DSuratPJ() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
+      }).catch(function (error) {
+        if (error.response) {
+          setMsg2(error.response.data);
+          setMsg2(error.response.status);
+        } else {
+          setMsg2(error.message);
+        }
       });
       setMsg2('success');
-      console.log(msg2);
+      // console.log(msg2);
       if (msg2 == 'success') {
         console.log('Success update Berkas Dukung');
       }
@@ -296,17 +309,17 @@ function DSuratPJ() {
               </div>
 
               <div className="finput">
-              <p>Jumlah Dana Yang di setujui</p>
-              <div className="contInput">
-                <input
-                  value={dana_disetujui}
-                  readOnly={true}
-                  type="text"
-                  placeholder="Data belum di input"
-                ></input>
-                <p className="kosong">jumlah dana yang di setujui</p>
+                <p>Jumlah Dana Yang di setujui</p>
+                <div className="contInput">
+                  <input
+                    value={dana_disetujui}
+                    readOnly={true}
+                    type="text"
+                    placeholder="Data belum di input"
+                  ></input>
+                  <p className="kosong">jumlah dana yang di setujui</p>
+                </div>
               </div>
-            </div>
 
               <div className="finput">
                 <p>Keterangan Oleh Bagian Keuangan</p>
@@ -447,15 +460,20 @@ function DSuratPJ() {
                         <button
                           type="submit"
                           onClick={() => {
-                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
-                            popUpPermit.classList.toggle('permitShow');
-                            setStatus('SPJ');
+                            if (msg1 == 'success' && msg2 == 'success') {
+                              console.log("ERROR");
+                            } else {
+                              
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                              setStatus('SPJ');
 
-                            const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
-                            PopUpSetuju.classList.toggle('SPJShow');
-                            setTimeout(() => {
+                              const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
                               PopUpSetuju.classList.toggle('SPJShow');
-                            }, 2000);
+                              setTimeout(() => {
+                                PopUpSetuju.classList.toggle('SPJShow');
+                              }, 2000);
+                            }
                           }}
                         >
                           ok

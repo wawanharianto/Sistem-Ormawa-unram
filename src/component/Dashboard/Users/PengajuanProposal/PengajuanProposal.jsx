@@ -24,7 +24,7 @@ function PengajuanProposal() {
 
   useEffect(() => {
     getProposal();
-    if (user && user.role === 'mahasiswa' && Statuscount >= 2) {
+    if (user && user.role === 'mahasiswa' && Statuscount >= 3 || user && user.role === 'WD3' || user && user.role === 'adminAkademik') {
       navigate('/dashboard');
     }
   }, [Statuscount]);
