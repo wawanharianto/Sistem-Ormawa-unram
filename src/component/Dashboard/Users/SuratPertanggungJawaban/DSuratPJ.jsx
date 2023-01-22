@@ -445,10 +445,10 @@ function DSuratPJ() {
                       <p>Menyimpan Data</p>
                     </div>
                   </div>
-                  <div className="popUp-SPJ SPJShow">
+                  <div className="popUp-SPJ SPJShow Critical">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i class="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa File Upload</p>
                     </div>
@@ -471,7 +471,13 @@ function DSuratPJ() {
                                 PopUpSetuju.classList.toggle('SPJShow');
                               }, 2000);
                             } else {
-                              console.log('ERROR');
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                              const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[2];
+                              PopUpSetuju.classList.toggle('SPJShow');
+                              setTimeout(() => {
+                                PopUpSetuju.classList.toggle('SPJShow');
+                              }, 2000);
                             }
                           }}
                         >
