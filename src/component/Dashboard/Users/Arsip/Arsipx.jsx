@@ -217,6 +217,7 @@ function Arsipx() {
                   <th>Kontak Kegiatan</th>
                   <th>Dana ACC</th>
                   <th className="head8">Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -249,6 +250,13 @@ function Arsipx() {
                       <td>{proposal.nomer_ketum}</td>
                       <td>{proposal.dana_disetujui}</td>
                       <td>{proposal.status}</td>
+                      <td>
+                        <div className="fstatustable">
+                          <button onClick={() => navigate(`details/${proposal.uuid}`)} className="view-spj">
+                            <i class="fa-regular fa-file"></i>
+                          </button>
+                        </div>
+                      </td>
                     </tr>
                   ))}
               </tbody>

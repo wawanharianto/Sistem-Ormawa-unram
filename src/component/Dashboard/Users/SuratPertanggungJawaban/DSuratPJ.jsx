@@ -49,6 +49,7 @@ function DSuratPJ() {
         setUrlSPJ(response.data.url_spj);
         setNamaFileSPJ(response.data.spj);
         setNamaFileDukungSPJ(response.data.berkas_dukung);
+        setUrlDukungSPJ(response.data.url_bd);
         setKetSpj(response.data.keterangan_spj);
         setKetKeuangan(response.data.keterangan_keuangan);
         setDanaSetuju(response.data.dana_disetujui);
@@ -80,16 +81,21 @@ function DSuratPJ() {
     formData.append('status', status);
 
     try {
-      await axios.patch(`http://localhost:3000/spj/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      });
-      setMsg1('success');
-      console.log(msg1);
-      if (msg1 == 'success') {
-        console.log('Success update SPJ');
-      }
+      await axios
+        .patch(`http://localhost:3000/spj/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => setMsg2('success'))
+        .catch(function (error) {
+          if (error.response) {
+            setMsg2(error.response.data);
+            setMsg2(error.response.status);
+          } else {
+            setMsg2(error.message);
+          }
+        });
     } catch (error) {
       if (error.response) {
         setMsg1(error.response.data.msg);
@@ -103,16 +109,21 @@ function DSuratPJ() {
     formData.append('file', fileBerkas);
 
     try {
-      await axios.patch(`http://localhost:3000/spj/berkasdukung/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      });
-      setMsg2('success');
-      console.log(msg2);
-      if (msg2 == 'success') {
-        console.log('Success update Berkas Dukung');
-      }
+      await axios
+        .patch(`http://localhost:3000/spj/berkasdukung/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => setMsg2('success'))
+        .catch(function (error) {
+          if (error.response) {
+            setMsg2(error.response.data);
+            setMsg2(error.response.status);
+          } else {
+            setMsg2(error.message);
+          }
+        });
     } catch (error) {
       if (error.response) {
         setMsg2(error.response.data.msg);
@@ -448,18 +459,20 @@ function DSuratPJ() {
                       <div className="btn-permit">
                         <button
                           type="submit"
-                          onClick={async () => {
-                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
-                            popUpPermit.classList.toggle('permitShow');
+                          onClick={() => {
+                            if (msg1 == 'success' && msg2 == 'success') {
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                              setStatus('SPJ');
 
-                            console.log(ErrorEvent);
-                            // setStatus('SPJ');
-
-                            // const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
-                            // PopUpSetuju.classList.toggle('SPJShow');
-                            // setTimeout(() => {
-                            //   PopUpSetuju.classList.toggle('SPJShow');
-                            // }, 2000);
+                              const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
+                              PopUpSetuju.classList.toggle('SPJShow');
+                              setTimeout(() => {
+                                PopUpSetuju.classList.toggle('SPJShow');
+                              }, 2000);
+                            } else {
+                              console.log('ERROR');
+                            }
                           }}
                         >
                           ok

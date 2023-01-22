@@ -287,7 +287,7 @@ function ApproveProposal_con() {
                   <>
                     <button
                       onClick={() => {
-                        // setStatus('Proposal di tolak');
+                        setStatus('Proposal di tolak');
                         // const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
                         // PopUpTolak.classList.toggle('TolakShow');
                         // setTimeout(() => {

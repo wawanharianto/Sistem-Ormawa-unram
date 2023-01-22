@@ -49,10 +49,10 @@ function PengajuanDana_Add() {
       }
     };
     getProposalById();
-    if (user && user.role !== 'admin') {
-      const btn = document.getElementById('btn_setuju');
-      btn.style.visibility = 'hidden';
-    }
+    // if (user && user.role !== 'admin') {
+    //   const btn = document.getElementById('btn_setuju');
+    //   btn.style.visibility = 'hidden';
+    // }
   }, [uuid]);
 
   const loadFile = (e) => {
@@ -77,12 +77,14 @@ function PengajuanDana_Add() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
+      }).then(() => setMsg('success')).catch(function (error) {
+        if (error.response) {
+          setMsg(error.response.data);
+          setMsg(error.response.status);
+        } else {
+          setMsg(error.message);
+        }
       });
-      setMsg('success');
-      console.log(msg);
-      if (msg == 'success') {
-        console.log('Success update proposal ttd');
-      }
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -102,12 +104,14 @@ function PengajuanDana_Add() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
+      }).then(() => setMsg('success')).catch(function (error) {
+        if (error.response) {
+          setMsg(error.response.data);
+          setMsg(error.response.status);
+        } else {
+          setMsg(error.message);
+        }
       });
-      setMsg('success update ket keuangan');
-      console.log(msg);
-      if (msg == 'success update ket keuangan') {
-        console.log(msg);
-      }
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -223,7 +227,7 @@ function PengajuanDana_Add() {
                 </div>
               </div>
 
-              <div className="finput">
+              {user && user.role === "mahasiswa" || user && user.role === "admin" ? (<div className="finput">
                 <p>Upload Proposal sudah ada ttd WDIII</p>
                 <div className="contInput">
                   <div className="content">
@@ -234,7 +238,7 @@ function PengajuanDana_Add() {
                     <p className="text-upload">{namePropWD3}</p>
                   </div>
                 </div>
-              </div>
+              </div>) : ""}
 
               <div className="finput">
                 <p>Status</p>
@@ -264,7 +268,7 @@ function PengajuanDana_Add() {
                 <div className="fbtn-form">
                   <button
                     onClick={() => {
-                      setStatus('Proposal pengajuan dana');
+                      setStatus(status);
                       const PopUpDanaAju = document.getElementsByClassName('popUp-Ajukan')[0];
                       PopUpDanaAju.classList.toggle('AjukanShow');
                       setTimeout(() => {
@@ -274,7 +278,7 @@ function PengajuanDana_Add() {
                     type="submit"
                     className="Ajukan"
                   >
-                    <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
+                    <i class="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
               )}
@@ -284,13 +288,14 @@ function PengajuanDana_Add() {
                   <div className="fbtn-form">
                     <button
                       onClick={() => {
+                        setStatus(status);
                         const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                         popUpPermit.classList.toggle('permitShow');
                       }}
                       type="submit"
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-floppy-disk"></i>Ajukan Dana
+                      <i class="fa-solid fa-floppy-disk"></i>Simpan
                     </button>
                   </div>
                   <div className="popUp-Ajukan AjukanShow">
@@ -383,14 +388,14 @@ function PengajuanDana_Add() {
             <div className="finput">
               <p></p>
             </div>
-            {status === 'adminKeuangan' && (
+            {user && user.role === 'adminKeuangan' && (
               <>
                 <div className="btn-komfirm">
                   <button id="btn_setuju" onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
                     <i class="fa-solid fa-check"></i>Setuju
                   </button>
 
-                  <button onClick={() => setStatus('Berkegiatan')} type="submit" className="Ajukan">
+                  <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
                     <i class="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
@@ -444,7 +449,7 @@ function PengajuanDana_Add() {
 
                   <button
                     onClick={() => {
-                      setStatus('Berkegiatan');
+                      setStatus(status);
                       const BKpopUp = document.getElementsByClassName('popUp-Bkeuangan')[1];
                       BKpopUp.classList.toggle('BKShow');
                       setTimeout(() => {

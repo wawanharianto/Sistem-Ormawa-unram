@@ -388,6 +388,45 @@ export const updateProposal = async (req, res) => {
 
 }
 
+export const updateArsip = async (req, res) => {
+    const proposal = await Proposal.findOne({
+        where: {
+            uuid: req.params.id
+        }
+    });
+
+    if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
+
+    const { nama_kegiatan, nama_organisasi, jumlah_dana, ketua_panitia, nomer_ketupat, tanggal_pelaksanaan, tempat_pelaksanaan, nomer_ketum, dana_disetujui, keterangan_keuangan, keterangan_wd3, keterangan_akademik, keterangan_spj } = req.body;
+
+    try {
+        await Proposal.update({
+            nama_kegiatan: nama_kegiatan,
+            nama_organisasi: nama_organisasi,
+            jumlah_dana: jumlah_dana,
+            ketua_panitia: ketua_panitia,
+            nomer_ketupat: nomer_ketupat,
+            tanggal_pelaksanaan: new Date(tanggal_pelaksanaan),
+            tempat_pelaksanaan: tempat_pelaksanaan,
+            nomer_ketum: nomer_ketum,
+            dana_disetujui: dana_disetujui,
+            keterangan_keuangan: keterangan_keuangan,
+            keterangan_wd3: keterangan_wd3,
+            keterangan_akademik: keterangan_akademik,
+            keterangan_spj: keterangan_spj
+        }, {
+            where: {
+                id: proposal.id
+            }
+        });
+
+        res.status(200).json({ msg: "Data updated successfuly" });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+
+}
+
 export const deleteProposal = async (req, res) => {
     const proposal = await Proposal.findOne({
         where: {

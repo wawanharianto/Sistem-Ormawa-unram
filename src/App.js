@@ -21,6 +21,7 @@ import UpdateProposals from './pages/Users/EditProposal';
 import Arsip from './pages/Users/Arsip';
 import DetailSPJ from './pages/Users/DetailSPJ';
 import DetailLPJ from './pages/Users/DetailLPJ';
+import DetailARSIP from './pages/Users/DetailArsip';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="SPJ" element={<SPJ />} />
           <Route path="SPJ/details/:uuid" element={<DetailSPJ />} />
           <Route path="arsip" element={<Arsip />} />
+          <Route path="arsip/details/:uuid" element={<DetailARSIP />} />
         </Routes>
       </BrowserRouter>
     </div>
