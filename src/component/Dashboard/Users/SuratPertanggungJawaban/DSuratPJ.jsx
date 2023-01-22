@@ -52,7 +52,6 @@ function DSuratPJ() {
         setKetSpj(response.data.keterangan_spj);
         setKetKeuangan(response.data.keterangan_keuangan);
         setDanaSetuju(response.data.dana_disetujui);
-
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -123,8 +122,8 @@ function DSuratPJ() {
 
   const spj = async (e) => {
     e.preventDefault();
-    updateSPJ();
-    updateBerkasDukung();
+    await updateSPJ();
+    await updateBerkasDukung();
   };
 
   const revisiSPJ = async (e) => {
@@ -295,17 +294,12 @@ function DSuratPJ() {
               </div>
 
               <div className="finput">
-              <p>Jumlah Dana Yang di setujui</p>
-              <div className="contInput">
-                <input
-                  value={dana_disetujui}
-                  readOnly={true}
-                  type="text"
-                  placeholder="Data belum di input"
-                ></input>
-                <p className="kosong">jumlah dana yang di setujui</p>
+                <p>Jumlah Dana Yang di setujui</p>
+                <div className="contInput">
+                  <input value={dana_disetujui} readOnly={true} type="text" placeholder="Data belum di input"></input>
+                  <p className="kosong">jumlah dana yang di setujui</p>
+                </div>
               </div>
-            </div>
 
               <div className="finput">
                 <p>Keterangan Oleh Bagian Keuangan</p>
@@ -396,10 +390,12 @@ function DSuratPJ() {
                   <div className="fbtn-form">
                     <button
                       id="btn_ajukan"
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.preventDefault();
                         const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                         popUpPermit.classList.toggle('permitShow');
                       }}
+                      type="submit"
                       className="Ajukan"
                     >
                       <i class="fa-solid fa-check"></i>Ajukan SPJ
@@ -409,7 +405,6 @@ function DSuratPJ() {
                       onClick={() => {
                         setStatus(status);
                         const PopUpSPJ = document.getElementsByClassName('popUp-SPJ')[1];
-                        console.log(PopUpSPJ);
                         PopUpSPJ.classList.toggle('SPJShow');
                         setTimeout(() => {
                           PopUpSPJ.classList.toggle('SPJShow');
@@ -439,22 +434,32 @@ function DSuratPJ() {
                       <p>Menyimpan Data</p>
                     </div>
                   </div>
+                  <div className="popUp-SPJ SPJShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Periksa File Upload</p>
+                    </div>
+                  </div>
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <p> apakah data SPJ anda sudah benar ?</p>
                       <div className="btn-permit">
                         <button
                           type="submit"
-                          onClick={() => {
+                          onClick={async () => {
                             const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                             popUpPermit.classList.toggle('permitShow');
-                            setStatus('SPJ');
 
-                            const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
-                            PopUpSetuju.classList.toggle('SPJShow');
-                            setTimeout(() => {
-                              PopUpSetuju.classList.toggle('SPJShow');
-                            }, 2000);
+                            console.log(ErrorEvent);
+                            // setStatus('SPJ');
+
+                            // const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
+                            // PopUpSetuju.classList.toggle('SPJShow');
+                            // setTimeout(() => {
+                            //   PopUpSetuju.classList.toggle('SPJShow');
+                            // }, 2000);
                           }}
                         >
                           ok

@@ -1,5 +1,6 @@
 .conRegister {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   background-color: rgb(245, 242, 242);
   display: flex;
   justify-content: center;
@@ -7,18 +8,12 @@
 }
 
 .form-Register {
-  margin-top: 15vh;
-  margin-left: 10rem;
-  margin-right: 5rem;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 1rem;
   width: 100%;
-  justify-content: baseline;
-  align-items: stretch;
-  margin-bottom: 20px;
-  padding: 20px;
+  padding: 2rem;
   gap: 10px;
   color: rgb(32, 134, 90);
 }

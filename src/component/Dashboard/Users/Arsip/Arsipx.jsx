@@ -194,13 +194,15 @@ function Arsipx() {
               </form>
               <div className="fexport">
                 <form action="">
-                <button onClick={multipleDeleteById}>
-                  <i class="fa-solid fa-trash-can"></i> Delete
-                </button>
+                  <button onClick={multipleDeleteById}>
+                    <i class="fa-solid fa-trash-can"></i> Delete
+                  </button>
                   <input type="date" value={startdate} onChange={(e) => setStartdate(e.target.value)} />
                   <p>To</p>
                   <input type="date" name="" id="" value={enddate} onChange={(e) => setEnddate(e.target.value)} />
-                  <button onClick={Export}>export</button>
+                  <button className="btn-export" onClick={Export}>
+                    export
+                  </button>
                 </form>
               </div>
             </div>
@@ -222,7 +224,8 @@ function Arsipx() {
                   .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
                   .map((proposal, index) => (
                     <tr key={proposal.id}>
-                      <td><input
+                      <td>
+                        <input
                           type="checkbox"
                           checked={proposal.select}
                           onChange={(e) => {
@@ -237,7 +240,8 @@ function Arsipx() {
                             );
                           }}
                         />{' '}
-                        {index + 1}</td>
+                        {index + 1}
+                      </td>
                       <td>{proposal.nama_kegiatan}</td>
                       <td>{proposal.nama_organisasi}</td>
                       <td>{proposal.tanggal_pelaksanaan}</td>

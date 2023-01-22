@@ -52,55 +52,56 @@ function Register() {
     }
   };
 
-
   return (
     <>
       <div className="conRegister">
         <h2>Register User</h2>
-        <form onSubmit={Register} className="form-Register" action="">
-          <h2>REGISTER</h2>
-          <hr className="line-space" />
-          <div className="item-set">
-            <label> Username</label>
-            <input type="text" placeholder="Username ..." value={username} onChange={(e) => setusername(e.target.value)} />
-          </div>
-          <div className="item-set">
-            <label> Email</label>
-            <input type="email" placeholder="email ..." value={email} onChange={(e) => setemail(e.target.value)} />
-          </div>
-          <div className="item-set">
-            <label>Password</label>
-            <input type="password" placeholder="password" value={password} onChange={(e) => setpassword(e.target.value)} />
-          </div>
-          <div className="item-set">
-            <label>Confirm Password</label>
-            <input type="password" placeholder="confirm password" value={confpass} onChange={(e) => setconfpass(e.target.value)} />
-          </div>
-          <div className="item-set">
-            <label>source foto</label>
-            <input className="upload" type="file" name="file" onChange={loadImage} />
-          </div>
-          <div className="item-set">
-            <label>Role</label>
-            <select
-              className="role"
-              value={role}
-              onChange={(e) => {
-                setrole(e.target.value);
-              }}
-            >
-              <option>-- select --</option>
-              <option value="mahasiswa">Mahasiswa</option>
-              <option value="admin">Super User</option>
-              <option value="WD3">Wakil Dekan 3</option>
-              <option value="adminAkademik">Admin Akademik</option>
-              <option value="adminKeuangan">Admin Keuangan</option>
-            </select>
-          </div>
-          <button type="submit" onClick={handleClose}>
-            Register
-          </button>
-        </form>
+        <div className="container-formAddProp">
+          <form onSubmit={Register} className="form-Register" action="">
+            <h2>REGISTER</h2>
+            <hr className="line-space" />
+            <div className="item-set">
+              <label> Username</label>
+              <input type="text" placeholder="Username ..." value={username} onChange={(e) => setusername(e.target.value)} />
+            </div>
+            <div className="item-set">
+              <label> Email</label>
+              <input type="email" placeholder="email ..." value={email} onChange={(e) => setemail(e.target.value)} />
+            </div>
+            <div className="item-set">
+              <label>Password</label>
+              <input type="password" placeholder="password" value={password} onChange={(e) => setpassword(e.target.value)} />
+            </div>
+            <div className="item-set">
+              <label>Confirm Password</label>
+              <input type="password" placeholder="confirm password" value={confpass} onChange={(e) => setconfpass(e.target.value)} />
+            </div>
+            <div className="item-set">
+              <label>source foto</label>
+              <input className="upload" type="file" name="file" onChange={loadImage} />
+            </div>
+            <div className="item-set">
+              <label>Role</label>
+              <select
+                className="role"
+                value={role}
+                onChange={(e) => {
+                  setrole(e.target.value);
+                }}
+              >
+                <option>-- select --</option>
+                <option value="mahasiswa">Mahasiswa</option>
+                <option value="admin">Super User</option>
+                <option value="WD3">Wakil Dekan 3</option>
+                <option value="adminAkademik">Admin Akademik</option>
+                <option value="adminKeuangan">Admin Keuangan</option>
+              </select>
+            </div>
+            <button type="submit" onClick={handleClose}>
+              Register
+            </button>
+          </form>
+        </div>
       </div>
       <div className="popUp pophide">
         <div className="conPopUp" onClick={handleClose}>
