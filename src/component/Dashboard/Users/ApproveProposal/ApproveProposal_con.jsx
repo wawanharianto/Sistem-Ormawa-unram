@@ -58,12 +58,15 @@ function ApproveProposal_con() {
         headers: {
           'Content-type': 'multipart/form-data',
         },
+      }).then(() => setMsg('success'))
+      .catch(function (error) {
+        if (error.response) {
+          setMsg(error.response.data);
+          setMsg(error.response.status);
+        } else {
+          setMsg(error.message);
+        }
       });
-      setMsg('success update data');
-      console.log(msg);
-      if (msg == 'success update data') {
-        console.log('OK');
-      }
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
