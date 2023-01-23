@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Proposal_con.css';
 import axios from 'axios';
-import ReactPaginate from 'react-paginate';
+// import TablePagination from 'react-paginate';
+import { TablePagination } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,6 +19,9 @@ function Proposal_con() {
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
   // const status = ['Proposal di ajukan']
+  // usesstate pagenation
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -42,7 +46,6 @@ function Proposal_con() {
         };
       })
     );
-    setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
     setStatuscount(response.data.totalStatus);
@@ -57,14 +60,14 @@ function Proposal_con() {
     }, 2000);
   };
 
-  const changePage = ({ selected }) => {
-    setPage(selected);
-    if (selected === 9) {
-      setMsg('Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!');
-    } else {
-      setMsg('');
-    }
-  };
+  // const changePage = ({ selected }) => {
+  //   setPage(selected);
+  //   if (selected === 9) {
+  //     setMsg('Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!');
+  //   } else {
+  //     setMsg('');
+  //   }
+  // };
 
   // const searchData = (e) => {
   //   e.preventDefault();
@@ -98,6 +101,15 @@ function Proposal_con() {
   //       .catch((err) => alert(err));
   //   }
   // };
+  // funtion pagination
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <>
@@ -117,19 +129,21 @@ function Proposal_con() {
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
               </div>
-              {user && user.role !== 'WD3' && user && user.role !== 'adminAkademik'&&(<div className="fbtn">
-                {/* <button onClick={() => multipleDeleteById()}>
+              {user && user.role !== 'WD3' && user && user.role !== 'adminAkademik' && (
+                <div className="fbtn">
+                  {/* <button onClick={() => multipleDeleteById()}>
                   <i class="fa-solid fa-trash-can"></i> Delete
                 </button> */}
 
-                {Statuscount >= 3 && user && user.role == 'mahasiswa' && user ? (
-                  ''
-                ) : (
-                  <button onClick={handleAddProposal}>
-                    <i class="fa-solid fa-plus"></i>Tambah Proposal
-                  </button>
-                )}
-              </div>)}
+                  {Statuscount >= 3 && user && user.role == 'mahasiswa' && user ? (
+                    ''
+                  ) : (
+                    <button onClick={handleAddProposal}>
+                      <i class="fa-solid fa-plus"></i>Tambah Proposal
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
             <table className="tabPengajuanProposal">
               <thead>
@@ -146,6 +160,7 @@ function Proposal_con() {
                 </tr>
               </thead>
               <tbody>
+                {}
                 {proposals
                   .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
                   .map((proposal, index) => (
@@ -183,11 +198,13 @@ function Proposal_con() {
                             </button>
                           </Link>
 
-                          {user && user.role !== 'adminAkademik'&& (<Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
-                            <button className="edit-prop">
-                              <i class="fa-regular fa-pen-to-square"></i>
-                            </button>
-                          </Link>)}
+                          {user && user.role !== 'adminAkademik' && (
+                            <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
+                              <button className="edit-prop">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                              </button>
+                            </Link>
+                          )}
                           <button
                             className="delete-prop"
                             onClick={() => {
@@ -241,14 +258,14 @@ function Proposal_con() {
               </tbody>
             </table>
             <div className="tfooter tfooter1">
-              {/* <p>Total Rows: {rows}</p> */}
+              {/* <p>Total Rows: {rows}</p>
               <p>
                 Page: {rows ? page + 1 : 0} of {pages}
               </p>
               <p className="has-text-centered has-text-danger">{msg}</p>
 
               <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
-                <ReactPaginate
+                <TablePagination
                   previousLabel={'< Prev'}
                   nextLabel={'Next >'}
                   pageCount={Math.min(10, pages)}
@@ -260,7 +277,9 @@ function Proposal_con() {
                   activeLinkClassName={'pagination-link is-current'}
                   disabledLinkClassName={'pagination-link is-disabled'}
                 />
-              </nav>
+                
+              </nav> */}
+              <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
             </div>
           </div>
         </div>
