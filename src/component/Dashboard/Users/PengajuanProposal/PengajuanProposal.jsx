@@ -24,7 +24,7 @@ function PengajuanProposal() {
 
   useEffect(() => {
     getProposal();
-    if (user && user.role === 'mahasiswa' && Statuscount >= 3 || user && user.role === 'WD3' || user && user.role === 'adminAkademik') {
+    if ((user && user.role === 'mahasiswa' && Statuscount >= 3) || (user && user.role === 'WD3') || (user && user.role === 'adminAkademik')) {
       navigate('/dashboard');
     }
   }, [Statuscount]);
@@ -64,6 +64,7 @@ function PengajuanProposal() {
           'Content-type': 'multipart/form-data',
         },
       });
+
       const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
       permitPopUp.classList.toggle('permitShow');
       const popUpBerhasil = document.getElementsByClassName('popUp-Ajukan')[0];
@@ -76,7 +77,6 @@ function PengajuanProposal() {
       if (error.response) {
         setMsg(error.response.data.msg);
         const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
-
         permitPopUp.classList.toggle('permitShow');
         const popUpValid = document.getElementsByClassName('popup-valid')[0];
         popUpValid.classList.toggle('validshow');
@@ -218,6 +218,9 @@ function PengajuanProposal() {
               </div>
               <div className="containerPopUp_Permission permitShow">
                 <div className="container_content">
+                  <div className="icon">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                  </div>
                   <p>Apakah Anda Benar Ingin Mengajukan Proposal Ini ?</p>
 
                   <div className="btn">
@@ -250,6 +253,9 @@ function PengajuanProposal() {
       </div>
       <div className="popup-valid validshow">
         <div className="container-popup">
+          <div className="icon">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </div>
           <p> Periksa data!</p>
           <p>Ada kesalahan di data yang anda input.</p>
           <button

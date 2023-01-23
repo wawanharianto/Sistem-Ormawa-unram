@@ -279,6 +279,7 @@ function Proposal_con() {
                 />
                 
               </nav> */}
+
               <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
             </div>
           </div>

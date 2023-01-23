@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Register.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function Register() {
   const [username, setusername] = useState('');
@@ -11,15 +12,11 @@ function Register() {
   const [role, setrole] = useState('');
   const [msg, setMsg] = useState('');
   const [popUp, setPopUp] = useState(false);
+  const navigate = useNavigate();
 
   const loadImage = (e) => {
     const image = e.target.files[0];
     setfile(image);
-  };
-
-  const handleClose = () => {
-    const closepop = document.getElementsByClassName('popUp')[0];
-    closepop.classList.toggle('popshow');
   };
 
   const Register = async (e) => {
@@ -31,23 +28,30 @@ function Register() {
     formData.append('confPassword', confpass);
     formData.append('file', file);
     formData.append('role', role);
-    console.log(role);
 
     try {
-      await axios.post('http://localhost:3000/users', formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      });
-      setMsg('success');
-      console.log(msg);
-      if (msg == 'success') {
-        console.log('OK');
-        this.props.navigation.navigate('/dashboard');
-      }
+      await axios
+        .post('http://localhost:3000/users', formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          const popup = document.getElementsByClassName('popUpRegister')[0];
+          popup.classList.toggle('popshow');
+          setTimeout(() => {
+            popup.classList.toggle('popshow');
+            navigate('/users');
+          }, 2000);
+        });
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        const popup = document.getElementsByClassName('popUpRegister')[1];
+        popup.classList.toggle('popshow');
+        setTimeout(() => {
+          popup.classList.toggle('popshow');
+        }, 2000);
       }
     }
   };
@@ -97,16 +101,25 @@ function Register() {
                 <option value="adminKeuangan">Admin Keuangan</option>
               </select>
             </div>
-            <button type="submit" onClick={handleClose}>
-              Register
-            </button>
+            <button type="submit">Register</button>
           </form>
         </div>
       </div>
-      <div className="popUp pophide">
-        <div className="conPopUp" onClick={handleClose}>
-          <button>X</button>
-          <p>{msg}</p>
+      <div className="popUpRegister popshow">
+        <div className="container-popup">
+          <div className="icon">
+            <i class="fa-regular fa-circle-check"></i>
+          </div>
+          <p className="text">Berhasil Register</p>
+        </div>
+      </div>
+      <div className="popUpRegister popshow">
+        <div className="container-popup">
+          <div className="iconx">
+            <i class="fa-solid fa-x"></i>
+          </div>
+          <p className="text">Gagal Register</p>
+          <p className="text">Note : {msg} </p>
         </div>
       </div>
     </>

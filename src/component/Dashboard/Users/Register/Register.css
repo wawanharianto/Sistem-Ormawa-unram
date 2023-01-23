@@ -87,7 +87,7 @@
   width: 200px;
   height: 200px;
 }
-.popUp {
+/* .popUp {
   position: fixed;
   z-index: 999;
   background-color: rgba(83, 173, 135, 0.3);
@@ -128,12 +128,63 @@
   margin-bottom: auto;
   text-align: center;
   color: aliceblue;
-}
-/* click funtion */
-.popshow {
+} */
+
+.popUpRegister {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(1, 1, 1, 0.2);
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.popUpRegister .container-popup {
+  width: 400px;
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popUpRegister .container-popup .icon {
+  font-size: 60px;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  background-color: rgba(29, 122, 63, 0.2);
+  color: #3b7069;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popUpRegister .container-popup .iconx {
+  font-size: 50px;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  background-color: rgba(158, 20, 16, 0.2);
+  color: #830909;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popUpRegister .container-popup .text {
+  font-size: 12px;
+  margin-top: 1rem;
+}
+
+/* click funtion */
+.popshow {
+  display: none;
 }
 
 .item-set {
