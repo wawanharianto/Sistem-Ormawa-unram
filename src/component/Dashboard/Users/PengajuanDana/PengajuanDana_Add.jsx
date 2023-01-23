@@ -73,18 +73,21 @@ function PengajuanDana_Add() {
     formData.append('status', status);
 
     try {
-      await axios.patch(`http://localhost:3000/updaterevisi/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      }).then(() => setMsg('success')).catch(function (error) {
-        if (error.response) {
-          setMsg(error.response.data);
-          setMsg(error.response.status);
-        } else {
-          setMsg(error.message);
-        }
-      });
+      await axios
+        .patch(`http://localhost:3000/updaterevisi/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => setMsg('success'))
+        .catch(function (error) {
+          if (error.response) {
+            setMsg(error.response.data);
+            setMsg(error.response.status);
+          } else {
+            setMsg(error.message);
+          }
+        });
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -100,18 +103,21 @@ function PengajuanDana_Add() {
     formData.append('status', status);
 
     try {
-      await axios.patch(`http://localhost:3000/updatekeuangan/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      }).then(() => setMsg('success')).catch(function (error) {
-        if (error.response) {
-          setMsg(error.response.data);
-          setMsg(error.response.status);
-        } else {
-          setMsg(error.message);
-        }
-      });
+      await axios
+        .patch(`http://localhost:3000/updatekeuangan/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => setMsg('success'))
+        .catch(function (error) {
+          if (error.response) {
+            setMsg(error.response.data);
+            setMsg(error.response.status);
+          } else {
+            setMsg(error.message);
+          }
+        });
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -227,18 +233,22 @@ function PengajuanDana_Add() {
                 </div>
               </div>
 
-              {user && user.role === "mahasiswa" || user && user.role === "admin" ? (<div className="finput">
-                <p>Upload Proposal sudah ada ttd WDIII</p>
-                <div className="contInput">
-                  <div className="content">
-                    <label className="file-upload">
-                      <input type="file" name="file" onChange={loadFile} className="upload"></input>
-                      <span>Choose File</span>
-                    </label>
-                    <p className="text-upload">{namePropWD3}</p>
+              {(user && user.role === 'mahasiswa') || (user && user.role === 'admin') ? (
+                <div className="finput">
+                  <p>Upload Proposal sudah ada ttd WDIII</p>
+                  <div className="contInput">
+                    <div className="content">
+                      <label className="file-upload">
+                        <input type="file" name="file" onChange={loadFile} className="upload"></input>
+                        <span>Choose File</span>
+                      </label>
+                      <p className="text-upload">{namePropWD3}</p>
+                    </div>
                   </div>
                 </div>
-              </div>) : ""}
+              ) : (
+                ''
+              )}
 
               <div className="finput">
                 <p>Status</p>

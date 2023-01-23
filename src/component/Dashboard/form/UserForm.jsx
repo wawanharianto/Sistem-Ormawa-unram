@@ -3,6 +3,7 @@ import './userForm.css';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { Link, useNavigate } from 'react-router-dom';
+import { TablePagination } from '@mui/material';
 
 function UserForm() {
   const [users, setUsers] = useState([]);
@@ -13,6 +14,8 @@ function UserForm() {
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,6 +57,14 @@ function UserForm() {
       console.log('Ok');
       navigate('add');
     }
+  };
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   return (
@@ -141,7 +152,7 @@ function UserForm() {
             </tbody>
           </table>
           <div className="tfooter">
-            <p>Total Rows: {rows}</p>
+            {/* <p>Total Rows: {rows}</p>
             <p>
               Page: {rows ? page + 1 : 0} of {pages}
             </p>
@@ -160,7 +171,8 @@ function UserForm() {
                 activeLinkClassName={'pagination-link is-current'}
                 disabledLinkClassName={'pagination-link is-disabled'}
               />
-            </nav>
+            </nav> */}
+            <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
           </div>
         </div>
       </div>

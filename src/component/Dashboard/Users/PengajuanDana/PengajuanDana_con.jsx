@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { TablePagination } from '@mui/material';
 
 function PengajuanDana_con() {
   const [proposals, setProposals] = useState([]);
@@ -14,8 +15,9 @@ function PengajuanDana_con() {
   const [keyword, setKeyword] = useState('');
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
-  const status = []
+  const status = [];
   const navigate = useNavigate();
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   useEffect(() => {
     getProposal();
@@ -58,6 +60,14 @@ function PengajuanDana_con() {
     setPage(0);
     setMsg('');
     setKeyword(query);
+  };
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   return (
@@ -130,7 +140,7 @@ function PengajuanDana_con() {
               </tbody>
             </table>
             <div className="tfooter tfooter1">
-              {/* <p>Total Rows: {rows}</p> */}
+              {/* <p>Total Rows: {rows}</p>
               <p>
                 Page: {rows ? page + 1 : 0} of {pages}
               </p>
@@ -149,7 +159,8 @@ function PengajuanDana_con() {
                   activeLinkClassName={'pagination-link is-current'}
                   disabledLinkClassName={'pagination-link is-disabled'}
                 />
-              </nav>
+              </nav> */}
+              <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
             </div>
           </div>
         </div>
