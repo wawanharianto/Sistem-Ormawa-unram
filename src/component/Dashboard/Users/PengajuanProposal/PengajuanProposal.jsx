@@ -75,11 +75,26 @@ function PengajuanProposal() {
       }, 2000);
     } catch (error) {
       if (error.response) {
-        setMsg(error.response.data.msg);
-        const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
-        permitPopUp.classList.toggle('permitShow');
-        const popUpValid = document.getElementsByClassName('popup-valid')[0];
-        popUpValid.classList.toggle('validshow');
+        console.log(error.response.data.msg);
+        if (error.response.data.msg == 'No File Uploaded') {
+          setMsg(error.response.data.msg);
+          const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
+          permitPopUp.classList.toggle('permitShow');
+          const popUpValid = document.getElementsByClassName('popup-valid')[0];
+          popUpValid.classList.toggle('validshow');
+        } else if (error.response.data.msg == 'Invalid File') {
+          setMsg('Format File Anda Salah! (.pdf, .doc)');
+          const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
+          permitPopUp.classList.toggle('permitShow');
+          const popUpValid = document.getElementsByClassName('popup-valid')[0];
+          popUpValid.classList.toggle('validshow');
+        } else {
+          setMsg('Periksa Data Dengan Baik Data yang Anda Inputkan');
+          const permitPopUp = document.getElementsByClassName('containerPopUp_Permission')[0];
+          permitPopUp.classList.toggle('permitShow');
+          const popUpValid = document.getElementsByClassName('popup-valid')[0];
+          popUpValid.classList.toggle('validshow');
+        }
       }
     }
   };
@@ -258,6 +273,7 @@ function PengajuanProposal() {
           </div>
           <p> Periksa data!</p>
           <p>Ada kesalahan di data yang anda input.</p>
+          <p>Note : {msg}</p>
           <button
             onClick={() => {
               document.getElementsByClassName('popup-valid')[0].classList.toggle('validshow');
