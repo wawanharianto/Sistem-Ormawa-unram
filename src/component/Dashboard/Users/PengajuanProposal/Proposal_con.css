@@ -208,7 +208,7 @@
 .popUp-Delete .box i {
   margin-left: 0;
   margin-right: 100%;
-  color: #d92d20;
+  color: #d98320;
   font-size: 30px;
   margin-bottom: 20px;
   background-color: rgba(204, 154, 112, 0.2);
@@ -236,15 +236,20 @@
 }
 
 .g-btn button:nth-child(2) {
-  background-color: #ac1c1c;
-  color: white;
+  background-color: #f9f9f9;
+  border: 2px solid rgb(100, 100, 100);
+  color: rgb(72, 72, 72);
 }
 .g-btn button:nth-child(1) {
   background-color: rgb(243, 244, 246);
-  border: 2px solid black;
+  border: 2px solid rgb(100, 100, 100);
+  color: rgb(72, 72, 72);
 }
-.g-btn button:hover {
-  background-color: #20b486;
+.g-btn button:nth-child(1):hover {
+  background-color: #85d4bb;
+}
+.g-btn button:nth-child(2):hover {
+  background-color: #d48d85;
 }
 
 .showoff {

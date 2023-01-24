@@ -54,19 +54,21 @@ function ApproveProposal_con() {
     formData.append('keterangan_wd3', ketwd3);
     formData.append('status', status);
     try {
-      await axios.patch(`http://localhost:3000/updateketeranganwd3/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      }).then(() => setMsg('success'))
-      .catch(function (error) {
-        if (error.response) {
-          setMsg(error.response.data);
-          setMsg(error.response.status);
-        } else {
-          setMsg(error.message);
-        }
-      });
+      await axios
+        .patch(`http://localhost:3000/updateketeranganwd3/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => setMsg('success'))
+        .catch(function (error) {
+          if (error.response) {
+            setMsg(error.response.data);
+            setMsg(error.response.status);
+          } else {
+            setMsg(error.message);
+          }
+        });
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -217,19 +219,50 @@ function ApproveProposal_con() {
               </div>
               <div className="fbtn-form">
                 {user && user.role == 'WD3' && (
-                  <button
-                    onClick={() => {
-                      setStatus('Proposal ACC');
-                      const PopUpSetuju = document.getElementsByClassName('popUpSetuju-Approve')[0];
-                      PopUpSetuju.classList.toggle('SetujuShow');
+                  <>
+                    <button
+                      onClick={() => {
+                        const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                        popUpPermit.classList.toggle('permitShow');
+                      }}
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-check"></i>Setuju
+                    </button>
+                    <div className="container-popup-permit permitShow">
+                      <div className="container-content">
+                        <div className="icon">
+                          <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <p> apakah anda yakin ingin menyetujui proposal ini ?</p>
+                        <div className="btn-permit">
+                          <button
+                            type="submit"
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                              setStatus('Proposal ACC');
+                              // handleSetuju();
+                              const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
+                              PopUpSetuju.classList.toggle('SetujuShow');
 
-                      // belum berfungsi dia akan di eksekusi ketika 1/2 detik [belum bekerja]
-                      setTimeout(ClosePopUp, 1000);
-                    }}
-                    className="Ajukan"
-                  >
-                    <i class="fa-solid fa-check"></i>Setuju
-                  </button>
+                              setTimeout(ClosePopUp, 2000);
+                            }}
+                          >
+                            ok
+                          </button>
+                          <button
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                            }}
+                          >
+                            cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </>
                 )}
 
                 {user && user.role == 'admin' && (
@@ -253,6 +286,9 @@ function ApproveProposal_con() {
                     </div>
                     <div className="container-popup-permit permitShow">
                       <div className="container-content">
+                        <div className="icon">
+                          <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
                         <p> apakah anda yakin ingin menyetujui proposal ini ?</p>
                         <div className="btn-permit">
                           <button
@@ -320,6 +356,9 @@ function ApproveProposal_con() {
                     </button>
                     <div className="container-popup-permit permitShow">
                       <div className="container-content">
+                        <div className="icon">
+                          <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
                         <p> apakah anda yakin ingin menolak proposal ini ?</p>
                         <div className="btn-permit">
                           <button

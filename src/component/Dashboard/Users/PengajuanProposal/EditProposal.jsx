@@ -68,18 +68,21 @@ function UpdateProposal() {
     formData.append('status', status);
 
     try {
-      await axios.patch(`http://localhost:3000/proposal/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      }).then(()=> setMsg('success')).catch(function (error) {
-        if (error.response) {
-          setMsg(error.response.data);
-          setMsg(error.response.status);
-        } else {
-          setMsg(error.message);
-        }
-      });
+      await axios
+        .patch(`http://localhost:3000/proposal/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => setMsg('success'))
+        .catch(function (error) {
+          if (error.response) {
+            setMsg(error.response.data);
+            setMsg(error.response.status);
+          } else {
+            setMsg(error.message);
+          }
+        });
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -221,6 +224,9 @@ function UpdateProposal() {
                 </button>
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
                     <p> Apakah anda yakin ingin meng-update proposal ini ?</p>
                     <div className="btn-permit">
                       <button

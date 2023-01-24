@@ -207,21 +207,44 @@
   flex-direction: row;
   gap: 10px;
   margin-top: 20px;
+  margin-top: auto;
+  margin-bottom: 0;
 }
 .container-popup-permit .container-content .btn-permit button {
-  padding: 4px 10px;
+  padding: 8px 20px;
 }
 .container-popup-permit .container-content .btn-permit button:nth-child(1) {
-  background-color: #50b595;
+  color: rgb(78, 76, 76);
+  background-color: #ffffff;
+  border: 2px solid #888787;
 }
 .container-popup-permit .container-content .btn-permit button:nth-child(1):hover {
-  background-color: #39816a;
+  background-color: #a7e0ce;
+  color: white;
 }
 .container-popup-permit .container-content .btn-permit button:nth-child(2) {
-  background-color: #c91616;
+  color: rgb(78, 76, 76);
+  background-color: #ffffff;
+  border: 2px solid #888787;
 }
 .container-popup-permit .container-content .btn-permit button:nth-child(2):hover {
-  background-color: #6e0d0d;
+  background-color: #c37676;
+  color: white;
+}
+.container-popup-permit .container-content .icon {
+  background-color: rgba(184, 90, 12, 0.2);
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: rgb(231, 118, 25);
+  margin-right: auto;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: auto;
 }
 .SetujuShow {
   display: none;
