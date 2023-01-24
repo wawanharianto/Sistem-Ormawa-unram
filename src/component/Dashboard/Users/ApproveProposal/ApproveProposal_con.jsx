@@ -246,7 +246,12 @@ function ApproveProposal_con() {
                               const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
                               PopUpSetuju.classList.toggle('SetujuShow');
 
-                              setTimeout(ClosePopUp, 2000);
+                              setTimeout(() => {
+                                PopUpSetuju.classList.toggle('SetujuShow');
+                              }, 2000);
+                              setTimeout(() => {
+                                navigate('/pengajuan-proposal');
+                              }, 2000);
                             }}
                           >
                             ok
@@ -260,6 +265,14 @@ function ApproveProposal_con() {
                             cancel
                           </button>
                         </div>
+                      </div>
+                    </div>
+                    <div className="popUp-Approve SetujuShow">
+                      <div className="container-popUp">
+                        <div className="icon">
+                          <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p>Berhasil ACC Proposal</p>
                       </div>
                     </div>
                   </>
@@ -276,14 +289,7 @@ function ApproveProposal_con() {
                     >
                       <i class="fa-solid fa-check"></i>Setuju
                     </button>
-                    <div className="popUp-Approve SetujuShow">
-                      <div className="container-popUp">
-                        <div className="icon">
-                          <i class="fa-solid fa-check"></i>
-                        </div>
-                        <p>Berhasil ACC Proposal</p>
-                      </div>
-                    </div>
+
                     <div className="container-popup-permit permitShow">
                       <div className="container-content">
                         <div className="icon">
@@ -297,7 +303,7 @@ function ApproveProposal_con() {
                               const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                               popUpPermit.classList.toggle('permitShow');
                               setStatus('Proposal ACC');
-                              // handleSetuju();
+
                               const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
                               PopUpSetuju.classList.toggle('SetujuShow');
 
@@ -317,6 +323,14 @@ function ApproveProposal_con() {
                         </div>
                       </div>
                     </div>
+                    <div className="popUp-Approve SetujuShow">
+                      <div className="container-popUp">
+                        <div className="icon">
+                          <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p>Berhasil ACC Proposal</p>
+                      </div>
+                    </div>
                   </>
                 )}
                 {/* <button type="submit" className="Ajukan">
@@ -326,7 +340,9 @@ function ApproveProposal_con() {
                   <>
                     <button
                       onClick={() => {
-                        setStatus('Proposal di tolak');
+                        const popUpPermit = document.getElementsByClassName('container-permit-tolak')[0];
+                        popUpPermit.classList.toggle('permitShow');
+                        // setStatus('Proposal di tolak');
                         // const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
                         // PopUpTolak.classList.toggle('TolakShow');
                         // setTimeout(() => {
@@ -339,6 +355,50 @@ function ApproveProposal_con() {
                     >
                       <i class="fa-solid fa-xmark"></i>Tolak
                     </button>
+                    <div className="container-popup-permit container-permit-tolak permitShow">
+                      <div className="container-content">
+                        <div className="icon">
+                          <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <p> apakah anda yakin ingin menolak proposal ini ?</p>
+                        <div className="btn-permit">
+                          <button
+                            type="submit"
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-permit-tolak')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                              setStatus('Proposal di tolak');
+                              const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
+                              PopUpTolak.classList.toggle('TolakShow');
+                              setTimeout(() => {
+                                PopUpTolak.classList.toggle('TolakShow');
+                              }, 2000);
+                              setTimeout(() => {
+                                navigate('/pengajuan-proposal');
+                              }, 2000);
+                            }}
+                          >
+                            ok
+                          </button>
+                          <button
+                            onClick={() => {
+                              const popUpPermit = document.getElementsByClassName('container-permit-tolak')[0];
+                              popUpPermit.classList.toggle('permitShow');
+                            }}
+                          >
+                            cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="popUp-Approve TolakShow">
+                      <div className="container-popUp">
+                        <div className="icon-x">
+                          <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <p>Proposal Berhasil Ditolak</p>
+                      </div>
+                    </div>
                   </>
                 )}
 
@@ -390,12 +450,21 @@ function ApproveProposal_con() {
                         </div>
                       </div>
                     </div>
+
                     <div className="popUp-Approve TolakShow">
                       <div className="container-popUp">
                         <div className="icon-x">
                           <i class="fa-solid fa-xmark"></i>
                         </div>
                         <p>Proposal Berhasil Ditolak</p>
+                      </div>
+                    </div>
+                    <div className="popUp-Approve TolakShow">
+                      <div className="container-popUp">
+                        <div className="icon-x">
+                          <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <p>Berhasil Disetujui</p>
                       </div>
                     </div>
                   </>
