@@ -160,7 +160,7 @@ function Proposal_con() {
                 </tr>
               </thead>
               <tbody>
-                {}
+                { }
                 {proposals
                   .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
                   .map((proposal, index) => (
@@ -198,14 +198,15 @@ function Proposal_con() {
                             </button>
                           </Link>
 
-                          {user && user.role !== 'adminAkademik' && (
+                          {user && user.role === 'mahasiswa' || user && user.role === 'admin' ? (
                             <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
                               <button className="edit-prop">
                                 <i class="fa-regular fa-pen-to-square"></i>
                               </button>
                             </Link>
-                          )}
-                          <button
+                          ) : ''}
+
+                          {user && user.role === 'mahasiswa' || user && user.role === 'admin' ?(<button
                             className="delete-prop"
                             onClick={() => {
                               console.log(proposal.uuid);
@@ -214,7 +215,7 @@ function Proposal_con() {
                             }}
                           >
                             <i class="fa-solid fa-delete-left"></i>
-                          </button>
+                          </button>) : ''}
                         </div>
                         {/* popup */}
                         <div id={proposal.uuid} className="popUp-Delete showoff">

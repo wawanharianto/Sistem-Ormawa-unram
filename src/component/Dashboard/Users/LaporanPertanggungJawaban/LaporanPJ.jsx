@@ -26,7 +26,7 @@ function PengajuanDana_con() {
 
   const getProposal = async () => {
     const response = await axios.get(
-      `http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=SPJ Diterima&status=LPJ Di Ajukan&status=LPJ Revisi&status=Selesai`
+      `http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=SPJ Diterima&status=LPJ Di Ajukan&status=LPJ Revisi`
     );
     setProposals(
       response.data.result.map((d) => {
