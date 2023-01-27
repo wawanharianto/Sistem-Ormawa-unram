@@ -256,3 +256,15 @@
 .permitShow {
   display: none;
 }
+.popUp-Ajukan .iconx {
+  background-color: rgba(220, 21, 21, 0.2);
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  color: #b00838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}

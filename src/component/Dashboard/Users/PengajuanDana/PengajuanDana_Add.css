@@ -109,3 +109,9 @@
   border: none;
   border-radius: 4px;
 }
+.btn-komfirm .simpan {
+  background-color: #104a97;
+}
+.btn-komfirm .simpan:hover {
+  background-color: #083063;
+}

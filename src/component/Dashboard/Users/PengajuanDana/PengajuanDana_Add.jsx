@@ -25,6 +25,7 @@ function PengajuanDana_Add() {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { uuid } = useParams();
+  const [validFile, setValidFile] = useState(false);
 
   useEffect(() => {
     const getProposalById = async () => {
@@ -42,6 +43,8 @@ function PengajuanDana_Add() {
         setUrl(response.data.url_proposal);
         setNamaFile(response.data.proposal);
         setKetWd3(response.data.keterangan_wd3);
+        setKetKeuangan(response.data.keterangan_keuangan);
+        setDanaSetuju(response.data.dana_disetujui);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -59,6 +62,7 @@ function PengajuanDana_Add() {
     const proposal = e.target.files[0];
     setFile(proposal);
     setNamePropWD3(e.target.files[0].name);
+    setValidFile(true);
   };
 
   // const handleClose = () => {
@@ -275,22 +279,78 @@ function PengajuanDana_Add() {
               )}
 
               {user && user.role === 'mahasiswa' && (
-                <div className="fbtn-form">
-                  <button
-                    onClick={() => {
-                      setStatus(status);
-                      const PopUpDanaAju = document.getElementsByClassName('popUp-Ajukan')[0];
-                      PopUpDanaAju.classList.toggle('AjukanShow');
-                      setTimeout(() => {
-                        PopUpDanaAju.classList.toggle('AjukanShow');
-                      }, 2000);
-                    }}
-                    type="submit"
-                    className="Ajukan"
-                  >
-                    <i class="fa-solid fa-floppy-disk"></i>Simpan
-                  </button>
-                </div>
+                <>
+                  <div className="fbtn-form">
+                    <button
+                      onClick={() => {
+                        if (validFile === false) {
+                          const PopUpSetuju = document.getElementsByClassName('popUp-Ajukan')[1];
+                          PopUpSetuju.classList.toggle('AjukanShow');
+                          setTimeout(() => {
+                            PopUpSetuju.classList.toggle('AjukanShow');
+                          }, 2000);
+                        } else {
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                          popUpPermit.classList.toggle('permitShow');
+                        }
+                      }}
+                      type="submit"
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-floppy-disk"></i>Simpan
+                    </button>
+                  </div>
+                  <div className="container-popup-permit permitShow">
+                    <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
+                      <p> Apakah Anda sudah yakin untuk mengajukan dana ?</p>
+                      <div className="btn-permit">
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                            popUpPermit.classList.toggle('permitShow');
+                            setStatus('Proposal pengajuan dana');
+
+                            const PopUpSetuju = document.getElementsByClassName('popUp-Ajukan')[0];
+                            PopUpSetuju.classList.toggle('AjukanShow');
+                            setTimeout(() => {
+                              PopUpSetuju.classList.toggle('AjukanShow');
+                            }, 2000);
+                          }}
+                        >
+                          ok
+                        </button>
+                        <button
+                          onClick={() => {
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                            popUpPermit.classList.toggle('permitShow');
+                          }}
+                        >
+                          cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="popUp-Ajukan AjukanShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Berhasil Mengajukan Dana</p>
+                    </div>
+                  </div>
+                  <div className="popUp-Ajukan AjukanShow">
+                    <div className="container-popUp">
+                      <div className="iconx">
+                        <i class="fa-solid fa-xmark"></i>
+                      </div>
+                      <p>Upload File Pengajuan Dana!</p>
+                    </div>
+                  </div>
+                </>
               )}
 
               {user && user.role == 'admin' && (
@@ -298,9 +358,17 @@ function PengajuanDana_Add() {
                   <div className="fbtn-form">
                     <button
                       onClick={() => {
-                        setStatus(status);
-                        const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
-                        popUpPermit.classList.toggle('permitShow');
+                        if (validFile == false) {
+                          const PopUpSetuju = document.getElementsByClassName('popUp-Ajukan')[1];
+                          PopUpSetuju.classList.toggle('AjukanShow');
+                          setTimeout(() => {
+                            PopUpSetuju.classList.toggle('AjukanShow');
+                          }, 2000);
+                        } else {
+                          setStatus(status);
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                          popUpPermit.classList.toggle('permitShow');
+                        }
                       }}
                       type="submit"
                       className="Ajukan"
@@ -316,8 +384,19 @@ function PengajuanDana_Add() {
                       <p>Berhasil Mengajukan Dana</p>
                     </div>
                   </div>
+                  <div className="popUp-Ajukan AjukanShow">
+                    <div className="container-popUp">
+                      <div className="iconx">
+                        <i class="fa-solid fa-xmark"></i>
+                      </div>
+                      <p>Upload File Pengajuan Dana!</p>
+                    </div>
+                  </div>
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
                       <p> Apakah Anda sudah yakin untuk mengajukan dana ?</p>
                       <div className="btn-permit">
                         <button
@@ -351,53 +430,113 @@ function PengajuanDana_Add() {
               )}
             </form>
           </div>
-
           <form onSubmit={updateKetKeuangan} className="form-Komfirmasi">
-            <div className="headForm">
-              <p>Kolom Konfirmasi Bagian Keuangan</p>
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <hr className="line" />
-            <div className="finput">
-              <p>Keterangan dari Bagian Keuangan</p>
-              <div className="contInput">
-                <input value={keterangan_keuangan} onChange={(e) => setKetKeuangan(e.target.value)} type="text" placeholder="Ketikan disini..." className="textbox"></input>
-                <p className="kosong">keterangan</p>
-              </div>
-            </div>
-            <div className="finput">
-              <p>Jumlah Dana Yang di setujui</p>
-              <div className="contInput">
-                <input
-                  value={dana_disetujui}
-                  onChange={(e) => {
-                    const formatRupiah = (angka, prefix) => {
-                      let number_string = angka.replace(/[^,\d]/g, '').toString(),
-                        split = number_string.split(','),
-                        sisa = split[0].length % 3,
-                        rupiah = split[0].substr(0, sisa),
-                        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            {user && user.role == 'mahasiswa' && (
+              <>
+                <div className="headForm">
+                  <p>Konfirmasi Bagian Keuangan</p>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <hr className="line" />
+                <div className="finput">
+                  <p>Keterangan dari Bagian Keuangan</p>
+                  <div className="contInput">
+                    <input
+                      value={keterangan_keuangan}
+                      onChange={(e) => setKetKeuangan(e.target.value)}
+                      type="text"
+                      placeholder={keterangan_keuangan}
+                      className="textbox"
+                      readOnly
+                    ></input>
+                    <p className="kosong">keterangan</p>
+                  </div>
+                </div>
+                <div className="finput">
+                  <p>Jumlah Dana Yang di setujui</p>
+                  <div className="contInput">
+                    <input
+                      value={dana_disetujui}
+                      onChange={(e) => {
+                        const formatRupiah = (angka, prefix) => {
+                          let number_string = angka.replace(/[^,\d]/g, '').toString(),
+                            split = number_string.split(','),
+                            sisa = split[0].length % 3,
+                            rupiah = split[0].substr(0, sisa),
+                            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-                      // tambahkan titik jika yang di input sudah menjadi angka ribuan
-                      if (ribuan) {
-                        let separator = sisa ? '.' : '';
-                        rupiah += separator + ribuan.join('.');
-                      }
+                          // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                          if (ribuan) {
+                            let separator = sisa ? '.' : '';
+                            rupiah += separator + ribuan.join('.');
+                          }
 
-                      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-                      return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
-                    };
-                    setDanaSetuju(formatRupiah(e.target.value, 'Rp. '));
-                  }}
-                  type="text"
-                  placeholder="Ketikan disini ..."
-                ></input>
-                <p className="kosong">jumlah dana yang di setujui</p>
-              </div>
-            </div>
-            <div className="finput">
-              <p></p>
-            </div>
+                          rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                          return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+                        };
+                        setDanaSetuju(formatRupiah(e.target.value, 'Rp. '));
+                      }}
+                      type="text"
+                      placeholder={dana_disetujui}
+                      readOnly
+                    ></input>
+                    <p className="kosong">jumlah dana yang di setujui</p>
+                  </div>
+                </div>
+                <div className="finput">
+                  <p></p>
+                </div>
+              </>
+            )}
+            {user && user.role !== 'mahasiswa' && (
+              <>
+                <div className="headForm">
+                  <p>Kolom Konfirmasi Bagian Keuangan</p>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <hr className="line" />
+                <div className="finput">
+                  <p>Keterangan dari Bagian Keuangan</p>
+                  <div className="contInput">
+                    <input value={keterangan_keuangan} onChange={(e) => setKetKeuangan(e.target.value)} type="text" placeholder="Ketikan disini..." className="textbox"></input>
+                    <p className="kosong">keterangan</p>
+                  </div>
+                </div>
+                <div className="finput">
+                  <p>Jumlah Dana Yang di setujui</p>
+                  <div className="contInput">
+                    <input
+                      value={dana_disetujui}
+                      onChange={(e) => {
+                        const formatRupiah = (angka, prefix) => {
+                          let number_string = angka.replace(/[^,\d]/g, '').toString(),
+                            split = number_string.split(','),
+                            sisa = split[0].length % 3,
+                            rupiah = split[0].substr(0, sisa),
+                            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                          // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                          if (ribuan) {
+                            let separator = sisa ? '.' : '';
+                            rupiah += separator + ribuan.join('.');
+                          }
+
+                          rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                          return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+                        };
+                        setDanaSetuju(formatRupiah(e.target.value, 'Rp. '));
+                      }}
+                      type="text"
+                      placeholder="Ketikan disini ..."
+                    ></input>
+                    <p className="kosong">jumlah dana yang di setujui</p>
+                  </div>
+                </div>
+                <div className="finput">
+                  <p></p>
+                </div>
+              </>
+            )}
             {user && user.role === 'adminKeuangan' && (
               <>
                 <div className="btn-komfirm">
@@ -415,6 +554,9 @@ function PengajuanDana_Add() {
 
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
                       <p> Apakah Anda yakin menyetujui pengajuan dana tersebut ?</p>
                       <div className="btn-permit">
                         <button
@@ -466,7 +608,7 @@ function PengajuanDana_Add() {
                       }, 1500);
                     }}
                     type="submit"
-                    className="Ajukan"
+                    className="Ajukan simpan"
                   >
                     <i class="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
@@ -498,6 +640,9 @@ function PengajuanDana_Add() {
                   </button>
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
                       <p> Apakah Anda yakin menyetujui pengajuan dana tersebut ?</p>
                       <div className="btn-permit">
                         <button
