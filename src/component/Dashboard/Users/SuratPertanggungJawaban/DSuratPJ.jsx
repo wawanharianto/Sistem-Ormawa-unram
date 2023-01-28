@@ -77,7 +77,6 @@ function DSuratPJ() {
   const updateSPJ = async (e) => {
     const formData = new FormData();
     formData.append('file', fileSPJ);
-    formData.append('status', status);
 
     try {
       await axios.patch(`http://localhost:3000/spj/${uuid}`, formData, {
@@ -122,7 +121,19 @@ function DSuratPJ() {
     const statusSPJ = await updateSPJ();
     const statusBerkas = await updateBerkasDukung();
     if (statusSPJ == true && statusBerkas == true) {
-      await updateSPJ();
+      const formData = new FormData();
+      formData.append('status', status);
+
+      try {
+        await axios.patch(`http://localhost:3000/spj/status/${uuid}`, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      });
+      } catch (error) {
+        console.log(error);
+      }
+
       const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
       PopUpSetuju.classList.toggle('SPJShow');
       setTimeout(() => {
