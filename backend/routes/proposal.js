@@ -1,5 +1,5 @@
 import express from "express";
-import { getProposal,getProposalArsip,getProposalbyId,getProposalView ,createProposal, updateProposal, deleteProposal, deleteMultiple, setStatus, updateKeteranganWd3, updateKeteranganKeuangan, updateRevisi, updateArsip } from "../controllers/Proposal.js";
+import { getProposal, getProposalArsip, getProposalbyId, getProposalView, createProposal, updateProposal, deleteProposal, deleteMultiple, setStatus, updateKeteranganWd3, updateKeteranganKeuangan, updateRevisi, updateArsip, getProposalDashboard } from "../controllers/Proposal.js";
 import { ExportToExcel } from "../controllers/Export.js";
 import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
 
@@ -10,6 +10,7 @@ Proposalroute.get('/arsip', verifyUser, getProposalArsip);
 Proposalroute.get('/proposal/:uuid', verifyUser, getProposalbyId);
 Proposalroute.get('/pengumuman', getProposalView);
 Proposalroute.get('/export', ExportToExcel);
+Proposalroute.get('/dashboard', verifyUser, getProposalDashboard);
 Proposalroute.post('/proposal', verifyUser, createProposal);
 Proposalroute.patch('/proposal/:id', verifyUser, updateProposal);
 Proposalroute.patch('/setstatus/:id', verifyUser, setStatus);

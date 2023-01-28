@@ -6,8 +6,10 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Lege
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 function Chart() {
-  const [proposals, setProposals] = useState([]);
-  const [keyword, setKeyword] = useState('');
+  const [proposal, setProposal] = useState('');
+  const [spj, setSpj] = useState('');
+  const [lpj, setLpj] = useState('');
+  const [arsip, setArsip] = useState('');
   const [ormawa, setOrmawa] = useState([]);
 
   useEffect(() => {
@@ -15,28 +17,38 @@ function Chart() {
   }, []);
 
   const dataFetch = async () => {
-    const dataormawa = [];
-    await axios
-      .get(`http://localhost:3000/proposal?search_query=`)
-      .then((res) => {
-        console.log(res);
-        for (const dataObj of res.data.result) {
-          dataormawa.push(dataObj.nama_organisasi);
-        }
-        setOrmawa(dataormawa);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(dataormawa);
+    // const dataormawa = [];
+    // await axios
+    //   .get(`http://localhost:3000/proposal?search_query=`)
+    //   .then((res) => {
+    //     console.log(res);
+    //     for (const dataObj of res.data.result) {
+    //       dataormawa.push(dataObj.nama_organisasi);
+    //     }
+    //     setOrmawa(dataormawa);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    // console.log(dataormawa);
+
+    try {
+      const response = await axios.get(`http://localhost:3000/dashboard`);
+      setProposal(response.data.totalProposal);
+      setSpj(response.data.totalSpj);
+      setLpj(response.data.totalLpj);
+      setArsip(response.data.totalArsip);
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
   };
 
   const data = {
-    labels: ormawa,
+    labels: ['Proposal', 'SPJ', 'LPJ', 'Arsip'],
     datasets: [
       {
-        label: 'Nama Ormawa',
-        data: [8, 7],
+        label: 'Dokumen',
+        data: [proposal, spj, lpj, arsip],
         backgroundColor: ' rgb(10, 124, 92)',
       },
     ],

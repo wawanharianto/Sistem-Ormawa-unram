@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import { TablePagination } from '@mui/material';
 import './Pengumuman.css';
 
 function Pengumuman() {
@@ -10,6 +11,7 @@ function Pengumuman() {
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
   const [keyword, setKeyword] = useState('');
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   useEffect(() => {
     getProposal();
   }, []);
@@ -25,6 +27,15 @@ function Pengumuman() {
 
   const changePage = ({ selected }) => {
     setPage(selected);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   return (
@@ -56,26 +67,28 @@ function Pengumuman() {
 
         </table>
         <div className="tfooter tfooter1">
-          {/* <p>Total Rows: {rows}</p> */}
-          <p>
-            Page: {rows ? page + 1 : 0} of {pages}
-          </p>
+              {/* <p>Total Rows: {rows}</p>
+              <p>
+                Page: {rows ? page + 1 : 0} of {pages}
+              </p>
+              <p className="has-text-centered has-text-danger">{msg}</p>
 
-          <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
-            <ReactPaginate
-              previousLabel={'< Prev'}
-              nextLabel={'Next >'}
-              pageCount={Math.min(10, pages)}
-              onPageChange={changePage}
-              containerClassName={'pagination-list'}
-              pageLinkClassName={'pagination-link'}
-              previousLinkClassName={'pagination-previous'}
-              nextLinkClassName={'pagination-next'}
-              activeLinkClassName={'pagination-link is-current'}
-              disabledLinkClassName={'pagination-link is-disabled'}
-            />
-          </nav>
-        </div>
+              <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
+                <ReactPaginate
+                  previousLabel={'< Prev'}
+                  nextLabel={'Next >'}
+                  pageCount={Math.min(10, pages)}
+                  onPageChange={changePage}
+                  containerClassName={'pagination-list'}
+                  pageLinkClassName={'pagination-link'}
+                  previousLinkClassName={'pagination-previous'}
+                  nextLinkClassName={'pagination-next'}
+                  activeLinkClassName={'pagination-link is-current'}
+                  disabledLinkClassName={'pagination-link is-disabled'}
+                />
+              </nav> */}
+              <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
+            </div>
       </article>
     </>
   );

@@ -187,6 +187,68 @@ export const getProposalArsip = async (req, res) => {
     }
 }
 
+export const getProposalDashboard = async (req, res) => {
+    let totalProposal;
+    let totalSpj;
+    let totalLpj;
+    let totalArsip;
+    try {
+        //GET COUNT TOTAL DATA
+        if (req.role !== "mahasiswa") {
+            totalProposal = await Proposal.count({
+                col: 'proposal',
+            });
+            totalSpj = await Proposal.count({
+                col: 'spj',
+            });
+            totalLpj = await Proposal.count({
+                col: 'lpj',
+            });
+            totalArsip = await Proposal.count({
+                col: 'proposal',
+                where: {
+                    status: 'Selesai'
+                }
+            });
+        } else {
+            totalProposal = await Proposal.count({
+                col: 'proposal',
+                where: {
+                    userId: req.userId,
+                }
+            });
+            totalSpj = await Proposal.count({
+                col: 'spj',
+                where: {
+                    userId: req.userId,
+                }
+            });
+            totalLpj = await Proposal.count({
+                col: 'lpj',
+                where: {
+                    userId: req.userId,
+                }
+            });
+            totalArsip = await Proposal.count({
+                col: 'proposal',
+                where: {
+                    userId: req.userId,
+                    status: 'Selesai'
+                }
+            });
+        }
+
+        res.status(200).json({
+            totalProposal: totalProposal,
+            totalSpj: totalSpj,
+            totalLpj: totalLpj,
+            totalArsip: totalArsip,
+        });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+}
+
 export const getProposalView = async (req, res) => {
     const page = parseInt(req.query.page) || 0;
     const limit = parseInt(req.query.limit) || 10;
