@@ -29,7 +29,9 @@ function Proposal_con() {
   }, [page, keyword]);
 
   const getProposal = async () => {
-    const response = await axios.get(`http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=Proposal di ajukan&status=Proposal di tolak`);
+    const response = await axios.get(
+      `http://localhost:3000/proposal?search_query=${keyword}&page=${page}&limit=${limit}&status=Proposal di ajukan&status=Proposal di tolak&status=Proposal ACC`
+    );
     setProposals(
       response.data.result.map((d) => {
         return {
@@ -160,7 +162,7 @@ function Proposal_con() {
                 </tr>
               </thead>
               <tbody>
-                { }
+                {}
                 {proposals
                   .filter((proposal) => proposal.nama_kegiatan.toLowerCase().includes(query) || proposal.nama_organisasi.toLowerCase().includes(query))
                   .map((proposal, index) => (
@@ -198,24 +200,38 @@ function Proposal_con() {
                             </button>
                           </Link>
 
-                          {user && user.role === 'mahasiswa' || user && user.role === 'admin' ? (
-                            <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
-                              <button className="edit-prop">
-                                <i class="fa-regular fa-pen-to-square"></i>
-                              </button>
-                            </Link>
-                          ) : ''}
+                          {(user && user.role === 'mahasiswa') || (user && user.role === 'admin') ? (
+                            proposal.status !== 'Proposal ACC' ? (
+                              <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
+                                <button className="edit-prop">
+                                  <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                              </Link>
+                            ) : (
+                              ''
+                            )
+                          ) : (
+                            ''
+                          )}
 
-                          {user && user.role === 'mahasiswa' || user && user.role === 'admin' ?(<button
-                            className="delete-prop"
-                            onClick={() => {
-                              console.log(proposal.uuid);
-                              const popupDelete = document.getElementById(proposal.uuid);
-                              popupDelete.classList.toggle('showoff');
-                            }}
-                          >
-                            <i class="fa-solid fa-delete-left"></i>
-                          </button>) : ''}
+                          {(user && user.role === 'mahasiswa') || (user && user.role === 'admin') ? (
+                            proposal.status !== 'Proposal ACC' ? (
+                              <button
+                                className="delete-prop"
+                                onClick={() => {
+                                  console.log(proposal.uuid);
+                                  const popupDelete = document.getElementById(proposal.uuid);
+                                  popupDelete.classList.toggle('showoff');
+                                }}
+                              >
+                                <i class="fa-solid fa-delete-left"></i>
+                              </button>
+                            ) : (
+                              ''
+                            )
+                          ) : (
+                            ''
+                          )}
                         </div>
                         {/* popup */}
                         <div id={proposal.uuid} className="popUp-Delete showoff">

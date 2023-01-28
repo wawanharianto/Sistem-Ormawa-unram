@@ -211,12 +211,16 @@ function ApproveProposal_con() {
                   </button>
                 </div>
               </div>
-              <div className="finput">
-                <p>Keterangan Oleh WD3</p>
-                <div className="contInput">
-                  <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
-                </div>
-              </div>
+              {user && user.role == 'mahasiswa' && (
+                <>
+                  <div className="finput">
+                    <p>Keterangan Oleh WD3</p>
+                    <div className="contInput">
+                      <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} readOnly />
+                    </div>
+                  </div>
+                </>
+              )}
               <div className="fbtn-form">
                 {user && user.role == 'WD3' && (
                   <>
