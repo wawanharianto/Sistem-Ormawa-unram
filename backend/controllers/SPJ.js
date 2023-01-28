@@ -10,8 +10,6 @@ export const updateSpj = async (req, res) => {
     }
   });
 
-  const { status } = req.body;
-
 
   if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
@@ -33,8 +31,7 @@ export const updateSpj = async (req, res) => {
       if (req.role === "admin" || req.role === "adminKeuangan") {
         await Proposal.update({
           spj: fileName,
-          url_spj: url,
-          status: status
+          url_spj: url
 
         }, {
           where: {
@@ -45,8 +42,7 @@ export const updateSpj = async (req, res) => {
         if (req.userId !== proposal.userId) return res.status(403).json({ msg: "Akses terlarang" });
         await Proposal.update({
           spj: fileName,
-          url_spj: url,
-          status: status
+          url_spj: url
         }, {
           where: {
             [Op.and]: [{ id: proposal.id }, { userId: req.userId }]
@@ -281,6 +277,31 @@ export const updateKeteranganSpj = async (req, res) => {
       }
     }),
       res.status(200).json({ msg: "update berhasil " });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const updateStatusSpj = async (req, res) => {
+  const proposal = await Proposal.findOne({
+    where: {
+      uuid: req.params.id
+    }
+  });
+
+  if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
+
+  const { status } = req.body;
+
+  try {
+    await Proposal.update({
+      status: status
+    }, {
+      where: {
+        id: proposal.id
+      }
+    }),
+      res.status(200).json({ msg: "update status berhasil " });
   } catch (error) {
     console.log(error);
   }

@@ -24,8 +24,6 @@ function DSuratPJ() {
   const [keterangan_keuangan, setKetKeuangan] = useState('');
   const [dana_disetujui, setDanaSetuju] = useState('');
   const [msg, setMsg] = useState('');
-  const [msg1, setMsg1] = useState('');
-  const [msg2, setMsg2] = useState('');
   const [nameFileSpj, setNameFileSpj] = useState('');
   const [nameFilePdkg, setNameFilePdkg] = useState('');
   const [nameRevisiSpj, setNameRevisiSpj] = useState('');
@@ -77,7 +75,6 @@ function DSuratPJ() {
   const updateSPJ = async (e) => {
     const formData = new FormData();
     formData.append('file', fileSPJ);
-    formData.append('status', status);
 
     try {
       await axios.patch(`http://localhost:3000/spj/${uuid}`, formData, {
@@ -122,9 +119,20 @@ function DSuratPJ() {
     const statusSPJ = await updateSPJ();
     const statusBerkas = await updateBerkasDukung();
     if (statusSPJ == true && statusBerkas == true) {
-      const status = 'SPJ';
       setStatus('SPJ');
-      await updateSPJ(status);
+      const formData = new FormData();
+      formData.append('status', 'SPJ');
+
+      try {
+        await axios.patch(`http://localhost:3000/spj/status/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
       const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
       PopUpSetuju.classList.toggle('SPJShow');
       setTimeout(() => {
