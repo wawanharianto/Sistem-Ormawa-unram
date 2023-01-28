@@ -343,7 +343,7 @@ export const createProposal = async (req, res) => {
     const fileSize = file.data.length;
     const ext = path.extname(file.name);
     const fileName = file.md5 + ext;
-    const url = `${req.protocol}://${req.get("host")}/proposal/${fileName}`;
+    const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/proposalData/proposal/${fileName}`;
     const allowedType = ['.pdf', '.docx'];
 
     if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
@@ -404,7 +404,7 @@ export const updateProposal = async (req, res) => {
             if (err) return res.status(500).json({ msg: err.message });
         });
     }
-    const url = `${req.protocol}://${req.get("host")}/proposal/${fileName}`;
+    const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/proposalData/proposal/${fileName}`;
 
     try {
         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
@@ -676,7 +676,7 @@ export const updateRevisi = async (req, res) => {
             if (err) return res.status(500).json({ msg: err.message });
         });
     }
-    const url = `${req.protocol}://${req.get("host")}/proposal/${fileName}`;
+    const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/proposalData/proposal/${fileName}`;
 
     const { status } = req.body;
 

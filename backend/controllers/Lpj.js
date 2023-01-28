@@ -17,7 +17,7 @@ export const updateLpj = async (req, res) => {
   const fileSize = file.data.length;
   const ext = path.extname(file.name);
   const fileName = file.md5 + ext;
-  const url = `${req.protocol}://${req.get("host")}/lpj/${fileName}`;
+  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/lpjData/lpj/${fileName}`;
   const allowedType = ['.pdf', '.docx'];
 
   if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
@@ -86,7 +86,7 @@ export const revisiLpj = async (req, res) => {
     });
   }
 
-  const url = `${req.protocol}://${req.get("host")}/lpj/${fileName}`;
+  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/lpjData/lpj/${fileName}`;
 
     try {
       if (req.role === "admin" || req.role === "adminAkademik") {
@@ -147,7 +147,7 @@ export const updateKeteranganAkademik = async (req, res) => {
     });
   }
 
-  const url = `${req.protocol}://${req.get("host")}/lpj/${fileName}`;
+  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/lpjData/lpj/${fileName}`;
 
   try {
     await Proposal.update({
