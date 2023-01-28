@@ -112,7 +112,7 @@ function DSuratPJ() {
   };
 
   const updateStatusnow = () => {
-    return setStatus('SPJ');
+    setStatus('SPJ');
   };
 
   const spj = async (e) => {
@@ -122,7 +122,9 @@ function DSuratPJ() {
     const statusSPJ = await updateSPJ();
     const statusBerkas = await updateBerkasDukung();
     if (statusSPJ == true && statusBerkas == true) {
-      await updateSPJ();
+      const status = 'SPJ';
+      setStatus('SPJ');
+      await updateSPJ(status);
       const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[0];
       PopUpSetuju.classList.toggle('SPJShow');
       setTimeout(() => {
