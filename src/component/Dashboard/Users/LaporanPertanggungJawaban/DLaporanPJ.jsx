@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './DLaporanPJ.css';
+import { useSyncExternalStore } from 'react';
 
 function DSuratPJ() {
   const [kegiatan, setKegiatan] = useState('');
@@ -59,25 +60,94 @@ function DSuratPJ() {
     setNameLPJ(e.target.files[0].name);
   };
 
+  const handleStatus = async (status) => {
+    const formData = new FormData();
+    formData.append('status', status);
+
+    try {
+      await axios.patch(`http://localhost:3000/spj/status/${uuid}`, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const updateLPJ = async (e) => {
+    const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+    popUpPermit.classList.toggle('permitShow');
     e.preventDefault();
+    const newstatus = 'LPJ Di Ajukan';
+    const oldstatus = 'SPJ Diterima';
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('status', newstatus);
+
+    try {
+      await axios
+        .patch(`http://localhost:3000/lpj/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          const PopUpSetuju = document.getElementsByClassName('popUp-LPJ')[0];
+          PopUpSetuju.classList.toggle('LPJShow');
+          setStatus('LPJ Di Ajukan');
+          handleStatus(newstatus);
+          setTimeout(() => {
+            PopUpSetuju.classList.toggle('LPJShow');
+          }, 2000);
+        })
+        .catch(function (error) {
+          if (error.response) {
+            console.log(error.response.data.msg);
+            const PopUpSetuju = document.getElementsByClassName('popUp-LPJ')[1];
+            PopUpSetuju.classList.toggle('LPJShow');
+            setTimeout(() => {
+              PopUpSetuju.classList.toggle('LPJShow');
+            }, 2000);
+            handleStatus(oldstatus);
+          }
+        });
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+  };
+
+  const handleSimpanLPJ = async () => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('status', status);
 
     try {
-      await axios.patch(`http://localhost:3000/lpj/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      }).then(()=> setMsg('success')).catch(function (error) {
-        if (error.response) {
-          setMsg(error.response.data);
-          setMsg(error.response.status);
-        } else {
-          setMsg(error.message);
-        }
-      });
+      await axios
+        .patch(`http://localhost:3000/lpj/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          const PopUpSetuju = document.getElementsByClassName('popUp-LPJ')[2];
+          PopUpSetuju.classList.toggle('LPJShow');
+          setTimeout(() => {
+            PopUpSetuju.classList.toggle('LPJShow');
+          }, 2000);
+        })
+        .catch(function (error) {
+          if (error.response) {
+            const PopUpSetuju = document.getElementsByClassName('popUp-LPJ')[3];
+            PopUpSetuju.classList.toggle('LPJShow');
+            setTimeout(() => {
+              PopUpSetuju.classList.toggle('LPJShow');
+            }, 2000);
+            setMsg(error.response.data.msg);
+          }
+        });
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -109,6 +179,8 @@ function DSuratPJ() {
   };
 
   const updateKetAkademik = async (e) => {
+    const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+    popUpPermit.classList.toggle('permitShow');
     e.preventDefault();
     const formData = new FormData();
     formData.append('keterangan_akademik', keterangan_akademik);
@@ -116,16 +188,124 @@ function DSuratPJ() {
     formData.append('status', status);
 
     try {
-      await axios.patch(`http://localhost:3000/lpj/akademik/${uuid}`, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      });
-      setMsg('success');
-      console.log(msg);
-      if (msg == 'success') {
-        console.log('Success update keterangan akademik');
+      await axios
+        .patch(`http://localhost:3000/lpj/akademik/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          handleStatus('Selesai');
+          setStatus('Selesai');
+          const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[0];
+          PopUpSetuju.classList.toggle('LPJShow');
+          setTimeout(() => {
+            PopUpSetuju.classList.toggle('LPJShow');
+          }, 2000);
+        });
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+        const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[1];
+        PopUpSetuju.classList.toggle('LPJShow');
+        setTimeout(() => {
+          PopUpSetuju.classList.toggle('LPJShow');
+        }, 2000);
       }
+    }
+  };
+
+  const updateKetAkademikAdmin = async () => {
+    const formData = new FormData();
+    formData.append('keterangan_akademik', keterangan_akademik);
+    formData.append('file', file);
+    formData.append('status', status);
+
+    try {
+      await axios
+        .patch(`http://localhost:3000/lpj/akademik/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+          popUpPermit.classList.toggle('permitShow');
+          handleStatus('Selesai');
+          setStatus('Selesai');
+          const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[0];
+          PopUpSetuju.classList.toggle('LPJShow');
+          setTimeout(() => {
+            PopUpSetuju.classList.toggle('LPJShow');
+          }, 2000);
+        });
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+        const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[1];
+        PopUpSetuju.classList.toggle('LPJShow');
+        setTimeout(() => {
+          PopUpSetuju.classList.toggle('LPJShow');
+        }, 2000);
+      }
+    }
+  };
+  const revisiKetAkademik = async (e, item) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('keterangan_akademik', keterangan_akademik);
+    formData.append('file', file);
+    formData.append('status', item);
+
+    try {
+      await axios
+        .patch(`http://localhost:3000/lpj/akademik/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          setStatus('LPJ Revisi');
+          const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[2];
+          PopUpSetuju.classList.toggle('LPJShow');
+          setTimeout(() => {
+            PopUpSetuju.classList.toggle('LPJShow');
+          }, 2000);
+        });
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+        const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[3];
+        PopUpSetuju.classList.toggle('LPJShow');
+        setTimeout(() => {
+          PopUpSetuju.classList.toggle('LPJShow');
+        }, 2000);
+      }
+    }
+  };
+
+  const simpanKetAkademik = async (e, item) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('keterangan_akademik', keterangan_akademik);
+    formData.append('file', file);
+    formData.append('status', item);
+
+    try {
+      await axios
+        .patch(`http://localhost:3000/lpj/akademik/${uuid}`, formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          setStatus(status);
+          const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[4];
+          PopUpSetuju.classList.toggle('LPJShow');
+          setTimeout(() => {
+            PopUpSetuju.classList.toggle('LPJShow');
+          }, 2000);
+        });
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -133,22 +313,50 @@ function DSuratPJ() {
     }
   };
 
-  //check status button
-  const btn = document.getElementById('btn_ajukan');
-  if (status == 'LPJ Di Ajukan' || status == 'LPJ Revisi') {
-    btn.style.visibility = 'hidden';
-  } else {
-    // btn.style.visibility = 'visible';
-  }
+  const RenderUpload = () => {
+    return (
+      <div className="finput">
+        <p>Upload Laporan Pertanggung Jawaban</p>
+        <div className="contInput">
+          <div className="file-up">
+            <label className="file-upload">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <input type="file" name="file" onChange={loadFile} className="upload"></input>
+              <span>Select File</span>
+            </label>
+            <p className="text-upload">{nameLPJ}</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
-  const btnRevisi = document.getElementById('btn_revisi');
-  const btnSetuju = document.getElementById('btn_setuju');
-  if (status == 'Selesai') {
-    btnRevisi.style.visibility = 'hidden';
-    btnSetuju.style.visibility = 'hidden';
-  } else {
-    // btnRevisi.style.visibility = 'visible';
-  }
+  const RenderUploadKonfirmasi = () => {
+    return (
+      <div className="finput">
+        <p>Revisi file LPJ</p>
+        <div className="contInput">
+          <div className="file-BSPJ">
+            <label className="file-upload">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <input
+                type="file"
+                name="file"
+                onChange={(e) => {
+                  const proposal = e.target.files[0];
+                  setFile(proposal);
+                  setNameRevisiLPJ(e.target.files[0].name);
+                }}
+                className="upload"
+              ></input>
+              <span>Select File</span>
+            </label>
+            <p className="text-upload">{nameRevisiLPJ}</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -230,17 +438,12 @@ function DSuratPJ() {
               </div>
 
               <div className="finput">
-              <p>Jumlah Dana Yang di setujui</p>
-              <div className="contInput">
-                <input
-                  value={dana_disetujui}
-                  readOnly={true}
-                  type="text"
-                  placeholder="Data belum di input"
-                ></input>
-                <p className="kosong">jumlah dana yang di setujui</p>
+                <p>Jumlah Dana Yang di setujui</p>
+                <div className="contInput">
+                  <input value={dana_disetujui} readOnly={true} type="text" placeholder="Data belum di input"></input>
+                  <p className="kosong">jumlah dana yang di setujui</p>
+                </div>
               </div>
-            </div>
 
               <div className="finput">
                 <p>Keterangan SPJ Oleh Bagian Keuangan</p>
@@ -249,19 +452,9 @@ function DSuratPJ() {
                 </div>
               </div>
 
-              <div className="finput">
-                <p>Upload Laporan Pertanggung Jawaban</p>
-                <div className="contInput">
-                  <div className="file-up">
-                    <label className="file-upload">
-                      <i class="fa-solid fa-file-arrow-up"></i>
-                      <input type="file" name="file" onChange={loadFile} className="upload"></input>
-                      <span>Select File</span>
-                    </label>
-                    <p className="text-upload">{nameLPJ}</p>
-                  </div>
-                </div>
-              </div>
+              {/* Render upload  */}
+              {user && user.role == 'mahasiswa' && RenderUpload()}
+              {user && user.role == 'admin' && RenderUpload()}
 
               <div className="finput">
                 <p>Status</p>
@@ -286,23 +479,12 @@ function DSuratPJ() {
               </div>
 
               {user && user.role === 'mahasiswa' && (
-                <div className="fbtn-form">
-                  <button id="btn_ajukan" onClick={() => setStatus('LPJ Di Ajukan')} type="submit" className="Ajukan">
-                    <i class="fa-solid fa-check"></i>Ajukan
-                  </button>
-
-                  <button onClick={() => setStatus(status)} type="submit" className="Ajukan">
-                    <i class="fa-solid fa-floppy-disk"></i>Simpan
-                  </button>
-                </div>
-              )}
-
-              {user && user.role == 'admin' && (
                 <>
                   <div className="fbtn-form">
                     <button
                       id="btn_ajukan"
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.preventDefault();
                         const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                         popUpPermit.classList.toggle('permitShow');
                       }}
@@ -312,43 +494,24 @@ function DSuratPJ() {
                     </button>
 
                     <button
-                      onClick={() => {
-                        setStatus(status);
-                        const PopUpSimpan = document.getElementsByClassName('popUp-LPJ')[1];
-                        PopUpSimpan.classList.toggle('LPJShow');
-                        setTimeout(() => {
-                          PopUpSimpan.classList.toggle('LPJShow');
-                        }, 2000);
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSimpanLPJ();
                       }}
-                      type="submit"
                       className="Ajukan"
                     >
                       <i class="fa-solid fa-floppy-disk"></i>Simpan
                     </button>
                   </div>
-
+                  {/* POPUP */}
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <p> Apakah Anda yakin ingin mengajukan LPJ ini ?</p>
                       <div className="btn-permit">
+                        <button type="submit">ok</button>
                         <button
-                          type="submit"
-                          onClick={() => {
-                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
-                            popUpPermit.classList.toggle('permitShow');
-                            setStatus('LPJ Di Ajukan');
-
-                            const PopUpSetuju = document.getElementsByClassName('popUp-LPJ')[0];
-                            PopUpSetuju.classList.toggle('LPJShow');
-                            setTimeout(() => {
-                              PopUpSetuju.classList.toggle('LPJShow');
-                            }, 2000);
-                          }}
-                        >
-                          ok
-                        </button>
-                        <button
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.preventDefault();
                             const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                             popUpPermit.classList.toggle('permitShow');
                           }}
@@ -358,7 +521,6 @@ function DSuratPJ() {
                       </div>
                     </div>
                   </div>
-
                   <div className="popUp-LPJ LPJShow">
                     <div className="container-popUp">
                       <div className="icon">
@@ -373,7 +535,108 @@ function DSuratPJ() {
                       <div className="icon">
                         <i class="fa-solid fa-check"></i>
                       </div>
+                      <p>Gagal!</p>
+                      <p>Mengajukan Laporan Pertanggung Jawaban</p>
+                      <p>{msg}</p>
+                    </div>
+                  </div>
+                  <div className="popUp-LPJ LPJShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
                       <p>Berhasil Menyimpan Pembaruan</p>
+                    </div>
+                  </div>
+                  <div className="popUp-LPJ LPJShow ">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Gagal Menyimpan Pembaruan</p>
+                      <p>{msg}</p>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {user && user.role == 'admin' && (
+                <>
+                  <div className="fbtn-form">
+                    <button
+                      id="btn_ajukan"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                        popUpPermit.classList.toggle('permitShow');
+                      }}
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-check"></i>Ajukan
+                    </button>
+
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSimpanLPJ();
+                      }}
+                      className="Ajukan"
+                    >
+                      <i class="fa-solid fa-floppy-disk"></i>Simpan
+                    </button>
+                  </div>
+
+                  <div className="container-popup-permit permitShow">
+                    <div className="container-content">
+                      <p> Apakah Anda yakin ingin mengajukan LPJ ini ?</p>
+                      <div className="btn-permit">
+                        <button type="submit">ok</button>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                            popUpPermit.classList.toggle('permitShow');
+                          }}
+                        >
+                          cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="popUp-LPJ LPJShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Berhasil!</p>
+                      <p>Mengajukan Laporan Pertanggung Jawaban</p>
+                    </div>
+                  </div>
+                  <div className="popUp-LPJ LPJShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Gagal!</p>
+                      <p>Mengajukan Laporan Pertanggung Jawaban</p>
+                      <p>{msg}</p>
+                    </div>
+                  </div>
+                  <div className="popUp-LPJ LPJShow">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Berhasil Menyimpan Pembaruan</p>
+                    </div>
+                  </div>
+                  <div className="popUp-LPJ LPJShow ">
+                    <div className="container-popUp">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>Gagal Menyimpan Pembaruan</p>
+                      <p>{msg}</p>
                     </div>
                   </div>
                 </>
@@ -402,50 +665,145 @@ function DSuratPJ() {
               </div>
             </div>
 
-            <div className="finput">
-              <p>Revisi file LPJ</p>
-              <div className="contInput">
-                <div className="file-BSPJ">
-                  <label className="file-upload">
-                    <i class="fa-solid fa-file-arrow-up"></i>
-                    <input
-                      type="file"
-                      name="file"
-                      onChange={(e) => {
-                        const proposal = e.target.files[0];
-                        setFile(proposal);
-                        setNameRevisiLPJ(e.target.files[0].name);
-                      }}
-                      className="upload"
-                    ></input>
-                    <span>Select File</span>
-                  </label>
-                  <p className="text-upload">{nameRevisiLPJ}</p>
-                </div>
-              </div>
-            </div>
+            {/* Render Upload Konfirmasi */}
+            {user && user.role == 'adminAkademik' && RenderUploadKonfirmasi()}
+            {user && user.role == 'admin' && RenderUploadKonfirmasi()}
 
             {user && user.role === 'adminAkademik' && (
-              <div className="btn-komfirm-lpj">
-                <button onClick={() => setStatus('Selesai')} type="submit" id="btn_setuju" className="setuju">
-                  <i class="fa-solid fa-check"></i>Setuju
-                </button>
+              <>
+                <div className="btn-komfirm-lpj">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
+                      popUpPermit.classList.toggle('permitShow');
+                    }}
+                    id="btn_setuju"
+                    className="setuju"
+                  >
+                    <i class="fa-solid fa-check"></i>Setuju
+                  </button>
 
-                <button id="btn_revisi" onClick={() => setStatus('LPJ Revisi')} type="submit" className="revisi">
-                  <i class="fa-solid fa-pen"></i>Revisi
-                </button>
+                  <button
+                    id="btn_revisi"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                      popUpPermit.classList.toggle('permitShow');
+                    }}
+                    className="revisi"
+                  >
+                    <i class="fa-solid fa-pen"></i>Revisi
+                  </button>
 
-                <button onClick={() => setStatus(status)} type="submit" className="edit">
-                  <i class="fa-solid fa-floppy-disk"></i>Simpan
-                </button>
-              </div>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      simpanKetAkademik(e, status);
+                    }}
+                    className="edit"
+                  >
+                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                  </button>
+                </div>
+
+                {/* POP UP */}
+                <div className="container-popup-permit permitShow">
+                  <div className="container-content">
+                    <p> Apakah Anda yakin ingin menyetujui LPJ ini ?</p>
+                    <div className="btn-permit">
+                      <button type="submit">ok</button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          updateKetAkademik();
+                        }}
+                      >
+                        cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="container-popup-permit permitShow">
+                  <div className="container-content">
+                    <p> Apakah Anda yakin ingin revisi LPJ ini ?</p>
+                    <div className="btn-permit">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                          popUpPermit.classList.toggle('permitShow');
+                          revisiKetAkademik(e, 'LPJ Revisi');
+                        }}
+                      >
+                        ok
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
+                          popUpPermit.classList.toggle('permitShow');
+                        }}
+                      >
+                        cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>LPJ Berhasil DiSetujui</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>Gagal Menyetujui LPJ</p>
+                    <p>{msg}</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-exclamation"></i>
+                    </div>
+                    <p>LPJ Revisi</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-exclamation"></i>
+                    </div>
+                    <p>Gagal!</p>
+                    <p>Merevisi LPJ</p>
+                    <p>Note : {msg}</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>Berhasi Perbarui!</p>
+                  </div>
+                </div>
+              </>
             )}
 
             {user && user.role == 'admin' && (
               <>
                 <div className="btn-komfirm-lpj">
                   <button
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
                       popUpPermit.classList.toggle('permitShow');
                     }}
@@ -457,7 +815,8 @@ function DSuratPJ() {
 
                   <button
                     id="btn_revisi"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
                       popUpPermit.classList.toggle('permitShow');
                     }}
@@ -467,15 +826,11 @@ function DSuratPJ() {
                   </button>
 
                   <button
-                    onClick={() => {
-                      setStatus(status);
-                      const popUpKLPJ = document.getElementsByClassName('popUp-KLPJ')[2];
-                      popUpKLPJ.classList.toggle('LPJShow');
-                      setTimeout(() => {
-                        popUpKLPJ.classList.toggle('LPJShow');
-                      }, 2000);
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      simpanKetAkademik(e, status);
                     }}
-                    type="submit"
                     className="edit"
                   >
                     <i class="fa-solid fa-floppy-disk"></i>Simpan
@@ -487,23 +842,16 @@ function DSuratPJ() {
                     <p> Apakah Anda yakin ingin menyetujui LPJ ini ?</p>
                     <div className="btn-permit">
                       <button
-                        type="submit"
-                        onClick={() => {
-                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
-                          popUpPermit.classList.toggle('permitShow');
-                          setStatus('Selesai');
-
-                          const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[0];
-                          PopUpSetuju.classList.toggle('LPJShow');
-                          setTimeout(() => {
-                            PopUpSetuju.classList.toggle('LPJShow');
-                          }, 2000);
+                        onClick={(e) => {
+                          e.preventDefault();
+                          updateKetAkademikAdmin();
                         }}
                       >
                         ok
                       </button>
                       <button
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.preventDefault();
                           const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
                           popUpPermit.classList.toggle('permitShow');
                         }}
@@ -519,23 +867,18 @@ function DSuratPJ() {
                     <p> Apakah Anda yakin ingin revisi LPJ ini ?</p>
                     <div className="btn-permit">
                       <button
-                        type="submit"
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.preventDefault();
                           const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
                           popUpPermit.classList.toggle('permitShow');
-                          setStatus('LPJ Revisi');
-
-                          const PopUpSetuju = document.getElementsByClassName('popUp-KLPJ')[1];
-                          PopUpSetuju.classList.toggle('LPJShow');
-                          setTimeout(() => {
-                            PopUpSetuju.classList.toggle('LPJShow');
-                          }, 2000);
+                          revisiKetAkademik(e, 'LPJ Revisi');
                         }}
                       >
                         ok
                       </button>
                       <button
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.preventDefault();
                           const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
                           popUpPermit.classList.toggle('permitShow');
                         }}
@@ -557,9 +900,28 @@ function DSuratPJ() {
                 <div className="popUp-KLPJ LPJShow">
                   <div className="container-popUp">
                     <div className="icon">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                    <p>Gagal Menyetujui LPJ</p>
+                    <p>{msg}</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
                       <i class="fa-solid fa-exclamation"></i>
                     </div>
                     <p>LPJ Revisi</p>
+                  </div>
+                </div>
+                <div className="popUp-KLPJ LPJShow">
+                  <div className="container-popUp">
+                    <div className="icon">
+                      <i class="fa-solid fa-exclamation"></i>
+                    </div>
+                    <p>Gagal!</p>
+                    <p>Merevisi LPJ</p>
+                    <p>Note : {msg}</p>
                   </div>
                 </div>
                 <div className="popUp-KLPJ LPJShow">

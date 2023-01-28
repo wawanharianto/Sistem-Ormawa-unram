@@ -675,7 +675,39 @@ function DSuratPJ() {
                 </div>
               </>
             )}
-
+            {user && user.role == 'admin' && (
+              <>
+                <div className="finput">
+                  <p>Keterangan dari bagian Keuangan</p>
+                  <div className="contInput">
+                    <input type="text" placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'} value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)}></input>
+                    <p className="text-konfirmasi">Keterangan</p>
+                  </div>
+                </div>
+                <div className="finput">
+                  <p>Revisi file SPJ</p>
+                  <div className="contInput">
+                    <div className="file-BSPJ">
+                      <label className="file-upload">
+                        <i class="fa-solid fa-file-arrow-up"></i>
+                        <input
+                          type="file"
+                          name="file"
+                          onChange={(e) => {
+                            const proposal = e.target.files[0];
+                            setFileSPJ(proposal);
+                            setNameRevisiSpj(e.target.files[0].name);
+                          }}
+                          className="upload"
+                        ></input>
+                        <span>Select File</span>
+                      </label>
+                      <p className="text-upload">{nameRevisiSpj}</p>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
             {user && user.role === 'adminKeuangan' && (
               <>
                 <div className="finput">
@@ -904,6 +936,7 @@ function DSuratPJ() {
                       const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
                       popUpPermit.classList.toggle('permitShow');
                     }}
+                    type="submit"
                     className="setuju"
                   >
                     <i class="fa-solid fa-check"></i>Setuju
@@ -916,6 +949,7 @@ function DSuratPJ() {
                       const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
                       popUpPermit.classList.toggle('permitShow');
                     }}
+                    type="submit"
                     className="revisi"
                   >
                     <i class="fa-solid fa-pen"></i>Revisi
@@ -924,21 +958,22 @@ function DSuratPJ() {
                   <button
                     onClick={async (e) => {
                       e.preventDefault();
-                      const statusKSPJ = await updateKetSPJ();
-                      if (statusKSPJ == true) {
+                      const updateKSPJ = await updateKetSPJ();
+                      if (updateKSPJ === true) {
                         const PopUpSetuju = document.getElementsByClassName('popUp-KSPJ')[3];
                         PopUpSetuju.classList.toggle('SPJShow');
                         setTimeout(() => {
                           PopUpSetuju.classList.toggle('SPJShow');
                         }, 2000);
+                        setStatus(status);
                       }
                     }}
-                    type="submit"
                     className="edit"
                   >
                     <i class="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
+                {/* POPUP PERMIT */}
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
                     <p> apakah anda yakin ingin menyetujui SPJ ini ?</p>
@@ -950,6 +985,23 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                           const statusKSPJ = await updateKetSPJ();
                           if (statusKSPJ == true) {
+                            setStatus('SPJ Diterima');
+
+                            // UPdate status
+                            const newStatus = 'SPJ Diterima';
+                            const formData = new FormData();
+                            formData.append('status', newStatus);
+
+                            try {
+                              await axios.patch(`http://localhost:3000/spj/status/${uuid}`, formData, {
+                                headers: {
+                                  'Content-type': 'multipart/form-data',
+                                },
+                              });
+                            } catch (error) {
+                              console.log(error);
+                            }
+
                             const PopUpSetuju = document.getElementsByClassName('popUp-KSPJ')[0];
                             PopUpSetuju.classList.toggle('SPJShow');
                             setTimeout(() => {
@@ -967,7 +1019,8 @@ function DSuratPJ() {
                         ok
                       </button>
                       <button
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.preventDefault();
                           const popUpPermit = document.getElementsByClassName('container-popup-permit')[1];
                           popUpPermit.classList.toggle('permitShow');
                         }}
@@ -977,6 +1030,59 @@ function DSuratPJ() {
                     </div>
                   </div>
                 </div>
+
+                <div className="container-popup-permit permitShow">
+                  <div className="container-content">
+                    <p> Apakah Anda yakin ingin merevisi SPJ ini ?</p>
+                    <div className="btn-permit">
+                      <button
+                        type="submit"
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
+                          popUpPermit.classList.toggle('permitShow');
+                          const statusKSPJ = await updateKetSPJ();
+                          if (statusKSPJ == true) {
+                            setStatus('SPJ Revisi');
+
+                            // Update Status
+                            const newStatus = 'SPJ Revisi';
+                            const formData = new FormData();
+                            formData.append('status', newStatus);
+
+                            try {
+                              await axios.patch(`http://localhost:3000/spj/status/${uuid}`, formData, {
+                                headers: {
+                                  'Content-type': 'multipart/form-data',
+                                },
+                              });
+                            } catch (error) {
+                              console.log(error);
+                            }
+                            const PopUpSetuju = document.getElementsByClassName('popUp-KSPJ')[2];
+                            PopUpSetuju.classList.toggle('SPJShow');
+                            setTimeout(() => {
+                              PopUpSetuju.classList.toggle('SPJShow');
+                            }, 2000);
+                          }
+                        }}
+                      >
+                        ok
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
+                          popUpPermit.classList.toggle('permitShow');
+                        }}
+                      >
+                        cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* POPUP CONDITION */}
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
@@ -993,39 +1099,6 @@ function DSuratPJ() {
                     </div>
                     <p>Gagal!</p>
                     <p>Menyetujui SPJ</p>
-                  </div>
-                </div>
-                <div className="container-popup-permit permitShow">
-                  <div className="container-content">
-                    <p> Apakah Anda yakin ingin merevisi SPJ ini ?</p>
-                    <div className="btn-permit">
-                      <button
-                        type="submit"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
-                          popUpPermit.classList.toggle('permitShow');
-                          setStatus('SPJ Revisi');
-
-                          const PopUpSetuju = document.getElementsByClassName('popUp-KSPJ')[2];
-                          PopUpSetuju.classList.toggle('SPJShow');
-                          setTimeout(() => {
-                            PopUpSetuju.classList.toggle('SPJShow');
-                          }, 2000);
-                        }}
-                      >
-                        ok
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const popUpPermit = document.getElementsByClassName('container-popup-permit')[2];
-                          popUpPermit.classList.toggle('permitShow');
-                        }}
-                      >
-                        cancel
-                      </button>
-                    </div>
                   </div>
                 </div>
 
