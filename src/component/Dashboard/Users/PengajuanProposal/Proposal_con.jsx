@@ -138,7 +138,7 @@ function Proposal_con() {
                 </button> */}
 
                   {Statuscount >= 3 && user && user.role == 'mahasiswa' && user ? (
-                    ''
+                    console.log(Statuscount)
                   ) : (
                     <button onClick={handleAddProposal}>
                       <i class="fa-solid fa-plus"></i>Tambah Proposal
