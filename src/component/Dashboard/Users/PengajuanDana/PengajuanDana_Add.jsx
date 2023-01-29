@@ -431,62 +431,71 @@ function PengajuanDana_Add() {
             </form>
           </div>
           <form onSubmit={updateKetKeuangan} className="form-Komfirmasi">
-            {user && user.role == 'mahasiswa' && (
-              <>
-                <div className="headForm">
-                  <p>Konfirmasi Bagian Keuangan</p>
-                  <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <hr className="line" />
-                <div className="finput">
-                  <p>Keterangan dari Bagian Keuangan</p>
-                  <div className="contInput">
-                    <input
-                      value={keterangan_keuangan}
-                      onChange={(e) => setKetKeuangan(e.target.value)}
-                      type="text"
-                      placeholder={keterangan_keuangan}
-                      className="textbox"
-                      readOnly
-                    ></input>
-                    <p className="kosong">keterangan</p>
+            {user && user.role == 'mahasiswa' ? (
+              status !== 'Proposal ACC' && status !== 'Proposal pengajuan dana' ? (
+                <>
+                  <div className="headForm">
+                    <p>Konfirmasi Bagian Keuangan</p>
+                    <i class="fa-solid fa-chevron-down"></i>
                   </div>
-                </div>
-                <div className="finput">
-                  <p>Jumlah Dana Yang di setujui</p>
-                  <div className="contInput">
-                    <input
-                      value={dana_disetujui}
-                      onChange={(e) => {
-                        const formatRupiah = (angka, prefix) => {
-                          let number_string = angka.replace(/[^,\d]/g, '').toString(),
-                            split = number_string.split(','),
-                            sisa = split[0].length % 3,
-                            rupiah = split[0].substr(0, sisa),
-                            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-                          // tambahkan titik jika yang di input sudah menjadi angka ribuan
-                          if (ribuan) {
-                            let separator = sisa ? '.' : '';
-                            rupiah += separator + ribuan.join('.');
-                          }
-
-                          rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-                          return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
-                        };
-                        setDanaSetuju(formatRupiah(e.target.value, 'Rp. '));
-                      }}
-                      type="text"
-                      placeholder={dana_disetujui}
-                      readOnly
-                    ></input>
-                    <p className="kosong">jumlah dana yang di setujui</p>
+                  <hr className="line" />
+                  <div className="finput">
+                    <p>Keterangan dari Bagian Keuangan</p>
+                    <div className="contInput">
+                      <input
+                        value={keterangan_keuangan}
+                        onChange={(e) => setKetKeuangan(e.target.value)}
+                        type="text"
+                        placeholder={keterangan_keuangan}
+                        className="textbox"
+                        readOnly
+                      ></input>
+                      <p className="kosong">keterangan</p>
+                    </div>
                   </div>
-                </div>
-                <div className="finput">
-                  <p></p>
-                </div>
-              </>
+                  <div className="finput">
+                    <p>Jumlah Dana Yang di setujui</p>
+                    <div className="contInput">
+                      <input
+                        value={dana_disetujui}
+                        onChange={(e) => {
+                          const formatRupiah = (angka, prefix) => {
+                            let number_string = angka.replace(/[^,\d]/g, '').toString(),
+                              split = number_string.split(','),
+                              sisa = split[0].length % 3,
+                              rupiah = split[0].substr(0, sisa),
+                              ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                            if (ribuan) {
+                              let separator = sisa ? '.' : '';
+                              rupiah += separator + ribuan.join('.');
+                            }
+
+                            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                            return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+                          };
+                          setDanaSetuju(formatRupiah(e.target.value, 'Rp. '));
+                        }}
+                        type="text"
+                        placeholder={dana_disetujui}
+                        readOnly
+                      ></input>
+                      <p className="kosong">jumlah dana yang di setujui</p>
+                    </div>
+                  </div>
+                  <div className="finput">
+                    <p></p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h2>Menunggu ...</h2>
+                  <p>Confirmasi Bagian Keuangan</p>
+                </>
+              )
+            ) : (
+              ''
             )}
             {user && user.role !== 'mahasiswa' && (
               <>

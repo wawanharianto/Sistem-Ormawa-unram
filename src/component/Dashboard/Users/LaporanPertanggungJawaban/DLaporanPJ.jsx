@@ -24,6 +24,7 @@ function DSuratPJ() {
   const [msg, setMsg] = useState('');
   const [nameLPJ, setNameLPJ] = useState('');
   const [nameRevisiLPJ, setNameRevisiLPJ] = useState('');
+  const [ketAka, setKetAka] = useState('');
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { uuid } = useParams();
@@ -45,6 +46,7 @@ function DSuratPJ() {
         setNamaFile(response.data.lpj);
         setKetSpj(response.data.keterangan_spj);
         setDanaSetuju(response.data.dana_disetujui);
+        setKetAka(response.data.keterangan_akademik);
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
@@ -109,7 +111,6 @@ function DSuratPJ() {
             setTimeout(() => {
               PopUpSetuju.classList.toggle('LPJShow');
             }, 2000);
-            handleStatus(oldstatus);
           }
         });
     } catch (error) {
@@ -330,6 +331,23 @@ function DSuratPJ() {
       </div>
     );
   };
+  const RUploadRevisi = () => {
+    return (
+      <div className="finput">
+        <p>Upload Laporan Pertanggung Jawaban [Revisi]</p>
+        <div className="contInput">
+          <div className="file-up">
+            <label className="file-upload">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <input type="file" name="file" onChange={loadFile} className="upload"></input>
+              <span>Select File</span>
+            </label>
+            <p className="text-upload">{nameLPJ}</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   const RenderUploadKonfirmasi = () => {
     return (
@@ -357,6 +375,12 @@ function DSuratPJ() {
       </div>
     );
   };
+  if (user.role == 'mahasiswa') {
+    if (status == 'LPJ Di Ajukan') {
+      const buttonAjukanmhs = document.getElementsByClassName('btn-ajukanmhs')[0];
+      buttonAjukanmhs.style.visibility = 'hidden';
+    }
+  }
 
   return (
     <>
@@ -453,7 +477,8 @@ function DSuratPJ() {
               </div>
 
               {/* Render upload  */}
-              {user && user.role == 'mahasiswa' && RenderUpload()}
+              {user && user.role == 'mahasiswa' && status == 'SPJ Diterima' ? RenderUpload() : ''}
+              {user && user.role == 'mahasiswa' && status == 'LPJ Revisi' ? RUploadRevisi() : ''}
               {user && user.role == 'admin' && RenderUpload()}
 
               <div className="finput">
@@ -488,7 +513,7 @@ function DSuratPJ() {
                         const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                         popUpPermit.classList.toggle('permitShow');
                       }}
-                      className="Ajukan"
+                      className="Ajukan btn-ajukanmhs"
                     >
                       <i class="fa-solid fa-check"></i>Ajukan
                     </button>
@@ -657,13 +682,26 @@ function DSuratPJ() {
               </div>
             </div>
 
-            <div className="finput">
-              <p>Keterangan bagian Akademik</p>
-              <div className="contInput">
-                <input type="text" placeholder="Ketikan disini ..." value={keterangan_akademik} onChange={(e) => setKetAkademik(e.target.value)}></input>
-                <p className="text-konfirmasi">Keterangan</p>
+            {user && user.role == 'mahasiswa' && (
+              <div className="finput">
+                <p>Keterangan bagian Akademik</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Ketikan disini ..." value={ketAka} onChange={(e) => setKetAkademik(e.target.value)} readOnly></input>
+                  <p className="text-konfirmasi">Keterangan</p>
+                </div>
               </div>
-            </div>
+            )}
+            {user && (user.role == 'adminAkademik' || user.role == 'admin') ? (
+              <div className="finput">
+                <p>Keterangan bagian Akademik</p>
+                <div className="contInput">
+                  <input type="text" placeholder="Ketikan disini ..." value={keterangan_akademik} onChange={(e) => setKetAkademik(e.target.value)}></input>
+                  <p className="text-konfirmasi">Keterangan</p>
+                </div>
+              </div>
+            ) : (
+              ''
+            )}
 
             {/* Render Upload Konfirmasi */}
             {user && user.role == 'adminAkademik' && RenderUploadKonfirmasi()}

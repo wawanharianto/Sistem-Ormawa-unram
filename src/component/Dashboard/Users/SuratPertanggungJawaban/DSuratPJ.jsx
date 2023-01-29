@@ -258,6 +258,14 @@ function DSuratPJ() {
   const RenderUpload = () => {
     return Renderx;
   };
+
+  if (status == 'SPJ') {
+    if (user.role == 'mahasiswa') {
+      const Buttonmhs = document.getElementsByClassName('btn-setujumhs')[0];
+      Buttonmhs.style.visibility = 'hidden';
+    }
+  }
+
   return (
     <>
       <div className="addPropalForm-container">
@@ -403,7 +411,7 @@ function DSuratPJ() {
                         popUpPermit.classList.toggle('permitShow');
                       }}
                       type="submit"
-                      className="Ajukan"
+                      className="Ajukan btn-setujumhs"
                     >
                       <i class="fa-solid fa-check"></i>Ajukan SPJ
                     </button>
@@ -644,7 +652,13 @@ function DSuratPJ() {
                 <div className="finput">
                   <p>Keterangan dari bagian Keuangan</p>
                   <div className="contInput">
-                    <input type="text" placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'} value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)}></input>
+                    <input
+                      required
+                      type="text"
+                      placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'}
+                      value={keterangan_spj}
+                      onChange={(e) => setKetSpj(e.target.value)}
+                    ></input>
                     <p className="text-konfirmasi">Keterangan</p>
                   </div>
                 </div>
@@ -818,6 +832,9 @@ function DSuratPJ() {
                               PopUpSetuju.classList.toggle('SPJShow');
                             }, 2000);
                           }
+                          setTimeout(() => {
+                            navigate('/SPJ');
+                          }, 1000);
                         }}
                       >
                         ok
@@ -1126,22 +1143,6 @@ function DSuratPJ() {
       </div>
     </>
   );
-  //check status button
-  const btn = document.getElementById('btn_ajukan');
-  if (status == 'SPJ' || status == 'SPJ Revisi') {
-    btn.style.visibility = 'hidden';
-  } else {
-    // btn.style.visibility = 'visible';
-  }
-
-  const btnRevisi = document.getElementById('btn_revisi');
-  const btnSetuju = document.getElementById('btn_setuju');
-  if (status == 'SPJ Diterima') {
-    btnRevisi.style.visibility = 'hidden';
-    btnSetuju.style.visibility = 'hidden';
-  } else {
-    // btnRevisi.style.visibility = 'visible';
-  }
 }
 
 export default DSuratPJ;
