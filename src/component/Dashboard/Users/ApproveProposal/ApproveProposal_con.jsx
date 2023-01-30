@@ -248,7 +248,7 @@ function ApproveProposal_con() {
                         <div className="icon">
                           <i class="fa-solid fa-circle-exclamation"></i>
                         </div>
-                        <p> apakah anda yakin ingin menyetujui proposal ini ?</p>
+                        <p> Apakah anda yakin ingin menyetujui proposal ini ?</p>
                         <div className="btn-permit">
                           <button
                             type="submit"
@@ -268,7 +268,7 @@ function ApproveProposal_con() {
                               }, 2000);
                             }}
                           >
-                            ok
+                            Oke
                           </button>
                           <button
                             onClick={() => {
@@ -276,7 +276,7 @@ function ApproveProposal_con() {
                               popUpPermit.classList.toggle('permitShow');
                             }}
                           >
-                            cancel
+                            Cancel
                           </button>
                         </div>
                       </div>
@@ -309,7 +309,7 @@ function ApproveProposal_con() {
                         <div className="icon">
                           <i class="fa-solid fa-circle-exclamation"></i>
                         </div>
-                        <p> apakah anda yakin ingin menyetujui proposal ini ?</p>
+                        <p> Apakah anda yakin ingin menyetujui proposal ini ?</p>
                         <div className="btn-permit">
                           <button
                             type="submit"
@@ -324,7 +324,7 @@ function ApproveProposal_con() {
                               setTimeout(ClosePopUp, 2000);
                             }}
                           >
-                            ok
+                            Oke
                           </button>
                           <button
                             onClick={() => {
@@ -332,7 +332,7 @@ function ApproveProposal_con() {
                               popUpPermit.classList.toggle('permitShow');
                             }}
                           >
-                            cancel
+                            Cancel
                           </button>
                         </div>
                       </div>
@@ -347,22 +347,13 @@ function ApproveProposal_con() {
                     </div>
                   </>
                 )}
-                {/* <button type="submit" className="Ajukan">
-                <i class="fa-solid fa-floppy-disk"></i>Simpan
-              </button> */}
+
                 {status !== 'Proposal ACC' && user && user.role == 'WD3' && (
                   <>
                     <button
                       onClick={() => {
                         const popUpPermit = document.getElementsByClassName('container-permit-tolak')[0];
                         popUpPermit.classList.toggle('permitShow');
-                        // setStatus('Proposal di tolak');
-                        // const PopUpTolak = document.getElementsByClassName('popUp-Approve')[1];
-                        // PopUpTolak.classList.toggle('TolakShow');
-                        // setTimeout(() => {
-                        //   PopUpTolak.classList.toggle('TolakShow');
-                        // }, 2000);
-                        // navigate('/pengajuan-proposal');
                       }}
                       type="submit"
                       className="tolak"
@@ -374,7 +365,7 @@ function ApproveProposal_con() {
                         <div className="icon">
                           <i class="fa-solid fa-circle-exclamation"></i>
                         </div>
-                        <p> apakah anda yakin ingin menolak proposal ini ?</p>
+                        <p> Apakah anda yakin ingin menolak proposal ini ?</p>
                         <div className="btn-permit">
                           <button
                             type="submit"
@@ -392,7 +383,7 @@ function ApproveProposal_con() {
                               }, 2000);
                             }}
                           >
-                            ok
+                            Oke
                           </button>
                           <button
                             onClick={() => {
@@ -400,7 +391,7 @@ function ApproveProposal_con() {
                               popUpPermit.classList.toggle('permitShow');
                             }}
                           >
-                            cancel
+                            Cancel
                           </button>
                         </div>
                       </div>
@@ -433,7 +424,7 @@ function ApproveProposal_con() {
                         <div className="icon">
                           <i class="fa-solid fa-circle-exclamation"></i>
                         </div>
-                        <p> apakah anda yakin ingin menolak proposal ini ?</p>
+                        <p> Apakah anda yakin ingin menolak proposal ini ?</p>
                         <div className="btn-permit">
                           <button
                             type="submit"
@@ -451,7 +442,7 @@ function ApproveProposal_con() {
                               }, 2000);
                             }}
                           >
-                            ok
+                            Oke
                           </button>
                           <button
                             onClick={() => {
@@ -459,7 +450,7 @@ function ApproveProposal_con() {
                               popUpPermit.classList.toggle('permitShow');
                             }}
                           >
-                            cancel
+                            Cancel
                           </button>
                         </div>
                       </div>
@@ -516,12 +507,6 @@ function ApproveProposal_con() {
           )}
         </div>
       </div>
-      {/* <div className="popUp pophide">
-        <div className="conPopUp" onClick={handleClose}>
-          <button>X</button>
-          <p></p>
-          </div>
-        </div> */}
     </>
   );
 }

@@ -242,7 +242,7 @@ function UpdateProposal() {
                           }, 2000);
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -251,7 +251,7 @@ function UpdateProposal() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>

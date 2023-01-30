@@ -197,15 +197,18 @@
   align-items: center;
   padding: 2rem;
   font-size: 12px;
+  font-weight: 600;
 }
 .popup-valid .container-popup button {
-  padding: 6px 24px;
+  padding: 8px 24px;
   border: none;
   border-radius: 4px;
   color: rgb(0, 0, 0);
-  background-color: #f6f3f3;
+  background-color: #ffffff;
   margin-top: 20px;
-  border: 2px solid rgb(87, 85, 85);
+  border: 2px solid rgb(183, 180, 180);
+  width: 50%;
+  font-weight: 700;
 }
 .popup-valid .container-popup button:hover {
   background-color: #dfdede;
@@ -306,28 +309,35 @@
 .containerPopUp_Permission .container_content p {
   margin-top: auto;
   margin-bottom: auto;
+  font-weight: 500;
 }
 .containerPopUp_Permission .container_content .btn {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: auto;
+  width: 100%;
 }
 .containerPopUp_Permission .container_content .btn button {
-  padding: 4px 10px;
+  padding: 10px 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   color: rgb(72, 71, 71);
-  border: 2px solid rgb(74, 73, 73);
+  font-weight: 600;
+  margin: 0;
 }
 .containerPopUp_Permission .container_content .btn button:nth-child(1) {
   background-color: #ffffff;
+  border: 3px solid rgb(127, 124, 124);
+  width: 50%;
 }
 .containerPopUp_Permission .container_content .btn button:nth-child(1):hover {
   background-color: #c0c3c2;
   color: #ffffff;
 }
 .containerPopUp_Permission .container_content .btn button:nth-child(2) {
-  background-color: #ffffff;
+  background-color: #980b0b;
+  width: 50%;
+  color: white;
 }
 .containerPopUp_Permission .container_content .btn button:nth-child(2):hover {
   background-color: #c4c4c4;

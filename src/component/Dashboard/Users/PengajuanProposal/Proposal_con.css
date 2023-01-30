@@ -205,16 +205,20 @@
   bottom: 0;
 }
 
-.popUp-Delete .box i {
-  margin-left: 0;
-  margin-right: 100%;
-  color: #d98320;
-  font-size: 30px;
-  margin-bottom: 20px;
-  background-color: rgba(204, 154, 112, 0.2);
-  padding: 10px;
-  border-radius: 30px;
+.popUp-Delete .box .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: rgba(189, 134, 14, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #cb630e;
+  margin-top: 0;
+  margin-bottom: auto;
 }
+
 .popUp-Delete .box {
   width: 400px;
   height: 200px;
@@ -222,34 +226,44 @@
   padding: 20px;
   border-radius: 4px;
 }
+.popUp-Delete .box {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+}
 .popUp-Delete .g-btn {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 50px;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 0;
 }
 .g-btn button {
   border: none;
-  padding: 4px 10px;
+  padding: 10px 10px;
   border-radius: 4px;
   cursor: pointer;
+  width: 50%;
+  font-weight: 700;
 }
 
 .g-btn button:nth-child(2) {
-  background-color: #f9f9f9;
-  border: 2px solid rgb(100, 100, 100);
-  color: rgb(72, 72, 72);
+  background-color: #c51818;
+
+  color: rgb(255, 255, 255);
 }
 .g-btn button:nth-child(1) {
-  background-color: rgb(243, 244, 246);
-  border: 2px solid rgb(100, 100, 100);
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(220, 216, 216);
   color: rgb(72, 72, 72);
 }
 .g-btn button:nth-child(1):hover {
-  background-color: #85d4bb;
+  background-color: #dfdfdf;
 }
 .g-btn button:nth-child(2):hover {
-  background-color: #d48d85;
+  background-color: #dfdcdc;
 }
 
 .showoff {

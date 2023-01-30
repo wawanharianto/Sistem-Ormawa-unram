@@ -239,7 +239,7 @@ function PengajuanProposal() {
                   <p>Apakah Anda Benar Ingin Mengajukan Proposal Ini ?</p>
 
                   <div className="btn">
-                    <button type="submit">ok</button>
+                    <button type="submit">Oke</button>
                     <button
                       onClick={(e) => {
                         e.preventDefault();
@@ -248,7 +248,7 @@ function PengajuanProposal() {
                         permitPopUp.classList.toggle('permitShow');
                       }}
                     >
-                      cencel
+                      Cancel
                     </button>
                   </div>
                 </div>
@@ -279,7 +279,7 @@ function PengajuanProposal() {
               document.getElementsByClassName('popup-valid')[0].classList.toggle('validshow');
             }}
           >
-            ok
+            Oke
           </button>
         </div>
       </div>
