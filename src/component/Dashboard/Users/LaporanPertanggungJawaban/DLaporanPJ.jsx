@@ -692,6 +692,32 @@ function DSuratPJ() {
               )}
             </form>
           </div>
+
+          <div className="download-acc downloadShow">
+            <div className="headcontent">
+              <h4>Lembar Format LPJ</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <hr className=" line" />
+            <div className="finput">
+                <p>Download Lembar LPJ</p>
+                <div className="contInput">
+                  <div className="down-approve">
+                    <button
+                      className="download-file"
+                      onClick={() => {
+                        window.location.href = '';
+                      }}
+                    >
+                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                    </button>
+                    <p className="name">File Lembar Format LPJ kegiatan ormawa.docx</p>
+                  </div>
+                  <p className="kosong">File Lembar LPJ</p>
+                </div>
+              </div>
+          </div>
+
           <form onSubmit={updateKetAkademik} className="form-Komfirmasi">
             <div className="headForm">
               <p>Kolom Konfirmasi Bagian Akademik</p>

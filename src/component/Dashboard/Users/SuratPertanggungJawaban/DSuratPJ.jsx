@@ -646,6 +646,32 @@ function DSuratPJ() {
               )}
             </form>
           </div>
+
+          <div className="download-acc downloadShow">
+            <div className="headcontent">
+              <h4>Lembar Format SPJ</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <hr className=" line" />
+            <div className="finput">
+                <p>Download Lembar SPJ</p>
+                <div className="contInput">
+                  <div className="down-approve">
+                    <button
+                      className="download-file"
+                      onClick={() => {
+                        window.location.href = '../../Document/Format SPJ kegiatan ormawa.xlsx';
+                      }}
+                    >
+                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                    </button>
+                    <p className="name">File Lembar Format SPJ kegiatan ormawa.xlsx</p>
+                  </div>
+                  <p className="kosong">File Lembar SPJ</p>
+                </div>
+              </div>
+          </div>
+
           <form onSubmit={updateKetSPJ} className="form-Komfirmasi">
             <div className="headForm">
               <p>Kolom Konfirmasi SPJ</p>
