@@ -127,6 +127,7 @@ function PengajuanDana_Add() {
         setMsg(error.response.data.msg);
       }
     }
+    
   };
 
   // check kondition button setujui/ tolak
@@ -319,6 +320,9 @@ function PengajuanDana_Add() {
                             setTimeout(() => {
                               PopUpSetuju.classList.toggle('AjukanShow');
                             }, 2000);
+                            setTimeout(() => {
+                              navigate('/pengajuan-dana');
+                            }, 1500);
                           }}
                         >
                           Oke
@@ -411,6 +415,9 @@ function PengajuanDana_Add() {
                             setTimeout(() => {
                               PopUpSetuju.classList.toggle('AjukanShow');
                             }, 2000);
+                            setTimeout(() => {
+                              navigate('/pengajuan-dana');
+                            }, 1500);
                           }}
                         >
                           Oke
@@ -579,6 +586,9 @@ function PengajuanDana_Add() {
                             setTimeout(() => {
                               BKpopUp.classList.toggle('BKShow');
                             }, 2500);
+                            setTimeout(() => {
+                              navigate('/pengajuan-dana');
+                            }, 1500);
                           }}
                         >
                           Oke
@@ -665,6 +675,9 @@ function PengajuanDana_Add() {
                             setTimeout(() => {
                               BKpopUp.classList.toggle('BKShow');
                             }, 2500);
+                            setTimeout(() => {
+                              navigate('/pengajuan-dana');
+                            }, 1500);
                           }}
                         >
                           Oke

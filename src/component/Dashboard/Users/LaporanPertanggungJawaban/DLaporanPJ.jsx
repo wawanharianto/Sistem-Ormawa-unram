@@ -102,6 +102,9 @@ function DSuratPJ() {
           setTimeout(() => {
             PopUpSetuju.classList.toggle('LPJShow');
           }, 2000);
+          setTimeout(() => {
+            navigate('/LPJ');
+          }, 1500);
         })
         .catch(function (error) {
           if (error.response) {
@@ -138,6 +141,9 @@ function DSuratPJ() {
           setTimeout(() => {
             PopUpSetuju.classList.toggle('LPJShow');
           }, 2000);
+          setTimeout(() => {
+            navigate('/LPJ');
+          }, 1500);
         })
         .catch(function (error) {
           if (error.response) {
@@ -203,6 +209,9 @@ function DSuratPJ() {
           setTimeout(() => {
             PopUpSetuju.classList.toggle('LPJShow');
           }, 2000);
+          setTimeout(() => {
+            navigate('/LPJ');
+          }, 1500);
         });
     } catch (error) {
       if (error.response) {
@@ -239,6 +248,9 @@ function DSuratPJ() {
           setTimeout(() => {
             PopUpSetuju.classList.toggle('LPJShow');
           }, 2000);
+          setTimeout(() => {
+            navigate('/LPJ');
+          }, 1500);
         });
     } catch (error) {
       if (error.response) {
@@ -272,6 +284,9 @@ function DSuratPJ() {
           setTimeout(() => {
             PopUpSetuju.classList.toggle('LPJShow');
           }, 2000);
+          setTimeout(() => {
+            navigate('/LPJ');
+          }, 1500);
         });
     } catch (error) {
       if (error.response) {
@@ -306,6 +321,9 @@ function DSuratPJ() {
           setTimeout(() => {
             PopUpSetuju.classList.toggle('LPJShow');
           }, 2000);
+          setTimeout(() => {
+            navigate('/LPJ');
+          }, 1500);
         });
     } catch (error) {
       if (error.response) {

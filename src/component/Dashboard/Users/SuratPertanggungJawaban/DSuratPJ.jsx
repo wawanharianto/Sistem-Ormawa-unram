@@ -134,6 +134,9 @@ function DSuratPJ() {
       setTimeout(() => {
         PopUpSetuju.classList.toggle('SPJShow');
       }, 2000);
+      setTimeout(() => {
+        navigate('/SPJ');
+      }, 1500);
     } else if (statusSPJ == true && statusBerkas == false) {
       const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[3];
       PopUpSetuju.classList.toggle('SPJShow');
@@ -427,6 +430,9 @@ function DSuratPJ() {
                           setTimeout(() => {
                             PopUpSetuju.classList.toggle('SPJShow');
                           }, 2000);
+                          setTimeout(() => {
+                            navigate('/SPJ');
+                          }, 1500);
                         } else if (statusSPJ == false && statusBerkas == true) {
                           const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[2];
                           PopUpSetuju.classList.toggle('SPJShow');
@@ -544,6 +550,9 @@ function DSuratPJ() {
                           setTimeout(() => {
                             PopUpSetuju.classList.toggle('SPJShow');
                           }, 2000);
+                          setTimeout(() => {
+                            navigate('/SPJ');
+                          }, 1500);
                         } else if (statusSPJ == false && statusBerkas == true) {
                           const PopUpSetuju = document.getElementsByClassName('popUp-SPJ')[2];
                           PopUpSetuju.classList.toggle('SPJShow');
@@ -787,6 +796,9 @@ function DSuratPJ() {
                           PopUpSetuju.classList.toggle('SPJShow');
                         }, 2000);
                         setStatus(status);
+                        setTimeout(() => {
+                          navigate('/SPJ');
+                        }, 1500);
                       }
                     }}
                     className="edit"
@@ -894,6 +906,9 @@ function DSuratPJ() {
                             setTimeout(() => {
                               PopUpSetuju.classList.toggle('SPJShow');
                             }, 2000);
+                            setTimeout(() => {
+                              navigate('/SPJ');
+                            }, 1500);
                           }
                         }}
                       >
@@ -993,6 +1008,9 @@ function DSuratPJ() {
                         }, 2000);
                         setStatus(status);
                       }
+                      setTimeout(() => {
+                        navigate('/SPJ');
+                      }, 1500);
                     }}
                     className="edit"
                   >
@@ -1043,6 +1061,9 @@ function DSuratPJ() {
                               PopUpSetuju.classList.toggle('SPJShow');
                             }, 2000);
                           }
+                          setTimeout(() => {
+                            navigate('/SPJ');
+                          }, 1500);
                         }}
                       >
                         Oke
@@ -1096,6 +1117,9 @@ function DSuratPJ() {
                             setTimeout(() => {
                               PopUpSetuju.classList.toggle('SPJShow');
                             }, 2000);
+                            setTimeout(() => {
+                              navigate('/SPJ');
+                            }, 1500);
                           }
                         }}
                       >
