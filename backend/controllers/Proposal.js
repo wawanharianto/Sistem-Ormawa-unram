@@ -526,7 +526,7 @@ export const deleteProposal = async (req, res) => {
 export const deleteMultiple = async (req, res) => {
     const proposal = await Proposal.findAll({
         where: {
-            id: req.body.id
+            id: req.query.id
         },
         attributes: ['proposal', 'spj', 'berkas_dukung', 'lpj'],
     })
@@ -559,7 +559,7 @@ export const deleteMultiple = async (req, res) => {
         try {
             await Proposal.destroy({
                 where: {
-                    id: req.body.id
+                    id: req.query.id
                 }
             });
         } catch (error) {

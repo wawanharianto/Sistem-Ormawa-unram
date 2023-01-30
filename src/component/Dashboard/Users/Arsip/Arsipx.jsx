@@ -79,7 +79,15 @@ function Arsipx() {
     } else {
       console.log(arrayIds);
       await axios
-        .delete(`http://localhost:3000/proposal/${arrayIds}`)
+        .delete(`http://localhost:3000/proposal/`, {
+          params: {
+            id: arrayIds
+          }
+        }, {
+          headers: {
+            'Content-type': 'application/json',
+          },
+        })
         .then((data) => {
           console.log(data);
           getProposal();
