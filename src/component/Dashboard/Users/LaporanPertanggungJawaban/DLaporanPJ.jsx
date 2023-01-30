@@ -745,7 +745,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Keterangan bagian Akademik</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Ketikan disini ..." value={keterangan_akademik} onChange={(e) => setKetAkademik(e.target.value)}></input>
+                  <input type="text" placeholder="Ketikan disini ..." value={ketAka} onChange={(e) => setKetAkademik(e.target.value)}></input>
                   <p className="text-konfirmasi">Keterangan</p>
                 </div>
               </div>

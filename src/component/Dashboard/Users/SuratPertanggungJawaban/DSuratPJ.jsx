@@ -505,7 +505,10 @@ function DSuratPJ() {
                   </div>
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
-                      <p> apakah data SPJ anda sudah benar ?</p>
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
+                      <p> Apakah data SPJ anda sudah benar ?</p>
                       <div className="btn-permit">
                         <button type="submit">Oke</button>
                         <button
