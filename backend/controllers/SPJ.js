@@ -20,7 +20,7 @@ export const updateSpj = async (req, res) => {
   const ext = path.extname(file.name);
   const fileName = file.md5 + ext;
   const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/spjData/spj/${fileName}`;
-  const allowedType = ['.pdf', '.docx'];
+  const allowedType = ['.pdf', '.docx', '.xlsx'];
 
   if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
   if (fileSize > 5000000) return res.status(422).json({ msg: "Spj must be less than 5 MB" });
@@ -74,7 +74,7 @@ export const revisiSpj = async (req, res) => {
     const fileSize = file.data.length;
     const ext = path.extname(file.name);
     fileName = file.md5 + ext;
-    const allowedType = ['.pdf', '.docx'];
+    const allowedType = ['.pdf', '.docx', '.xlsx'];
 
     if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
     if (fileSize > 5000000) return res.status(422).json({ msg: "Spj must be less than 5 MB" });
@@ -197,7 +197,7 @@ export const updateBD = async (req, res) => {
   const allowedType = ['.zip', '.rar'];
 
   if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
-  if (fileSize > 5000000) return res.status(422).json({ msg: "Berkas must be less than 5 MB" });
+  if (fileSize > 50000000) return res.status(422).json({ msg: "Berkas must be less than 50 MB" });
 
 
   file.mv(`./spjData/berkasDukung/${fileName}`, async (err) => {
@@ -251,7 +251,7 @@ export const updateKeteranganSpj = async (req, res) => {
     const fileSize = file.data.length;
     const ext = path.extname(file.name);
     fileName = file.md5 + ext;
-    const allowedType = ['.pdf', '.docx'];
+    const allowedType = ['.pdf', '.docx', '.xlsx'];
 
     if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
     if (fileSize > 5000000) return res.status(422).json({ msg: "Spj must be less than 5 MB" });
