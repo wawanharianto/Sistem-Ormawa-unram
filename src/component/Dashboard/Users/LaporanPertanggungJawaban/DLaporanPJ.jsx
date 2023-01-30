@@ -393,7 +393,7 @@ function DSuratPJ() {
       </div>
     );
   };
-  if (user.role == 'mahasiswa') {
+  if (user && user.role === 'mahasiswa') {
     if (status == 'LPJ Di Ajukan') {
       const buttonAjukanmhs = document.getElementsByClassName('btn-ajukanmhs')[0];
       buttonAjukanmhs.style.visibility = 'hidden';
