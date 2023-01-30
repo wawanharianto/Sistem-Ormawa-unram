@@ -531,9 +531,12 @@ function DSuratPJ() {
                   {/* POPUP */}
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
                       <p> Apakah Anda yakin ingin mengajukan LPJ ini ?</p>
                       <div className="btn-permit">
-                        <button type="submit">ok</button>
+                        <button type="submit">Oke</button>
                         <button
                           onClick={(e) => {
                             e.preventDefault();
@@ -541,7 +544,7 @@ function DSuratPJ() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -613,9 +616,12 @@ function DSuratPJ() {
 
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
                       <p> Apakah Anda yakin ingin mengajukan LPJ ini ?</p>
                       <div className="btn-permit">
-                        <button type="submit">ok</button>
+                        <button type="submit">Oke</button>
                         <button
                           onClick={(e) => {
                             e.preventDefault();
@@ -623,7 +629,7 @@ function DSuratPJ() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -750,14 +756,14 @@ function DSuratPJ() {
                   <div className="container-content">
                     <p> Apakah Anda yakin ingin menyetujui LPJ ini ?</p>
                     <div className="btn-permit">
-                      <button type="submit">ok</button>
+                      <button type="submit">Oke</button>
                       <button
                         onClick={(e) => {
                           e.preventDefault();
                           updateKetAkademik();
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -765,6 +771,9 @@ function DSuratPJ() {
 
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
                     <p> Apakah Anda yakin ingin revisi LPJ ini ?</p>
                     <div className="btn-permit">
                       <button
@@ -775,7 +784,7 @@ function DSuratPJ() {
                           revisiKetAkademik(e, 'LPJ Revisi');
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -784,7 +793,7 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -877,6 +886,9 @@ function DSuratPJ() {
                 {/* pop komfirm */}
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
                     <p> Apakah Anda yakin ingin menyetujui LPJ ini ?</p>
                     <div className="btn-permit">
                       <button
@@ -885,7 +897,7 @@ function DSuratPJ() {
                           updateKetAkademikAdmin();
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -894,7 +906,7 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -902,6 +914,9 @@ function DSuratPJ() {
 
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
                     <p> Apakah Anda yakin ingin revisi LPJ ini ?</p>
                     <div className="btn-permit">
                       <button
@@ -912,7 +927,7 @@ function DSuratPJ() {
                           revisiKetAkademik(e, 'LPJ Revisi');
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -921,7 +936,7 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>

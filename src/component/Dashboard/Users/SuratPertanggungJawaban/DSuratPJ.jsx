@@ -501,7 +501,7 @@ function DSuratPJ() {
                     <div className="container-content">
                       <p> apakah data SPJ anda sudah benar ?</p>
                       <div className="btn-permit">
-                        <button type="submit">ok</button>
+                        <button type="submit">Oke</button>
                         <button
                           onClick={(e) => {
                             e.preventDefault();
@@ -509,7 +509,7 @@ function DSuratPJ() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -615,9 +615,12 @@ function DSuratPJ() {
                   </div>
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
-                      <p> apakah data SPJ anda sudah benar ?</p>
+                      <div className="icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                      </div>
+                      <p> Apakah data SPJ anda sudah benar ?</p>
                       <div className="btn-permit">
-                        <button type="submit">ok</button>
+                        <button type="submit">Oke</button>
                         <button
                           onClick={(e) => {
                             e.preventDefault();
@@ -625,7 +628,7 @@ function DSuratPJ() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -794,7 +797,10 @@ function DSuratPJ() {
                 {/* POPUP PERMIT */}
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
-                    <p> apakah anda yakin ingin menyetujui SPJ ini ?</p>
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
+                    <p> Apakah anda yakin ingin menyetujui SPJ ini ?</p>
                     <div className="btn-permit">
                       <button
                         onClick={async (e) => {
@@ -837,7 +843,7 @@ function DSuratPJ() {
                           }, 1000);
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -846,7 +852,7 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -854,6 +860,9 @@ function DSuratPJ() {
 
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
                     <p> Apakah Anda yakin ingin merevisi SPJ ini ?</p>
                     <div className="btn-permit">
                       <button
@@ -888,7 +897,7 @@ function DSuratPJ() {
                           }
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -897,7 +906,7 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -993,6 +1002,9 @@ function DSuratPJ() {
                 {/* POPUP PERMIT */}
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
                     <p> apakah anda yakin ingin menyetujui SPJ ini ?</p>
                     <div className="btn-permit">
                       <button
@@ -1033,7 +1045,7 @@ function DSuratPJ() {
                           }
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -1042,7 +1054,7 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -1050,6 +1062,9 @@ function DSuratPJ() {
 
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
+                    <div className="icon">
+                      <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
                     <p> Apakah Anda yakin ingin merevisi SPJ ini ?</p>
                     <div className="btn-permit">
                       <button
@@ -1084,7 +1099,7 @@ function DSuratPJ() {
                           }
                         }}
                       >
-                        ok
+                        Oke
                       </button>
                       <button
                         onClick={(e) => {
@@ -1093,7 +1108,7 @@ function DSuratPJ() {
                           popUpPermit.classList.toggle('permitShow');
                         }}
                       >
-                        cancel
+                        Cancel
                       </button>
                     </div>
                   </div>

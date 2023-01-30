@@ -305,7 +305,7 @@ function PengajuanDana_Add() {
                       <div className="icon">
                         <i class="fa-solid fa-circle-exclamation"></i>
                       </div>
-                      <p> Apakah Anda sudah yakin untuk mengajukan dana ?</p>
+                      <p> Apakah anda sudah yakin untuk mengajukan dana ?</p>
                       <div className="btn-permit">
                         <button
                           type="submit"
@@ -321,7 +321,7 @@ function PengajuanDana_Add() {
                             }, 2000);
                           }}
                         >
-                          ok
+                          Oke
                         </button>
                         <button
                           onClick={() => {
@@ -329,7 +329,7 @@ function PengajuanDana_Add() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -397,7 +397,7 @@ function PengajuanDana_Add() {
                       <div className="icon">
                         <i class="fa-solid fa-circle-exclamation"></i>
                       </div>
-                      <p> Apakah Anda sudah yakin untuk mengajukan dana ?</p>
+                      <p> Apakah anda sudah yakin untuk mengajukan dana ?</p>
                       <div className="btn-permit">
                         <button
                           type="submit"
@@ -413,7 +413,7 @@ function PengajuanDana_Add() {
                             }, 2000);
                           }}
                         >
-                          ok
+                          Oke
                         </button>
                         <button
                           onClick={() => {
@@ -421,7 +421,7 @@ function PengajuanDana_Add() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -450,7 +450,7 @@ function PengajuanDana_Add() {
                         className="textbox"
                         readOnly
                       ></input>
-                      <p className="kosong">keterangan</p>
+                      <p className="kosong">Keterangan</p>
                     </div>
                   </div>
                   <div className="finput">
@@ -581,7 +581,7 @@ function PengajuanDana_Add() {
                             }, 2500);
                           }}
                         >
-                          ok
+                          Oke
                         </button>
                         <button
                           onClick={() => {
@@ -589,7 +589,7 @@ function PengajuanDana_Add() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -667,7 +667,7 @@ function PengajuanDana_Add() {
                             }, 2500);
                           }}
                         >
-                          ok
+                          Oke
                         </button>
                         <button
                           onClick={() => {
@@ -675,7 +675,7 @@ function PengajuanDana_Add() {
                             popUpPermit.classList.toggle('permitShow');
                           }}
                         >
-                          cancel
+                          Cancel
                         </button>
                       </div>
                     </div>
