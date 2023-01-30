@@ -110,6 +110,9 @@ function UserForm() {
                   {/* POP UP */}
                   <div id={user.uuid} className="popUpContainer deleteShow">
                     <div className="container-content">
+                      <div className="icon-i">
+                        <i class="fa-solid fa-circle-info"></i>
+                      </div>
                       <p className="text"> Apakah anda benar ingin menghapus {user.username} ?</p>
                       <div className="cont-btn">
                         <button
@@ -126,7 +129,7 @@ function UserForm() {
                             }, 2000);
                           }}
                         >
-                          ok
+                          Oke
                         </button>
                         <button
                           onClick={() => {
@@ -134,7 +137,7 @@ function UserForm() {
                             popUp.classList.toggle('deleteShow');
                           }}
                         >
-                          cencel
+                          Cancel
                         </button>
                       </div>
                     </div>

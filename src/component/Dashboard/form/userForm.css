@@ -168,21 +168,44 @@
   color: #20b486;
   border-radius: 200px;
 }
+.popUpContainer .container-content .icon-i {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  border-radius: 100%;
+  background-color: rgba(219, 87, 16, 0.2);
+  color: #e77b09;
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .popUpContainer .container-content .cont-btn {
   display: flex;
   gap: 10px;
+  margin-top: auto;
+  margin-bottom: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .popUpContainer .container-content .cont-btn button {
-  padding: 4px 10px;
+  padding: 10px 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  width: 50%;
+  font-weight: 700;
 }
 .container-content .cont-btn button:nth-child(1) {
-  background-color: #20b486;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(78, 76, 76);
+  border: 3px solid rgb(231, 229, 229);
 }
 .container-content .cont-btn button:nth-child(1):hover {
-  background-color: #146e52;
+  background-color: #cdd1d0;
   color: white;
 }
 .container-content .cont-btn button:nth-child(2) {
@@ -190,8 +213,8 @@
   color: white;
 }
 .container-content .cont-btn button:nth-child(2):hover {
-  background-color: #840d0d;
-  color: white;
+  background-color: #eeecec;
+  color: rgb(31, 31, 31);
 }
 .deleteShow {
   display: none;
