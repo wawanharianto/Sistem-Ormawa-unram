@@ -21,7 +21,7 @@ function Content() {
           </div>
         </div>
         <div className="sideRight">
-          <img src={Gambar1} alt="" srcset="" />
+          <img src={Gambar1} alt="" />
         </div>
       </article>
     </>
