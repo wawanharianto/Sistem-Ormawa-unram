@@ -19,13 +19,13 @@ export const updateSpj = async (req, res) => {
   const fileSize = file.data.length;
   const ext = path.extname(file.name);
   const fileName = file.md5 + ext;
-  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/spjData/spj/${fileName}`;
+  const url = `${req.protocol}://${req.get("host")}/spj_d/${fileName}`;
   const allowedType = ['.pdf', '.docx', '.xlsx'];
 
   if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
   if (fileSize > 5000000) return res.status(422).json({ msg: "Spj must be less than 5 MB" });
 
-  file.mv(`./spjData/spj/${fileName}`, async (err) => {
+  file.mv(`./spjData/spj_d/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
       if (req.role === "admin" || req.role === "adminKeuangan") {
@@ -79,14 +79,14 @@ export const revisiSpj = async (req, res) => {
     if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
     if (fileSize > 5000000) return res.status(422).json({ msg: "Spj must be less than 5 MB" });
 
-    const filepath = `./spjData/spj/${proposal.spj}`;
+    const filepath = `./spjData/spj_d/${proposal.spj}`;
     fs.unlinkSync(filepath);
 
-    file.mv(`./spjData/spj/${fileName}`, (err) => {
+    file.mv(`./spjData/spj_d/${fileName}`, (err) => {
       if (err) return res.status(500).json({ msg: err.message });
     });
   }
-  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/spjData/spj/${fileName}`;
+  const url = `${req.protocol}://${req.get("host")}/spj_d/${fileName}`;
 
   try {
     if (req.role === "admin" || req.role === "adminKeuangan") {
@@ -139,14 +139,14 @@ export const revisiBerkas = async (req, res) => {
     if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
     if (fileSize > 5000000) return res.status(422).json({ msg: "Berkas must be less than 5 MB" });
 
-    const filepath = `./spjData/berkasDukung/${proposal.berkas_dukung}`;
+    const filepath = `./spjData/bd_d/${proposal.berkas_dukung}`;
     fs.unlinkSync(filepath);
 
-    file.mv(`./spjData/berkasDukung/${fileName}`, (err) => {
+    file.mv(`./spjData/bd_d/${fileName}`, (err) => {
       if (err) return res.status(500).json({ msg: err.message });
     });
   }
-  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/spjData/berkasDukung/${fileName}`;
+  const url = `${req.protocol}://${req.get("host")}/bd_d/${fileName}`;
 
   try {
     if (req.role === "admin" || req.role === "adminKeuangan") {
@@ -193,14 +193,14 @@ export const updateBD = async (req, res) => {
   const fileSize = file.data.length;
   const ext = path.extname(file.name);
   const fileName = file.md5 + ext;
-  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/spjData/berkasDukung/${fileName}`;
+  const url = `${req.protocol}://${req.get("host")}/bd_d/${fileName}`;
   const allowedType = ['.zip', '.rar'];
 
   if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
   if (fileSize > 50000000) return res.status(422).json({ msg: "Berkas must be less than 50 MB" });
 
 
-  file.mv(`./spjData/berkasDukung/${fileName}`, async (err) => {
+  file.mv(`./spjData/bd_d/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
       if (req.role === "admin" || req.role === "adminKeuangan") {
@@ -256,14 +256,14 @@ export const updateKeteranganSpj = async (req, res) => {
     if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
     if (fileSize > 5000000) return res.status(422).json({ msg: "Spj must be less than 5 MB" });
 
-    const filepath = `./spjData/spj/${proposal.spj}`;
+    const filepath = `./spjData/spj_d/${proposal.spj}`;
     fs.unlinkSync(filepath);
 
-    file.mv(`./spjData/spj/${fileName}`, (err) => {
+    file.mv(`./spjData/spj_d/${fileName}`, (err) => {
       if (err) return res.status(500).json({ msg: err.message });
     });
   }
-  const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/spjData/spj/${fileName}`;
+  const url = `${req.protocol}://${req.get("host")}/spj_d/${fileName}`;
 
   try {
     await Proposal.update({

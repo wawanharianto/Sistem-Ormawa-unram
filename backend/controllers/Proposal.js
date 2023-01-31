@@ -345,13 +345,13 @@ export const createProposal = async (req, res) => {
     const fileSize = file.data.length;
     const ext = path.extname(file.name);
     const fileName = file.md5 + ext;
-    const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/proposalData/proposal/${fileName}`;
+    const url = `${req.protocol}://${req.get("host")}/proposals/${fileName}`;
     const allowedType = ['.pdf', '.docx'];
 
     if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
     if (fileSize > 5000000) return res.status(422).json({ msg: "File proposal must be less than 5 MB" });
 
-    file.mv(`./proposalData/proposal/${fileName}`, async (err) => {
+    file.mv(`./proposalData/proposals/${fileName}`, async (err) => {
         if (err) return res.status(500).json({ msg: err.message });
         try {
             await Proposal.create({
@@ -399,14 +399,14 @@ export const updateProposal = async (req, res) => {
         if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
         if (fileSize > 5000000) return res.status(422).json({ msg: "Proposal must be less than 5 MB" });
 
-        const filepath = `./proposalData/proposal/${proposal.proposal}`;
+        const filepath = `./proposalData/proposals/${proposal.proposal}`;
         fs.unlinkSync(filepath);
 
-        file.mv(`./proposalData/proposal/${fileName}`, (err) => {
+        file.mv(`./proposalData/proposals/${fileName}`, (err) => {
             if (err) return res.status(500).json({ msg: err.message });
         });
     }
-    const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/proposalData/proposal/${fileName}`;
+    const url = `${req.protocol}://${req.get("host")}/proposals/${fileName}`;
 
     try {
         if (req.role === "admin" || req.role === "WD3" || req.role === "adminAkademik" || req.role === "adminKeuangan") {
@@ -500,7 +500,7 @@ export const deleteProposal = async (req, res) => {
 
     if (!proposal) return res.status(404).json({ msg: "Data tidak ditemukan" });
     try {
-        const filepath = `./proposalData/proposal/${proposal.proposal}`;
+        const filepath = `./proposalData/proposals/${proposal.proposal}`;
         fs.unlinkSync(filepath);
         if (req.role === "admin") {
             await Proposal.destroy({
@@ -671,14 +671,14 @@ export const updateRevisi = async (req, res) => {
         if (!allowedType.includes(ext.toLowerCase())) return res.status(422).json({ msg: "Invalid File" });
         if (fileSize > 5000000) return res.status(422).json({ msg: "Proposal must be less than 5 MB" });
 
-        const filepath = `./proposalData/proposal/${proposal.proposal}`;
+        const filepath = `./proposalData/proposals/${proposal.proposal}`;
         fs.unlinkSync(filepath);
 
-        file.mv(`./proposalData/proposal/${fileName}`, (err) => {
+        file.mv(`./proposalData/proposals/${fileName}`, (err) => {
             if (err) return res.status(500).json({ msg: err.message });
         });
     }
-    const url = `https://sasak-s.unram.ac.id:2083/cwp_6f24ddb14239a213/sikomfk/sikomfk/fileManager_v2.php?action=download&file=/home/sikomfk/backend/proposalData/proposal/${fileName}`;
+    const url = `${req.protocol}://${req.get("host")}/proposals/${fileName}`;
 
     const { status } = req.body;
 
