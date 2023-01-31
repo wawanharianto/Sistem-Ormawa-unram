@@ -42,3 +42,7 @@
 .tabPengajuanProposal tr td {
   padding: 10px 10px;
 }
+.Critical .container-content .icon {
+  background-color: rgba(185, 46, 46, 0.3);
+  color: rgb(192, 21, 21);
+}

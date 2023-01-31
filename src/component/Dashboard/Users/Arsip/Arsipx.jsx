@@ -66,33 +66,54 @@ function Arsipx() {
   };
 
   const multipleDeleteById = async (e) => {
-    e.preventDefault();
+    const popUpDelete = document.getElementsByClassName('popUpContainer')[0];
+    popUpDelete.classList.toggle('deleteShow');
     let arrayIds = [];
     proposals.forEach((d) => {
       if (d.select) {
         arrayIds.push(d.id);
       }
     });
-    console.log(arrayIds);
     if (arrayIds.length == 0) {
-      console.log('Tidak ada data');
+      const popUpDelete = document.getElementsByClassName('popUpContainer')[1];
+      popUpDelete.classList.toggle('deleteShow');
+      setTimeout(() => {
+        const popUpDelete = document.getElementsByClassName('popUpContainer')[1];
+        popUpDelete.classList.toggle('deleteShow');
+      }, 2000);
     } else {
-      console.log(arrayIds);
       await axios
-        .delete(`http://localhost:3000/proposal/`, {
-          params: {
-            id: arrayIds
-          }
-        }, {
-          headers: {
-            'Content-type': 'application/json',
+        .delete(
+          `http://localhost:3000/proposal/`,
+          {
+            params: {
+              id: arrayIds,
+            },
           },
-        })
+          {
+            headers: {
+              'Content-type': 'application/json',
+            },
+          }
+        )
         .then((data) => {
-          console.log(data);
+          const popUpDelete = document.getElementsByClassName('popUpContainer')[2];
+          popUpDelete.classList.toggle('deleteShow');
+          setTimeout(() => {
+            const popUpDelete = document.getElementsByClassName('popUpContainer')[2];
+            popUpDelete.classList.toggle('deleteShow');
+          }, 2000);
           getProposal();
         })
-        .catch((err) => alert(err));
+        .catch((err) => {
+          const popUpDelete = document.getElementsByClassName('popUpContainer')[3];
+          popUpDelete.classList.toggle('deleteShow');
+          setTimeout(() => {
+            const popUpDelete = document.getElementsByClassName('popUpContainer')[3];
+            popUpDelete.classList.toggle('deleteShow');
+          }, 3000);
+          setMsg(err.response.data.msg);
+        });
     }
   };
 
@@ -212,7 +233,13 @@ function Arsipx() {
               </form>
               <div className="fexport">
                 <form action="">
-                  <button onClick={multipleDeleteById}>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const popUpDelete = document.getElementsByClassName('popUpContainer')[0];
+                      popUpDelete.classList.toggle('deleteShow');
+                    }}
+                  >
                     <i class="fa-solid fa-trash-can"></i> Delete
                   </button>
                   <input type="date" value={startdate} onChange={(e) => setStartdate(e.target.value)} />
@@ -221,6 +248,59 @@ function Arsipx() {
                   <button className="btn-export" onClick={Export}>
                     export
                   </button>
+                  {/* POP UP MULTIPLE */}
+                  <div className="popUpContainer deleteShow">
+                    <div className="container-content">
+                      <div className="icon-i">
+                        <i class="fa-solid fa-circle-info"></i>
+                      </div>
+                      <p className="text"> Apakah anda benar ingin menghapus item yang di pilih?</p>
+                      <div className="cont-btn">
+                        <button
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            multipleDeleteById();
+                          }}
+                        >
+                          Oke
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const popUpDelete = document.getElementsByClassName('popUpContainer')[0];
+                            popUpDelete.classList.toggle('deleteShow');
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div i className="popUpContainer deleteShow Critical">
+                    <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-x"></i>
+                      </div>
+                      <p> Tidak Ada Item yang DiPilih</p>
+                    </div>
+                  </div>
+                  <div i className="popUpContainer deleteShow">
+                    <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p> Berhasil Mengahapus Kumpulan Item</p>
+                    </div>
+                  </div>
+                  <div i className="popUpContainer deleteShow Critical">
+                    <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-x"></i>
+                      </div>
+                      <p>Periksa Item Terjadi Kesalahan</p>
+                      <p>Note : {msg}</p>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
@@ -280,26 +360,6 @@ function Arsipx() {
               </tbody>
             </table>
             <div className="tfooter tfooter1">
-              {/* <p>Total Rows: {rows}</p>
-              <p>
-                Page: {rows ? page + 1 : 0} of {pages}
-              </p>
-              <p className="has-text-centered has-text-danger">{msg}</p>
-
-              <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
-                <ReactPaginate
-                  previousLabel={'< Prev'}
-                  nextLabel={'Next >'}
-                  pageCount={Math.min(10, pages)}
-                  onPageChange={changePage}
-                  containerClassName={'pagination-list'}
-                  pageLinkClassName={'pagination-link'}
-                  previousLinkClassName={'pagination-previous'}
-                  nextLinkClassName={'pagination-next'}
-                  activeLinkClassName={'pagination-link is-current'}
-                  disabledLinkClassName={'pagination-link is-disabled'}
-                />
-              </nav> */}
               <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
             </div>
           </div>
