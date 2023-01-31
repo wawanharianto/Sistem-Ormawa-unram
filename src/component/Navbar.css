@@ -135,6 +135,7 @@
   }
 
   .showoff-nav {
+    margin-top: 1rem;
     z-index: 200;
     position: fixed;
     display: flex;

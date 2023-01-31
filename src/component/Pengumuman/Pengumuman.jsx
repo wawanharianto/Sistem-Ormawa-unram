@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { TablePagination } from '@mui/material';
@@ -45,29 +45,30 @@ function Pengumuman() {
           <h1>PENGUMUMAN</h1>
           <hr />
         </div>
-        <table className="tPengumuman">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Organisasi Mahasiswa</th>
-              <th>Nama Kegiatan</th>
-              <th>Keterangan</th>
-            </tr>
-          </thead>
-          <tbody>
-            {proposals.map((proposal, index) => (
-              <tr key={proposal.id}>
-                <td>{index + 1}</td>
-                <td>{proposal.nama_organisasi}</td>
-                <td>{proposal.nama_kegiatan}</td>
-                <td>{proposal.status}</td>
+        <div className="container-flow">
+          <table className="tPengumuman">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Organisasi Mahasiswa</th>
+                <th>Nama Kegiatan</th>
+                <th>Keterangan</th>
               </tr>
-            ))}
-          </tbody>
-
-        </table>
+            </thead>
+            <tbody>
+              {proposals.map((proposal, index) => (
+                <tr key={proposal.id}>
+                  <td>{index + 1}</td>
+                  <td>{proposal.nama_organisasi}</td>
+                  <td>{proposal.nama_kegiatan}</td>
+                  <td>{proposal.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div className="tfooter tfooter1">
-              {/* <p>Total Rows: {rows}</p>
+          {/* <p>Total Rows: {rows}</p>
               <p>
                 Page: {rows ? page + 1 : 0} of {pages}
               </p>
@@ -87,8 +88,8 @@ function Pengumuman() {
                   disabledLinkClassName={'pagination-link is-disabled'}
                 />
               </nav> */}
-              <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
-            </div>
+          <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
+        </div>
       </article>
     </>
   );

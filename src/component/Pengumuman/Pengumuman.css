@@ -38,6 +38,16 @@
   color: #20b486;
   padding: 2px;
 }
+.container-flow {
+  overflow-x: auto;
+  /* background-color: #20b486; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-flow .tPengumuman {
+  width: 100%;
+}
 
 /* responsive */
 @media only screen and (max-width: 1024px) {

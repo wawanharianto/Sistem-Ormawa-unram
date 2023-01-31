@@ -79,6 +79,11 @@
   .contentContainer .sideRight img {
     width: 200px;
   }
+  .conButton {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
   .contentContainer {
     text-align: center;
