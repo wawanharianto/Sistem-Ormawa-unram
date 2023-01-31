@@ -118,7 +118,8 @@ function Arsipx() {
   };
 
   const Export = async (e) => {
-    e.preventDefault();
+    const popUpDelete = document.getElementsByClassName('popUpContainer')[4];
+    popUpDelete.classList.toggle('deleteShow');
     const formData = new FormData();
     formData.append('startdate', startdate);
     formData.append('enddate', enddate);
@@ -129,13 +130,19 @@ function Arsipx() {
         },
       });
       setMsg('success export data');
-      console.log(msg);
-      if (msg == 'success export data') {
-        console.log('OK');
-      }
+      const popUpDelete = document.getElementsByClassName('popUpContainer')[5];
+      popUpDelete.classList.toggle('deleteShow');
+      setTimeout(() => {
+        popUpDelete.classList.toggle('deleteShow');
+      }, 2000);
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        const popUpDelete = document.getElementsByClassName('popUpContainer')[6];
+        popUpDelete.classList.toggle('deleteShow');
+        setTimeout(() => {
+          popUpDelete.classList.toggle('deleteShow');
+        }, 2000);
       }
     }
   };
@@ -245,7 +252,14 @@ function Arsipx() {
                   <input type="date" value={startdate} onChange={(e) => setStartdate(e.target.value)} />
                   <p>To</p>
                   <input type="date" name="" id="" value={enddate} onChange={(e) => setEnddate(e.target.value)} />
-                  <button className="btn-export" onClick={Export}>
+                  <button
+                    className="btn-export"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const popUpDelete = document.getElementsByClassName('popUpContainer')[4];
+                      popUpDelete.classList.toggle('deleteShow');
+                    }}
+                  >
                     export
                   </button>
                   {/* POP UP MULTIPLE */}
@@ -276,6 +290,7 @@ function Arsipx() {
                       </div>
                     </div>
                   </div>
+
                   <div i className="popUpContainer deleteShow Critical">
                     <div className="container-content">
                       <div className="icon">
@@ -299,6 +314,52 @@ function Arsipx() {
                       </div>
                       <p>Periksa Item Terjadi Kesalahan</p>
                       <p>Note : {msg}</p>
+                    </div>
+                  </div>
+
+                  <div className="popUpContainer deleteShow">
+                    <div className="container-content">
+                      <div className="icon-i">
+                        <i class="fa-solid fa-circle-info"></i>
+                      </div>
+                      <p className="text"> Apakah Anda Sudah Yakin dengan Data yang Anda export??</p>
+                      <div className="cont-btn">
+                        <button
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            Export();
+                          }}
+                        >
+                          Oke
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const popUpDelete = document.getElementsByClassName('popUpContainer')[4];
+                            popUpDelete.classList.toggle('deleteShow');
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div i className="popUpContainer deleteShow">
+                    <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                      <p>{msg}</p>
+                    </div>
+                  </div>
+                  <div i className="popUpContainer deleteShow Critical">
+                    <div className="container-content">
+                      <div className="icon">
+                        <i class="fa-solid fa-x"></i>
+                      </div>
+                      <p>Error!</p>
+                      <p>{msg}</p>
                     </div>
                   </div>
                 </form>
