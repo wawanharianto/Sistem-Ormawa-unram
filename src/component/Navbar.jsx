@@ -20,7 +20,7 @@ const Navbar = () => {
       <nav className="navContainer">
         <h1>
           <a href="/">ORMAWA</a>
-          <i class="fa-solid fa-circle" />
+          <i className="fa-solid fa-circle" />
         </h1>
 
         <ul className="menuside">
@@ -37,8 +37,8 @@ const Navbar = () => {
         <div className="showoff-nav">
           <div className="burger-button ">
             <input id="menu-toggle" type="checkbox" value={isChecked} onChange={handleChecked} />
-            <label class="menu-button-container" for="menu-toggle">
-              <div class="menu-button"></div>
+            <label className="menu-button-container" htmlFor="menu-toggle">
+              <div className="menu-button"></div>
             </label>
           </div>
         </div>
