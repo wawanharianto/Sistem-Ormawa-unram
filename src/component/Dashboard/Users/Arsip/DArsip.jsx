@@ -107,21 +107,21 @@ function DArsip() {
           <div className="formaddProp">
             <div className="headForm">
               <p>Edit Data</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={updateArsip} className="addProposal" action="">
               <hr className="line" />
               <div className="finput">
                 <p>Nama Kegiatan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan} onChange={(e) => setKegiatan(e.target.value)}></input>
+                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan || ''} onChange={(e) => setKegiatan(e.target.value)}></input>
                   <p className="kosong">Nama Kegiatan</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Nama Organisasi</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Organisasi" value={organisasi} onChange={(e) => setOrganisasi(e.target.value)}></input>
+                  <input type="text" placeholder="Nama Organisasi" value={organisasi || ''} onChange={(e) => setOrganisasi(e.target.value)}></input>
                   <p className="kosong">Nama Organisasi</p>
                 </div>
               </div>
@@ -131,7 +131,7 @@ function DArsip() {
                   <input
                     type="text"
                     placeholder="Jumlah Dana yang Diajukan"
-                    value={dana}
+                    value={dana || ''}
                     onChange={(e) => {
                       const formatRupiah = (angka, prefix) => {
                         let number_string = angka.replace(/[^,\d]/g, '').toString(),
@@ -158,49 +158,49 @@ function DArsip() {
               <div className="finput">
                 <p>Nama Ketua Panitia</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat} onChange={(e) => setKetupat(e.target.value)}></input>
+                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat || ''} onChange={(e) => setKetupat(e.target.value)}></input>
                   <p className="kosong">Nama Ketua Panitia</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Nomor Hp</p>
                 <div className="contInput">
-                  <input type="number" placeholder="Nomor Hp" value={nohp} onChange={(e) => setNohp(e.target.value)}></input>
+                  <input type="number" placeholder="Nomor Hp" value={nohp || ''} onChange={(e) => setNohp(e.target.value)}></input>
                   <p className="kosong">Nomor HP</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Tanggal Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal} onChange={(e) => setTanggal(e.target.value)}></input>
+                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal || ''} onChange={(e) => setTanggal(e.target.value)}></input>
                   <p className="kosong">Tanggal Pelaksanaan</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Tempat Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat} onChange={(e) => setTempat(e.target.value)}></input>
+                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat || ''} onChange={(e) => setTempat(e.target.value)}></input>
                   <p className="kosong">Tempat Pelaksanaan</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Nomor Ketua Umum</p>
                 <div className="contInput">
-                  <input type="number" placeholder="Nomor Ketua Umum" value={ketum} onChange={(e) => setKetum(e.target.value)}></input>
+                  <input type="number" placeholder="Nomor Ketua Umum" value={ketum || ''} onChange={(e) => setKetum(e.target.value)}></input>
                   <p className="kosong">Nomor Ketua Umum</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Keterangan Wakil Dekan III</p>
                 <div className="contInput">
-                  <input className="textbox" type="text" placeholder="Data belum di input" value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
+                  <input className="textbox" type="text" placeholder="Data belum di input" value={ketwd3 || ''} onChange={(e) => setKetWd3(e.target.value)} />
                 </div>
               </div>
               <div className="finput">
                 <p>Jumlah Dana Yang di setujui</p>
                 <div className="contInput">
                   <input
-                    value={dana_disetujui}
+                    value={dana_disetujui || ''}
                     onChange={(e) => {
                       const formatRupiah = (angka, prefix) => {
                         let number_string = angka.replace(/[^,\d]/g, '').toString(),
@@ -229,19 +229,19 @@ function DArsip() {
               <div className="finput">
                 <p>Keterangan Dana ACC</p>
                 <div className="contInput">
-                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_keuangan} onChange={(e) => setKetKeuangan(e.target.value)} />
+                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_keuangan || ''} onChange={(e) => setKetKeuangan(e.target.value)} />
                 </div>
               </div>
               <div className="finput">
                 <p>Keterangan SPJ</p>
                 <div className="contInput">
-                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)} />
+                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_spj || ''} onChange={(e) => setKetSpj(e.target.value)} />
                 </div>
               </div>
               <div className="finput">
                 <p>Keterangan Akademik</p>
                 <div className="contInput">
-                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_akademik} onChange={(e) => setKetAkademik(e.target.value)} />
+                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_akademik || ''} onChange={(e) => setKetAkademik(e.target.value)} />
                 </div>
               </div>
               <div className="finput">
@@ -250,7 +250,7 @@ function DArsip() {
                   <div className="down-approve">
                     <a href={urlProposal} target="_blank">
                       {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
                     <p>{fileproposal}</p>
                   </div>
@@ -262,7 +262,7 @@ function DArsip() {
                   <div className="down-approve">
                     <a href={urlSPJ} target="_blank">
                       {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
                     <p>{namafileSPJ}</p>
                   </div>
@@ -274,7 +274,7 @@ function DArsip() {
                   <div className="down-approve">
                     <a href={urlDukungSPJ} target="_blank">
                       {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
                     <p>{namafileDukungSPJ}</p>
                   </div>
@@ -286,7 +286,7 @@ function DArsip() {
                   <div className="down-approve">
                     <a href={urlLpj} target="_blank">
                       {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
                     <p>{fileLpj}</p>
                   </div>
@@ -296,7 +296,7 @@ function DArsip() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="status">
-                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <i className="fa-solid fa-circle-exclamation"></i>
                     {status}
                   </button>
                 </div>
@@ -310,7 +310,7 @@ function DArsip() {
                     popUpPermit.classList.toggle('permitShow');
                   }}
                 >
-                  <i class="fa-solid fa-location-arrow"></i>Simpan
+                  <i className="fa-solid fa-location-arrow"></i>Simpan
                 </button>
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
@@ -346,7 +346,7 @@ function DArsip() {
                 <div className="popUp-Approve SetujuShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil Di Ubah</p>
                   </div>

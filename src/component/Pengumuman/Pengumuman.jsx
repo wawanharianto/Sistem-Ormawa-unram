@@ -22,7 +22,6 @@ function Pengumuman() {
     setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
-    console.log(response);
   };
 
   const changePage = ({ selected }) => {

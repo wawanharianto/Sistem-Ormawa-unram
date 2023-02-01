@@ -34,11 +34,11 @@ function Login() {
           <form onSubmit={Auth} action="">
             {isError && <p className="has-text-centered">{message}</p>}
             <div className="username">
-              <i class="fa-solid fa-user"></i>
+              <i className="fa-solid fa-user"></i>
               <input type="text" name="username" id="" placeholder="Username" value={username} onChange={(e) => setusername(e.target.value)} />
             </div>
             <div className="password">
-              <i class="fa-solid fa-key"></i>
+              <i className="fa-solid fa-key"></i>
               <input type="password" name="password" id="" placeholder="Password" value={password} onChange={(e) => setpassword(e.target.value)} />
             </div>
 

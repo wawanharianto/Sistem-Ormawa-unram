@@ -7,7 +7,6 @@ import { LogOut, reset, currentLogin } from '../../features/auth';
 function HeadDash() {
   // link sidebar
   const activePage = window.location.pathname;
-  console.log(activePage);
   const sidelink = document.querySelectorAll('div a').forEach((link) => {
     if (link.href.includes(`${activePage}`)) {
       link.classList.add('select-f');
@@ -65,18 +64,18 @@ function HeadDash() {
       <div className="HeadDash on-burger">
         <div className="burger-button">
           <input id="menu-toggle" type="checkbox" onChange={handleSideBar} />
-          <label class="menu-button-container" for="menu-toggle">
-            <div class="menu-button"></div>
+          <label className="menu-button-container" htmlFor="menu-toggle">
+            <div className="menu-button"></div>
           </label>
         </div>
         <h1>
           ORMAWA
-          <i class="fa-solid fa-circle" />
+          <i className="fa-solid fa-circle" />
         </h1>
         <div className="backBeranda">
           <a onClick={logout} className="logout">
             <p>Logout</p>
-            <i class="fa-solid fa-right-from-bracket"></i>
+            <i className="fa-solid fa-right-from-bracket"></i>
           </a>
         </div>
       </div>
@@ -89,14 +88,14 @@ function HeadDash() {
           <div className="sideDash-f sideDash-fgap">
             <a href="/dashboard">
               <div id="dashboard" className="icon">
-                <i id="dashboard" class="fa-solid fa-qrcode" />
+                <i id="dashboard" className="fa-solid fa-qrcode" />
                 <p id="dashboard">Dashboard</p>
               </div>
             </a>
             {user && user.role !== 'adminKeuangan' && (
               <a href="/pengajuan-proposal">
                 <div id="pengajuan" className="icon">
-                  <i id="pengajuan" class="fa-solid fa-file-circle-plus"></i>
+                  <i id="pengajuan" className="fa-solid fa-file-circle-plus"></i>
                   <p id="pengajuan">Pengajuan Proposal</p>
                 </div>
               </a>
@@ -104,7 +103,7 @@ function HeadDash() {
             {user && user.role !== 'adminAkademik' && (
               <a href="/pengajuan-dana">
                 <div id="pengajuan" className="icon">
-                  <i class="fa-solid fa-dollar-sign"></i>
+                  <i className="fa-solid fa-dollar-sign"></i>
                   <p id="pengajuan">Pengajuan Dana</p>
                 </div>
               </a>
@@ -112,7 +111,7 @@ function HeadDash() {
             {user && user.role !== 'adminAkademik' && (
               <a href="/SPJ">
                 <div id="spj" className="icon">
-                  <i id="spj" class="fa-regular fa-file"></i>
+                  <i id="spj" className="fa-regular fa-file"></i>
                   <p id="spj">SPJ</p>
                 </div>
               </a>
@@ -120,7 +119,7 @@ function HeadDash() {
             {user && user.role !== 'adminKeuangan' && (
               <a href="/LPJ">
                 <div id="lpj" className="icon ">
-                  <i id="lpj" class="fa-regular fa-file-lines"></i>
+                  <i id="lpj" className="fa-regular fa-file-lines"></i>
                   <p id="lpj">LPJ</p>
                 </div>
               </a>
@@ -128,7 +127,7 @@ function HeadDash() {
             {user && user.role !== 'mahasiswa' && (
               <a href="/arsip">
                 <div id="arsip" className="icon">
-                  <i id="arsip" class="fa-solid fa-folder-tree"></i>
+                  <i id="arsip" className="fa-solid fa-folder-tree"></i>
                   <p id="arsip">Arsip</p>
                 </div>
               </a>
@@ -136,7 +135,7 @@ function HeadDash() {
             {user && user.role === 'admin' && (
               <a href="/users">
                 <div id="users" className="icon">
-                  <i id="users" class="fa-solid fa-user"></i>
+                  <i id="users" className="fa-solid fa-user"></i>
                   <p id="users">Users</p>
                 </div>
               </a>

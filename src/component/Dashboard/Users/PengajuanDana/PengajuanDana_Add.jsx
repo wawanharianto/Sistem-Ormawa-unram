@@ -52,10 +52,6 @@ function PengajuanDana_Add() {
       }
     };
     getProposalById();
-    // if (user && user.role !== 'admin') {
-    //   const btn = document.getElementById('btn_setuju');
-    //   btn.style.visibility = 'hidden';
-    // }
   }, [uuid]);
 
   const loadFile = (e) => {
@@ -64,11 +60,6 @@ function PengajuanDana_Add() {
     setNamePropWD3(e.target.files[0].name);
     setValidFile(true);
   };
-
-  // const handleClose = () => {
-  //   const closepop = document.getElementsByClassName('popUp')[0];
-  //   closepop.classList.toggle('popshow');
-  // };
 
   const updateProposalTDD = async (e) => {
     e.preventDefault();
@@ -135,7 +126,6 @@ function PengajuanDana_Add() {
     const conditionAcc = document.getElementsByClassName('condition-acc')[0];
     conditionAcc.style.backgroundColor = 'green';
     const icon = conditionAcc.getElementsByTagName('i')[0];
-    console.log(icon);
     icon.className = 'fa-solid fa-check';
   } else if (status == 'Proposal di tolak') {
     const conditionAcc = document.getElementsByClassName('condition-acc')[0];
@@ -163,14 +153,14 @@ function PengajuanDana_Add() {
           <div className="formaddProp">
             <div className="headForm">
               <p>Detail Pengajuan Dana</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={updateProposalTDD} className="addProposal" action="">
               <hr className="line" />
               <div className="finput">
                 <p>Nama Kegiatan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan} readOnly={true}></input>
+                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan || ''} readOnly={true}></input>
                   <p className="kosong">Nama Kegiatan</p>
                 </div>
               </div>
@@ -178,7 +168,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Nama Organisasi</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Organisasi" value={organisasi} readOnly={true}></input>
+                  <input type="text" placeholder="Nama Organisasi" value={organisasi || ''} readOnly={true}></input>
                   <p className="kosong">Nama Organisasi</p>
                 </div>
               </div>
@@ -186,7 +176,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Jumlah Dana yang Diajukan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana} readOnly={true}></input>
+                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana || ''} readOnly={true}></input>
                   <p className="kosong">Jumlah Dana yang Diajukan</p>
                 </div>
               </div>
@@ -194,7 +184,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Nama Ketua Panitia</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat} readOnly={true}></input>
+                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat || ''} readOnly={true}></input>
                   <p className="kosong">Nama Ketua Panitia</p>
                 </div>
               </div>
@@ -202,7 +192,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Nomor Hp</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Hp" value={nohp} readOnly={true}></input>
+                  <input type="text" placeholder="Nomor Hp" value={nohp || ''} readOnly={true}></input>
                   <p className="kosong">Nomor HP</p>
                 </div>
               </div>
@@ -210,7 +200,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Tanggal Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal} readOnly={true}></input>
+                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal || ''} readOnly={true}></input>
                   <p className="kosong">Tanggal Pelaksanaan</p>
                 </div>
               </div>
@@ -218,7 +208,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Tempat Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat} readOnly={true}></input>
+                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat || ''} readOnly={true}></input>
                   <p className="kosong">Tempat Pelaksanaan</p>
                 </div>
               </div>
@@ -226,7 +216,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Nomor Ketua Umum</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum} readOnly={true}></input>
+                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum || ''} readOnly={true}></input>
                   <p className="kosong">Nomor Ketua Umum</p>
                 </div>
               </div>
@@ -234,7 +224,7 @@ function PengajuanDana_Add() {
               <div className="finput">
                 <p>Keterangan Oleh WD3</p>
                 <div className="contInput">
-                  <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} readOnly={true} />
+                  <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3 || ''} readOnly={true} />
                 </div>
               </div>
 
@@ -259,7 +249,7 @@ function PengajuanDana_Add() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="condition-acc">
-                    <i class="fa-solid fa-circle-info"></i> {status}
+                    <i className="fa-solid fa-circle-info"></i> {status || ''}
                   </button>
                 </div>
               </div>
@@ -271,7 +261,7 @@ function PengajuanDana_Add() {
                     <div className="down-approve">
                       <a href={url} target="_blank">
                         {' '}
-                        <i class="fa-solid fa-file-arrow-down"></i>Download
+                        <i className="fa-solid fa-file-arrow-down"></i>Download
                       </a>
                       <p>{namafile}</p>
                     </div>
@@ -298,13 +288,13 @@ function PengajuanDana_Add() {
                       type="submit"
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-floppy-disk"></i>Simpan
+                      <i className="fa-solid fa-floppy-disk"></i>Simpan
                     </button>
                   </div>
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                       </div>
                       <p> Apakah anda sudah yakin untuk mengajukan dana ?</p>
                       <div className="btn-permit">
@@ -341,7 +331,7 @@ function PengajuanDana_Add() {
                   <div className="popUp-Ajukan AjukanShow">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil Mengajukan Dana</p>
                     </div>
@@ -349,7 +339,7 @@ function PengajuanDana_Add() {
                   <div className="popUp-Ajukan AjukanShow">
                     <div className="container-popUp">
                       <div className="iconx">
-                        <i class="fa-solid fa-xmark"></i>
+                        <i className="fa-solid fa-xmark"></i>
                       </div>
                       <p>Upload File Pengajuan Dana!</p>
                     </div>
@@ -377,13 +367,13 @@ function PengajuanDana_Add() {
                       type="submit"
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-floppy-disk"></i>Simpan
+                      <i className="fa-solid fa-floppy-disk"></i>Simpan
                     </button>
                   </div>
                   <div className="popUp-Ajukan AjukanShow">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil Mengajukan Dana</p>
                     </div>
@@ -391,7 +381,7 @@ function PengajuanDana_Add() {
                   <div className="popUp-Ajukan AjukanShow">
                     <div className="container-popUp">
                       <div className="iconx">
-                        <i class="fa-solid fa-xmark"></i>
+                        <i className="fa-solid fa-xmark"></i>
                       </div>
                       <p>Upload File Pengajuan Dana!</p>
                     </div>
@@ -399,7 +389,7 @@ function PengajuanDana_Add() {
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                       </div>
                       <p> Apakah anda sudah yakin untuk mengajukan dana ?</p>
                       <div className="btn-permit">
@@ -443,14 +433,14 @@ function PengajuanDana_Add() {
                 <>
                   <div className="headForm">
                     <p>Konfirmasi Bagian Keuangan</p>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i className="fa-solid fa-chevron-down"></i>
                   </div>
                   <hr className="line" />
                   <div className="finput">
                     <p>Keterangan dari Bagian Keuangan</p>
                     <div className="contInput">
                       <input
-                        value={keterangan_keuangan}
+                        value={keterangan_keuangan || ''}
                         onChange={(e) => setKetKeuangan(e.target.value)}
                         type="text"
                         placeholder={keterangan_keuangan}
@@ -464,7 +454,7 @@ function PengajuanDana_Add() {
                     <p>Jumlah Dana Yang di setujui</p>
                     <div className="contInput">
                       <input
-                        value={dana_disetujui}
+                        value={dana_disetujui || ''}
                         onChange={(e) => {
                           const formatRupiah = (angka, prefix) => {
                             let number_string = angka.replace(/[^,\d]/g, '').toString(),
@@ -508,13 +498,13 @@ function PengajuanDana_Add() {
               <>
                 <div className="headForm">
                   <p>Kolom Konfirmasi Bagian Keuangan</p>
-                  <i class="fa-solid fa-chevron-down"></i>
+                  <i className="fa-solid fa-chevron-down"></i>
                 </div>
                 <hr className="line" />
                 <div className="finput">
                   <p>Keterangan dari Bagian Keuangan</p>
                   <div className="contInput">
-                    <input value={keterangan_keuangan} onChange={(e) => setKetKeuangan(e.target.value)} type="text" placeholder="Ketikan disini..." className="textbox"></input>
+                    <input value={keterangan_keuangan || ''} onChange={(e) => setKetKeuangan(e.target.value)} type="text" placeholder="Ketikan disini..." className="textbox"></input>
                     <p className="kosong">keterangan</p>
                   </div>
                 </div>
@@ -522,7 +512,7 @@ function PengajuanDana_Add() {
                   <p>Jumlah Dana Yang di setujui</p>
                   <div className="contInput">
                     <input
-                      value={dana_disetujui}
+                      value={dana_disetujui || ''}
                       onChange={(e) => {
                         const formatRupiah = (angka, prefix) => {
                           let number_string = angka.replace(/[^,\d]/g, '').toString(),
@@ -565,13 +555,13 @@ function PengajuanDana_Add() {
                     type="submit"
                     className="Ajukan"
                   >
-                    <i class="fa-solid fa-check"></i>Setuju
+                    <i className="fa-solid fa-check"></i>Setuju
                   </button>
 
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                       </div>
                       <p> Apakah Anda yakin menyetujui pengajuan dana tersebut ?</p>
                       <div className="btn-permit">
@@ -607,7 +597,7 @@ function PengajuanDana_Add() {
                   <div className="popUp-Bkeuangan BKShow">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil!</p>
                       <p>Menyetujui Pengajuan Dana</p>
@@ -629,13 +619,13 @@ function PengajuanDana_Add() {
                     type="submit"
                     className="Ajukan simpan"
                   >
-                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                    <i className="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
                 <div className="popUp-Bkeuangan BKShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil! Menyimpan</p>
                   </div>
@@ -655,12 +645,12 @@ function PengajuanDana_Add() {
                     type="submit"
                     className="Ajukan"
                   >
-                    <i class="fa-solid fa-check"></i>Setuju
+                    <i className="fa-solid fa-check"></i>Setuju
                   </button>
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                       </div>
                       <p> Apakah Anda yakin menyetujui pengajuan dana tersebut ?</p>
                       <div className="btn-permit">
@@ -710,13 +700,13 @@ function PengajuanDana_Add() {
                     type="submit"
                     className="Ajukan"
                   >
-                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                    <i className="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
                 <div className="popUp-Bkeuangan BKShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil!</p>
                     <p>Menyetujui Pengajuan Dana</p>
@@ -725,7 +715,7 @@ function PengajuanDana_Add() {
                 <div className="popUp-Bkeuangan BKShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil! Menyimpan</p>
                   </div>

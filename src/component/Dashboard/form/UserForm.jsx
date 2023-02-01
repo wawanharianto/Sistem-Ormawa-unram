@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './userForm.css';
 import axios from 'axios';
-import ReactPaginate from 'react-paginate';
 import { Link, useNavigate } from 'react-router-dom';
 import { TablePagination } from '@mui/material';
 
@@ -75,7 +74,7 @@ function UserForm() {
         </div>
         <div className="tUserContainer">
           <button className="btn-addUser" onClick={handleAddUser}>
-            <i class="fa-solid fa-user-plus" />
+            <i className="fa-solid fa-user-plus" />
           </button>
           <table className="tUser">
             <thead>
@@ -99,11 +98,11 @@ function UserForm() {
                   <td>{user.role}</td>
                   <td className="form-icon">
                     <button className="delete-user">
-                      <i class="fa-solid fa-trash" onClick={() => deleteUsers(user.uuid)} />
+                      <i className="fa-solid fa-trash" onClick={() => deleteUsers(user.uuid)} />
                     </button>
                     <Link to={`/users/edit/${user.uuid}`}>
                       <button className="sunting-user">
-                        <i class="fa-solid fa-user-pen"></i>
+                        <i className="fa-solid fa-user-pen"></i>
                       </button>
                     </Link>
                   </td>
@@ -111,7 +110,7 @@ function UserForm() {
                   <div id={user.uuid} className="popUpContainer deleteShow">
                     <div className="container-content">
                       <div className="icon-i">
-                        <i class="fa-solid fa-circle-info"></i>
+                        <i className="fa-solid fa-circle-info"></i>
                       </div>
                       <p className="text"> Apakah anda benar ingin menghapus {user.username} ?</p>
                       <div className="cont-btn">
@@ -145,7 +144,7 @@ function UserForm() {
                   <div id={user.uuid + 1} className="popUpContainer deleteShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p> Akun Berhasil Di hapus {user.username}</p>
                     </div>
@@ -155,26 +154,6 @@ function UserForm() {
             </tbody>
           </table>
           <div className="tfooter">
-            {/* <p>Total Rows: {rows}</p>
-            <p>
-              Page: {rows ? page + 1 : 0} of {pages}
-            </p>
-            <p className="has-text-centered has-text-danger">{msg}</p>
-
-            <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
-              <ReactPaginate
-                previousLabel={'< Prev'}
-                nextLabel={'Next >'}
-                pageCount={Math.min(10, pages)}
-                onPageChange={changePage}
-                containerClassName={'pagination-list'}
-                pageLinkClassName={'pagination-link'}
-                previousLinkClassName={'pagination-previous'}
-                nextLinkClassName={'pagination-next'}
-                activeLinkClassName={'pagination-link is-current'}
-                disabledLinkClassName={'pagination-link is-disabled'}
-              />
-            </nav> */}
             <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
           </div>
         </div>

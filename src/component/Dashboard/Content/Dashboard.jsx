@@ -43,28 +43,28 @@ function Dashboard() {
         <div className="container-dashboard">
           <div className="listfile">
             <div className="icon">
-              <i class="fa-solid fa-file-circle-plus"></i>
+              <i className="fa-solid fa-file-circle-plus"></i>
               <div className="detail">
                 <p>Proposal</p>
                 <p>{proposal} File</p>
               </div>
             </div>
             <div className="icon">
-              <i class="fa-regular fa-file-lines"></i>
+              <i className="fa-regular fa-file-lines"></i>
               <div className="detail">
                 <p>SPJ</p>
                 <p>{spj} File</p>
               </div>
             </div>
             <div className="icon">
-              <i class="fa-regular fa-file"></i>
+              <i className="fa-regular fa-file"></i>
               <div className="detail">
                 <p>LPJ</p>
                 <p>{lpj} File</p>
               </div>
             </div>
             <div className="icon">
-              <i class="fa-solid fa-folder-tree"></i>
+              <i className="fa-solid fa-folder-tree"></i>
               <div className="detail">
                 <p>Arsip</p>
                 <p>{arsip} File</p>

@@ -228,13 +228,13 @@ function Arsipx() {
           <div className="tProposal_container">
             <div className="headtproposal">
               <h3>Arsip dokumen</h3>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <hr />
             <div className="fproposaltabel">
               <form onSubmit={searchData}>
                 <div className="fsearch">
-                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <i className="fa-solid fa-magnifying-glass"></i>
                   <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
                 </div>
               </form>
@@ -247,7 +247,7 @@ function Arsipx() {
                       popUpDelete.classList.toggle('deleteShow');
                     }}
                   >
-                    <i class="fa-solid fa-trash-can"></i> Delete
+                    <i className="fa-solid fa-trash-can"></i> Delete
                   </button>
                   <input type="date" value={startdate} onChange={(e) => setStartdate(e.target.value)} />
                   <p>To</p>
@@ -266,7 +266,7 @@ function Arsipx() {
                   <div className="popUpContainer deleteShow">
                     <div className="container-content">
                       <div className="icon-i">
-                        <i class="fa-solid fa-circle-info"></i>
+                        <i className="fa-solid fa-circle-info"></i>
                       </div>
                       <p className="text"> Apakah anda benar ingin menghapus item yang di pilih?</p>
                       <div className="cont-btn">
@@ -294,7 +294,7 @@ function Arsipx() {
                   <div i className="popUpContainer deleteShow Critical">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p> Tidak Ada Item yang DiPilih</p>
                     </div>
@@ -302,7 +302,7 @@ function Arsipx() {
                   <div i className="popUpContainer deleteShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p> Berhasil Mengahapus Kumpulan Item</p>
                     </div>
@@ -310,7 +310,7 @@ function Arsipx() {
                   <div i className="popUpContainer deleteShow Critical">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa Item Terjadi Kesalahan</p>
                       <p>Note : {msg}</p>
@@ -320,7 +320,7 @@ function Arsipx() {
                   <div className="popUpContainer deleteShow">
                     <div className="container-content">
                       <div className="icon-i">
-                        <i class="fa-solid fa-circle-info"></i>
+                        <i className="fa-solid fa-circle-info"></i>
                       </div>
                       <p className="text"> Apakah Anda Sudah Yakin dengan Data yang Anda export??</p>
                       <div className="cont-btn">
@@ -348,7 +348,7 @@ function Arsipx() {
                   <div i className="popUpContainer deleteShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>{msg}</p>
                     </div>
@@ -356,7 +356,7 @@ function Arsipx() {
                   <div i className="popUpContainer deleteShow Critical">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Error!</p>
                       <p>{msg}</p>
@@ -412,7 +412,7 @@ function Arsipx() {
                       <td>
                         <div className="fstatustable">
                           <button onClick={() => navigate(`details/${proposal.uuid}`)} className="view-spj">
-                            <i class="fa-regular fa-file"></i>
+                            <i className="fa-regular fa-file"></i>
                           </button>
                         </div>
                       </td>

@@ -101,7 +101,7 @@ function UpdateProposal() {
           <div className="formaddProp">
             <div className="headForm">
               <p>Edit Proposal</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={updateProposal} className="addProposal" action="">
               <hr className="line" />
@@ -196,7 +196,7 @@ function UpdateProposal() {
                   <div className="down-approve">
                     <a href={url} target="_blank">
                       {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
                     <p>{namafile}</p>
                   </div>
@@ -206,7 +206,7 @@ function UpdateProposal() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="status">
-                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <i className="fa-solid fa-circle-exclamation"></i>
                     {status}
                   </button>
                 </div>
@@ -220,12 +220,12 @@ function UpdateProposal() {
                     popUpPermit.classList.toggle('permitShow');
                   }}
                 >
-                  <i class="fa-solid fa-location-arrow"></i>Update
+                  <i className="fa-solid fa-location-arrow"></i>Update
                 </button>
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
                     <div className="icon">
-                      <i class="fa-solid fa-circle-exclamation"></i>
+                      <i className="fa-solid fa-circle-exclamation"></i>
                     </div>
                     <p> Apakah anda yakin ingin meng-update proposal ini ?</p>
                     <div className="btn-permit">
@@ -259,7 +259,7 @@ function UpdateProposal() {
                 <div className="popUp-Approve SetujuShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil Di Ubah</p>
                   </div>
