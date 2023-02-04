@@ -3,7 +3,6 @@ import Navbar from '../component/Navbar';
 import Footer from '../component/Footer';
 
 const LayoutHome = ({ children }) => {
-  console.log(children);
   return (
     <React.Fragment>
       <Navbar />

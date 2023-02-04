@@ -110,7 +110,7 @@ function PengajuanProposal() {
           <div className="formaddProp">
             <div className="headForm">
               <p>Add Proposal</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={addProposal} className="addProposal" action="">
               <hr className="line" />
@@ -214,7 +214,7 @@ function PengajuanProposal() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="permohonan">
-                    <i class="fa-solid fa-circle-exclamation icon"></i> {status}
+                    <i className="fa-solid fa-circle-exclamation icon"></i> {status}
                   </button>
                 </div>
               </div>
@@ -228,13 +228,13 @@ function PengajuanProposal() {
                     permitPopUp.classList.toggle('permitShow');
                   }}
                 >
-                  <i class="fa-solid fa-location-arrow"></i>Ajukan
+                  <i className="fa-solid fa-location-arrow"></i>Ajukan
                 </button>
               </div>
               <div className="containerPopUp_Permission permitShow">
                 <div className="container_content">
                   <div className="icon">
-                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <i className="fa-solid fa-circle-exclamation"></i>
                   </div>
                   <p>Apakah Anda Benar Ingin Mengajukan Proposal Ini ?</p>
 
@@ -261,7 +261,7 @@ function PengajuanProposal() {
       <div className="popUp-Ajukan AjukanShow">
         <div className="container-popUp">
           <div className="icon">
-            <i class="fa-solid fa-check"></i>
+            <i className="fa-solid fa-check"></i>
           </div>
           <p>Propsal Berhasil di Ajukan</p>
         </div>
@@ -269,7 +269,7 @@ function PengajuanProposal() {
       <div className="popup-valid validshow">
         <div className="container-popup">
           <div className="icon">
-            <i class="fa-regular fa-circle-xmark"></i>
+            <i className="fa-regular fa-circle-xmark"></i>
           </div>
           <p> Periksa data!</p>
           <p>Ada kesalahan di data yang anda input.</p>

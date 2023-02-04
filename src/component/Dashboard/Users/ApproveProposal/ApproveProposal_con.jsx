@@ -107,12 +107,6 @@ function ApproveProposal_con() {
 
     icon.className = 'fa-solid fa-x';
   }
-  // const handleSetuju = () => {
-  //   const conditionAcc = document.getElementsByClassName('condition-acc')[0];
-  //   if (status == 'Proposal di setujui') {
-  //     conditionAcc.style.backgroundColor = 'green';
-  //   }
-  // };
   return (
     <>
       <div className="addPropalForm-container">
@@ -124,14 +118,14 @@ function ApproveProposal_con() {
           <div className="formaddProp">
             <div className="headForm">
               <p>Form Approve WD III</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={updateKetWD3} className="addProposal read-only" action="">
               <hr className="line" />
               <div className="finput">
                 <p>Nama Kegiatan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan}></input>
+                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan || ''} readOnly={true} ></input>
                   <p className="kosong">Nama Kegiatan</p>
                 </div>
               </div>
@@ -139,7 +133,7 @@ function ApproveProposal_con() {
               <div className="finput">
                 <p>Nama Organisasi</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Organisasi" value={organisasi}></input>
+                  <input type="text" placeholder="Nama Organisasi" value={organisasi || ''} readOnly={true}></input>
                   <p className="kosong">Nama Organisasi</p>
                 </div>
               </div>
@@ -147,7 +141,7 @@ function ApproveProposal_con() {
               <div className="finput">
                 <p>Jumlah Dana yang Diajukan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana}></input>
+                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana || ''} readOnly={true}></input>
                   <p className="kosong">Jumlah Dana yang Diajukan</p>
                 </div>
               </div>
@@ -155,7 +149,7 @@ function ApproveProposal_con() {
               <div className="finput">
                 <p>Nama Ketua Panitia</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat}></input>
+                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat || ''} readOnly={true}></input>
                   <p className="kosong">Nama Ketua Panitia</p>
                 </div>
               </div>
@@ -163,7 +157,7 @@ function ApproveProposal_con() {
               <div className="finput">
                 <p>Nomor Hp</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Hp" value={nohp}></input>
+                  <input type="text" placeholder="Nomor Hp" value={nohp || ''} readOnly={true}></input>
                   <p className="kosong">Nomor HP</p>
                 </div>
               </div>
@@ -171,14 +165,14 @@ function ApproveProposal_con() {
               <div className="finput">
                 <p>Tanggal Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal}></input>
+                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal || ''} readOnly={true}></input>
                   <p className="kosong">Tanggal Pelaksanaan</p>
                 </div>
               </div>
               <div className="finput">
                 <p>Tempat Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat}></input>
+                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat || ''} readOnly={true}></input>
                   <p className="kosong">Tempat Pelaksanaan</p>
                 </div>
               </div>
@@ -186,7 +180,7 @@ function ApproveProposal_con() {
               <div className="finput">
                 <p>Nomor Ketua Umum</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum}></input>
+                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum || ''} readOnly={true}></input>
                   <p className="kosong">Nomor Ketua Umum</p>
                 </div>
               </div>
@@ -194,11 +188,11 @@ function ApproveProposal_con() {
                 <p>Download Proposal</p>
                 <div className="contInput">
                   <div className="down-approve">
-                    <a href={url} target="_blank">
+                    <a href={url || ''} target="_blank">
                       {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
-                    <p>{namafile}</p>
+                    <p>{namafile || ''}</p>
                   </div>
                 </div>
               </div>
@@ -207,7 +201,7 @@ function ApproveProposal_con() {
                 <p>Status</p>
                 <div className="contInput">
                   <button disabled className="condition-acc ">
-                    <i class="fa-solid fa-circle-info"></i> {status}
+                    <i className="fa-solid fa-circle-info"></i> {status || ''}
                   </button>
                 </div>
               </div>
@@ -216,7 +210,7 @@ function ApproveProposal_con() {
                   <div className="finput">
                     <p>Keterangan Oleh WD3</p>
                     <div className="contInput">
-                      <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} />
+                      <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3 || ''} onChange={(e) => setKetWd3(e.target.value)} />
                     </div>
                   </div>
                 </>
@@ -226,7 +220,7 @@ function ApproveProposal_con() {
                   <div className="finput">
                     <p>Keterangan Oleh WD3</p>
                     <div className="contInput">
-                      <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3} onChange={(e) => setKetWd3(e.target.value)} readOnly />
+                      <input className="textbox" type="text" placeholder="silahkan isi ..." value={ketwd3 || ''} onChange={(e) => setKetWd3(e.target.value)} readOnly />
                     </div>
                   </div>
                 </>
@@ -241,12 +235,12 @@ function ApproveProposal_con() {
                       }}
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-check"></i>Setuju
+                      <i className="fa-solid fa-check"></i>Setuju
                     </button>
                     <div className="container-popup-permit permitShow">
                       <div className="container-content">
                         <div className="icon">
-                          <i class="fa-solid fa-circle-exclamation"></i>
+                          <i className="fa-solid fa-circle-exclamation"></i>
                         </div>
                         <p> Apakah anda yakin ingin menyetujui proposal ini ?</p>
                         <div className="btn-permit">
@@ -256,7 +250,6 @@ function ApproveProposal_con() {
                               const popUpPermit = document.getElementsByClassName('container-popup-permit')[0];
                               popUpPermit.classList.toggle('permitShow');
                               setStatus('Proposal ACC');
-                              // handleSetuju();
                               const PopUpSetuju = document.getElementsByClassName('popUp-Approve')[0];
                               PopUpSetuju.classList.toggle('SetujuShow');
 
@@ -284,7 +277,7 @@ function ApproveProposal_con() {
                     <div className="popUp-Approve SetujuShow">
                       <div className="container-popUp">
                         <div className="icon">
-                          <i class="fa-solid fa-check"></i>
+                          <i className="fa-solid fa-check"></i>
                         </div>
                         <p>Berhasil ACC Proposal</p>
                       </div>
@@ -301,13 +294,13 @@ function ApproveProposal_con() {
                       }}
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-check"></i>Setuju
+                      <i className="fa-solid fa-check"></i>Setuju
                     </button>
 
                     <div className="container-popup-permit permitShow">
                       <div className="container-content">
                         <div className="icon">
-                          <i class="fa-solid fa-circle-exclamation"></i>
+                          <i className="fa-solid fa-circle-exclamation"></i>
                         </div>
                         <p> Apakah anda yakin ingin menyetujui proposal ini ?</p>
                         <div className="btn-permit">
@@ -340,7 +333,7 @@ function ApproveProposal_con() {
                     <div className="popUp-Approve SetujuShow">
                       <div className="container-popUp">
                         <div className="icon">
-                          <i class="fa-solid fa-check"></i>
+                          <i className="fa-solid fa-check"></i>
                         </div>
                         <p>Berhasil ACC Proposal</p>
                       </div>
@@ -358,12 +351,12 @@ function ApproveProposal_con() {
                       type="submit"
                       className="tolak"
                     >
-                      <i class="fa-solid fa-xmark"></i>Tolak
+                      <i className="fa-solid fa-xmark"></i>Tolak
                     </button>
                     <div className="container-popup-permit container-permit-tolak permitShow">
                       <div className="container-content">
                         <div className="icon">
-                          <i class="fa-solid fa-circle-exclamation"></i>
+                          <i className="fa-solid fa-circle-exclamation"></i>
                         </div>
                         <p> Apakah anda yakin ingin menolak proposal ini ?</p>
                         <div className="btn-permit">
@@ -399,7 +392,7 @@ function ApproveProposal_con() {
                     <div className="popUp-Approve TolakShow">
                       <div className="container-popUp">
                         <div className="icon-x">
-                          <i class="fa-solid fa-xmark"></i>
+                          <i className="fa-solid fa-xmark"></i>
                         </div>
                         <p>Proposal Berhasil Ditolak</p>
                       </div>
@@ -417,12 +410,12 @@ function ApproveProposal_con() {
                       type="submit"
                       className="tolak"
                     >
-                      <i class="fa-solid fa-xmark"></i>Tolak
+                      <i className="fa-solid fa-xmark"></i>Tolak
                     </button>
                     <div className="container-popup-permit permitShow">
                       <div className="container-content">
                         <div className="icon">
-                          <i class="fa-solid fa-circle-exclamation"></i>
+                          <i className="fa-solid fa-circle-exclamation"></i>
                         </div>
                         <p> Apakah anda yakin ingin menolak proposal ini ?</p>
                         <div className="btn-permit">
@@ -459,7 +452,7 @@ function ApproveProposal_con() {
                     <div className="popUp-Approve TolakShow">
                       <div className="container-popUp">
                         <div className="icon-x">
-                          <i class="fa-solid fa-xmark"></i>
+                          <i className="fa-solid fa-xmark"></i>
                         </div>
                         <p>Proposal Berhasil Ditolak</p>
                       </div>
@@ -467,7 +460,7 @@ function ApproveProposal_con() {
                     <div className="popUp-Approve TolakShow">
                       <div className="container-popUp">
                         <div className="icon-x">
-                          <i class="fa-solid fa-xmark"></i>
+                          <i className="fa-solid fa-xmark"></i>
                         </div>
                         <p>Berhasil Disetujui</p>
                       </div>
@@ -481,7 +474,7 @@ function ApproveProposal_con() {
             <div className="download-acc downloadShow">
               <div className="headcontent">
                 <h4>Lembar Pengesahan Proposal</h4>
-                <i class="fa-solid fa-chevron-down"></i>
+                <i className="fa-solid fa-chevron-down"></i>
               </div>
               <hr className=" line" />
               <div className="finput">
@@ -492,12 +485,12 @@ function ApproveProposal_con() {
                       <button
                         className="download-file"
                         onClick={() => {
-                          window.location.href = '../Document/Pengesahan.pdf';
+                          window.location.href = '../Document/LEMBAR PENGESAHAN PROPOSAL.docx';
                         }}
                       >
-                        <i class="fa-solid fa-file-arrow-down"></i>Download
+                        <i className="fa-solid fa-file-arrow-down"></i>Download
                       </button>
-                      <p className="name">File Lembar Pengesahan.pdf</p>
+                      <p className="name">File Lembar Pengesahan.docx</p>
                     </div>
                   )}
                   <p className="kosong">File Lembar Pengesahaan</p>

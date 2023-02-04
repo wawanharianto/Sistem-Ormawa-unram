@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Proposal_con.css';
 import axios from 'axios';
-// import TablePagination from 'react-paginate';
 import { TablePagination } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -18,8 +17,6 @@ function Proposal_con() {
   const [query, setQuery] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
-  // const status = ['Proposal di ajukan']
-  // usesstate pagenation
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const { user } = useSelector((state) => state.auth);
@@ -61,49 +58,9 @@ function Proposal_con() {
       getProposal();
     }, 2000);
   };
-
-  // const changePage = ({ selected }) => {
-  //   setPage(selected);
-  //   if (selected === 9) {
-  //     setMsg('Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!');
-  //   } else {
-  //     setMsg('');
-  //   }
-  // };
-
-  // const searchData = (e) => {
-  //   e.preventDefault();
-  //   setPage(0);
-  //   setMsg('');
-  //   setKeyword(query);
-  // };
-
   const handleAddProposal = () => {
     navigate('add');
   };
-
-  // const multipleDeleteById = async () => {
-  //   let arrayIds = [];
-  //   proposals.forEach((d) => {
-  //     if (d.select) {
-  //       arrayIds.push(d.id);
-  //     }
-  //   });
-  //   console.log(arrayIds);
-  //   if (arrayIds.length == 0) {
-  //     console.log('Tidak ada data');
-  //   } else {
-  //     console.log(arrayIds);
-  //     await axios
-  //       .delete(`http://localhost:3000/proposal/${arrayIds}`)
-  //       .then((data) => {
-  //         console.log(data);
-  //         getProposal();
-  //       })
-  //       .catch((err) => alert(err));
-  //   }
-  // };
-  // funtion pagination
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -123,25 +80,21 @@ function Proposal_con() {
           <div className="tProposal_container">
             <div className="headtproposal">
               <h3>Form Pengajuan Proposal</h3>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <hr />
             <div className="fproposaltabel">
               <div className="fsearch">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
                 <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
               </div>
               {user && user.role !== 'WD3' && user && user.role !== 'adminAkademik' && (
                 <div className="fbtn">
-                  {/* <button onClick={() => multipleDeleteById()}>
-                  <i class="fa-solid fa-trash-can"></i> Delete
-                </button> */}
-
                   {Statuscount >= 3 && user && user.role == 'mahasiswa' && user ? (
                     console.log(Statuscount)
                   ) : (
                     <button onClick={handleAddProposal}>
-                      <i class="fa-solid fa-plus"></i>Tambah Proposal
+                      <i className="fa-solid fa-plus"></i>Tambah Proposal
                     </button>
                   )}
                 </div>
@@ -168,21 +121,6 @@ function Proposal_con() {
                   .map((proposal, index) => (
                     <tr key={proposal.id}>
                       <td>
-                        {/* <input
-                          type="checkbox"
-                          checked={proposal.select}
-                          onChange={(e) => {
-                            let value = e.target.checked;
-                            setProposals(
-                              proposals.map((d) => {
-                                if (d.id == proposal.id) {
-                                  d.select = value;
-                                }
-                                return d;
-                              })
-                            );
-                          }}
-                        />{' '} */}
                         {index + 1}
                       </td>
                       <td>{proposal.nama_kegiatan}</td>
@@ -196,7 +134,7 @@ function Proposal_con() {
                         <div className="fstatustable">
                           <Link to={`/approve-proposal/${proposal.uuid}`} className="view">
                             <button className="views-prop">
-                              <i class="fa-regular fa-file"></i>
+                              <i className="fa-regular fa-file"></i>
                             </button>
                           </Link>
 
@@ -204,7 +142,7 @@ function Proposal_con() {
                             proposal.status !== 'Proposal ACC' ? (
                               <Link to={`/proposal/edit/${proposal.uuid}`} className="sunting">
                                 <button className="edit-prop">
-                                  <i class="fa-regular fa-pen-to-square"></i>
+                                  <i className="fa-regular fa-pen-to-square"></i>
                                 </button>
                               </Link>
                             ) : (
@@ -224,7 +162,7 @@ function Proposal_con() {
                                   popupDelete.classList.toggle('showoff');
                                 }}
                               >
-                                <i class="fa-solid fa-delete-left"></i>
+                                <i className="fa-solid fa-delete-left"></i>
                               </button>
                             ) : (
                               ''
@@ -237,7 +175,7 @@ function Proposal_con() {
                         <div id={proposal.uuid} className="popUp-Delete showoff">
                           <div className="box">
                             <div className="icon">
-                              <i class="fa-solid fa-circle-exclamation icon"></i>
+                              <i className="fa-solid fa-circle-exclamation icon"></i>
                             </div>
                             <p>Apakah anda mau menghapus {proposal.nama_kegiatan} ?</p>
                             <div className="g-btn">
@@ -266,7 +204,7 @@ function Proposal_con() {
                         <div id={proposal.uuid + 1} className="popUp-Approve SetujuShow">
                           <div className="container-popUp">
                             <div className="icon">
-                              <i class="fa-solid fa-check"></i>
+                              <i className="fa-solid fa-check"></i>
                             </div>
                             <p>Berhasil Dihapus</p>
                           </div>
@@ -277,28 +215,6 @@ function Proposal_con() {
               </tbody>
             </table>
             <div className="tfooter tfooter1">
-              {/* <p>Total Rows: {rows}</p>
-              <p>
-                Page: {rows ? page + 1 : 0} of {pages}
-              </p>
-              <p className="has-text-centered has-text-danger">{msg}</p>
-
-              <nav className="pagination is-centered" key={rows} role="navigation" aria-label="pagination">
-                <TablePagination
-                  previousLabel={'< Prev'}
-                  nextLabel={'Next >'}
-                  pageCount={Math.min(10, pages)}
-                  onPageChange={changePage}
-                  containerClassName={'pagination-list'}
-                  pageLinkClassName={'pagination-link'}
-                  previousLinkClassName={'pagination-previous'}
-                  nextLinkClassName={'pagination-next'}
-                  activeLinkClassName={'pagination-link is-current'}
-                  disabledLinkClassName={'pagination-link is-disabled'}
-                />
-                
-              </nav> */}
-
               <TablePagination component="div" count={rows} page={page} onPageChange={handleChangePage} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleChangeRowsPerPage} />
             </div>
           </div>

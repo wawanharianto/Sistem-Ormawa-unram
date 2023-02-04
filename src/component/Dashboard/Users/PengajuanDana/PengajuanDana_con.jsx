@@ -80,13 +80,13 @@ function PengajuanDana_con() {
           <div className="tProposal_container">
             <div className="headtproposal">
               <h3>List Pengajuan Dana</h3>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <hr />
             <div className="fproposaltabel">
               <form onSubmit={searchData}>
                 <div className="fsearch">
-                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <i className="fa-solid fa-magnifying-glass"></i>
                   <input type="text" className="search" placeholder="Search" value={query} onChange={(e) => setQuery(e.target.value)} />
                 </div>
               </form>
@@ -122,7 +122,7 @@ function PengajuanDana_con() {
                         <div className="fstatustable">
                           <Link to={`add/${proposal.uuid}`} className="sunting">
                             <button className="sunting-dana">
-                              <i class="fa-regular fa-pen-to-square"></i>
+                              <i className="fa-regular fa-pen-to-square"></i>
                             </button>
                           </Link>
                         </div>

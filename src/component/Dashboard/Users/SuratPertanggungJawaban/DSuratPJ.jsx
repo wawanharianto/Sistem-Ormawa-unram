@@ -233,9 +233,8 @@ function DSuratPJ() {
         <div className="contInput">
           <div className="file-up">
             <label className="file-upload">
-              <i class="fa-solid fa-file-arrow-up"></i>
+              <i className="fa-solid fa-file-arrow-up"></i>
               <input type="file" className="upload" onChange={loadFileSPJ}></input>
-              {/* <p className="text">name file .pdf</p> */}
               <span>Select File</span>
             </label>
             <p className="text-upload">{nameFileSpj}</p>
@@ -248,7 +247,7 @@ function DSuratPJ() {
         <div className="contInput">
           <div className="file-up">
             <label className="file-upload">
-              <i class="fa-solid fa-file-arrow-up"></i>
+              <i className="fa-solid fa-file-arrow-up"></i>
               <input type="file" className="upload" onChange={loadFileDukungSPJ}></input>
               <span>Select File</span>
             </label>
@@ -280,14 +279,14 @@ function DSuratPJ() {
           <div className="formaddProp">
             <div className="headForm">
               <p>Detail Upload Surat Pertanggung Jawaban</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <form onSubmit={spj} className="addProposal" action="">
               <hr className="line" />
               <div className="finput">
                 <p>Nama Kegiatan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan} readOnly={true}></input>
+                  <input type="text" placeholder="Nama Kegiatan" value={kegiatan || ''} readOnly={true}></input>
                   <p className="kosong">Nama Kegiatan</p>
                 </div>
               </div>
@@ -295,7 +294,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Nama Organisasi</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Organisasi" value={organisasi} readOnly={true}></input>
+                  <input type="text" placeholder="Nama Organisasi" value={organisasi || ''} readOnly={true}></input>
                   <p className="kosong">Nama Organisasi</p>
                 </div>
               </div>
@@ -303,7 +302,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Jumlah Dana yang Diajukan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana} readOnly={true}></input>
+                  <input type="text" placeholder="Jumlah Dana yang Diajukan" value={dana || ''} readOnly={true}></input>
                   <p className="kosong">Jumlah Dana yang Diajukan</p>
                 </div>
               </div>
@@ -311,7 +310,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Nama Ketua Panitia</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat} readOnly={true}></input>
+                  <input type="text" placeholder="Nama Ketua Panitia" value={ketupat || ''} readOnly={true}></input>
                   <p className="kosong">Nama Ketua Panitia</p>
                 </div>
               </div>
@@ -319,7 +318,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Nomor Hp</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Hp" value={nohp} readOnly={true}></input>
+                  <input type="text" placeholder="Nomor Hp" value={nohp || ''} readOnly={true}></input>
                   <p className="kosong">Nomor HP</p>
                 </div>
               </div>
@@ -327,7 +326,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Tanggal Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal} readOnly={true}></input>
+                  <input type="date" placeholder="Tanggal Pelaksanaan" value={tanggal || ''} readOnly={true}></input>
                   <p className="kosong">Tanggal Pelaksanaan</p>
                 </div>
               </div>
@@ -335,7 +334,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Tempat Pelaksanaan</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat} readOnly={true}></input>
+                  <input type="text" placeholder="Tempat Pelaksanaan" value={tempat || ''} readOnly={true}></input>
                   <p className="kosong">Tempat Pelaksanaan</p>
                 </div>
               </div>
@@ -343,7 +342,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Nomor Ketua Umum</p>
                 <div className="contInput">
-                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum} readOnly={true}></input>
+                  <input type="text" placeholder="Nomor Ketua Umum" value={ketum || ''} readOnly={true}></input>
                   <p className="kosong">Nomor Ketua Umum</p>
                 </div>
               </div>
@@ -351,7 +350,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Jumlah Dana Yang di setujui</p>
                 <div className="contInput">
-                  <input value={dana_disetujui} readOnly={true} type="text" placeholder="Data belum di input"></input>
+                  <input value={dana_disetujui || ''} readOnly={true} type="text" placeholder="Data belum di input"></input>
                   <p className="kosong">jumlah dana yang di setujui</p>
                 </div>
               </div>
@@ -359,7 +358,7 @@ function DSuratPJ() {
               <div className="finput">
                 <p>Keterangan Oleh Bagian Keuangan</p>
                 <div className="contInput">
-                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_keuangan} readOnly={true} />
+                  <input className="textbox" type="text" placeholder="Data belum di input" value={keterangan_keuangan || ''} readOnly={true} />
                 </div>
               </div>
 
@@ -372,9 +371,8 @@ function DSuratPJ() {
                 <div className="contInput">
                   <div className="status">
                     <button disabled className="condition-acc">
-                      <i class="fa-solid fa-check"></i> {status}
+                      <i className="fa-solid fa-check"></i> {status || ''}
                     </button>
-                    {/* <input className="input-status" type="text" placeholder="text"></input> */}
                   </div>
                 </div>
               </div>
@@ -382,10 +380,10 @@ function DSuratPJ() {
                 <p>Berkas File SPJ</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
-                    <a href={urlSPJ} target="_blank" className="btn_download">
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                    <a href={urlSPJ || ''} target="_blank" className="btn_download">
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
-                    <p className="text">{namafileSPJ}</p>
+                    <p className="text">{namafileSPJ || ''}</p>
                   </div>
                 </div>
               </div>
@@ -394,11 +392,11 @@ function DSuratPJ() {
                 <p>Download Berkas Dukung</p>
                 <div className="contInput">
                   <div className="file-BSPJ">
-                    <a href={urlDukungSPJ} target="_blank" className="btn_download">
+                    <a href={urlDukungSPJ || ''} target="_blank" className="btn_download">
                       {' '}
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </a>
-                    <p className="text">{namafileDukungSPJ}</p>
+                    <p className="text">{namafileDukungSPJ || ''}</p>
                   </div>
                 </div>
               </div>
@@ -416,7 +414,7 @@ function DSuratPJ() {
                       type="submit"
                       className="Ajukan btn-setujumhs"
                     >
-                      <i class="fa-solid fa-check"></i>Ajukan SPJ
+                      <i className="fa-solid fa-check"></i>Ajukan SPJ
                     </button>
 
                     <button
@@ -455,14 +453,14 @@ function DSuratPJ() {
                       }}
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-floppy-disk"></i>Simpan
+                      <i className="fa-solid fa-floppy-disk"></i>Simpan
                     </button>
                   </div>
 
                   <div className="popUp-SPJ SPJShow">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil!</p>
                       <p>Mengajukan Surat Pertanggung Jawaban</p>
@@ -471,7 +469,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil!</p>
                       <p>Menyimpan Data</p>
@@ -480,7 +478,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow Critical">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa File Upload SPJ</p>
                       <p>format : file.pdf, .doc</p>
@@ -489,7 +487,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow Critical">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa File Upload Berkas Dukung</p>
                       <p>format : file.rar , .zip</p>
@@ -498,7 +496,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow Critical">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa format SPJ dan Berkas yang anda pilih</p>
                     </div>
@@ -506,7 +504,7 @@ function DSuratPJ() {
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                       </div>
                       <p> Apakah data SPJ anda sudah benar ?</p>
                       <div className="btn-permit">
@@ -539,7 +537,7 @@ function DSuratPJ() {
                       type="submit"
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-check"></i>Ajukan SPJ
+                      <i className="fa-solid fa-check"></i>Ajukan SPJ
                     </button>
 
                     <button
@@ -578,13 +576,13 @@ function DSuratPJ() {
                       }}
                       className="Ajukan"
                     >
-                      <i class="fa-solid fa-floppy-disk"></i>Simpan
+                      <i className="fa-solid fa-floppy-disk"></i>Simpan
                     </button>
                   </div>
                   <div className="popUp-SPJ SPJShow">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil!</p>
                       <p>Mengajukan Surat Pertanggung Jawaban</p>
@@ -593,7 +591,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-check"></i>
+                        <i className="fa-solid fa-check"></i>
                       </div>
                       <p>Berhasil!</p>
                       <p>Menyimpan Data</p>
@@ -602,7 +600,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow Critical">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa File Upload SPJ</p>
                       <p>format : file.pdf, .doc</p>
@@ -611,7 +609,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow Critical">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa File Upload Berkas Dukung</p>
                       <p>format : file.rar , .zip</p>
@@ -620,7 +618,7 @@ function DSuratPJ() {
                   <div className="popUp-SPJ SPJShow Critical">
                     <div className="container-popUp">
                       <div className="icon">
-                        <i class="fa-solid fa-x"></i>
+                        <i className="fa-solid fa-x"></i>
                       </div>
                       <p>Periksa format SPJ dan Berkas yang anda pilih</p>
                     </div>
@@ -628,7 +626,7 @@ function DSuratPJ() {
                   <div className="container-popup-permit permitShow">
                     <div className="container-content">
                       <div className="icon">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                       </div>
                       <p> Apakah data SPJ anda sudah benar ?</p>
                       <div className="btn-permit">
@@ -653,7 +651,7 @@ function DSuratPJ() {
           <div className="download-acc downloadShow">
             <div className="headcontent">
               <h4>Lembar Format SPJ</h4>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <hr className=" line" />
             <div className="finput">
@@ -666,7 +664,7 @@ function DSuratPJ() {
                         window.location.href = '../../Document/Format SPJ kegiatan ormawa.xlsx';
                       }}
                     >
-                      <i class="fa-solid fa-file-arrow-down"></i>Download
+                      <i className="fa-solid fa-file-arrow-down"></i>Download
                     </button>
                     <p className="name">File Lembar Format SPJ kegiatan ormawa.xlsx</p>
                   </div>
@@ -678,7 +676,7 @@ function DSuratPJ() {
           <form onSubmit={updateKetSPJ} className="form-Komfirmasi">
             <div className="headForm">
               <p>Kolom Konfirmasi SPJ</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
             <hr className="line" />
             <div className="finput">
@@ -697,7 +695,7 @@ function DSuratPJ() {
                       required
                       type="text"
                       placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'}
-                      value={keterangan_spj}
+                      value={keterangan_spj || ''}
                       onChange={(e) => setKetSpj(e.target.value)}
                     ></input>
                     <p className="text-konfirmasi">Keterangan</p>
@@ -714,7 +712,7 @@ function DSuratPJ() {
                     <input
                       type="text"
                       placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'}
-                      value={keterangan_spj}
+                      value={keterangan_spj || ''}
                       onChange={(e) => setKetSpj(e.target.value)}
                       readOnly
                     ></input>
@@ -735,7 +733,7 @@ function DSuratPJ() {
                 <div className="finput">
                   <p>Keterangan dari bagian Keuangan</p>
                   <div className="contInput">
-                    <input type="text" placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'} value={keterangan_spj} onChange={(e) => setKetSpj(e.target.value)}></input>
+                    <input type="text" placeholder={keterangan_spj ? keterangan_spj : 'Keterangan SPJ'} value={keterangan_spj || ''} onChange={(e) => setKetSpj(e.target.value)}></input>
                     <p className="text-konfirmasi">Keterangan</p>
                   </div>
                 </div>
@@ -744,7 +742,7 @@ function DSuratPJ() {
                   <div className="contInput">
                     <div className="file-BSPJ">
                       <label className="file-upload">
-                        <i class="fa-solid fa-file-arrow-up"></i>
+                        <i className="fa-solid fa-file-arrow-up"></i>
                         <input
                           type="file"
                           name="file"
@@ -757,7 +755,7 @@ function DSuratPJ() {
                         ></input>
                         <span>Select File</span>
                       </label>
-                      <p className="text-upload">{nameRevisiSpj}</p>
+                      <p className="text-upload">{nameRevisiSpj || ''}</p>
                     </div>
                   </div>
                 </div>
@@ -770,7 +768,7 @@ function DSuratPJ() {
                   <div className="contInput">
                     <div className="file-BSPJ">
                       <label className="file-upload">
-                        <i class="fa-solid fa-file-arrow-up"></i>
+                        <i className="fa-solid fa-file-arrow-up"></i>
                         <input
                           type="file"
                           name="file"
@@ -783,7 +781,7 @@ function DSuratPJ() {
                         ></input>
                         <span>Select File</span>
                       </label>
-                      <p className="text-upload">{nameRevisiSpj}</p>
+                      <p className="text-upload">{nameRevisiSpj || ''}</p>
                     </div>
                   </div>
                 </div>
@@ -798,7 +796,7 @@ function DSuratPJ() {
                     type="submit"
                     className="setuju"
                   >
-                    <i class="fa-solid fa-check"></i>Setuju
+                    <i className="fa-solid fa-check"></i>Setuju
                   </button>
 
                   <button
@@ -811,7 +809,7 @@ function DSuratPJ() {
                     type="submit"
                     className="revisi"
                   >
-                    <i class="fa-solid fa-pen"></i>Revisi
+                    <i className="fa-solid fa-pen"></i>Revisi
                   </button>
 
                   <button
@@ -832,14 +830,14 @@ function DSuratPJ() {
                     }}
                     className="edit"
                   >
-                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                    <i className="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
                 {/* POPUP PERMIT */}
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
                     <div className="icon">
-                      <i class="fa-solid fa-circle-exclamation"></i>
+                      <i className="fa-solid fa-circle-exclamation"></i>
                     </div>
                     <p> Apakah anda yakin ingin menyetujui SPJ ini ?</p>
                     <div className="btn-permit">
@@ -902,7 +900,7 @@ function DSuratPJ() {
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
                     <div className="icon">
-                      <i class="fa-solid fa-circle-exclamation"></i>
+                      <i className="fa-solid fa-circle-exclamation"></i>
                     </div>
                     <p> Apakah Anda yakin ingin merevisi SPJ ini ?</p>
                     <div className="btn-permit">
@@ -960,7 +958,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil!</p>
                     <p>Menyetujui SPJ</p>
@@ -969,7 +967,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-xmark"></i>
+                      <i className="fa-solid fa-xmark"></i>
                     </div>
                     <p>Gagal!</p>
                     <p>Menyetujui SPJ</p>
@@ -979,7 +977,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-circle-exclamation"></i>
+                      <i className="fa-solid fa-circle-exclamation"></i>
                     </div>
                     <p>Revisi SPJ</p>
                   </div>
@@ -987,7 +985,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil!</p>
                     <p>Menyimpan SPJ</p>
@@ -1009,7 +1007,7 @@ function DSuratPJ() {
                     type="submit"
                     className="setuju"
                   >
-                    <i class="fa-solid fa-check"></i>Setuju
+                    <i className="fa-solid fa-check"></i>Setuju
                   </button>
 
                   <button
@@ -1022,7 +1020,7 @@ function DSuratPJ() {
                     type="submit"
                     className="revisi"
                   >
-                    <i class="fa-solid fa-pen"></i>Revisi
+                    <i className="fa-solid fa-pen"></i>Revisi
                   </button>
 
                   <button
@@ -1043,14 +1041,14 @@ function DSuratPJ() {
                     }}
                     className="edit"
                   >
-                    <i class="fa-solid fa-floppy-disk"></i>Simpan
+                    <i className="fa-solid fa-floppy-disk"></i>Simpan
                   </button>
                 </div>
                 {/* POPUP PERMIT */}
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
                     <div className="icon">
-                      <i class="fa-solid fa-circle-exclamation"></i>
+                      <i className="fa-solid fa-circle-exclamation"></i>
                     </div>
                     <p> apakah anda yakin ingin menyetujui SPJ ini ?</p>
                     <div className="btn-permit">
@@ -1113,7 +1111,7 @@ function DSuratPJ() {
                 <div className="container-popup-permit permitShow">
                   <div className="container-content">
                     <div className="icon">
-                      <i class="fa-solid fa-circle-exclamation"></i>
+                      <i className="fa-solid fa-circle-exclamation"></i>
                     </div>
                     <p> Apakah Anda yakin ingin merevisi SPJ ini ?</p>
                     <div className="btn-permit">
@@ -1171,7 +1169,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil!</p>
                     <p>Menyetujui SPJ</p>
@@ -1180,7 +1178,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-xmark"></i>
+                      <i className="fa-solid fa-xmark"></i>
                     </div>
                     <p>Gagal!</p>
                     <p>Menyetujui SPJ</p>
@@ -1190,7 +1188,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-circle-exclamation"></i>
+                      <i className="fa-solid fa-circle-exclamation"></i>
                     </div>
                     <p>Revisi SPJ</p>
                   </div>
@@ -1198,7 +1196,7 @@ function DSuratPJ() {
                 <div className="popUp-KSPJ SPJShow">
                   <div className="container-popUp">
                     <div className="icon">
-                      <i class="fa-solid fa-check"></i>
+                      <i className="fa-solid fa-check"></i>
                     </div>
                     <p>Berhasil!</p>
                     <p>Menyimpan SPJ</p>
