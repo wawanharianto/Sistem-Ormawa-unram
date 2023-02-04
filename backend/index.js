@@ -53,6 +53,7 @@ app.use(express.static('profilePic'));
 app.use(express.static('proposalData'));
 app.use(express.static('spjData'));
 app.use(express.static('lpjData'));
+app.use(express.static('export'));
 app.use(Userroute);
 app.use(Proposalroute);
 app.use(Authroute);

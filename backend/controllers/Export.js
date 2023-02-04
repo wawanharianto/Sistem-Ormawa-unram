@@ -5,6 +5,7 @@ import XLSX from "xlsx-js-style";
 import path from "path";
 import { Op } from "sequelize";
 import { ClientRequest } from "http";
+import FileSaver from "file-saver";
 
 export const ExportToExcel = async (req, res) => {
   const proposal = await Proposal.findAll({
@@ -129,9 +130,15 @@ export const ExportToExcel = async (req, res) => {
 
     workSheet["!merges"] = merge;
 
-    XLSX.writeFile(workBook,`DATA EXPORT ${req.query.startdate} sampai ${req.query.enddate}.xlsx`, { compression: true });
+    const fileName = `DATA EXPORT ${req.query.startdate} sampai ${req.query.enddate}.xlsx`;
 
-    res.status(200).json({ msg: "Export Data successfuly" });
+    const url = `${req.protocol}://${req.get("host")}/excel/${fileName}`;
+
+    const filePath = path.join(`export/excel/${fileName}`);
+
+    XLSX.writeFile(workBook, filePath, { compression: true, bookType: 'xlsx', type: 'file' });
+
+    res.status(200).json({ msg: "Export Data successfuly", url: url });
   } catch (error) {
     console.log(error);
   }
