@@ -124,17 +124,26 @@ function Arsipx() {
     formData.append('startdate', startdate);
     formData.append('enddate', enddate);
     try {
-      await axios.get(`http://localhost:3000/export?startdate=${startdate}&enddate=${enddate}`, formData, {
+      await axios.get(`http://localhost:3000/export?startdate=${startdate}&enddate=${enddate}`, { formData }, {
         headers: {
-          'Content-type': 'multipart/form-data',
+          'Content-type': 'multipart/form-data'
         },
-      });
-      setMsg('success export data');
-      const popUpDelete = document.getElementsByClassName('popUpContainer')[5];
-      popUpDelete.classList.toggle('deleteShow');
-      setTimeout(() => {
+      }).then((response) => {
+        const url = response.data.url;
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `DATA EXPORT ${startdate} sampai ${enddate}.xlsx`);
+        document.body.appendChild(link);
+        link.click();
+
+        setMsg('success export data');
+        const popUpDelete = document.getElementsByClassName('popUpContainer')[5];
         popUpDelete.classList.toggle('deleteShow');
-      }, 2000);
+        setTimeout(() => {
+          popUpDelete.classList.toggle('deleteShow');
+        }, 2000);
+      })
+
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
