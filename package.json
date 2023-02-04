@@ -16,6 +16,7 @@
     "axios": "^1.2.1",
     "bulma": "^0.9.4",
     "jwt-decode": "^3.1.2",
+    "localtunnel": "^2.0.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
     "react-dom": "^18.2.0",
@@ -30,7 +31,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "golive": "localtunnel --port 3001"
   },
   "eslintConfig": {
     "extends": [

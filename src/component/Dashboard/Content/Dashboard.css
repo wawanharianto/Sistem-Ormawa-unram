@@ -71,3 +71,41 @@
   /* background-color: #4dbc9b; */
   width: 100%;
 }
+@media only screen and (max-width: 1024px) {
+  .Dashboard {
+    background-color: #f4f6f6;
+
+    align-items: center;
+    padding-left: 20vh;
+    padding-top: 15vh;
+    padding-right: 10vh;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .Dashboard {
+    background-color: #f4f6f6;
+    align-items: center;
+    padding-left: 20vh;
+    padding-top: 15vh;
+    padding-right: 2vh;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .Dashboard {
+    background-color: #f4f6f6;
+    align-items: center;
+    padding-left: 2vh;
+    padding-top: 15vh;
+    padding-right: 2vh;
+  }
+}
+@media only screen and (max-width: 424px) {
+  .listfile {
+    flex-grow: 20%n;
+    gap: 8px;
+    width: 100%;
+  }
+  .listfile .icon i {
+    font-size: 20px;
+  }
+}
